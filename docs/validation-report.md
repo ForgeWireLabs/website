@@ -1,96 +1,85 @@
-# ForgeWire Labs final acceptance and production readiness report
+# ForgeWire Labs organization-first candidate: validation report
 
 - **Reviewed:** 2026-10-25
-- **Scope:** Current website candidate, staging artifact, public claims, accessibility checks, and IONOS production path.
-- **Assessment:** The static-site checks and targeted visual checks pass. Production readiness is **not yet established** because spoken screen-reader testing and account-specific IONOS billing, webspace, certificate, and CDN facts remain unverified. This report makes no WCAG 2.2 AA conformance claim.
+- **Assessment:** static production and staging builds pass. This report does not claim browser visual validation, exact zoom/reflow, spoken screen-reader testing, or WCAG 2.2 AA conformance for the current organization-first revision.
+- **Draft PR:** [ForgeWireLabs/website#1](https://github.com/ForgeWireLabs/website/pull/1) (open, draft, unmerged).
+- **Public staging URL:** [https://forgewirelabs.github.io/website/?review=05105f4](https://forgewirelabs.github.io/website/?review=05105f4)
+- **Website source revision used to build the published pages:** `b55e039c72e08493b3d47cbad68554e2af073871`.
+- **Staging artifact branch revision:** `05105f4f3479dd282850e0ff4fa55caf6720103c`.
 
-## Candidate and revision reconciliation
+## Build and static verification
 
-- **Public staging preview:** [https://forgewirelabs.github.io/website/?review=ba948f4](https://forgewirelabs.github.io/website/?review=ba948f4)
-- **Draft PR:** [ForgeWireLabs/website#1](https://github.com/ForgeWireLabs/website/pull/1)
-- **Website source revision rendered by staging:** ba948f4b86f4639201a41369defc24fcb47151ca
-- **Staging artifact branch head:** 7d8166eae16549023a3cfddc2ef85edf90949ad3
-- The production and preview builds from the website source revision pass their respective verifiers. The Pages build for artifact commit `7d8166e` completed, the public page and renamed SVG were fetched successfully over HTTPS, and the previous asset path now returns 404. The generated files match the public artifact branch; its two review captures are retained because the homepage view they depict is unchanged by the ownership-only site update.
-- PR #1 remains open, draft, and unmerged, with the staging source revision included. No production site, domain, or DNS records were changed.
+The following commands passed on the organization-first source worktree:
 
-## Public staging captures
-
-- [Desktop · 1200 × 900](https://forgewirelabs.github.io/website/review-captures/home-desktop.jpg?review=7d8166e)
-- [Mobile · 390 × 844](https://forgewirelabs.github.io/website/review-captures/home-mobile.jpg?review=7d8166e)
-
-The mobile capture uses a 390 × 844 viewport and the site's mobile layout rules. Both captures show the current public staging page with its preview label. The Flink ownership copy changed below the homepage viewport shown in these captures.
-
-## Implementation and content checks
-
-The approved v1 structure and art direction are retained. The homepage uses the genuine ForgeWire Projects workspace capture, linked to its full-resolution source. Its caption identifies private development, the capture date, disposable sample data, and the limited scope of the screenshot. Existing project diagrams remain on their own project pages.
-
-These checks passed:
-
-~~~
+```text
 npm run build
 npm run verify
 npm run build:preview
 npm run verify:preview
 npm audit --audit-level=high
-~~~
+```
 
-The dependency audit reports zero vulnerabilities. Site verifiers cover the four routes, metadata and indexing policy, local links/assets, image alternatives, maturity/ownership boundaries, SVG safety, base paths, and output privacy scope.
+The dependency audit reports zero vulnerabilities. Eleventy generated five routes for production and staging. The site verifiers check page metadata and canonical URLs, the preview `noindex, nofollow` policy, the production sitemap, internal navigation and asset references, content and maturity boundaries, image alternatives and intrinsic sizes, SVG safety, duplicate IDs and local fragment links, and the generated output's exclusion of source maps, environment files, source, scripts, and internal documentation. Both review-only and production outputs are separate.
 
-All 17 unique links to external repositories and package pages returned HTTP 200 over verified HTTPS; the four internal staging routes also returned HTTP 200. Requests for `.env`, source templates, internal documentation, `.git/HEAD`, `package.json`, and `node_modules` returned 404. The artifact contains generated static files and the two reviewed captures; it contains no source tree, source maps, environment files, credentials, or internal documentation.
+The generated markup/templates successfully build and pass the repository's static structural checks. No independent browser or standards-service HTML validation is claimed. All 16 unique external repository and package links extracted from the built pages returned HTTP 200 over HTTPS.
 
-## Release and public-claim verification
+Independent public requests confirmed all five page routes returned HTTP 200 with the expected canonical URLs, development-preview label, and `noindex, nofollow`. Nine stylesheet/image/icon assets returned HTTP 200 with expected MIME types. The Pages build API reports `built` for artifact commit `05105f4`. Requests for source templates, internal documentation, `.env`, `.git/HEAD`, `package.json`, `node_modules`, and a source map returned HTTP 404. The published artifact tree has 18 files: generated pages/assets plus `.nojekyll` and Git attributes; no source, scripts, dependency tree, or review screenshots are present. Successful HTTPS requests were validated by the Windows TLS stack.
 
-The public source repositories and release listings were rechecked against the pinned material. Current public identifiers remain:
+## Preview privacy and deployment boundaries
 
-- RepoPact CLI package: 3.1.3 on PyPI.
-- SkillForge Academy: latest Windows release v1.3.2.
-- [Flink](https://github.com/ForgeWireLabs/Flink): latest published installer is v2.0.1; the repository version is 2.0.3. The repository was renamed from ForgeLink and transferred to ForgeWire Labs on 2026-10-25; its README and published release materials retain the former name.
-- [RP-proving-grounds](https://github.com/ForgeWireLabs/RP-proving-grounds): the public RepoPact adversarial proving-ground repository was renamed from `repopact-proving-ground` and transferred to ForgeWire Labs on 2026-10-25. It is not represented as a released product on the website.
-- Workbench remains a source-build preview with no packaged installer listed; Anvil remains labeled developer preview. Core, Workbench, Anvil, SkillForge, and Flink pinned commits still match their current source heads.
-- ForgeWire and Fabric copy is based on the public ForgeWire overview pinned at 85d1905b0bd8db420882f00065daff34833dab27. Both remain labeled private development; the pages state no public installation, service, availability, or release date.
+The staging pages include `noindex, nofollow`, use GitHub Pages canonical URLs, display a development-preview label, and contain no production-domain canonical or social URL. Staging `robots.txt` has no sitemap declaration and the staging sitemap has no page locations. The static artifact is built from `_preview/` and must exclude source, `.git/`, `docs/`, `node_modules/`, source maps, environment files, credentials, and local screenshots. Public staging is not private access control.
 
-The primary-source ledger is in content-sources.md. It records the exact pinned source commits and image provenance.
+The temporary preview is an externally accessible static design-review site. No production DNS, IONOS settings, billing, hosting contract, production credentials, GitHub Pages source domain, PR merge, or production publication was changed as part of this validation.
 
-## Indexing and canonical metadata
+## Content and maturity
 
-- Staging routes use the GitHub Pages canonical base and noindex, nofollow. The preview robots.txt does not advertise a sitemap, and the preview sitemap has no page locations.
-- The production build uses https://forgewirelabs.com canonical URLs, has no noindex directive, and publishes a sitemap listing the four production routes.
-- Staging and production metadata were checked in their separately generated outputs. Search indexing is not a privacy boundary; the preview remains publicly accessible.
+The homepage establishes ForgeWire Labs before introducing its projects. Its engineering-question index is editorial content and explicitly not a system diagram or a representation of shared product architecture. Our Work describes organizational disciplines; Research & Engineering separates open questions from public implementation examples; Software retains individual product identities and maturity; About introduces the organization before founder context.
 
-## Accessibility and responsive behavior
+ForgeWire and Fabric remain private development and are described only from the public overview. RepoPact Proving Grounds is described as a validation repository, not a released product; its pinned instructions use RepoPact 3.0.2 and do not establish coverage of 3.1.3. Released software, source-build previews, developer previews, beta work, and private development remain distinguished. These source claims should be rechecked if upstream sources change before production.
 
-Completed checks:
+The organization purpose and focus areas are owner-provided statements and remain subject to final disclosure approval before production. No customers, team size, commercial availability, production readiness, shared runtime, or unsupported project capability is claimed. On 2026-10-25, GitHub API checks confirmed the eight pinned public repository commits in `content-sources.md` still match their current repository heads. PyPI lists RepoPact 3.1.3, SkillForge Academy's latest release is v1.3.2, and Flink's latest release is v2.0.1; Anvil and Workbench have no published releases listed.
 
-- Browser accessibility trees show one h1 per route, a skip link, named primary navigation, meaningful image alternatives, a nearby text key and full-size image link for diagrams, and a named region containing a semantic engineering table with column headers and project row headers.
-- Keyboard checks reach the skip link first; Enter moves focus to main content. Navigation links are keyboard accessible. The wide project table is its own scroll region and can be focused and moved horizontally with arrow keys.
-- Exact browser zoom controls were tested at 200% and 400% on the public staging page. The homepage and Engineering page remain legible and reflow vertically without obvious page-level horizontal clipping at the checked viewports. The project table retains its contained horizontal scroll behavior.
-- A separate 320 CSS-pixel viewport check found no document-level horizontal overflow; the wide table keeps its own horizontal scroller. Desktop and mobile layouts were also checked at 1200 × 900 and 390 × 844.
-- Sampled text contrast ratios exceed WCAG AA text contrast: body on paper 13.73:1, teal links on paper 5.52:1, teal links on alternate surfaces 5.14:1, and white button text on teal 6:1. The sampled focus outline is 4.75:1 on the light surface and 3.17:1 on the dark surface, above the 3:1 non-text threshold for those tested colors.
+## Accessibility and responsive status
 
-**Remaining accessibility limitation:** Narrator was started but its first-run keyboard dialog could not be dismissed through the available desktop control session, so spoken navigation, image descriptions, and table behavior were not completed. NVDA was not installed. The browser accessibility tree and keyboard checks are not a replacement for speech testing. A full WCAG 2.2 AA audit, exhaustive contrast checks for all states, browser combinations, physical touch testing, and tests with actual assistive technology remain outstanding. No conformance claim should be made.
+The static source provides a skip link, semantic header/navigation/main/footer, one `h1` on each route, image alternative text, text alternatives and full-size links for diagrams, visible focus styling, reduced-motion handling, and a semantically marked wide Software table. CSS contains responsive breakpoints and the table is designed to scroll within its region.
+
+For this recovery/publish turn, browser screenshots and direct visual review were not completed because the Windows Computer Use URL-confidence policy stopped that operation. No alternative desktop-control method was used. The following remain unverified on this revision:
+
+- 200% and 400% browser zoom and reflow behavior.
+- Keyboard-only browser operation and scroll behavior in the wide table.
+- Screen-reader speech for landmarks, navigation, diagrams, and table headers.
+- Actual mobile device/touch behavior and desktop/mobile visual consistency.
+- Exhaustive contrast pairs and a full WCAG 2.2 AA audit.
+
+Static checks do not substitute for browser and assistive-technology testing. No accessibility conformance claim is made.
 
 ## IONOS production capability and cost assessment
 
-The screenshots confirm an active Web Hosting Plus contract containing forgewirelabs.com, currently marked “Domain not in use,” and a CDN service line item. They do not show the actual webspace quota/free space, invoice totals, SSL assignment, CDN tier/hostname activation, or CDN charge.
+The supplied account screenshots show an active IONOS Web Hosting Plus contract that includes forgewirelabs.com, marked “Domain not in use,” and an IONOS CDN service line item. They do not show actual webspace capacity/free space, invoice totals, SSL assignment, CDN tier/activation, or incremental CDN charge.
 
-IONOS's current public US Linux Plus catalogue lists 350 GB NVMe, up to 200 SFTP accounts, one DV wildcard SSL certificate, and a promotional $1/month for a one-year term followed by $14/month. These are current catalogue terms, not the user's confirmed contract allocation or price. IONOS documents SFTP-only account creation and directory scoping, with the limitation that the restriction is at SFTP level rather than full webspace isolation. It documents the included SSL Starter Wildcard as covering one domain and its subdomains, subject to account activation/assignment. The IONOS domain-binding tool may apply DNS changes if the domain does not already point to the hosting service.
+IONOS's public US Linux Plus catalogue has advertised 350 GB NVMe, up to 200 SFTP accounts, and one DV wildcard certificate at promotional and renewal prices. Those catalogue terms do not prove the user's contract allocation or cost. IONOS documents SFTP-only access with directory scoping; scoping is not full isolation of the webspace. SSL is an account assignment/activation matter. The domain-binding tool may change DNS if the domain does not already point to that hosting environment.
 
-The CDN line item confirms presence in the contract view only. IONOS describes Basic (50 GB bandwidth) and Pro (unlimited bandwidth) options; CDN activation is for subdomains, changes their DNS to Cloudflare, and does not support the apex hostname directly. The screenshots do not establish the line item's tier, activation, renewal, or incremental charge. Do not activate it for v1.
-
-**Production blocker:** Before any deployment recommendation becomes an account-specific go decision, Jeremy must verify actual webspace capacity, hosting/CDN/domain billing, certificate assignment and hostname coverage, and the intended domain-to-directory mapping in IONOS. No such account setting was changed or credential entered in this review.
+The CDN line item alone does not establish tier, activation, renewal, or additional charge. IONOS's documented CDN activation applies to subdomains and changes their DNS to Cloudflare; it does not directly serve the apex host. Do not activate the CDN for v1. Account-specific storage, costs, certificate coverage, and domain mapping remain unverified and block production deployment.
 
 ## Bounded production sequence
 
-The prepared procedure is in deployment-runbook.md. In order, it requires: final PR/content approval and merge; clean build and verifiers at the approved SHA; artifact allowlist and SHA-256 manifest; private backup of current files and mapping; upload of the approved files to a versioned webspace directory using restricted SFTP-only access; owner-approved .com binding and any explicit DNS records; certificate validation for apex and www; HTTPS and approved canonical redirects; independent route, asset, metadata, privacy, and mobile checks; and only then owner acceptance and preview retirement.
+Production remains unauthorized. After content approval, accessibility follow-up, IONOS account verification, and explicit approval to merge/deploy:
 
-Rollback restores the former domain-to-directory assignment or backup, prior redirect configuration, and exact captured DNS values if the release changed DNS. Do not change MX/TXT or other service records during rollback.
+1. Merge only after explicit approval. Check out the approved source SHA and run the production build and verifier.
+2. Review the generated static-file allowlist and create a SHA-256 manifest. Retain the prior production files and the existing domain-to-directory and DNS state in a private recovery record.
+3. Configure a restricted SFTP-only upload account with access limited to the chosen webspace directory. Upload the approved static artifact to a versioned directory; do not include source or secrets.
+4. Bind forgewirelabs.com to the approved document root only after owner review of exact IONOS changes. Confirm apex and `www` behavior and certificate coverage before redirects.
+5. Validate HTTPS, canonical redirects, all routes/assets, production metadata, sitemap, no preview marker/noindex, and privacy scope through independent requests.
+6. Obtain owner acceptance. Retire the GitHub Pages preview only after production is verified and accepted.
 
-## Decisions and approvals still needed
+Rollback: restore the previous domain-to-directory mapping, prior redirect configuration, and exact recorded DNS values if a release changed DNS. Do not alter MX/TXT or unrelated records. Restore the previous static artifact from backup if only webspace content requires rollback.
 
-1. Complete spoken Narrator or NVDA checks for page navigation, the ForgeWire capture and diagrams, and the engineering table; address any actual issues found. No screen-reader pass is recorded yet.
-2. Approve or revise the staged ForgeWire and Fabric copy for public disclosure, then explicitly approve merge of draft PR #1.
-3. In IONOS, confirm actual storage, invoice/renewal amounts, CDN tier/status/charges, certificate availability and coverage, and domain-binding behavior. Supply redacted account evidence if these details should be recorded in this assessment.
-4. Approve apex canonical hosting, whether www should redirect, any exact DNS changes, and the production deployment itself.
-5. After a successful and accepted production release, authorize retirement of the public GitHub Pages preview.
+## Decisions still requiring Jeremy and ChatGPT approval
 
-No production launch, merge, DNS change, IONOS configuration, paid service, or contract change is authorized by this report.
+1. Approve the owner-provided organization purpose and focus-area wording and approve ForgeWire/Fabric public disclosure for production.
+2. Complete browser zoom/reflow, keyboard, and Narrator/NVDA checks, then resolve any actual accessibility issues found.
+3. Confirm account-specific IONOS storage, invoice/renewal costs, CDN tier/status/charges, SSL assignment/coverage, and domain-to-directory behavior.
+4. Approve apex and `www` canonical behavior, exact DNS changes, production upload, and merge of draft PR #1.
+5. Approve retirement of the public preview after production acceptance.
+
+No production launch, PR merge, DNS change, IONOS configuration, paid activation, credential setup, or hosting contract change is authorized by this report.
