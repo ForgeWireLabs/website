@@ -3,7 +3,7 @@
     <p class="project-group">{{ project.group }}</p>
     <p class="status status--{{ project.statusKind }}">{{ project.status }}</p>
   </div>
-  <h3>{% if project.url %}<a href="{{ project.url }}">{{ project.name }}<span class="visually-hidden"> (project page)</span></a>{% else %}{{ project.name }}{% endif %}</h3>
+  <h3>{% if project.url %}<a href="{{ project.url }}">{{ project.name }}<span class="visually-hidden"> (public project source)</span></a>{% else %}{{ project.name }}{% endif %}</h3>
   <p class="project-summary">{{ project.summary }}</p>
   <p class="maturity"><strong>Availability:</strong> {{ project.maturity }}</p>
   {% if project.url or project.secondaryUrl %}

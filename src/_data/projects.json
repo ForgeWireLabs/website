@@ -54,8 +54,8 @@
     "statusKind": "private",
     "summary": "Fabric is a separate execution control-plane direction for authenticated, policy-gated work across machines. The public overview describes a limited, configuration-dependent connection for selected ForgeWire workflows.",
     "maturity": "Fabric is not a public service or deployment option. Broader integration and release gates remain open; no public download or release date is announced.",
-    "url": null,
-    "action": null,
+    "url": "https://github.com/ForgeWireLabs/ForgeWire-Overview/blob/85d1905b0bd8db420882f00065daff34833dab27/README.md#3-fabric-dispatch-and-remote-execution",
+    "action": "Read the public Fabric overview",
     "secondaryUrl": null,
     "secondaryAction": null
   },
