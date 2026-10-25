@@ -39,3 +39,7 @@ The older `forgewire-labs-hero.svg` and `.png` profile asset and the unreference
 - Keep ForgeLink's JeremyShows ownership visible.
 - State architecture only at the boundary documented by its source project; do not imply the portfolio is one integrated runtime.
 - Recheck release tags and source commits before a production launch or after material project changes.
+
+## Final acceptance recheck
+
+On 2026-10-25, the pinned current source commits for RepoPact Core, Workbench, Anvil, SkillForge Academy, ForgeLink, and the public ForgeWire overview were compared with the corresponding current public repository heads and remained aligned. Release/package listings were also rechecked: RepoPact 3.1.3 on PyPI, SkillForge Academy v1.3.2, and ForgeLink v2.0.1 remained the current published versions. Workbench has no packaged installer release listed, and Anvil has no release tag listed. These checks confirm the copy's maturity labels at the time of review; repeat them before production launch if the launch occurs after a material source or release change.

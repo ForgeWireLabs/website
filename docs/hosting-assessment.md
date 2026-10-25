@@ -1,70 +1,60 @@
-# IONOS hosting capability and cost assessment
+# IONOS Web Hosting Plus: capability and cost assessment
 
-**Checked:** 2026-10-25. This is an account-level assessment based on the screenshots supplied for this task and public IONOS documentation. No IONOS settings were changed.
+**Reviewed:** 2026-10-25
+**Scope:** `forgewirelabs.com` only. The other registered domains are out of scope. No IONOS settings, DNS, certificates, CDN, or contract details were changed.
 
-## Account evidence
+## Evidence and limits
 
-The supplied account screenshots show an active IONOS Web Hosting Plus contract and the `forgewirelabs.com` domain listed under the same contract. The domain is marked “Domain not in use.” The contract services view lists “IONOS CDN powered by Cloudflare” as an active item, but it does not identify a Basic/Pro tier, a price, or a hostname configured to use it. This confirms a CDN-related contract item is present; activation for the website and its billing treatment remain unverified. The detail screenshot does not show an invoice amount, exact hosting allocation, or SSL assignment status. Contract identifiers and personal account details are intentionally excluded from this public assessment.
+The supplied account screenshots show an active **IONOS Web Hosting Plus** contract. `forgewirelabs.com` is listed in that contract and is marked **Domain not in use**. The contract-services screen also lists **IONOS CDN powered by Cloudflare** as an additional item. The screenshots do not show the webspace quota or free space, invoice totals, CDN tier or hostname activation, or whether an SSL certificate is assigned to `.com`.
 
-The existing `.com` domain and hosting contract are already active services. No conclusion about their price, renewal total, or incremental CDN cost can be drawn from the screenshots.
+The account was not available for a read-only contract inspection during this review, so account-specific quota, invoice, certificate, and CDN billing details remain unverified. No credentials were entered or stored.
 
-## Capability findings
+## Capabilities relevant to this site
 
-| Question | Finding | Account-specific status |
+| Capability | Verified product information | Account-specific result |
 |---|---|---|
-| Linux or Windows | The supplied contract is named “Web Hosting Plus,” without a Windows suffix. IONOS says classic hosting contracts without “Windows” are Linux; Windows web hosting is sold as ASP.NET Hosting. | Linux is the expected plan type; confirm in the contract view before choosing any server-specific settings. |
-| Available webspace | IONOS's current US Linux Hosting Plus listing specifies 350 GB NVMe. The user's contract screenshot has the matching “Web Hosting Plus” name, but its allocation and usage panel are not shown. | Likely 350 GB; verify the exact allocation in the account. |
-| SSL | IONOS lists one DV wildcard certificate on its current Linux Hosting Plus plan and says wildcard SSL is included with hosting. The domain still needs SSL assignment/activation; IONOS documents that activation requires an active domain and its nameservers. The screenshot shows Domain Guard, not SSL status. | Certificate entitlement is expected; domain assignment and activation are unverified. |
-| File transfer | IONOS documents encrypted SFTP and FTPS for webspace uploads. Recent hosting tariffs support SFTP-only accounts and optional SSH. FTP without encryption is not offered for webspace access. | Exact account protocol options should be checked in the hosting dashboard. |
-| Directory restriction | An SFTP account can be limited to a directory, but IONOS warns that this is an SFTP-level restriction rather than true webspace isolation. | Relevant for deployment-account design. |
-| Git on host | IONOS documents preinstalled Git on Linux Web Hosting and says it is not available on Windows Web Hosting. A server-side Git deployment is unnecessary for this static site. | Do not assume Git is available until Linux is confirmed. |
-| Domain assignment | IONOS can connect a domain to a webspace directory. Its setup may offer DNS changes when the domain does not already point at IONOS webspace. The current “not in use” status indicates this has not been completed. | Must remain unchanged until deployment approval. |
-| CDN | IONOS CDN is powered by Cloudflare, requires an available Basic or Pro package, and activation changes DNS for the selected hostname. It is limited to subdomains such as `www`; it cannot be activated on the apex `.com` hostname. One CDN package is required per main domain. | A CDN service item is listed as active in the contract view. Its tier, fee, usage statistics, and activation for any hostname remain unknown. |
-
-## CDN assessment
-
-The IONOS help page says CDN activation is available only for compatible subdomains; activating it changes that subdomain's DNS entries to the Cloudflare network. The apex `forgewirelabs.com` cannot itself be selected. The `www` hostname could be a candidate only if it exists, is not used for email/FTP/SSH or custom DNS, and the package is available. The contract screenshot confirms a CDN item exists but does not show the selected hostname, plan tier, configuration state, or billing line.
-
-IONOS lists CDN Basic with a 50 GB daily bandwidth limit and CDN Pro with unlimited bandwidth and additional security and optimization features. The supplied contract screenshot does not identify the tier or price. It also does not prove that the CDN is active for `www` or another hostname. Do not click activation, purchase, upgrade, or “Buy now” controls to investigate. A CDN is not needed for this lightweight static prototype; leave its configuration unchanged until its entitlement, billing, and hostname effects are confirmed and a performance need is established.
+| Operating system | IONOS identifies classic Web Hosting without a “Windows” suffix as Linux hosting. The screenshot names the contract “IONOS Web Hosting Plus” with no Windows suffix. | **Linux is confirmed by the contract name shown.** |
+| Webspace | The current US Linux Plus offer lists 350 GB NVMe storage and unlimited websites. IONOS says actual available space is shown in Hosting → Webspace. | **350 GB is the current catalogue figure; assigned quota and free space must still be checked in the contract.** |
+| Secure upload | IONOS provides encrypted SFTP or FTPS, not unencrypted FTP. Tariffs introduced after August 2024 support an SFTP-only account or an SFTP+SSH account. The current Plus offer lists 200 SFTP accounts. | **SFTP is the suitable transfer method.** Confirm account options and the webspace host name before deployment. Use an SFTP-only account. |
+| Account restriction | A new SFTP account can be limited to a selected directory. IONOS says this is a transfer-layer restriction, not full webspace isolation; true isolation needs a separate webspace contract. | Suitable for a static deploy account if the webspace contains no unrelated secrets. Do not use it to store credentials or private data. |
+| SSL | The current Plus offer includes one DV wildcard certificate. IONOS documents the included SSL Starter Wildcard as covering one domain and its subdomains; it must be activated and assigned to the domain. | **Entitlement is expected from the plan. Assignment/activation for `forgewirelabs.com` is unverified.** No paid certificate is recommended. |
+| Domain assignment | IONOS can assign a domain to a webspace directory when the domain is in a contract with webspace and points to IONOS webspace. Its wizard may offer to change DNS records when they do not already point there. | The `.com` is in the hosting contract but unused. Directory assignment is a production change and is not authorized yet. Stop if the wizard proposes DNS changes. |
+| Redirects | Linux Web Hosting supports `.htaccess` rewrite rules; IONOS documents that `mod_rewrite` is enabled on its Web Hosting servers. | Can implement HTTP→HTTPS and `www`→apex redirects after both hostnames resolve to the host and have valid certificates. Test before enabling. |
+| CDN | IONOS Web Hosting CDN has Basic and Pro tiers. Basic has a 50 GB/day limit; Pro has unlimited bandwidth and extra security features. Activation is for subdomains only, changes their DNS to the Cloudflare network, and cannot be used directly on the apex domain. A separate CDN package is needed per main domain. | The contract screenshot proves an IONOS CDN line item exists, not that `.com` or `www` is configured to use it. Tier, activation, usage, and fee are unknown. Do not activate or select it for this site. |
 
 ## Cost assessment
 
 | Item | Assessment |
 |---|---|
-| Domain | `.com` registration already exists. Screenshot shows a future renewal date, but not the renewal amount. |
-| Web hosting | The Web Hosting Plus contract already exists. A static site should use the existing webspace if the account confirms that webspace and domain assignment are included. The screenshots do not show the contract's monthly or renewal charge. |
-| Web Hosting Plus public reference price | The current US IONOS Linux Hosting page advertises Plus at $1/month during a one-year term, then $14/month. This is a public new-customer offer, not the account invoice or a prediction of this contract's renewal amount. |
-| SSL | Public IONOS documentation says a wildcard certificate is included with hosting products. Verify that the certificate is available and assignable to this domain before launch; the account view is needed to confirm. |
-| CDN | A CDN service item appears in the existing contract view, without a package tier or charge. Its incremental cost cannot be established from the supplied screenshots or IONOS's public feature comparison. No CDN configuration or purchase is part of this proposal. |
-| GitHub | The public repository and pull request are used for source and review. A temporary review URL is published through GitHub Pages from a separate artifact branch; public repositories can use Pages on GitHub Free. There is no custom domain, `forgewirelabs.com` DNS change, or custom Actions workflow. The organization's current billing plan is not visible here. |
+| Existing Web Hosting Plus | The contract already exists. Using its included webspace and included SSL should not require a new hosting service if the account confirms both are available. The current invoice and renewal price are not shown, so the existing monthly/annual cost cannot be stated. |
+| Public Plus reference | IONOS currently lists the US Linux Plus offer at $1/month for a one-year term, then $14/month. This is a public offer, **not** this account’s price or renewal amount. |
+| SSL | One DV wildcard certificate is included in the current Web Hosting Plus listing and in IONOS’s hosting SSL documentation. No separate certificate purchase is recommended. Confirm the included certificate is still available and assigned before launch. |
+| CDN | A CDN item appears in the contract. The screenshots and public Web Hosting CDN help pages do not expose its price, term, tier, or usage charge. Treat the current billing impact as **unknown** until checked on the invoice. Ordering another package or upgrading through IONOS can add a product to the contract; do not proceed. |
+| Domain and DNS | The `.com` is already registered and included in the contract listing. Renewal cost and any domain-related add-on charges are not shown. No domain or DNS change is needed for local development. |
+| Deployment tools | Eleventy and Node build locally. SFTP is available as the proposed manual transfer path. No paid build runner, Deploy Now plan, or CDN is needed for the initial static site. |
 
-**Expected marginal hosting cost:** $0 for static-site build tools and source review. The temporary public preview uses GitHub Pages on this public repository; GitHub documents Pages as available on public repositories under GitHub Free. No additional domain, service, or paid runner is used. The website's eventual production hosting may have $0 additional cost if the existing contract includes usable webspace and SSL, but that cannot be verified without the contract's billing details. The public $14/month post-promotion price is a useful reference for the current US Plus offer, not this account's bill. The CDN item may already be included or may carry a charge; the screenshots do not establish which. Confirm the hosting and CDN line items in the invoice before approving production deployment. No migration or upgrade is recommended.
+**Recommendation:** Use the existing Linux Web Hosting Plus webspace for the static site after Jeremy confirms the free space, included SSL assignment, and current contract invoice. Do not enable the CDN for v1. The expected incremental hosting cost is $0 only if the existing contract’s listed hosting and SSL cover this use; that account-specific condition has not yet been confirmed.
 
-## Verification still needed in IONOS
+## Before production approval
 
-Before any production change, confirm in the account:
-
-1. The hosting product is Linux Web Hosting, and the Webspace view shows the total and free storage.
-2. The contract includes an SSL certificate; check whether it is available and assigned to `forgewirelabs.com`.
-3. The exact SFTP-only account options and the domain's assigned webspace directory.
-4. The CDN package name/tier, activation status, billing line, and next renewal amount. Do not activate it during inspection.
-5. The amount due at the next hosting and domain renewal, and whether static hosting changes any charge.
+1. In Hosting → Webspace, record the total and free space and confirm the contract still exposes the Linux SFTP-only account option.
+2. In Domains & SSL, confirm the included DV wildcard certificate is available and can be assigned to `forgewirelabs.com` and `www.forgewirelabs.com`.
+3. Confirm the CDN item’s Basic/Pro tier, whether it is already configured for any hostname, and the associated invoice/renewal line. Do not activate it during inspection.
+4. Confirm the hosting, domain, and CDN invoice amounts and renewal terms. Do not infer them from public promotional prices.
+5. Confirm the domain’s existing DNS state before using IONOS’s domain-binding wizard. Do not approve an automatic DNS change without separate authorization.
 
 ## Primary sources
 
-- [IONOS: Linux Web Hosting vs. Windows/ASP.NET Hosting](https://www.ionos.com/help/hosting/differences-between-linux-web-hosting-and-windows-web-hosting-aspnet-hosting/)
-- [IONOS: check contract information for available webspace](https://www.ionos.com/help/domains/connecting-a-domain-to-your-webspace/check-contract-information-for-available-webspace/)
-- [IONOS: check available storage in Linux Web Hosting](https://www.ionos.com/help/hosting/managing-disk-space/check-your-free-storage-space-linux-packages/)
-- [IONOS: secure file transfer with SFTP and FTPS](https://www.ionos.com/help/hosting/setting-up-and-managing-ftp-access/transferring-files-securely-with-ftps-and-sftp/)
-- [IONOS: create an SFTP/SSH account and its directory restriction](https://www.ionos.com/help/hosting/setting-up-and-managing-ftp-access/creating-an-sftp/ssh-account/)
-- [IONOS: Git availability on Linux Web Hosting](https://www.ionos.com/help/hosting/git/does-git-need-to-be-installed/)
-- [IONOS: SSL certificate included with hosting and activation](https://www.ionos.com/help/ssl-certificates/tips-for-setup-and-use/secure-your-website-with-ssl-encryption/)
-- [IONOS: connect a domain to a webspace directory](https://www.ionos.com/help/domains/connecting-a-domain-to-your-webspace/connecting-a-domain-to-a-webspace-directory/)
-- [IONOS: CDN activation requirements and DNS effects](https://www.ionos.com/help/hosting/content-delivery-network-cdn/activating-the-ionos-cdn/)
+- [IONOS: Linux hosting vs. Windows/ASP.NET hosting](https://www.ionos.com/help/hosting/differences-between-linux-web-hosting-and-windows-web-hosting-aspnet-hosting/)
+- [IONOS: current US Linux Hosting features and pricing](https://www.ionos.com/hosting/linux-hosting)
+- [IONOS: check available webspace in the contract](https://www.ionos.com/help/domains/connecting-a-domain-to-your-webspace/check-contract-information-for-available-webspace/)
+- [IONOS: check free storage space](https://www.ionos.com/help/hosting/managing-disk-space/check-your-free-storage-space-linux-packages/)
+- [IONOS: secure SFTP/FTPS transfer](https://www.ionos.com/help/hosting/setting-up-and-managing-ftp-access/transferring-files-securely-with-ftps-and-sftp/)
+- [IONOS: create SFTP-only or SFTP+SSH account](https://www.ionos.com/help/hosting/setting-up-and-managing-ftp-access/creating-an-sftp/ssh-account/)
+- [IONOS: included SSL certificate types and domain coverage](https://www.ionos.com/help/ssl-certificates/before-installation/what-types-of-ssl-certificates-are-offered-by-11-ionos/)
+- [IONOS: secure a website with SSL](https://www.ionos.com/help/ssl-certificates/tips-for-setup-and-use/secure-your-website-with-ssl-encryption/)
+- [IONOS: assign a domain to a webspace directory](https://www.ionos.com/help/domains/connecting-a-domain-to-your-webspace/connecting-a-domain-to-a-webspace-directory/)
+- [IONOS: rewrite rules on Linux Web Hosting](https://www.ionos.com/help/hosting/htaccess/notes-on-creating-rewrite-rules/)
+- [IONOS: activate CDN and DNS effects](https://www.ionos.com/help/hosting/content-delivery-network-cdn/activating-the-ionos-cdn/)
 - [IONOS: CDN Basic and Pro comparison](https://www.ionos.com/help/hosting/content-delivery-network-cdn/cdn-basic-and-cdn-pro-compared/)
-- [IONOS: CDN Basic daily bandwidth limit](https://www.ionos.com/help/hosting/content-delivery-network-cdn/information-on-the-bandwidth-limit-for-cdn-basic/)
-- [IONOS: ordering CDN](https://www.ionos.com/help/hosting/content-delivery-network-cdn/ordering-ionos-cdn/)
-- [IONOS: current US Linux Hosting Plus features and public price](https://www.ionos.com/hosting/linux-hosting)
-- [GitHub: plans and pricing](https://github.com/pricing)
-- [GitHub: configure a GitHub Pages publishing source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
-- [IONOS Deploy Now: current plans, staging features, and prices](https://www.ionos.com/hosting/deploy-now)
+- [IONOS: order a CDN package](https://www.ionos.com/help/hosting/content-delivery-network-cdn/ordering-ionos-cdn/)
