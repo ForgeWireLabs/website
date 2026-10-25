@@ -17,6 +17,8 @@ npm run serve
 
 Eleventy writes the production output to `_site/`. The staging build writes to `_preview/`, adds a temporary review label and `noindex, nofollow` metadata, omits staging URLs from its sitemap, and prefixes internal paths for `https://forgewirelabs.github.io/website/`. Run `npm run build` and `npm run verify` before `npm run serve`; the lightweight preview server binds only to `127.0.0.1`. Production hosting needs only the generated static files; it does not need Node.js.
 
+When CSS changes, update `site.assetVersion` in `src/_data/site.js` so browsers fetch the new stylesheet instead of a cached copy.
+
 ## Project records and sources
 
 Portfolio copy and maturity labels live in `src/_data/projects.json`. They are checked against each linked repository's public README or release page. ForgeLink is maintained under JeremyShows, outside the ForgeWire Labs organization. Private development is not presented as a download or supported release.
