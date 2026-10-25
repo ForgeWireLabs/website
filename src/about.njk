@@ -82,19 +82,13 @@ permalink: /about/index.html
     <p class="eyebrow">Organizational email</p>
     <h3 id="organization-email-title">Three separate mailboxes</h3>
     <dl class="contact-addresses">
-      {% for channel in contactChannels %}
+{% for channel in contactChannels %}
       <div>
         <dt>{{ channel.title }}</dt>
-        <dd>
-          {% if channel.verified %}
-          <a href="mailto:{{ channel.address }}">{{ channel.address }}</a>
-          {% else %}
-          <code>{{ channel.address }}</code>
-          {% endif %}
-        </dd>
+        <dd>{% if channel.verified %}<a href="mailto:{{ channel.address }}">{{ channel.address }}</a>{% else %}<code>{{ channel.address }}</code>{% endif %}</dd>
         <dd class="contact-status">{{ channel.status }}</dd>
       </div>
-      {% endfor %}
+{% endfor %}
     </dl>
     <p class="contact-mailbox-note">Mailbox creation is owner-confirmed. Incoming delivery, outgoing sending, authentication, and security configuration have not yet been verified.</p>
   </aside>
