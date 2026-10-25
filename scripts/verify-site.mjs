@@ -1,6 +1,7 @@
 import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import contactChannels from "../src/_data/contactChannels.js";
 
 const isPreview = process.argv.includes("--preview");
 const outputRoot = path.resolve(isPreview ? "_preview" : "_site");
@@ -209,10 +210,21 @@ const aboutPage = await readFile(path.join(outputRoot, "about", "index.html"), "
 const founderHeadingPosition = aboutPage.indexOf('id="founder-title"');
 if (founderHeadingPosition >= 0 && founderHeadingPosition < aboutPage.indexOf("</section>")) fail("About page must establish the organization before introducing its founder.");
 if (!aboutPage.includes("independent, founder-led software engineering and research organization")) fail("About page must describe ForgeWire Labs as an independent, founder-led organization.");
-for (const phrase of ["ForgeWireLabs/ForgeWireLabs/issues/new", "Posts are public", "General correspondence", "Software questions", "Security disclosures", "no central security mailbox has been verified as active", "Planned email identities · inactive", "contact@forgewirelabs.com", "support@forgewirelabs.com", "security@forgewirelabs.com", "planning names, not active inboxes"]) {
+for (const phrase of ["Three independent organizational mailboxes have been created", "Delivery, reply identity, and mailbox security checks are still in progress", "General correspondence", "Software questions", "Security disclosures", "Three separate mailboxes", "Mailbox creation is owner-confirmed", "delivery, access, forwarding, and MFA checks", "private vulnerability-reporting route"]) {
   if (!aboutPage.includes(phrase)) fail(`About page is missing the contact status or route “${phrase}”.`);
 }
-if (/href="mailto:(?:contact|support|security)@forgewirelabs\.com"/i.test(aboutPage)) fail("Planned email identities must not be presented as working mail links.");
+const expectedContactAddresses = new Set(["contact@forgewirelabs.com", "support@forgewirelabs.com", "security@forgewirelabs.com"]);
+if (contactChannels.length !== expectedContactAddresses.size || contactChannels.some((channel) => !expectedContactAddresses.has(channel.address))) {
+  fail("Contact channel data must contain exactly the three owner-confirmed .com mailboxes.");
+}
+for (const channel of contactChannels) {
+  if (!aboutPage.includes(channel.address)) fail(`About page is missing ${channel.address}.`);
+  const escapedAddress = channel.address.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const mailtoPattern = new RegExp(`<a\\b[^>]*href="mailto:${escapedAddress}"`, "i");
+  if (channel.verified && !mailtoPattern.test(aboutPage)) fail(`Verified contact address ${channel.address} must have a mailto link.`);
+  if (!channel.verified && mailtoPattern.test(aboutPage)) fail(`Unverified contact address ${channel.address} must not have a mailto link.`);
+  if (!channel.verified && !aboutPage.includes(channel.status)) fail(`Unverified contact address ${channel.address} must show its verification status.`);
+}
 if (aboutPage.includes("@forgewirelabs.org")) fail("The owner's named .org mailbox must not be published on the website.");
 if (aboutPage.includes("No project listing implies") || aboutPage.includes("unverified headcount")) fail("About page contains unnecessary defensive qualification.");
 

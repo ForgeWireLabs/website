@@ -35,7 +35,7 @@ Open research questions are labeled as such. Public implementation notes link to
 ## Review gates
 
 - Review the updated public staging site directly. The prior public screenshots show the obsolete homepage and no replacement browser screenshots are available for this revision.
-- Confirm the general inquiry issue tracker is an appropriate public contact route and that project security reporting remains clearly separate.
+- Confirm the three organizational mailbox routes are clearly separated from public project discussion and private vulnerability reporting.
 - Approve the owner-provided organization purpose and work-area statements for production.
 - Reconfirm the public ForgeWire/Fabric wording and release status if sources change before launch.
 - Finish spoken screen-reader checks for navigation, content hierarchy, diagrams, and the Software table.
