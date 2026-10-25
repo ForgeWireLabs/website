@@ -3,9 +3,9 @@
 - **Reviewed:** 2026-10-25
 - **Assessment:** static production and staging builds pass. This report does not claim browser visual validation, exact zoom/reflow, spoken screen-reader testing, or WCAG 2.2 AA conformance for the current organization-first revision.
 - **Draft PR:** [ForgeWireLabs/website#1](https://github.com/ForgeWireLabs/website/pull/1) (open, draft, unmerged).
-- **Public staging URL:** [https://forgewirelabs.github.io/website/?review=21582cb](https://forgewirelabs.github.io/website/?review=21582cb)
-- **Website source revision used to build the published pages:** `59328519c11b45b0327cd8b478e41caa7ce7fa99`.
-- **Staging artifact branch revision:** `21582cbc35cd2ba58eeaad59d62b0272e57991f3`.
+- **Public staging URL:** [https://forgewirelabs.github.io/website/?review=a227eae](https://forgewirelabs.github.io/website/?review=a227eae)
+- **Website source revision used to build the published pages:** `e7521fe23ae752292a1fc29b9f0f30f87428183c`.
+- **Staging artifact branch revision:** `a227eaebd4e7805c1896ed27b8a3013e58f839db`.
 
 ## Build and static verification
 
@@ -21,9 +21,9 @@ npm audit --audit-level=high
 
 The dependency audit reports zero vulnerabilities. Eleventy generated five routes for production and staging. The site verifiers check page metadata and canonical URLs, the preview `noindex, nofollow` policy, the production sitemap, internal navigation and asset references, content and maturity boundaries, image alternatives and intrinsic sizes, SVG safety, duplicate IDs and local fragment links, and the generated output's exclusion of source maps, environment files, source, scripts, and internal documentation. Both review-only and production outputs are separate.
 
-The generated markup/templates successfully build and pass the repository's static structural checks. No independent browser or standards-service HTML validation is claimed. All 17 unique external links extracted from the built pages returned HTTP 200 over HTTPS.
+The generated markup/templates successfully build and pass the repository's static structural checks. Contact checks require the three planned `.com` identities to remain inactive plain text without `mailto:` links and prevent a named `.org` mailbox from appearing in About. No independent browser or standards-service HTML validation is claimed. All 17 unique external links extracted from the built pages returned HTTP 200 over HTTPS in the preceding link review.
 
-Independent public requests confirmed all five page routes returned HTTP 200 with the expected canonical URLs, development-preview label, and `noindex, nofollow`. Nine stylesheet/image/icon assets returned HTTP 200. The Pages build API reports `built` for artifact commit `21582cbc`. Requests for source templates, internal documentation, `.env`, `.git/HEAD`, `package.json`, `node_modules`, and a source map returned HTTP 404. The published artifact tree has 18 files: generated pages/assets plus `.nojekyll` and Git attributes; no source, scripts, dependency tree, or review screenshots are present. HTTPS trust validation succeeded; the endpoint presented a valid Let's Encrypt certificate for `*.github.io`.
+After the email contact update, independent HTTPS requests returned HTTP 200 for all five page routes and all nine expected static assets. The routes returned the expected canonical URLs, development-preview label, and `noindex, nofollow`; 11 distinct local page/resource URLs extracted from the pages also returned HTTP 200. The updated contact copy shows all three roles as inactive and has no `mailto:` links. Requests for source templates, email planning documents, `.env`, `.git/HEAD`, `package.json`, `node_modules`, and a source map returned HTTP 404. The artifact tree has 18 files: generated pages/assets plus `.nojekyll` and Git attributes; no source, scripts, dependency tree, or review screenshots are present. HTTPS requests passed the system certificate trust validation for the public GitHub Pages host.
 
 ## Preview privacy and deployment boundaries
 
@@ -53,7 +53,7 @@ Public DNS independently shows `.com` and `.org` MX, SPF, DKIM, and IONOS-manage
 
 The static source provides a skip link, semantic header/navigation/main/footer, one `h1` on each route, image alternative text, text alternatives and full-size links for diagrams, visible focus styling, reduced-motion handling, and a semantically marked wide Software table. CSS contains responsive breakpoints and the table is designed to scroll within its region.
 
-For this recovery/publish turn, browser screenshots and direct visual review were not completed because the Windows Computer Use URL-confidence policy stopped that operation. No alternative desktop-control method was used. The following remain unverified on this revision:
+For this recovery/publish turn, browser screenshots and direct visual review were not completed because the Windows Computer Use URL-confidence policy stopped that operation. The built-in web reader also rejected the GitHub Pages URL as inaccessible, despite the successful independent HTTPS requests above. Those requests prove the pages and assets are public; they are not rendered visual approval. No alternate desktop-control method was used. The following remain unverified on this revision:
 
 - 200% and 400% browser zoom and reflow behavior.
 - Keyboard-only browser operation and scroll behavior in the wide table.
