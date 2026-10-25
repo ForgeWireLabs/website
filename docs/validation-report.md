@@ -6,20 +6,19 @@
 
 ## Candidate and revision reconciliation
 
-- **Public staging preview:** [https://forgewirelabs.github.io/website/?review=01a10ef](https://forgewirelabs.github.io/website/?review=01a10ef)
+- **Public staging preview:** [https://forgewirelabs.github.io/website/?review=ba948f4](https://forgewirelabs.github.io/website/?review=ba948f4)
 - **Draft PR:** [ForgeWireLabs/website#1](https://github.com/ForgeWireLabs/website/pull/1)
-- **PR source head when this review began:** 3ef4faf5183687077e91f5ec3f91e5b1f9b3c129
-- **Website source-code revision in the rendered artifact:** 01a10ef99a88d8f9a6e61505a79a782ceed7779d. The commits from that revision through the PR head changed documentation only.
-- **Staging artifact branch head:** 3d707ebb6db26908e783b968cd525bc3384b675c
-- The production and preview builds from the PR head pass their respective verifiers. Generated preview files match the public artifact branch file-for-file; the artifact branch also contains the two review screenshots. The staging page therefore reflects the website source in the current draft PR head.
-- PR #1 remains open, draft, and unmerged. No production site or DNS records were changed.
+- **Website source revision rendered by staging:** ba948f4b86f4639201a41369defc24fcb47151ca
+- **Staging artifact branch head:** 7d8166eae16549023a3cfddc2ef85edf90949ad3
+- The production and preview builds from the website source revision pass their respective verifiers. The Pages build for artifact commit `7d8166e` completed, the public page and renamed SVG were fetched successfully over HTTPS, and the previous asset path now returns 404. The generated files match the public artifact branch; its two review captures are retained because the homepage view they depict is unchanged by the ownership-only site update.
+- PR #1 remains open, draft, and unmerged, with the staging source revision included. No production site, domain, or DNS records were changed.
 
 ## Public staging captures
 
-- [Desktop · 1200 × 900](https://forgewirelabs.github.io/website/review-captures/home-desktop.jpg?review=3d707eb)
-- [Mobile · 390 × 844](https://forgewirelabs.github.io/website/review-captures/home-mobile.jpg?review=3d707eb)
+- [Desktop · 1200 × 900](https://forgewirelabs.github.io/website/review-captures/home-desktop.jpg?review=7d8166e)
+- [Mobile · 390 × 844](https://forgewirelabs.github.io/website/review-captures/home-mobile.jpg?review=7d8166e)
 
-The mobile capture uses a 390 × 844 viewport and the site's mobile layout rules. Both screenshots show the current public staging page with its preview label.
+The mobile capture uses a 390 × 844 viewport and the site's mobile layout rules. Both captures show the current public staging page with its preview label. The Flink ownership copy changed below the homepage viewport shown in these captures.
 
 ## Implementation and content checks
 
@@ -37,7 +36,7 @@ npm audit --audit-level=high
 
 The dependency audit reports zero vulnerabilities. Site verifiers cover the four routes, metadata and indexing policy, local links/assets, image alternatives, maturity/ownership boundaries, SVG safety, base paths, and output privacy scope.
 
-All 20 unique external links extracted from the staging HTML returned HTTP 200 over verified HTTPS. Requests for .env, source templates, internal documentation, .git/HEAD, package.json, and node_modules returned 404. The artifact contains generated static files and the two reviewed captures; it contains no source tree, source maps, environment files, credentials, or internal documentation.
+All 17 unique links to external repositories and package pages returned HTTP 200 over verified HTTPS; the four internal staging routes also returned HTTP 200. Requests for `.env`, source templates, internal documentation, `.git/HEAD`, `package.json`, and `node_modules` returned 404. The artifact contains generated static files and the two reviewed captures; it contains no source tree, source maps, environment files, credentials, or internal documentation.
 
 ## Release and public-claim verification
 
@@ -45,8 +44,8 @@ The public source repositories and release listings were rechecked against the p
 
 - RepoPact CLI package: 3.1.3 on PyPI.
 - SkillForge Academy: latest Windows release v1.3.2.
-- Flink: latest published installer is v2.0.1; the repository version is 2.0.3. The repository was renamed from ForgeLink and transferred to ForgeWire Labs on 2026-10-25; its README and published release materials retain the former name.
-- RP-proving-grounds: the public RepoPact adversarial proving-ground repository was renamed from `repopact-proving-ground` and transferred to ForgeWire Labs on 2026-10-25. It is not represented as a released product on the website.
+- [Flink](https://github.com/ForgeWireLabs/Flink): latest published installer is v2.0.1; the repository version is 2.0.3. The repository was renamed from ForgeLink and transferred to ForgeWire Labs on 2026-10-25; its README and published release materials retain the former name.
+- [RP-proving-grounds](https://github.com/ForgeWireLabs/RP-proving-grounds): the public RepoPact adversarial proving-ground repository was renamed from `repopact-proving-ground` and transferred to ForgeWire Labs on 2026-10-25. It is not represented as a released product on the website.
 - Workbench remains a source-build preview with no packaged installer listed; Anvil remains labeled developer preview. Core, Workbench, Anvil, SkillForge, and Flink pinned commits still match their current source heads.
 - ForgeWire and Fabric copy is based on the public ForgeWire overview pinned at 85d1905b0bd8db420882f00065daff34833dab27. Both remain labeled private development; the pages state no public installation, service, availability, or release date.
 

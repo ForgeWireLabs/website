@@ -1,16 +1,16 @@
 # Temporary public design-review preview
 
-**Purpose:** let reviewers inspect the current prototype over HTTPS while production hosting, visual direction, and copy remain under review.
+**Purpose:** let reviewers inspect the accepted v1 design direction and current content candidate over HTTPS. This remains staging, not a production launch.
 
 ## Host and URL
 
 - Preview URL: `https://forgewirelabs.github.io/website/`
 - Platform: GitHub Pages, publishing the root of the `website-preview` artifact branch in the public `ForgeWireLabs/website` repository.
-- Site source revision used for the current page build: `01a10ef99a88d8f9a6e61505a79a782ceed7779d`.
-- Generated page artifact revision: `fe1e1bf6f8ea701609d1a56f1a72b78960f25ba3`.
-- Latest artifact branch revision, which adds reviewed desktop and mobile captures: `3d707ebb6db26908e783b968cd525bc3384b675c`.
-- [Desktop homepage capture · 1200 × 900](https://forgewirelabs.github.io/website/review-captures/home-desktop.jpg?review=3d707eb)
-- [Mobile homepage capture · 390 × 844](https://forgewirelabs.github.io/website/review-captures/home-mobile.jpg?review=3d707eb)
+- Site source revision used for the current page build: `ba948f4b86f4639201a41369defc24fcb47151ca`.
+- Generated page artifact revision: `7d8166eae16549023a3cfddc2ef85edf90949ad3`.
+- The desktop and mobile review captures remain the same because the source update only changes the Flink ownership and release wording below the captured homepage viewport.
+- [Desktop homepage capture · 1200 × 900](https://forgewirelabs.github.io/website/review-captures/home-desktop.jpg?review=7d8166e)
+- [Mobile homepage capture · 390 × 844](https://forgewirelabs.github.io/website/review-captures/home-mobile.jpg?review=7d8166e)
 - The current source and artifact revisions are also listed in [validation-report.md](validation-report.md).
 - Production remains intended for the existing IONOS Web Hosting Plus contract. No custom domain, IONOS domain assignment, production DNS, CDN activation, or hosting credentials are used by this preview.
 - The artifact contains generated HTML, CSS, SVG, PNG, JPEG, the reviewed captures under `review-captures/`, `robots.txt`, an empty preview sitemap, `.nojekyll`, and its line-ending attributes file. It excludes source code, source maps, `node_modules`, local configuration, and internal documentation.

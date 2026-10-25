@@ -1,28 +1,22 @@
-# Design review checklist
+# Final acceptance checklist
 
-## Organization and narrative
+**v1 design direction:** Accepted. The wordmark-led identity, neutral surfaces, restrained teal, current typography, four-page structure, ForgeWire Projects centerpiece, and social card are the approved direction for this release.
 
-- [ ] Does the opening viewport make the organization, work, and engineering focus clear?
-- [ ] Does the site read as a software engineering and research organization, rather than a governance consultancy or generic AI startup?
-- [ ] Is ForgeWire Labs clearly distinct from each product?
-- [ ] Are the maturity and ownership labels accurate, including Flink in ForgeWire Labs and its legacy ForgeLink release naming?
+## Verified for the current staging candidate
 
-## Visual direction
+- Public preview uses HTTPS, `noindex, nofollow`, a visible development-preview label, and no staging sitemap exposure.
+- The project pages distinguish released software, previews, and private development.
+- Flink links to its ForgeWire Labs repository; the site states that its current README and latest release materials retain the former ForgeLink name.
+- RepoPact Core and the Workbench preview retain their own evidence and maturity boundaries.
+- The home page review captures are available at desktop and mobile viewport sizes.
+- Production metadata, link, build, dependency, privacy-scope, and static-site checks are recorded in `validation-report.md`.
 
-- [ ] Review wordmark-first branding, restrained teal signal, and sans-serif typography.
-- [ ] Check whether the genuine Workbench and SkillForge screenshots add useful proof at their current sizes.
-- [ ] Check that real architecture diagrams are readable, legended, and correctly limited to the project that owns them.
-- [ ] Review desktop, tablet, and mobile hierarchy, spacing, contrast, and image balance.
+## Remaining before production preparation
 
-## Accessibility and content
+- [ ] Complete spoken Narrator or NVDA checks for navigation, meaningful image descriptions, diagrams, and the engineering table. No speech-output pass is recorded yet.
+- [ ] Approve the staged ForgeWire and Fabric wording for public production disclosure after reviewing its source and exclusions.
+- [ ] Recheck release tags and source revisions if any relevant repository changes before launch.
+- [ ] Confirm the account-specific IONOS storage, SSL, domain-binding, CDN, and billing facts listed in `hosting-assessment.md`.
+- [ ] Approve PR #1, the specific `.com` hosting and canonical-host behavior, any required DNS changes, production deployment, and later staging retirement.
 
-- [ ] Test the skip link and keyboard focus order.
-- [ ] Review headings, image alt text, link names, status text, contrast, and zoom/resizing.
-- [ ] Confirm no private data, unreleased claims, unpublished essays, or fabricated interface imagery are present.
-- [ ] Decide whether a verified public contact email or additional approved documentation links should be added.
-
-## Deployment
-
-- [ ] Keep the temporary preview on its GitHub Pages project URL with `noindex, nofollow` and the review banner.
-- [ ] Do not advertise the staging sitemap; preserve production sitemap generation.
-- [ ] Do not connect `forgewirelabs.com`, change production DNS, activate a CDN, or configure IONOS credentials before approval.
+No merge, production deployment, DNS update, IONOS change, paid activation, or credential setup is authorized by this checklist.

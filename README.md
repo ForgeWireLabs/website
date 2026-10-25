@@ -1,6 +1,6 @@
 # ForgeWire Labs website
 
-Source for the static ForgeWire Labs website. The current redesign is a public design-review candidate, not a production launch. The intended production host remains the existing IONOS Web Hosting Plus contract; the temporary review build is served from a separate GitHub Pages artifact branch.
+Source for the static ForgeWire Labs website. The v1 visual direction is accepted; the current site remains a staging candidate, not a production launch. The intended production host remains the existing IONOS Web Hosting Plus contract; the temporary review build is served from a separate GitHub Pages artifact branch.
 
 ## Local workflow
 
@@ -36,4 +36,4 @@ Verified diagrams and screenshots are described in [content sources](docs/conten
 
 ## Safety boundary
 
-The temporary GitHub Pages preview is published from generated files in the separate `website-preview` artifact branch. The artifact contains generated HTML, CSS, SVG, PNG, and JPEG assets, `robots.txt`, `sitemap.xml`, and `.nojekyll`; it excludes source code and internal documentation. Review screenshots are attached to the design review. Do not connect `forgewirelabs.com`, change production DNS, activate a CDN, or configure IONOS hosting credentials until Jeremy and ChatGPT approve the final design and production deployment.
+The temporary GitHub Pages preview is published from generated files in the separate `website-preview` artifact branch. The artifact contains generated HTML, CSS, SVG, PNG, and JPEG assets, `robots.txt`, `sitemap.xml`, and `.nojekyll`; it excludes source code and internal documentation. Review screenshots are attached to the design review. Do not connect `forgewirelabs.com`, change production DNS, activate a CDN, or configure IONOS hosting credentials until Jeremy and ChatGPT approve production deployment.
