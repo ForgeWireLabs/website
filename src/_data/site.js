@@ -5,7 +5,7 @@ export default {
   url: isPreview ? "https://forgewirelabs.github.io" : "https://forgewirelabs.com",
   basePath: isPreview ? "/website" : "",
   preview: isPreview,
-  description: "Independent engineering and applied AI. Practical software for governed work, planning, communication, and structured learning.",
+  description: "Independent engineering for distributed computing, agent systems, developer infrastructure, and practical software.",
   navigation: [
     { label: "Projects", url: "/projects/" },
     { label: "Engineering", url: "/engineering/" },

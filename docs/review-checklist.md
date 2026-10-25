@@ -1,25 +1,27 @@
-# Initial review checklist
+# Design review checklist
+
+## Organization and narrative
+
+- [ ] Does the opening viewport make the organization, work, and engineering focus clear?
+- [ ] Does the site read as a software engineering and research organization, rather than a governance consultancy or generic AI startup?
+- [ ] Is ForgeWire Labs clearly distinct from each product?
+- [ ] Are the maturity and ownership labels accurate, including ForgeLink under JeremyShows?
 
 ## Visual direction
 
-- [ ] Approve, revise, or reject the dark navy / warm neutral / teal palette.
-- [ ] Review the connected records-systems-people diagram and restrained grid treatment.
-- [ ] Review the portfolio cards and maturity labels as the site's central visual structure.
-- [ ] Decide whether to keep the provisional `F/W` monogram as a site mark.
-- [ ] Confirm that the site feels like an engineering organization and preserves separate product identities.
+- [ ] Review editorial typography, charcoal and warm-paper surfaces, lime signal accent, and topology mark.
+- [ ] Check whether the genuine Workbench and SkillForge screenshots add useful proof at their current sizes.
+- [ ] Check that real architecture diagrams are readable and correctly limited to the project that owns them.
+- [ ] Review desktop, tablet, and mobile hierarchy, spacing, contrast, and image balance.
 
-## Content
+## Accessibility and content
 
-- [ ] Confirm organization description, founder name/role, and biography.
-- [ ] Confirm project descriptions and maturity labels against current releases.
-- [ ] Confirm the distinction between ForgeWire Labs projects and related ForgeLink work.
-- [ ] Provide an approved public contact route, privacy/legal wording, and security reporting contact before production launch.
-- [ ] Decide whether reviewed essays or other project screenshots should appear in a later revision.
+- [ ] Test the skip link and keyboard focus order.
+- [ ] Review headings, image alt text, link names, status text, contrast, and zoom/resizing.
+- [ ] Confirm no private data, unreleased claims, unpublished essays, or fabricated interface imagery are present.
+- [ ] Decide whether a verified public contact email or additional approved documentation links should be added.
 
-## Hosting and deployment
+## Deployment
 
-- [ ] Confirm Linux/Windows plan type, webspace, SFTP options, certificate assignment, and contract price/renewal.
-- [ ] Confirm CDN tier, entitlement status, and charge; keep inactive unless separately approved.
-- [ ] Approve domain-to-webspace assignment and HTTP/HTTPS/`www` behavior before any deployment.
-- [ ] Approve the apex canonical URL and any redirect policy for `www`.
-- [ ] Decide whether manual SFTP is acceptable after the account's access scope is verified.
+- [ ] Keep the temporary preview on its GitHub Pages project URL with `noindex` and the review banner.
+- [ ] Do not connect `forgewirelabs.com`, change production DNS, activate a CDN, or configure IONOS credentials before approval.

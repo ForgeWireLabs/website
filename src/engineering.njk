@@ -1,54 +1,76 @@
 ---
 layout: layouts/base.njk
-title: Engineering approach
-description: How ForgeWire Labs approaches durable context, explicit authority, practical evidence, and operator control.
+title: Engineering and system boundaries
+description: Inspect how ForgeWire Labs projects handle durable state, authority boundaries, execution, evidence, and failure.
 permalink: /engineering/index.html
 ---
-<section class="page-intro page-shell">
-  <p class="eyebrow">Engineering approach</p>
-  <h1>Make the work <em>inspectable.</em></h1>
-  <p class="intro-lede">Tools that act around people need clear boundaries. The system should explain what it knows, what it changed, and where a person can take control.</p>
+<section class="page-lead page-shell" aria-labelledby="engineering-title">
+  <p class="eyebrow">Field notes / 03 · Engineering</p>
+  <h1 id="engineering-title">The boundary is part of the <em>architecture.</em></h1>
+  <p class="lead-copy">A credible system tells a person what it owns, which action it can take, how its state survives, and what evidence supports its claims. Those questions appear differently in each ForgeWire Labs project.</p>
 </section>
 
-<section class="section page-shell section-tight" aria-labelledby="principles-title">
+<section class="engineering-principles page-shell" aria-labelledby="principles-title">
   <div class="section-heading section-heading--stacked">
+    <p class="eyebrow">Design questions</p>
+    <h2 id="principles-title">What must stay legible?</h2>
+  </div>
+  <div class="principle-ledger">
+    <article><span class="ledger-number">01</span><h3>Durable state</h3><p>Keep intent, decisions, project state, and observed results somewhere a later person or tool can inspect.</p></article>
+    <article><span class="ledger-number">02</span><h3>Scoped authority</h3><p>Make it clear who owns a record and which actions a person, agent, provider, or interface is allowed to request.</p></article>
+    <article><span class="ledger-number">03</span><h3>Visible failure</h3><p>Surface errors and unresolved limits. A successful operation is evidence for that run and environment; broader reliability depends on tested scope.</p></article>
+    <article><span class="ledger-number">04</span><h3>Human intervention</h3><p>Keep review and decision points in the workflow where the person remains the authority.</p></article>
+  </div>
+</section>
+
+<section class="architecture-study" aria-labelledby="study-title">
+  <div class="page-shell study-layout">
+    <div class="study-copy">
+      <p class="eyebrow">Documented example / RepoPact Core</p>
+      <h2 id="study-title">One semantic authority. Several useful views.</h2>
+      <p>RepoPact Core places governed records in the repository and uses its canonical Rust engine to interpret, validate, and prepare supported typed operations. The CLI and Workbench are clients. Dashboards, indexes, and interface screens are derived views.</p>
+      <p>The interface helps a person navigate the system while the checked-in records remain the source of authority.</p>
+      <a class="text-link" href="https://github.com/ForgeWireLabs/repopact-core/blob/614689b127cf52f801877cc48440f7e45c3709eb/README.md">Read the Core architecture and authority documentation <span aria-hidden="true">↗</span></a>
+    </div>
+    <figure class="architecture-figure architecture-figure--large">
+      <img src="{{ site.basePath }}/assets/repopact-architecture.svg" alt="RepoPact Core architecture diagram showing repository records as authoritative, a Rust semantic engine and CLI or Workbench clients, derived dashboard and graph views, optional integrations, and evidence records." width="1200" height="720" loading="lazy">
+      <figcaption>RepoPact Core architecture from its public documentation. The diagram describes Core; other portfolio projects have separate architectures.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="ownership-section page-shell" aria-labelledby="ownership-title">
+  <div class="section-heading section-heading--stacked">
+    <p class="eyebrow">Authority map</p>
+    <h2 id="ownership-title">Each system owns a different part of the work.</h2>
+    <p class="section-lede">These boundaries come from the linked project documentation. Cross-project references leave each system's ownership intact; integration is claimed only when the source documents it.</p>
+  </div>
+  <div class="ownership-table-wrap">
+    <table class="ownership-table">
+      <thead><tr><th scope="col">System</th><th scope="col">Owns</th><th scope="col">Documented limit</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/repopact-core">RepoPact Core</a><span class="status status--released">Released CLI · 3.1.3</span></th><td>Repository governance semantics, validation, schemas, and typed operations.</td><td>Derived views do not overrule checked-in records; release conformance is version-scoped.</td></tr>
+        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/repopact-workbench">RepoPact Workbench</a><span class="status status--preview">Source-build preview</span></th><td>Native presentation and application orchestration for supported Core operations.</td><td>Core remains the semantic authority; no packaged installers are listed.</td></tr>
+        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/anvil">Anvil</a><span class="status status--preview">Developer preview</span></th><td>Local planning records and typed links to external work.</td><td>It does not own execution or claim to be an audit trail; its JSON store is single-writer.</td></tr>
+        <tr><th scope="row"><a href="https://github.com/JeremyShows/ForgeLink">ForgeLink · JeremyShows</a><span class="status status--related">Packaged 2.0.1</span></th><td>Local communication state, human decisions, and governed agent access.</td><td>Provider integrations are edges; the current repository branch can be ahead of the packaged release.</td></tr>
+        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/skillforge-academy">SkillForge Academy</a><span class="status status--released">Windows app · 1.3.2</span></th><td>Its published offline-first certification learning application.</td><td>Newer course-platform surfaces remain in beta development and carry a separate maturity status.</td></tr>
+        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/ForgeWire-Overview">ForgeWire</a><span class="status status--private">Private development</span></th><td>Public overview materials describe a modular application and runtime direction.</td><td>The overview publishes direction; no application source, install path, or release is available publicly.</td></tr>
+        <tr><th scope="row">Fabric<span class="status status--private">Private development</span></th><td>A separate project in the ForgeWire Labs portfolio.</td><td>No public download or release date has been announced.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="evidence-section">
+  <div class="page-shell evidence-layout">
     <div>
-      <p class="eyebrow">Design concerns</p>
-      <h2 id="principles-title">Principles that show up in the projects.</h2>
+      <p class="eyebrow">Evidence and scope</p>
+      <h2>Say what was observed, and where.</h2>
     </div>
-  </div>
-  <div class="principle-grid">
-    <article class="principle-card"><span class="principle-index">01</span><h3>Keep context durable</h3><p>Important intent, decisions, work state, and evidence should remain with the project instead of disappearing with a session.</p></article>
-    <article class="principle-card"><span class="principle-index">02</span><h3>Make authority explicit</h3><p>Define who can request an action, what scope it has, and when a human decision is required.</p></article>
-    <article class="principle-card"><span class="principle-index">03</span><h3>Show the evidence</h3><p>Tests and recorded outcomes should let a person review what happened and understand the limits of the result.</p></article>
-    <article class="principle-card"><span class="principle-index">04</span><h3>Design for intervention</h3><p>Make errors visible and preserve the operator's ability to pause, redirect, or reject proposed work.</p></article>
-  </div>
-</section>
-
-<section class="process-section" aria-labelledby="repopact-flow-title">
-  <div class="page-shell process-layout">
-    <div class="process-copy">
-      <p class="eyebrow">RepoPact Core</p>
-      <h2 id="repopact-flow-title">A repository carries the operating context.</h2>
-      <p>RepoPact connects scoped authority and work state to implementation evidence and durable history. This is one project's model, not a claim that every ForgeWire Labs product uses the same architecture.</p>
-      <a class="text-link" href="https://github.com/ForgeWireLabs/repopact-core">Read the RepoPact Core documentation <span aria-hidden="true">↗</span></a>
+    <div class="evidence-copy">
+      <p>A package release, source build, platform acceptance record, and private development snapshot are different kinds of evidence. The project pages preserve those distinctions and link to the repositories that define them.</p>
+      <p>For RepoPact, local verification and hosted publication are separate operations. Workbench has recorded local platform checks and remains a source-build preview. ForgeWire and Fabric remain private development; the public site links only to overview materials.</p>
+      <a class="button button-light" href="{{ site.basePath }}/projects/">Review the project register <span aria-hidden="true">→</span></a>
     </div>
-    <div class="process-visual">
-      <figure class="repo-flow">
-        <img src="{{ site.basePath }}/assets/repopact-flow.svg" alt="" aria-hidden="true" width="1120" height="480" loading="lazy">
-        <figcaption>RepoPact Core's own lifecycle diagram. It describes that project, not every product in the portfolio.</figcaption>
-      </figure>
-      <ol class="process-list visually-hidden" aria-label="RepoPact Core work sequence">
-        <li><span>01</span>Intent</li><li><span>02</span>Scoped authority</li><li><span>03</span>Work item</li><li><span>04</span>Implementation</li><li><span>05</span>Evidence</li><li><span>06</span>Audit</li><li><span>07</span>History</li>
-      </ol>
-      <p class="process-state">The repository also tracks active, blocked, deferred, and completed work, with the decisions and evidence kept alongside it.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section page-shell">
-  <div class="working-note">
-    <p class="eyebrow">How I work</p>
-    <p>Jeremy Shows leads research, architecture, implementation, debugging, testing, and documentation with substantial help from AI systems. He evaluates the results and decides what is accepted. The work also draws on open research, open-source software, commercial tools, and established engineering practice.</p>
   </div>
 </section>

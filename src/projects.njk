@@ -1,56 +1,132 @@
 ---
 layout: layouts/base.njk
-title: Projects and availability
-description: Explore ForgeWire Labs projects with clear release, preview, beta, and private-development status.
+title: Systems and project availability
+description: Explore ForgeWire Labs software and research with distinct ownership, architecture, source links, and honest release boundaries.
 permalink: /projects/index.html
 ---
-<section class="page-intro page-shell">
-  <p class="eyebrow">Project portfolio</p>
-  <h1>Projects and <em>availability.</em></h1>
-  <p class="intro-lede">The projects solve different problems and move at different speeds. These labels describe what is publicly available today; a public repository does not mean every feature is released.</p>
+<section class="page-lead page-shell" aria-labelledby="projects-title">
+  <p class="eyebrow">Field notes / 02 · Project register</p>
+  <h1 id="projects-title">A portfolio of systems with <em>separate jobs and release states.</em></h1>
+  <p class="lead-copy">The projects span repository governance, planning, communication, distributed execution, and structured learning. Their links, diagrams, and availability labels point to the source that owns each claim.</p>
+  <p class="lead-index"><span>Public releases</span><span>Source-build previews</span><span>Private development</span></p>
 </section>
 
-<section class="section page-shell section-tight" aria-labelledby="lab-projects-title">
-  <div class="section-heading section-heading--stacked">
-    <div>
-      <p class="eyebrow">ForgeWire Labs</p>
-      <h2 id="lab-projects-title">Tools for governed work and practical learning.</h2>
-    </div>
+<section class="repository-spread page-shell" aria-labelledby="repopact-title">
+  <div class="spread-heading">
+    <p class="eyebrow">01 / ForgeWire Labs · Repository systems</p>
+    <h2 id="repopact-title">RepoPact</h2>
+    <p>Core defines and validates governed repository state. Workbench is a separate native interface that consumes Core and carries its own preview status.</p>
   </div>
-  <div class="project-grid">
-    {% for project in projects %}
-      {% if project.group == "ForgeWire Labs" or project.group == "Private development" %}
-        {% include "partials/project-card.njk" %}
-      {% endif %}
-    {% endfor %}
+  <div class="repo-product-grid">
+    {% for project in projects %}{% if project.id == "repopact-core" or project.id == "repopact-workbench" %}
+      <article class="product-entry product-entry--{{ project.statusKind }}" data-project-id="{{ project.id }}">
+        <div class="product-entry-top"><span>{{ project.kicker }}</span><span class="status status--{{ project.statusKind }}">{{ project.status }}</span></div>
+        <h3><a href="{{ project.url }}">{{ project.name }} <span aria-hidden="true">↗</span></a></h3>
+        <p>{{ project.summary }}</p>
+        <p class="availability-copy"><strong>Availability.</strong> {{ project.maturity }}</p>
+        <div class="product-entry-links"><a href="{{ project.url }}">{{ project.action }} <span aria-hidden="true">↗</span></a>{% if project.secondaryUrl %}<a href="{{ project.secondaryUrl }}">{{ project.secondaryAction }} <span aria-hidden="true">↗</span></a>{% endif %}</div>
+      </article>
+    {% endif %}{% endfor %}
+  </div>
+  <div class="repo-evidence-grid">
+    <figure class="architecture-figure architecture-figure--page">
+      <img src="{{ site.basePath }}/assets/repopact-architecture.svg" alt="RepoPact Core architecture diagram. Repository records are authoritative; the Rust engine interprets and validates them, CLI and Workbench clients use that engine, derived views remain secondary, and optional integrations have limited boundaries." width="1200" height="720" loading="lazy">
+      <figcaption>Architecture from the <a href="https://github.com/ForgeWireLabs/repopact-core/blob/614689b127cf52f801877cc48440f7e45c3709eb/docs/assets/readme/repopact-architecture.svg">RepoPact Core repository</a>. Source records stay authoritative; interface views do not.</figcaption>
+    </figure>
+    <figure class="screenshot-figure">
+      <div class="screenshot-frame screenshot-frame--light"><img src="{{ site.basePath }}/assets/workbench-desktop-dashboard.jpg" alt="Genuine Windows x64 desktop capture of RepoPact Workbench showing repository validation and navigation for Work, Decisions, Evidence, Graph, and Analysis." width="2880" height="1800" loading="lazy"></div>
+      <figcaption><strong>Workbench, source-build preview.</strong> This genuine capture is documented in the project's README as a local build using a disposable Core conformance fixture. Packaged installers are not listed. <a href="https://github.com/ForgeWireLabs/repopact-workbench/blob/414a4a78091796735a1b97b03fd8c3cf1c105f30/docs/assets/readme/workbench-desktop-dashboard.jpg">View the source image and provenance ↗</a></figcaption>
+    </figure>
   </div>
 </section>
 
-<section class="related-section" aria-labelledby="related-title">
+<section class="private-section" aria-labelledby="private-title">
   <div class="page-shell">
-    <div class="section-heading section-heading--stacked">
-      <div>
-        <p class="eyebrow">Related work</p>
-        <h2 id="related-title">Separate repository. Separate product identity.</h2>
-        <p class="section-lede">ForgeLink is developed under JeremyShows. It is related to this engineering portfolio, but it is not a ForgeWire Labs organization repository.</p>
-      </div>
+    <div class="private-heading">
+      <p class="eyebrow">02 / Research and private development</p>
+      <h2 id="private-title">Work can be architecturally important before it is available.</h2>
+      <p>The public materials describe direction and status. No public build or supported deployment is available for these projects.</p>
     </div>
-    <div class="project-grid project-grid--related">
-      {% for project in projects %}
-        {% if project.group == "Related work · JeremyShows" %}
-          {% include "partials/project-card.njk" %}
-        {% endif %}
-      {% endfor %}
+    <div class="private-register">
+      {% for project in projects %}{% if project.group == "private" %}
+        <article class="private-record" data-project-id="{{ project.id }}">
+          <p class="eyebrow">{{ project.kicker }}</p>
+          <h3>{% if project.url %}<a href="{{ project.url }}">{{ project.name }} <span aria-hidden="true">↗</span></a>{% else %}{{ project.name }}{% endif %}</h3>
+          <p>{{ project.summary }}</p>
+          <p class="availability-copy"><strong>{{ project.status }}.</strong> {{ project.maturity }}</p>
+          {% if project.url %}<a class="text-link" href="{{ project.url }}">{{ project.action }} <span aria-hidden="true">↗</span></a>{% endif %}
+        </article>
+      {% endif %}{% endfor %}
     </div>
   </div>
 </section>
 
-<section class="availability-note page-shell" aria-labelledby="status-guide-title">
-  <h2 id="status-guide-title">How to read the status labels</h2>
-  <ul class="status-guide">
-    <li><span class="status status--released">Released</span><span>A published application, package, or CLI is available. Development can continue independently.</span></li>
-    <li><span class="status status--preview">Preview</span><span>Early software; interfaces, packaging, or platform acceptance may still change.</span></li>
-    <li><span class="status status--private">Private development</span><span>No public download or release date is offered.</span></li>
+<section class="planning-spread page-shell" aria-labelledby="anvil-title">
+  <div class="planning-copy">
+    <p class="eyebrow">03 / ForgeWire Labs · Planning</p>
+    <p class="spread-number" aria-hidden="true">03</p>
+  </div>
+  {% for project in projects %}{% if project.id == "anvil" %}
+    <article class="planning-entry" data-project-id="{{ project.id }}">
+      <div class="product-entry-top"><span>{{ project.kicker }}</span><span class="status status--{{ project.statusKind }}">{{ project.status }}</span></div>
+      <h2 id="anvil-title"><a href="{{ project.url }}">{{ project.name }} <span aria-hidden="true">↗</span></a></h2>
+      <p class="planning-summary">{{ project.summary }}</p>
+      <p class="availability-copy"><strong>Boundary.</strong> {{ project.maturity }}</p>
+      <a class="text-link" href="{{ project.url }}">{{ project.action }} <span aria-hidden="true">↗</span></a>
+    </article>
+  {% endif %}{% endfor %}
+</section>
+
+<section class="communication-section" aria-labelledby="forgelink-title">
+  <div class="page-shell communication-layout">
+    <div class="communication-copy">
+      <p class="eyebrow">04 / Related work · JeremyShows</p>
+      {% for project in projects %}{% if project.id == "forgelink" %}
+        <div data-project-id="{{ project.id }}">
+          <div class="product-entry-top"><span>{{ project.kicker }}</span><span class="status status--{{ project.statusKind }}">{{ project.status }}</span></div>
+          <h2 id="forgelink-title"><a href="{{ project.url }}">{{ project.name }} <span aria-hidden="true">↗</span></a></h2>
+          <p>{{ project.summary }}</p>
+          <p class="availability-copy"><strong>Ownership and release.</strong> {{ project.maturity }}</p>
+          <div class="product-entry-links"><a href="{{ project.url }}">{{ project.action }} <span aria-hidden="true">↗</span></a><a href="{{ project.secondaryUrl }}">{{ project.secondaryAction }} <span aria-hidden="true">↗</span></a></div>
+        </div>
+      {% endif %}{% endfor %}
+    </div>
+    <figure class="forgelink-figure">
+      <img src="{{ site.basePath }}/assets/forgelink-product-architecture.svg" alt="ForgeLink architecture from its separate JeremyShows repository. The human operator uses the communication cockpit; agents enter through governed APIs, while providers and ForgeWire or Fabric remain optional edges." width="1500" height="1000" loading="lazy">
+      <figcaption>The project’s own architecture diagram. ForgeLink is related work maintained under JeremyShows, outside the ForgeWire Labs organization.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="learning-section page-shell" aria-labelledby="skillforge-title">
+  <figure class="learning-shot">
+    <div class="screenshot-frame screenshot-frame--dark"><img src="{{ site.basePath }}/assets/skillforge-command-center.png" alt="SkillForge Academy application screenshot showing a certification study command center with course navigation, a practice recommendation, study progress, and subject coverage." width="2880" height="1800" loading="lazy"></div>
+    <figcaption>Screenshot used in the public organization profile. It illustrates the published Windows app; newer course-platform beta surfaces have a separate maturity status.</figcaption>
+  </figure>
+  <div class="learning-copy">
+    <p class="eyebrow">05 / ForgeWire Labs · Learning software</p>
+    {% for project in projects %}{% if project.id == "skillforge-academy" %}
+      <div data-project-id="{{ project.id }}">
+        <div class="product-entry-top"><span>{{ project.kicker }}</span><span class="status status--{{ project.statusKind }}">{{ project.status }}</span></div>
+        <h2 id="skillforge-title"><a href="{{ project.url }}">{{ project.name }} <span aria-hidden="true">↗</span></a></h2>
+        <p>{{ project.summary }}</p>
+        <p class="availability-copy"><strong>Release boundary.</strong> {{ project.maturity }}</p>
+        <div class="product-entry-links"><a href="{{ project.url }}">{{ project.action }} <span aria-hidden="true">↗</span></a><a href="{{ project.secondaryUrl }}">{{ project.secondaryAction }} <span aria-hidden="true">↗</span></a></div>
+      </div>
+    {% endif %}{% endfor %}
+  </div>
+</section>
+
+<section class="availability-foot page-shell" aria-labelledby="availability-title">
+  <div>
+    <p class="eyebrow">Status guide</p>
+    <h2 id="availability-title">Availability means what the source says.</h2>
+  </div>
+  <ul>
+    <li><span class="status status--released">Released</span><span>A package or application is available through the linked release channel. The repository's current branch may be newer.</span></li>
+    <li><span class="status status--preview">Preview</span><span>Source or early software is available to inspect; packaging, API, schema, or platform support can still change.</span></li>
+    <li><span class="status status--private">Private development</span><span>Public overview material may exist, but there is no public build or release to install.</span></li>
+    <li><span class="status status--related">Related work</span><span>Maintained outside the ForgeWire Labs organization with its own source and release channel.</span></li>
   </ul>
-  <p class="source-note">Status is checked against the linked repository and release information. Confirm the project's release notes for the exact packaged feature set.</p>
+  <p class="source-note">Product links and maturity notes were checked against the linked public repositories and release pages. Preview and source-build status carries no production-support claim.</p>
 </section>

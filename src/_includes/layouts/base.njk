@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#171d19">
     <title>{{ title }} | {{ site.name }}</title>
     <meta name="description" content="{{ description or site.description }}">
     <link rel="canonical" href="{{ site.url }}{{ site.basePath }}{{ page.url }}">
@@ -24,8 +25,11 @@
     <header class="site-header">
       <div class="header-inner">
         <a class="wordmark" href="{{ site.basePath }}/" aria-label="ForgeWire Labs home">
-          <span class="wordmark-mark" aria-hidden="true"><span>F</span><span>/</span><span>W</span></span>
-          <span class="wordmark-name">ForgeWire <span>Labs</span></span>
+          <svg class="brand-symbol" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+            <path d="M8 11h13v18H8M21 20h11M32 20v9M21 11h11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+            <circle cx="8" cy="11" r="2.6"/><circle cx="8" cy="29" r="2.6"/><circle cx="32" cy="11" r="2.6"/><circle cx="32" cy="20" r="2.6"/><circle cx="32" cy="29" r="2.6"/>
+          </svg>
+          <span class="brand-copy"><strong>ForgeWire Labs</strong><small>Independent engineering</small></span>
         </a>
         <nav aria-label="Main navigation">
           <ul class="nav-list">
@@ -41,12 +45,14 @@
     </main>
     <footer class="site-footer">
       <div class="footer-inner">
-        <p class="footer-brand">ForgeWire Labs <span>·</span> Independent engineering and applied AI</p>
+        <a class="footer-name" href="{{ site.basePath }}/">ForgeWire Labs</a>
+        <p class="footer-summary">Independent engineering for distributed computing and intelligent systems.</p>
         <div class="footer-links">
-          <a href="{{ site.github }}">GitHub organization</a>
-          <a href="{{ site.basePath }}/projects/">Project availability</a>
+          <a href="{{ site.github }}">Organization profile <span aria-hidden="true">↗</span></a>
+          <a href="{{ site.basePath }}/projects/">Project register</a>
+          <a href="{{ site.basePath }}/about/">About the organization</a>
         </div>
-        <p class="footer-note">Each project has its own scope, repository, and release status.</p>
+        <p class="footer-note">Each project keeps its own purpose, authority, and availability boundary.</p>
       </div>
     </footer>
   </body>

@@ -4,25 +4,36 @@
 
 ## Source of truth
 
-The current public [ForgeWire Labs organization profile](https://github.com/ForgeWireLabs/ForgeWireLabs) is the starting source for portfolio copy, product descriptions, and maturity boundaries. Project links in `src/_data/projects.json` point to their public repositories or release pages. Re-check them before publishing or after meaningful release changes.
+The current public ForgeWire Labs profile and project repositories define the portfolio copy and maturity labels. The references below record the public Git revisions inspected for this redesign; release pages define the packaged release boundary when a repository's main branch is newer.
 
-| Site content | Source and handling |
+| Site content | Public source reviewed | Handling |
+|---|---|---|
+| Organization description, founder role and biography, engineering principles | [ForgeWire Labs profile](https://github.com/ForgeWireLabs/ForgeWireLabs/tree/616c0b55f06409dea8d5e37da245da0797c633df) at `616c0b55f06409dea8d5e37da245da0797c633df` | Copy is shortened without extending the profile's claims. |
+| RepoPact Core architecture and release boundary | [RepoPact Core README](https://github.com/ForgeWireLabs/repopact-core/tree/614689b127cf52f801877cc48440f7e45c3709eb) at `614689b127cf52f801877cc48440f7e45c3709eb`; [PyPI package](https://pypi.org/project/repopact/) | README identifies 3.1.3 as the stable CLI package. Source development remains separate from package release. |
+| RepoPact Workbench role, preview status, platform evidence, dashboard capture | [Workbench README](https://github.com/ForgeWireLabs/repopact-workbench/tree/414a4a78091796735a1b97b03fd8c3cf1c105f30) at `414a4a78091796735a1b97b03fd8c3cf1c105f30`; [release list](https://github.com/ForgeWireLabs/repopact-workbench/releases) | Described as a native source-build preview; no packaged installers are listed. Platform evidence is bounded by its recorded acceptance notes. |
+| Anvil architecture and maturity | [Anvil README](https://github.com/ForgeWireLabs/anvil/tree/89ac5df34090e9ffde6a0b790620e9096fb0f15d) at `89ac5df34090e9ffde6a0b790620e9096fb0f15d` | Labeled developer preview `0.1.0a0`; single-writer JSON store, changing API/schema, and no execution/audit ownership are stated in the README. |
+| SkillForge Academy release and beta boundaries | [SkillForge Academy README](https://github.com/ForgeWireLabs/skillforge-academy/tree/7d13ca01519d5d78c12fac229517276a540c083f) at `7d13ca01519d5d78c12fac229517276a540c083f`; [releases](https://github.com/ForgeWireLabs/skillforge-academy/releases) | Latest published Windows release is v1.3.2. Unreleased candidate and newer course-platform work remain separate from the release claim. |
+| ForgeWire public overview and private status | [ForgeWire overview](https://github.com/ForgeWireLabs/ForgeWire-Overview/tree/85d1905b0bd8db420882f00065daff34833dab27) at `85d1905b0bd8db420882f00065daff34833dab27` | The repository states that it is an overview, not application source, supported setup, or a release. The private application is not presented as installable. |
+| Fabric private status | Public ForgeWire Labs profile at `616c0b55f06409dea8d5e37da245da0797c633df` | Only the public status is used: private development, with no public download or release date. No private source or implementation details are disclosed. |
+| ForgeLink ownership, architecture, and packaged release | [JeremyShows/ForgeLink README](https://github.com/JeremyShows/ForgeLink/tree/06be2fe26812e980d82766297fee475ad5538736) at `06be2fe26812e980d82766297fee475ad5538736`; [releases](https://github.com/JeremyShows/ForgeLink/releases) | Maintained under JeremyShows, outside the ForgeWire Labs organization. The README identifies v2.0.1 as the latest packaged release and repository version 2.0.3; release notes define installer behavior. |
+
+## Visual assets
+
+| Local asset | Public source and review notes |
 |---|---|
-| Organization description, founder role, engineering principles | Public ForgeWire Labs profile README. Copy is shortened for the site without extending its claims. |
-| RepoPact Core, Workbench, and Anvil descriptions and status | Public profile README and linked project repositories. Core is labelled as a released CLI; Workbench as a source-build preview; Anvil as a developer preview with a single-writer store and changing API/schema. |
-| SkillForge Academy status | Public profile README: published Windows application; course-platform work remains in beta. Do not conflate the current app with beta course-platform surfaces. |
-| ForgeWire | Public ForgeWire-Overview repository, which identifies the application as private development without public build or release date. |
-| Fabric | Public profile README identifies Fabric as private development. No download or release date is claimed. |
-| ForgeLink | Public profile README and the separately owned `JeremyShows/ForgeLink` repository. The site labels it as related work under JeremyShows, outside the ForgeWire Labs organization. |
-| Brand social image | `assets/forgewire-labs-hero.svg` and `.png`, copied from the public ForgeWire Labs profile repository. The SVG identifies the work as practical systems, durable state, and clear authority boundaries. |
-| RepoPact diagram | `assets/repopact-flow.svg`, copied from the public profile repository; shown on the engineering page with a caption that limits it to RepoPact Core. |
+| `src/assets/repopact-architecture.svg` | RepoPact Core architecture diagram from the pinned Core revision above. The Core repository is Apache-2.0. The diagram is labeled in the page as specific to RepoPact Core. |
+| `src/assets/workbench-desktop-dashboard.jpg` | Genuine Windows x64 screenshot from the pinned Workbench revision above. The README describes a local source build on a disposable Core conformance fixture, with no private repository or credentials shown. The Workbench repository is Apache-2.0. |
+| `src/assets/forgelink-product-architecture.svg` | ForgeLink's own public architecture diagram from its pinned JeremyShows revision. It remains attributed to that separate project. |
+| `src/assets/skillforge-command-center.png` | Screenshot used by the public organization profile at `616c0b55f06409dea8d5e37da245da0797c633df`. Its caption says it does not show the newer course-platform surfaces or establish their release readiness. |
+| `src/assets/forgewire-labs-hero.svg` and `.png` | Existing public ForgeWire Labs profile social asset, retained only for social metadata. It is not used as the website's new visual identity or a product screenshot. |
 
-The profile repository's `writing/` folder identifies its five essays as unpublished first drafts. They are not copied, excerpted, or linked from this prototype. The SkillForge Academy screenshot is also omitted because its current profile note cautions that it does not show the newer course-platform surface or establish release readiness.
+The profile's `writing/` directory describes its essays as unpublished drafts. They are not copied, excerpted, or linked from the website. No internal screenshots, credentials, environment files, source maps, or private repository contents are included in the preview artifact.
 
-## Accuracy rules for future edits
+## Accuracy rules
 
-- Keep release status separate from current `main` branch development.
-- Label a source-build preview or developer preview explicitly.
-- Keep ForgeWire and Fabric private; public overview material is not a download or stable API claim.
+- Keep release status separate from current `main` development.
+- Label source-build previews, developer previews, and beta surfaces explicitly.
+- Keep ForgeWire and Fabric private; public overview material is not an application download or supported installation path.
 - Keep ForgeLink's JeremyShows ownership visible.
-- Re-check prices, release tags, and support claims when a reviewer asks; do not infer them from branding assets or screenshots.
+- State architecture only at the boundary documented by its source project; do not imply the portfolio is one integrated runtime.
+- Recheck release tags and source commits before a production launch or after material project changes.

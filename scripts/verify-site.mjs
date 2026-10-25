@@ -33,9 +33,9 @@ try {
 
 const files = await walk(outputRoot);
 const htmlFiles = files.filter((file) => file.endsWith(".html"));
-if (htmlFiles.length < 4) fail(`Expected at least 4 HTML pages, found ${htmlFiles.length}.`);
+if (htmlFiles.length !== 4) fail(`Expected the four reviewed pages, found ${htmlFiles.length} HTML files.`);
 
-for (const required of [
+const requiredFiles = [
   "index.html",
   "projects/index.html",
   "engineering/index.html",
@@ -45,8 +45,13 @@ for (const required of [
   "assets/site.css",
   "assets/favicon.svg",
   "assets/forgewire-labs-hero.png",
-  "assets/repopact-flow.svg",
-]) {
+  "assets/repopact-architecture.svg",
+  "assets/workbench-desktop-dashboard.jpg",
+  "assets/skillforge-command-center.png",
+  "assets/forgelink-product-architecture.svg",
+];
+
+for (const required of requiredFiles) {
   try {
     await stat(path.join(outputRoot, required));
   } catch {
@@ -65,6 +70,7 @@ for (const file of htmlFiles) {
   if (!/<meta\s+name="description"\s+content="[^"]+"/i.test(html)) fail(`${label}: missing meta description.`);
   const canonical = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i)?.[1];
   if (!canonical?.startsWith(expectedCanonicalPrefix)) fail(`${label}: canonical URL must start with ${expectedCanonicalPrefix}.`);
+
   if (isPreview) {
     if (!/<meta\s+name="robots"\s+content="noindex, nofollow"\s*\/?\s*>/i.test(html)) fail(`${label}: preview page is missing its noindex directive.`);
     if (!html.includes("Development preview · Temporary public review copy")) fail(`${label}: preview banner is missing.`);
@@ -72,8 +78,7 @@ for (const file of htmlFiles) {
     fail(`${label}: production build unexpectedly contains preview robots metadata.`);
   }
 
-  const h1Count = [...html.matchAll(/<h1\b/gi)].length;
-  if (h1Count !== 1) fail(`${label}: expected one h1, found ${h1Count}.`);
+  if ([...html.matchAll(/<h1\b/gi)].length !== 1) fail(`${label}: expected exactly one h1.`);
   if (/<script\b|\son[a-z]+\s*=|<form\b|<iframe\b|https?:\/\/(?:fonts\.googleapis\.com|fonts\.gstatic\.com)/i.test(html)) {
     fail(`${label}: found browser script, inline handler, form, iframe, or remote font embed.`);
   }
@@ -125,18 +130,28 @@ for (const file of htmlFiles) {
   }
 }
 
-const projectPage = await readFile(path.join(outputRoot, "projects", "index.html"), "utf8");
-if ([...projectPage.matchAll(/<article\s+class="project-card/g)].length !== 7) fail("Project availability page should render 7 portfolio records.");
+const projectsPage = await readFile(path.join(outputRoot, "projects", "index.html"), "utf8");
+if ([...projectsPage.matchAll(/data-project-id="[^"]+"/g)].length !== 7) fail("Project register should render all 7 reviewed records.");
 for (const projectName of ["RepoPact Core", "RepoPact Workbench", "Anvil", "SkillForge Academy", "ForgeWire", "Fabric", "ForgeLink"]) {
-  if (!projectPage.includes(projectName)) fail(`Project availability page is missing ${projectName}.`);
+  if (!projectsPage.includes(projectName)) fail(`Project register is missing ${projectName}.`);
 }
+if (!projectsPage.includes("Maintained in JeremyShows")) fail("Related ForgeLink ownership is missing.");
+if (!projectsPage.includes("Private development")) fail("Private development status is missing.");
+if (!projectsPage.includes("no packaged installers are listed")) fail("Workbench preview status is not explicit.");
 
 const homePage = await readFile(path.join(outputRoot, "index.html"), "utf8");
-if ([...homePage.matchAll(/<article\s+class="project-card/g)].length !== 4) fail("Homepage should render 4 featured portfolio records.");
+for (const phrase of ["Software for work that crosses", "people, agents, and machines", "The system carries the work"]) {
+  if (!homePage.includes(phrase)) fail(`Homepage narrative is missing “${phrase}”.`);
+}
 
 const robots = await readFile(path.join(outputRoot, "robots.txt"), "utf8");
 if (isPreview && /Sitemap:/i.test(robots)) fail("Preview robots.txt should not advertise a sitemap.");
 if (!isPreview && !robots.includes("Sitemap: https://forgewirelabs.com/sitemap.xml")) fail("Production robots.txt should advertise its sitemap.");
+
+for (const file of files.filter((item) => item.endsWith(".svg"))) {
+  const svg = await readFile(file, "utf8");
+  if (/<script\b|foreignObject|href="https?:\/\//i.test(svg)) fail(`${path.relative(outputRoot, file)}: unsafe or remote SVG content found.`);
+}
 
 if (failures.length) {
   console.error(`Site verification failed with ${failures.length} issue(s):`);
@@ -144,4 +159,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`Site verification passed: ${htmlFiles.length} HTML pages, required assets, metadata, headings, and local references checked${isPreview ? " for preview mode" : ""}.`);
+console.log(`Site verification passed: ${htmlFiles.length} pages, preview metadata, release boundaries, images, SVG assets, and local links checked${isPreview ? " for preview mode" : ""}.`);
