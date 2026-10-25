@@ -3,9 +3,9 @@
 - **Reviewed:** 2026-10-25
 - **Assessment:** static production and staging builds pass. This report does not claim browser visual validation, exact zoom/reflow, spoken screen-reader testing, or WCAG 2.2 AA conformance for the current organization-first revision.
 - **Draft PR:** [ForgeWireLabs/website#1](https://github.com/ForgeWireLabs/website/pull/1) (open, draft, unmerged).
-- **Public staging URL:** [https://forgewirelabs.github.io/website/?review=05105f4](https://forgewirelabs.github.io/website/?review=05105f4)
-- **Website source revision used to build the published pages:** `b55e039c72e08493b3d47cbad68554e2af073871`.
-- **Staging artifact branch revision:** `05105f4f3479dd282850e0ff4fa55caf6720103c`.
+- **Public staging URL:** [https://forgewirelabs.github.io/website/?review=21582cb](https://forgewirelabs.github.io/website/?review=21582cb)
+- **Website source revision used to build the published pages:** `59328519c11b45b0327cd8b478e41caa7ce7fa99`.
+- **Staging artifact branch revision:** `21582cbc35cd2ba58eeaad59d62b0272e57991f3`.
 
 ## Build and static verification
 
@@ -21,9 +21,9 @@ npm audit --audit-level=high
 
 The dependency audit reports zero vulnerabilities. Eleventy generated five routes for production and staging. The site verifiers check page metadata and canonical URLs, the preview `noindex, nofollow` policy, the production sitemap, internal navigation and asset references, content and maturity boundaries, image alternatives and intrinsic sizes, SVG safety, duplicate IDs and local fragment links, and the generated output's exclusion of source maps, environment files, source, scripts, and internal documentation. Both review-only and production outputs are separate.
 
-The generated markup/templates successfully build and pass the repository's static structural checks. No independent browser or standards-service HTML validation is claimed. All 16 unique external repository and package links extracted from the built pages returned HTTP 200 over HTTPS.
+The generated markup/templates successfully build and pass the repository's static structural checks. No independent browser or standards-service HTML validation is claimed. All 17 unique external links extracted from the built pages returned HTTP 200 over HTTPS.
 
-Independent public requests confirmed all five page routes returned HTTP 200 with the expected canonical URLs, development-preview label, and `noindex, nofollow`. Nine stylesheet/image/icon assets returned HTTP 200 with expected MIME types. The Pages build API reports `built` for artifact commit `05105f4`. Requests for source templates, internal documentation, `.env`, `.git/HEAD`, `package.json`, `node_modules`, and a source map returned HTTP 404. The published artifact tree has 18 files: generated pages/assets plus `.nojekyll` and Git attributes; no source, scripts, dependency tree, or review screenshots are present. Successful HTTPS requests were validated by the Windows TLS stack.
+Independent public requests confirmed all five page routes returned HTTP 200 with the expected canonical URLs, development-preview label, and `noindex, nofollow`. Nine stylesheet/image/icon assets returned HTTP 200. The Pages build API reports `built` for artifact commit `21582cbc`. Requests for source templates, internal documentation, `.env`, `.git/HEAD`, `package.json`, `node_modules`, and a source map returned HTTP 404. The published artifact tree has 18 files: generated pages/assets plus `.nojekyll` and Git attributes; no source, scripts, dependency tree, or review screenshots are present. HTTPS trust validation succeeded; the endpoint presented a valid Let's Encrypt certificate for `*.github.io`.
 
 ## Preview privacy and deployment boundaries
 
@@ -41,7 +41,7 @@ The organization purpose and focus areas are owner-provided statements and remai
 
 ## General and security contact
 
-The public organization profile states that people can reach ForgeWire Labs through its repositories. The profile repository has Issues enabled, no Discussions, and no published organization email. The About page therefore offers that repository's public issue form for general organizational inquiries and warns visitors not to post confidential information there. This requires no invented email or new service.
+The public organization profile states that people can reach ForgeWire Labs through its repositories. The profile repository has Issues enabled, no Discussions, and no published organization email. The About page proposes that repository's public issue form for general organizational inquiries and warns visitors not to post confidential information there. Confirm that a public issue tracker is the preferred contact route before production.
 
 Security reporting is not uniformly configured. Current GitHub API checks show private vulnerability reporting enabled for RepoPact Core and RepoPact Workbench. SkillForge Academy has a security policy, but private reporting is currently disabled there. The profile, ForgeWire overview, Anvil, Flink, and RP Proving Grounds have no root security policy and no private vulnerability reporting setting enabled. The site directs visitors to check the affected project's Security policy or Security tab and warns against using the public general inquiry tracker for vulnerability details. Consistent private reporting remains an organizational follow-up; the website makes no claim that every project offers it.
 

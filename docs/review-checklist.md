@@ -23,7 +23,7 @@
 ## Technical and accessibility gates
 
 - Production and preview builds and source verifiers pass.
-- Generated routes, metadata, local navigation/assets, canonical URLs, sitemap behavior, and preview noindex policy pass the static verifiers. All 16 unique external repository/package links and all five published routes were independently requested over HTTPS and returned HTTP 200.
+- Generated routes, metadata, local navigation/assets, canonical URLs, sitemap behavior, and preview noindex policy pass the static verifiers. All 17 unique external links and all five published routes were independently requested over HTTPS and returned HTTP 200.
 - Responsive CSS breakpoints exist, but desktop/mobile browser rendering and 200%/400% zoom/reflow have not been verified for this revision.
 - Static source includes keyboard-operable native links, focus styling, image alternatives, diagram text keys, and a keyboard-oriented table scroller; browser keyboard behavior and contrast still need direct review.
 - Narrator or NVDA spoken review is still needed for navigation, diagram descriptions, and the wide Software table unless completed and recorded in the validation report.
