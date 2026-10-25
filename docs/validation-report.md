@@ -37,5 +37,6 @@ The site was opened in the supported in-app browser from the local preview serve
 - Public browser navigation from Projects to Engineering and About succeeded. The public images loaded after scrolling; the browser console had no warnings or errors.
 - Requests for `/.env`, `/package-lock.json`, `/src/index.njk`, `/docs/`, `/.git/HEAD`, `/scripts/verify-site.mjs`, and `/node_modules/` returned 404.
 - The public browser screenshots use a revision query solely to bypass its cached earlier copy; the canonical preview URL remains the one above.
+- The public repository's existing Pages service was used without adding an Actions workflow, paid add-on, or custom-domain setting. The preview is an organization/project showcase with no transactions, account flow, form, or hosted SaaS behavior; it remains a temporary review host. GitHub's Pages terms and usage limits are summarized in [preview-hosting.md](preview-hosting.md).
 
 The public preview is explicitly a development-review candidate. It has no access control; `noindex` is an indexing request, not a privacy boundary. This report does not approve the visual direction for production.
