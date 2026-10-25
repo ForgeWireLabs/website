@@ -6,10 +6,10 @@
 
 - Preview URL: `https://forgewirelabs.github.io/website/`
 - Platform: GitHub Pages, publishing the root of the `website-preview` artifact branch in the public `ForgeWireLabs/website` repository.
-- Source commit used for the preview build: `407d74c6b7553afc715298266ecc7fe761257128`.
-- Published artifact commit: `9b66735d6d0c61f2b8d6cebe5ab6b35739b1a643`.
+- Source commit used for the preview build: `eda59d5488dc50823a5a72b6dc97cac55a735807`.
+- Published artifact commit: `21282a5ce61dc766dfb319c97eadba6cabb69d4c`.
 - Production remains intended for the existing IONOS Web Hosting Plus contract. No custom domain, IONOS domain assignment, production DNS, CDN, or hosting credentials are used by this preview.
-- The artifact branch contains only generated HTML, CSS, SVG/PNG assets, `robots.txt`, `sitemap.xml`, and `.nojekyll`. It does not include source code, source maps, `node_modules`, local configuration, or internal documentation.
+- The artifact branch contains generated HTML, CSS, SVG, PNG, and JPEG assets, `robots.txt`, `sitemap.xml`, `.nojekyll`, and its line-ending attributes file. It does not include source code, source maps, `node_modules`, local configuration, or internal documentation.
 
 ## Preview-only behavior
 

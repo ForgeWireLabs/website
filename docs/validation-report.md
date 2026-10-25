@@ -30,6 +30,12 @@ The site was opened in the supported in-app browser from the local preview serve
 
 ## Public staging verification
 
-Pending the update of the `website-preview` artifact branch and an independent HTTPS request. Record the source and artifact revisions, HTTPS/certificate status, page and asset responses, preview labeling, noindex directives, sensitive-file checks, and any remaining limitations here after publication.
+- Published source revision: `eda59d5488dc50823a5a72b6dc97cac55a735807`.
+- Pages artifact revision: `21282a5ce61dc766dfb319c97eadba6cabb69d4c`; GitHub Pages reported `built` from that commit, with `https_enforced: true` and no custom-domain binding.
+- URL: [https://forgewirelabs.github.io/website/](https://forgewirelabs.github.io/website/). An independent HTTPS request returned HTTP 200; `curl` reported TLS certificate verification result `0`.
+- `/`, `/projects/`, `/engineering/`, `/about/`, `robots.txt`, the stylesheet, favicon, and each displayed project image returned HTTP 200. All four HTML pages contain the temporary preview label and `noindex, nofollow`; `robots.txt` does not advertise a sitemap.
+- Public browser navigation from Projects to Engineering and About succeeded. The public images loaded after scrolling; the browser console had no warnings or errors.
+- Requests for `/.env`, `/package-lock.json`, `/src/index.njk`, `/docs/`, `/.git/HEAD`, `/scripts/verify-site.mjs`, and `/node_modules/` returned 404.
+- The public browser screenshots use a revision query solely to bypass its cached earlier copy; the canonical preview URL remains the one above.
 
-The public preview is explicitly a development-review candidate. This report does not approve the visual direction for production.
+The public preview is explicitly a development-review candidate. It has no access control; `noindex` is an indexing request, not a privacy boundary. This report does not approve the visual direction for production.
