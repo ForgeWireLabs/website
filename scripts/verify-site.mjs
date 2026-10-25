@@ -70,8 +70,8 @@ for (const file of files) {
     fail(`Unexpected source or private file in generated output: ${relative}`);
   }
 }
-if (files.some((file) => path.basename(file) === "forgewire-labs-hero.png" || path.basename(file) === "forgewire-labs-hero.svg")) {
-  fail("Obsolete social imagery should not be published.");
+if (files.some((file) => ["forgewire-labs-hero.png", "forgewire-labs-hero.svg", "repopact-flow.svg"].includes(path.basename(file)))) {
+  fail("An obsolete or unreferenced prototype visual should not be published.");
 }
 
 for (const file of htmlFiles) {

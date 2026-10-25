@@ -28,7 +28,7 @@ The current public ForgeWire Labs profile and project repositories define the po
 | `src/assets/forgewire-labs-social.svg` and `.png` | New typographic Open Graph/Twitter card authored for this site. The 1200×630 PNG is rendered from the source SVG with `rsvg-convert`; it uses the site wordmark, headline, and organization scope without product UI or invented imagery. |
 | `src/assets/favicon.svg` | Small typographic `FW` fallback aligned to the wordmark. The former topology glyph was removed because it was not distinctive enough to stand as an organization mark. |
 
-The older `forgewire-labs-hero.svg` and `.png` profile asset was removed from the website source and published output; its Git history remains intact. The profile's `writing/` directory describes its essays as unpublished drafts. They are not copied, excerpted, or linked from the website. No internal screenshots, credentials, environment files, source maps, or private repository contents are included in the preview artifact.
+The older `forgewire-labs-hero.svg` and `.png` profile asset and the unreferenced `repopact-flow.svg` prototype diagram were removed from website source and generated output; Git history remains intact. The profile's `writing/` directory describes its essays as unpublished drafts. They are not copied, excerpted, or linked from the website. No internal screenshots, credentials, environment files, source maps, or private repository contents are included in the preview artifact.
 
 ## Accuracy rules
 

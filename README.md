@@ -34,4 +34,4 @@ Verified diagrams and screenshots are described in [content sources](docs/conten
 
 ## Safety boundary
 
-The temporary GitHub Pages preview is published from generated files in the separate `website-preview` artifact branch. The artifact contains generated HTML, CSS, SVG, PNG, and JPEG assets, public review screenshots, `robots.txt`, `sitemap.xml`, and `.nojekyll`; it excludes source code and internal documentation. Do not connect `forgewirelabs.com`, change production DNS, activate a CDN, or configure IONOS hosting credentials until Jeremy and ChatGPT approve the final design and production deployment.
+The temporary GitHub Pages preview is published from generated files in the separate `website-preview` artifact branch. The artifact contains generated HTML, CSS, SVG, PNG, and JPEG assets, `robots.txt`, `sitemap.xml`, and `.nojekyll`; it excludes source code and internal documentation. Review screenshots are attached to the design review. Do not connect `forgewirelabs.com`, change production DNS, activate a CDN, or configure IONOS hosting credentials until Jeremy and ChatGPT approve the final design and production deployment.
