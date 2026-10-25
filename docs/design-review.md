@@ -1,22 +1,22 @@
 # Design review candidate
 
-**Purpose:** replace the first prototype after review found it technically sound but too generic. This is a substantial visual and narrative revision for design review; it is not final creative approval or a production launch.
+**Purpose:** document the current visual and information direction for human review. It is not final creative approval or a production launch.
 
-## Visual direction
+## Current direction
 
-The candidate uses the language of a systems engineering publication: editorial serif headlines, compact monospaced record labels, warm paper, charcoal, restrained acid-lime accents, and precise rules. A small topology mark replaces the provisional F/W monogram. The mark refers to connected components and boundaries rather than a fabricated product logo.
+The site uses a wordmark-led identity. A restrained teal signal color marks ForgeWire Labs navigation, links, and organizational structure; typography is sans serif for reading, with monospaced type reserved for source and implementation labels. The cool neutral surfaces are intentionally different from the previous cream, charcoal, and acid-lime combination.
 
-The home page puts a genuine RepoPact Workbench screenshot next to a specific organizational statement. RepoPact Core's documented architecture appears as technical evidence with a caption limiting it to Core. No decorative circuit patterns, flames, forge imagery, or generated product interfaces are used.
+No symbol is part of the primary mark. Product architecture diagrams and screenshots retain their source projects' own colors and attribution. The Workbench capture appears on the project page as a top-focused crop with an explicit fixture-data note and a full-resolution link.
 
 ## Information architecture
 
-- **Home:** organization and engineering scope → Workbench evidence → one documented Core architecture → portfolio map → engineering entry point.
-- **Projects:** RepoPact Core and Workbench as separate products in one documented family; ForgeWire and Fabric as distinct private projects; Anvil as a planning preview; ForgeLink as related work owned under JeremyShows; SkillForge with its Windows release separated from beta work.
-- **Engineering:** design questions → RepoPact Core architecture evidence → ownership and boundary map → scoped evidence claims.
-- **About:** founder background and role → engineering approach → product ownership distinctions → repository-based contact and security routes.
+- **Home:** organization and full scope → separate ForgeWire and Fabric private-development records → released tools and previews → an evidence-based engineering path.
+- **Projects:** RepoPact Core and Workbench, then distinct private work, Anvil, related ForgeLink under JeremyShows, and SkillForge Academy.
+- **Engineering:** source-grounded examples → RepoPact Core architecture with line conventions and project scope → ownership and maturity table.
+- **About:** verified founder background → review practices → independent project ownership and contact routes.
 
-The project list uses different layouts according to evidence and role instead of repeating identical cards. Current sources and release boundaries are listed in [content-sources.md](content-sources.md).
+The four pages keep status and ownership close to each project. The same card pattern is not used for every project.
 
-## Review decisions
+## Review questions
 
-Jeremy and ChatGPT should review the public staging candidate for visual direction, photography/screenshot balance, typography, portfolio grouping, and the level of detail on the projects and engineering pages before production design is approved. The preview can be indexed and has no access control, so it contains only material approved for public review.
+Jeremy and ChatGPT should assess the new wordmark-first direction, project hierarchy, color and type choices, the Workbench crop, diagram legibility, and page balance on desktop and mobile before final creative approval. The directly accessible preview uses `noindex, nofollow`; it remains public to anyone with its URL and contains no access control.

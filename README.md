@@ -15,13 +15,13 @@ npm run verify:preview
 npm run serve
 ```
 
-Eleventy writes the production output to `_site/`. The staging build writes to `_preview/`, adds a temporary review label and indexing metadata, and prefixes internal paths for `https://forgewirelabs.github.io/website/`. Run `npm run build` and `npm run verify` before `npm run serve`; the lightweight preview server binds only to `127.0.0.1`. Production hosting needs only the generated static files; it does not need Node.js.
+Eleventy writes the production output to `_site/`. The staging build writes to `_preview/`, adds a temporary review label and `noindex, nofollow` metadata, omits staging URLs from its sitemap, and prefixes internal paths for `https://forgewirelabs.github.io/website/`. Run `npm run build` and `npm run verify` before `npm run serve`; the lightweight preview server binds only to `127.0.0.1`. Production hosting needs only the generated static files; it does not need Node.js.
 
 ## Project records and sources
 
 Portfolio copy and maturity labels live in `src/_data/projects.json`. They are checked against each linked repository's public README or release page. ForgeLink is maintained under JeremyShows, outside the ForgeWire Labs organization. Private development is not presented as a download or supported release.
 
-Verified diagrams and screenshots are described in [content sources](docs/content-sources.md). The new visual direction and information architecture are summarized in the [design review note](docs/design-review.md). Unpublished writing drafts are not imported.
+Verified diagrams and screenshots are described in [content sources](docs/content-sources.md). The current visual direction and information architecture are summarized in the [design review note](docs/design-review.md), with findings in the [design quality audit](docs/design/design-quality-audit.md). Unpublished writing drafts are not imported.
 
 ## Decisions and operations
 
@@ -34,4 +34,4 @@ Verified diagrams and screenshots are described in [content sources](docs/conten
 
 ## Safety boundary
 
-The temporary GitHub Pages preview is published from generated files in the separate `website-preview` artifact branch. The artifact contains generated HTML, CSS, SVG, PNG, and JPEG assets, `robots.txt`, `sitemap.xml`, and `.nojekyll`; it excludes source code and internal documentation. Do not connect `forgewirelabs.com`, change production DNS, activate a CDN, or configure IONOS hosting credentials until Jeremy and ChatGPT approve the final design and production deployment.
+The temporary GitHub Pages preview is published from generated files in the separate `website-preview` artifact branch. The artifact contains generated HTML, CSS, SVG, PNG, and JPEG assets, public review screenshots, `robots.txt`, `sitemap.xml`, and `.nojekyll`; it excludes source code and internal documentation. Do not connect `forgewirelabs.com`, change production DNS, activate a CDN, or configure IONOS hosting credentials until Jeremy and ChatGPT approve the final design and production deployment.

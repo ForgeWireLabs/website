@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-labelledby="title desc">
+  <title id="title">ForgeWire Labs</title>
+  <desc id="desc">Independent engineering across distributed computing, intelligent systems, developer tools, and technical learning.</desc>
+  <rect width="1200" height="630" fill="#f4f6f3"/>
+  <rect width="14" height="630" fill="#176e70"/>
+  <path d="M76 112H1124" fill="none" stroke="#c8d4d1" stroke-width="2"/>
+  <text x="78" y="82" fill="#152a31" font-family="Segoe UI,Arial,sans-serif" font-size="30" font-weight="730" letter-spacing="-.5">ForgeWire <tspan fill="#176e70" font-weight="500">Labs</tspan></text>
+  <text x="78" y="232" fill="#152a31" font-family="Segoe UI,Arial,sans-serif" font-size="58" font-weight="720" letter-spacing="-2.1">Software for work that crosses</text>
+  <text x="78" y="304" fill="#176e70" font-family="Segoe UI,Arial,sans-serif" font-size="58" font-weight="720" letter-spacing="-2.1">people, agents, and machines.</text>
+  <text x="80" y="372" fill="#44575c" font-family="Segoe UI,Arial,sans-serif" font-size="23" font-weight="400">Independent engineering in distributed computing, intelligent systems,</text>
+  <text x="80" y="407" fill="#44575c" font-family="Segoe UI,Arial,sans-serif" font-size="23" font-weight="400">developer software, and technical learning.</text>
+  <path d="M78 477H1124" fill="none" stroke="#c8d4d1" stroke-width="2"/>
+  <text x="80" y="530" fill="#152a31" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="650">DISTRIBUTED COMPUTING</text>
+  <text x="440" y="530" fill="#152a31" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="650">INTELLIGENT SYSTEMS</text>
+  <text x="794" y="530" fill="#152a31" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="650">DEVELOPER SOFTWARE</text>
+</svg>

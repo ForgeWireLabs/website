@@ -1,119 +1,87 @@
 ---
 layout: layouts/base.njk
-title: Systems engineering for intelligent work
-description: ForgeWire Labs builds distributed execution infrastructure, agent orchestration systems, developer tools, and practical software for work across people, agents, and machines.
+title: Independent engineering for distributed work
+description: ForgeWire Labs works across distributed computing, intelligent systems, developer software, and technical learning, with public projects and private research.
 permalink: /index.html
 ---
 <section class="front-hero page-shell" aria-labelledby="hero-title">
   <div class="hero-copy">
-    <p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Independent engineering · Systems research</p>
+    <p class="eyebrow">ForgeWire Labs · Independent engineering</p>
     <h1 id="hero-title">Software for work that crosses <em>people, agents, and machines.</em></h1>
-    <p class="hero-lede">ForgeWire Labs builds distributed execution infrastructure, agent orchestration systems, developer tools, and practical software for structured learning.</p>
-    <p class="hero-detail">We start with what must persist, where authority sits, and how a person can understand a failure. The model or interface is only one part of the system.</p>
+    <p class="hero-lede">We work across distributed computing, intelligent systems, developer software, and technical learning. The portfolio ranges from private development to released software people can inspect today.</p>
     <div class="hero-actions">
-      <a class="button button-primary" href="{{ site.basePath }}/projects/">Explore the systems <span aria-hidden="true">↗</span></a>
-      <a class="quiet-link" href="{{ site.basePath }}/engineering/">Read the engineering approach</a>
+      <a class="button button-primary" href="{{ site.basePath }}/projects/">Explore the projects <span aria-hidden="true">→</span></a>
+      <a class="quiet-link" href="{{ site.basePath }}/engineering/">See engineering examples</a>
     </div>
-    <p class="hero-tags"><span>Distributed systems</span><span>Agent orchestration</span><span>Developer infrastructure</span></p>
   </div>
 
-  <figure class="hero-evidence">
-    <div class="figure-topline"><span>Project evidence / 01</span><span>Workbench · Source-build preview</span></div>
-    <div class="screenshot-frame">
-      <img src="{{ site.basePath }}/assets/workbench-desktop-dashboard.jpg" alt="Genuine Windows desktop capture of RepoPact Workbench. The interface shows repository validation, work items, evidence runs, decisions, graph edges, and navigation." width="2880" height="1800" fetchpriority="high">
-    </div>
-    <figcaption><strong>RepoPact Workbench</strong><span>Recorded from a local Windows source build and disposable Core conformance fixture. The interface is a preview; no packaged installer is listed.</span></figcaption>
-  </figure>
-  <p class="hero-index" aria-hidden="true">FIELD NOTES <span>01 / 04</span></p>
+  <aside class="portfolio-overview" aria-labelledby="overview-title">
+    <h2 id="overview-title">A portfolio at different stages</h2>
+    <dl>
+      <div><dt>Private development</dt><dd>ForgeWire · Fabric</dd></div>
+      <div><dt>Public software</dt><dd>RepoPact · SkillForge Academy · Anvil</dd></div>
+      <div><dt>Related work</dt><dd>ForgeLink · JeremyShows</dd></div>
+    </dl>
+    <p>Each is a separate project. The list describes the portfolio, not a combined runtime.</p>
+  </aside>
 </section>
 
-<section class="principle-band" aria-labelledby="principle-title">
-  <div class="page-shell principle-inner">
-    <p class="eyebrow">A working premise</p>
-    <h2 id="principle-title">The model is a component.<br><span>The system carries the work.</span></h2>
-    <p>Across independent projects, we examine how state, authority, execution, recovery, and evidence remain legible when work changes hands or a process fails.</p>
-  </div>
-</section>
-
-<section class="section architecture-section page-shell" aria-labelledby="architecture-title">
-  <div class="section-heading">
-    <div>
-      <p class="eyebrow">01 / Architecture in public</p>
-      <h2 id="architecture-title">Keep authority close to the work.</h2>
-    </div>
-    <a class="text-link" href="https://github.com/ForgeWireLabs/repopact-core">RepoPact Core source <span aria-hidden="true">↗</span></a>
-  </div>
-  <div class="architecture-layout">
-    <div class="architecture-copy">
-      <p>RepoPact Core treats the repository as the authoritative record for project intent, scope, work state, decisions, and evidence. Its CLI and Workbench are clients of a canonical semantic engine; dashboards and graph views remain derived views.</p>
-      <p>This diagram documents RepoPact Core. The other ForgeWire Labs projects have their own architecture and release boundaries.</p>
-      <a class="text-link" href="{{ site.basePath }}/engineering/">See the design boundaries <span aria-hidden="true">→</span></a>
-    </div>
-    <figure class="architecture-figure">
-      <img src="{{ site.basePath }}/assets/repopact-architecture.svg" alt="RepoPact Core architecture diagram from its public repository. Authoritative repository records feed the canonical Rust engine and CLI or Workbench clients; dashboards and graph views are derived, optional integrations have separate boundaries, and evidence records observed results." width="1200" height="720" loading="lazy">
-      <figcaption>RepoPact Core architecture and authority boundaries · Source: its public architecture documentation.</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="portfolio-section" aria-labelledby="portfolio-title">
+<section class="research-section" aria-labelledby="research-title">
   <div class="page-shell">
-    <div class="section-heading section-heading--stacked">
+    <div class="research-intro">
       <div>
-        <p class="eyebrow">02 / The portfolio</p>
-        <h2 id="portfolio-title">Separate systems. Plainly stated boundaries.</h2>
-        <p class="section-lede">Some projects have released software. Others are previews or private development. The organization is the shared home; each product has its own purpose, source, and maturity.</p>
+        <p class="eyebrow">Systems in development</p>
+        <h2 id="research-title">The broader work is underway.</h2>
       </div>
+      <p>ForgeWire and Fabric are central to the organization’s current direction. Both remain private development projects, so the public site describes only what available sources support.</p>
     </div>
-    <div class="portfolio-register">
-      <article class="register-row">
-        <p class="register-index">01</p>
-        <div class="register-domain"><h3>Repository engineering</h3><p>Governed work and reviewable changes</p></div>
-        <div class="register-projects">
-          {% for project in projects %}{% if project.group == "repository" %}
-            <p><a href="{{ project.url }}">{{ project.name }}</a><span class="status status--{{ project.statusKind }}">{{ project.status }}</span></p>
-          {% endif %}{% endfor %}
-        </div>
+    <div class="research-projects">
+      <article class="research-project" data-project-id="forgewire">
+        <div class="research-project-heading"><h3><a href="https://github.com/ForgeWireLabs/ForgeWire-Overview">ForgeWire <span aria-hidden="true">↗</span></a></h3><span class="status status--private">Private development</span></div>
+        <p>The public overview describes a modular application and runtime direction. It is not the application source, a supported setup guide, or a release.</p>
+        <a class="text-link" href="https://github.com/ForgeWireLabs/ForgeWire-Overview">Read the public overview <span aria-hidden="true">↗</span></a>
       </article>
-      <article class="register-row">
-        <p class="register-index">02</p>
-        <div class="register-domain"><h3>Agent systems &amp; execution</h3><p>Orchestration and distributed work</p></div>
-        <div class="register-projects">
-          {% for project in projects %}{% if project.group == "private" %}
-            <p>{% if project.url %}<a href="{{ project.url }}">{{ project.name }}</a>{% else %}<span>{{ project.name }}</span>{% endif %}<span class="status status--{{ project.statusKind }}">{{ project.status }}</span></p>
-          {% endif %}{% endfor %}
-        </div>
-      </article>
-      <article class="register-row">
-        <p class="register-index">03</p>
-        <div class="register-domain"><h3>Planning &amp; communication</h3><p>Local state and human coordination</p></div>
-        <div class="register-projects">
-          {% for project in projects %}{% if project.group == "planning" or project.group == "related" %}
-            <p><a href="{{ project.url }}">{{ project.name }}</a><span class="status status--{{ project.statusKind }}">{{ project.status }}</span>{% if project.group == "related" %}<span class="ownership-note">Maintained under JeremyShows</span>{% endif %}</p>
-          {% endif %}{% endfor %}
-        </div>
-      </article>
-      <article class="register-row">
-        <p class="register-index">04</p>
-        <div class="register-domain"><h3>Structured learning</h3><p>Offline-first education software</p></div>
-        <div class="register-projects">
-          {% for project in projects %}{% if project.group == "learning" %}
-            <p><a href="{{ project.url }}">{{ project.name }}</a><span class="status status--{{ project.statusKind }}">{{ project.status }}</span></p>
-          {% endif %}{% endfor %}
-        </div>
+      <article class="research-project" data-project-id="fabric">
+        <div class="research-project-heading"><h3>Fabric</h3><span class="status status--private">Private development</span></div>
+        <p>A separate ForgeWire Labs project. Its implementation and release status are not publicly documented.</p>
       </article>
     </div>
-    <a class="text-link portfolio-link" href="{{ site.basePath }}/projects/">Project details, source links, and availability <span aria-hidden="true">→</span></a>
   </div>
 </section>
 
-<section class="closing-panel">
+<section class="public-work-section page-shell" aria-labelledby="public-work-title">
+  <div class="public-work-heading">
+    <p class="eyebrow">Inspect the public work</p>
+    <h2 id="public-work-title">Released tools, previews, and working software.</h2>
+    <p>These projects provide concrete examples across the organization. Their availability and ownership stay specific to each project.</p>
+  </div>
+  <div class="public-work-layout">
+    <article class="public-work-feature">
+      <p class="eyebrow">Repository engineering · ForgeWire Labs</p>
+      <h3><a href="https://github.com/ForgeWireLabs/repopact-core">RepoPact <span aria-hidden="true">↗</span></a></h3>
+      <p>Core keeps governed project records in the repository and uses a canonical Rust engine for validation and typed operations. Its stable CLI package is published separately as version 3.1.3 on PyPI.</p>
+      <div class="work-status-list"><span>Core · Released CLI 3.1.3</span><span>Workbench · Source-build preview</span></div>
+      <a class="text-link" href="{{ site.basePath }}/projects/">See the architecture and Workbench capture <span aria-hidden="true">→</span></a>
+    </article>
+    <aside class="public-work-list" aria-labelledby="other-work-title">
+      <h3 id="other-work-title">Other work</h3>
+      <ul>
+        <li><span><a href="https://github.com/ForgeWireLabs/skillforge-academy">SkillForge Academy</a><small>Published Windows app · 1.3.2</small></span></li>
+        <li><span><a href="https://github.com/ForgeWireLabs/anvil">Anvil</a><small>Local planning tool · developer preview</small></span></li>
+        <li><span><a href="https://github.com/JeremyShows/ForgeLink">ForgeLink</a><small>Related work · maintained under JeremyShows</small></span></li>
+      </ul>
+      <p>ForgeLink has its own repository and release channel.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="closing-panel" aria-labelledby="closing-title">
   <div class="page-shell closing-inner">
-    <p class="eyebrow">03 / Working method</p>
-    <h2>Build it. Test it under failure. Preserve the evidence.</h2>
-    <p>Project records, release notes, screenshots, and architecture documents are the evidence visitors can inspect today. The next step is to examine how each system handles authority and change.</p>
+    <p class="eyebrow">Engineering, in the source</p>
+    <h2 id="closing-title">See how a repository becomes an inspectable system.</h2>
+    <p>RepoPact’s documentation describes how checked-in records, a Rust semantic engine, client tools, and derived views fit together. The diagram and its limits belong to RepoPact alone.</p>
     <div class="hero-actions">
-      <a class="button button-light" href="{{ site.basePath }}/engineering/">How the systems are built <span aria-hidden="true">→</span></a>
+      <a class="button button-light" href="{{ site.basePath }}/engineering/">Read the engineering notes <span aria-hidden="true">→</span></a>
       <a class="button button-quiet" href="{{ site.github }}">Browse public repositories <span aria-hidden="true">↗</span></a>
     </div>
   </div>

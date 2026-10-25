@@ -21,13 +21,14 @@ The current public ForgeWire Labs profile and project repositories define the po
 
 | Local asset | Public source and review notes |
 |---|---|
-| `src/assets/repopact-architecture.svg` | RepoPact Core architecture diagram from the pinned Core revision above. The Core repository is Apache-2.0. The diagram is labeled in the page as specific to RepoPact Core. |
-| `src/assets/workbench-desktop-dashboard.jpg` | Genuine Windows x64 screenshot from the pinned Workbench revision above. The README describes a local source build on a disposable Core conformance fixture, with no private repository or credentials shown. The Workbench repository is Apache-2.0. |
-| `src/assets/forgelink-product-architecture.svg` | ForgeLink's own public architecture diagram from its pinned JeremyShows revision. It remains attributed to that separate project. |
-| `src/assets/skillforge-command-center.png` | Screenshot used by the public organization profile at `616c0b55f06409dea8d5e37da245da0797c633df`. Its caption says it does not show the newer course-platform surfaces or establish their release readiness. |
-| `src/assets/forgewire-labs-hero.svg` and `.png` | Existing public ForgeWire Labs profile social asset, retained only for social metadata. It is not used as the website's new visual identity or a product screenshot. |
+| `src/assets/repopact-architecture.svg` | RepoPact Core architecture diagram from the pinned Core revision above. The Core repository is Apache-2.0. Adjacent page text explains the solid arrow colors, derived-view boxes, and optional host/CI boundary; it is labeled as Core-specific. |
+| `src/assets/workbench-desktop-dashboard.jpg` | Genuine Windows x64 screenshot from the pinned Workbench revision above. The README describes a local source build on a disposable Core conformance fixture, with no private repository or credentials shown. The Workbench repository is Apache-2.0. The site applies a CSS crop to focus on the validation summary; it does not alter the image file. Counts are labeled fixture data. A link opens the full-resolution original. |
+| `src/assets/forgelink-product-architecture.svg` | ForgeLink's own public architecture diagram from its pinned JeremyShows revision. Its legend remains visible; the caption states that optional edges are product-model concepts, not implementation evidence or a shared ForgeWire Labs architecture. |
+| `src/assets/skillforge-command-center.png` | 2880×1800 screenshot used by the public organization profile at `616c0b55f06409dea8d5e37da245da0797c633df`. Its caption identifies the displayed 0% values and practice counts as sample account state, not learner outcome metrics; newer beta surfaces are not shown. The full-resolution image is linked. |
+| `src/assets/forgewire-labs-social.svg` and `.png` | New typographic Open Graph/Twitter card authored for this site. The 1200×630 PNG is rendered from the source SVG with `rsvg-convert`; it uses the site wordmark, headline, and organization scope without product UI or invented imagery. |
+| `src/assets/favicon.svg` | Small typographic `FW` fallback aligned to the wordmark. The former topology glyph was removed because it was not distinctive enough to stand as an organization mark. |
 
-The profile's `writing/` directory describes its essays as unpublished drafts. They are not copied, excerpted, or linked from the website. No internal screenshots, credentials, environment files, source maps, or private repository contents are included in the preview artifact.
+The older `forgewire-labs-hero.svg` and `.png` profile asset was removed from the website source and published output; its Git history remains intact. The profile's `writing/` directory describes its essays as unpublished drafts. They are not copied, excerpted, or linked from the website. No internal screenshots, credentials, environment files, source maps, or private repository contents are included in the preview artifact.
 
 ## Accuracy rules
 

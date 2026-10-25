@@ -11,6 +11,6 @@ export default {
     { label: "Engineering", url: "/engineering/" },
     { label: "About", url: "/about/" },
   ],
-  socialImage: "/assets/forgewire-labs-hero.png",
+  socialImage: "/assets/forgewire-labs-social.png",
   github: "https://github.com/ForgeWireLabs",
 };

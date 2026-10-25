@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720" role="img" aria-labelledby="title desc">
   <title id="title">RepoPact Core architecture and authority boundaries</title>
   <desc id="desc">People and clients use the Core CLI or Workbench to read authoritative repository records and request typed operations. The Rust semantic engine validates records and prepares plans. Evidence records observed results. Dashboards, the Repository Orientation Graph, and Workbench screens are derived views. Optional host integrations enforce only the boundary they can demonstrate.</desc>
   <defs>

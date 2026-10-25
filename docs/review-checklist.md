@@ -9,9 +9,9 @@
 
 ## Visual direction
 
-- [ ] Review editorial typography, charcoal and warm-paper surfaces, lime signal accent, and topology mark.
+- [ ] Review wordmark-first branding, restrained teal signal, and sans-serif typography.
 - [ ] Check whether the genuine Workbench and SkillForge screenshots add useful proof at their current sizes.
-- [ ] Check that real architecture diagrams are readable and correctly limited to the project that owns them.
+- [ ] Check that real architecture diagrams are readable, legended, and correctly limited to the project that owns them.
 - [ ] Review desktop, tablet, and mobile hierarchy, spacing, contrast, and image balance.
 
 ## Accessibility and content
@@ -23,5 +23,6 @@
 
 ## Deployment
 
-- [ ] Keep the temporary preview on its GitHub Pages project URL with indexing enabled and the review banner.
+- [ ] Keep the temporary preview on its GitHub Pages project URL with `noindex, nofollow` and the review banner.
+- [ ] Do not advertise the staging sitemap; preserve production sitemap generation.
 - [ ] Do not connect `forgewirelabs.com`, change production DNS, activate a CDN, or configure IONOS credentials before approval.

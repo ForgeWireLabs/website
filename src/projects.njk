@@ -5,15 +5,15 @@ description: Explore ForgeWire Labs software and research with distinct ownershi
 permalink: /projects/index.html
 ---
 <section class="page-lead page-shell" aria-labelledby="projects-title">
-  <p class="eyebrow">Field notes / 02 · Project register</p>
+  <p class="eyebrow">Portfolio · Project register</p>
   <h1 id="projects-title">A portfolio of systems with <em>separate jobs and release states.</em></h1>
-  <p class="lead-copy">The projects span repository governance, planning, communication, distributed execution, and structured learning. Their links, diagrams, and availability labels point to the source that owns each claim.</p>
-  <p class="lead-index"><span>Public releases</span><span>Source-build previews</span><span>Private development</span></p>
+  <p class="lead-copy">The projects span repository engineering, planning, communication, distributed computing, and technical learning. Each keeps its own source, owner, architecture, and release status.</p>
+  <p class="lead-index"><span>Released software</span><span>Previews</span><span>Private development</span></p>
 </section>
 
 <section class="repository-spread page-shell" aria-labelledby="repopact-title">
   <div class="spread-heading">
-    <p class="eyebrow">01 / ForgeWire Labs · Repository systems</p>
+    <p class="eyebrow">ForgeWire Labs · Repository systems</p>
     <h2 id="repopact-title">RepoPact</h2>
     <p>Core defines and validates governed repository state. Workbench is a separate native interface that consumes Core and carries its own preview status.</p>
   </div>
@@ -30,12 +30,13 @@ permalink: /projects/index.html
   </div>
   <div class="repo-evidence-grid">
     <figure class="architecture-figure architecture-figure--page">
-      <img src="{{ site.basePath }}/assets/repopact-architecture.svg" alt="RepoPact Core architecture diagram. Repository records are authoritative; the Rust engine interprets and validates them, CLI and Workbench clients use that engine, derived views remain secondary, and optional integrations have limited boundaries." width="1200" height="720" loading="lazy">
-      <figcaption>Architecture from the <a href="https://github.com/ForgeWireLabs/repopact-core/blob/614689b127cf52f801877cc48440f7e45c3709eb/docs/assets/readme/repopact-architecture.svg">RepoPact Core repository</a>. Source records stay authoritative; interface views do not.</figcaption>
+      <img src="{{ site.basePath }}/assets/repopact-architecture.svg" alt="RepoPact Core architecture: repository records connect to a canonical Rust engine, which serves CLI and Workbench clients and produces evidence and derived views. An optional host or CI integration has a provider-specific boundary." aria-describedby="repopact-diagram-notes" width="1200" height="720" loading="lazy">
+      <figcaption>RepoPact Core architecture from its <a href="https://github.com/ForgeWireLabs/repopact-core/blob/614689b127cf52f801877cc48440f7e45c3709eb/docs/assets/readme/repopact-architecture.svg">public architecture documentation</a>.</figcaption>
+      <p class="diagram-notes" id="repopact-diagram-notes"><strong>Diagram key.</strong> Blue arrows show exchanges with the Core engine; slate arrows show people, host integrations, evidence, and derived views; dashed boxes mark derived views. The host/CI box is optional and provider-specific. <a href="{{ site.basePath }}/assets/repopact-architecture.svg">Open the full-size diagram</a>.</p>
     </figure>
     <figure class="screenshot-figure">
-      <div class="screenshot-frame screenshot-frame--light"><img src="{{ site.basePath }}/assets/workbench-desktop-dashboard.jpg" alt="Genuine Windows x64 desktop capture of RepoPact Workbench showing repository validation and navigation for Work, Decisions, Evidence, Graph, and Analysis." width="2880" height="1800" loading="lazy"></div>
-      <figcaption><strong>Workbench, source-build preview.</strong> This genuine capture is documented in the project's README as a local build using a disposable Core conformance fixture. Packaged installers are not listed. <a href="https://github.com/ForgeWireLabs/repopact-workbench/blob/414a4a78091796735a1b97b03fd8c3cf1c105f30/docs/assets/readme/workbench-desktop-dashboard.jpg">View the source image and provenance ↗</a></figcaption>
+      <div class="screenshot-focus screenshot-frame--light"><img src="{{ site.basePath }}/assets/workbench-desktop-dashboard.jpg" alt="RepoPact Workbench desktop capture focused on its repository validation summary. The capture was made from a Windows x64 source build." width="1362" height="930" loading="lazy"></div>
+      <figcaption><strong>RepoPact Workbench · Source-build preview.</strong> The README documents this genuine Windows x64 capture as a local build using a disposable Core conformance fixture. The visible counts are fixture data, not customer, production, or reliability metrics. Packaged installers are not listed. <a href="{{ site.basePath }}/assets/workbench-desktop-dashboard.jpg">Open the full-resolution capture</a> · <a href="https://github.com/ForgeWireLabs/repopact-workbench/blob/414a4a78091796735a1b97b03fd8c3cf1c105f30/docs/assets/readme/workbench-desktop-dashboard.jpg">View its source and provenance ↗</a></figcaption>
     </figure>
   </div>
 </section>
@@ -43,7 +44,7 @@ permalink: /projects/index.html
 <section class="private-section" aria-labelledby="private-title">
   <div class="page-shell">
     <div class="private-heading">
-      <p class="eyebrow">02 / Research and private development</p>
+      <p class="eyebrow">Research and private development</p>
       <h2 id="private-title">Work can be architecturally important before it is available.</h2>
       <p>The public materials describe direction and status. No public build or supported deployment is available for these projects.</p>
     </div>
@@ -63,8 +64,7 @@ permalink: /projects/index.html
 
 <section class="planning-spread page-shell" aria-labelledby="anvil-title">
   <div class="planning-copy">
-    <p class="eyebrow">03 / ForgeWire Labs · Planning</p>
-    <p class="spread-number" aria-hidden="true">03</p>
+    <p class="eyebrow">ForgeWire Labs · Planning</p>
   </div>
   {% for project in projects %}{% if project.id == "anvil" %}
     <article class="planning-entry" data-project-id="{{ project.id }}">
@@ -80,7 +80,7 @@ permalink: /projects/index.html
 <section class="communication-section" aria-labelledby="forgelink-title">
   <div class="page-shell communication-layout">
     <div class="communication-copy">
-      <p class="eyebrow">04 / Related work · JeremyShows</p>
+      <p class="eyebrow">Related work · JeremyShows</p>
       {% for project in projects %}{% if project.id == "forgelink" %}
         <div data-project-id="{{ project.id }}">
           <div class="product-entry-top"><span>{{ project.kicker }}</span><span class="status status--{{ project.statusKind }}">{{ project.status }}</span></div>
@@ -92,19 +92,16 @@ permalink: /projects/index.html
       {% endif %}{% endfor %}
     </div>
     <figure class="forgelink-figure">
-      <img src="{{ site.basePath }}/assets/forgelink-product-architecture.svg" alt="ForgeLink architecture from its separate JeremyShows repository. The human operator uses the communication cockpit; agents enter through governed APIs, while providers and ForgeWire or Fabric remain optional edges." width="1500" height="1000" loading="lazy">
-      <figcaption>The project’s own architecture diagram. ForgeLink is related work maintained under JeremyShows, outside the ForgeWire Labs organization.</figcaption>
+      <img src="{{ site.basePath }}/assets/forgelink-product-architecture.svg" alt="ForgeLink's documented product model shows a human operator, communication cockpit, governed API and MCP boundary, providers as channel edges, and ForgeWire or Fabric as optional integration edges." aria-describedby="forgelink-diagram-notes" width="1500" height="1000" loading="lazy">
+      <figcaption>The diagram belongs to ForgeLink, maintained under JeremyShows, outside the ForgeWire Labs organization. Its dashed edges describe optional integrations in the product model; they do not establish that an integration is implemented. <a href="{{ site.basePath }}/assets/forgelink-product-architecture.svg">Open the full-size diagram</a>.</figcaption>
+      <p class="diagram-notes" id="forgelink-diagram-notes">The diagram labels solid lines as ForgeLink ownership and dashed lines as optional edges. It describes ForgeLink only; it does not imply a shared architecture across ForgeWire Labs projects.</p>
     </figure>
   </div>
 </section>
 
 <section class="learning-section page-shell" aria-labelledby="skillforge-title">
-  <figure class="learning-shot">
-    <div class="screenshot-frame screenshot-frame--dark"><img src="{{ site.basePath }}/assets/skillforge-command-center.png" alt="SkillForge Academy application screenshot showing a certification study command center with course navigation, a practice recommendation, study progress, and subject coverage." width="2880" height="1800" loading="lazy"></div>
-    <figcaption>Screenshot used in the public organization profile. It illustrates the published Windows app; newer course-platform beta surfaces have a separate maturity status.</figcaption>
-  </figure>
   <div class="learning-copy">
-    <p class="eyebrow">05 / ForgeWire Labs · Learning software</p>
+    <p class="eyebrow">Learning software · <a href="{{ site.basePath }}/assets/skillforge-command-center.png">Open full-size screenshot</a></p>
     {% for project in projects %}{% if project.id == "skillforge-academy" %}
       <div data-project-id="{{ project.id }}">
         <div class="product-entry-top"><span>{{ project.kicker }}</span><span class="status status--{{ project.statusKind }}">{{ project.status }}</span></div>
@@ -115,6 +112,10 @@ permalink: /projects/index.html
       </div>
     {% endif %}{% endfor %}
   </div>
+  <figure class="learning-shot">
+    <div class="screenshot-frame screenshot-frame--dark"><img src="{{ site.basePath }}/assets/skillforge-command-center.png" alt="SkillForge Academy command center with course navigation, a recommended study drill, progress panels, and domain coverage." width="2880" height="1800" loading="lazy"></div>
+    <figcaption>Screenshot used in the public organization profile and captured from the published Windows app. The displayed 0% values and practice counts are sample account state, not learner outcome metrics. Newer course-platform beta surfaces are not shown. <a href="{{ site.basePath }}/assets/skillforge-command-center.png">Open the full-resolution image</a>.</figcaption>
+  </figure>
 </section>
 
 <section class="availability-foot page-shell" aria-labelledby="availability-title">

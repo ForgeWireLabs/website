@@ -6,8 +6,8 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "eleventy",
-    "build:preview": "eleventy --config=eleventy.preview.config.js",
+    "build": "node scripts/clean-output.mjs production && eleventy",
+    "build:preview": "node scripts/clean-output.mjs preview && eleventy --config=eleventy.preview.config.js",
     "serve": "node scripts/preview.mjs",
     "verify": "node scripts/verify-site.mjs",
     "verify:preview": "node scripts/verify-site.mjs --preview"
