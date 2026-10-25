@@ -6,10 +6,11 @@
 
 - URL: `https://forgewirelabs.github.io/website/`
 - Host: GitHub Pages publishes the root of the `website-preview` artifact branch in the public `ForgeWireLabs/website` repository.
-- Website source revision used for the current published build: `e7521fe23ae752292a1fc29b9f0f30f87428183c`.
-- Artifact branch commit that publishes it: `a227eaebd4e7805c1896ed27b8a3013e58f839db`.
+- Website source revision used for the current published build: `a7f17b7a341ddeb57389420c3faaa31e544192e1`.
+- Artifact branch commit that publishes it: `2577e2181823e8a5d16fb13a2c6836d998842d20`.
 - The artifact contains only generated static files, `.nojekyll`, and this branch's Git attributes file. It does not contain website source, source maps, `node_modules`, environment files, credentials, or internal documentation.
 - No desktop or mobile browser screenshots are supplied for this revision. The earlier screenshots depict an obsolete homepage and must not be used to review the current candidate.
+- About lists the three owner-confirmed IONOS mailboxes with delivery/security verification pending; none has a `mailto:` link yet.
 - Production remains intended for the existing IONOS Web Hosting Plus contract. The preview uses no custom domain, IONOS binding, production DNS, CDN activation, hosting credential, paid service, or production configuration.
 
 ## Preview-only behavior
