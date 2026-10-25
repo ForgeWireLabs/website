@@ -45,8 +45,9 @@ The public source repositories and release listings were rechecked against the p
 
 - RepoPact CLI package: 3.1.3 on PyPI.
 - SkillForge Academy: latest Windows release v1.3.2.
-- ForgeLink: latest packaged release v2.0.1; its repository version is 2.0.3 and ownership remains under JeremyShows.
-- Workbench remains a source-build preview with no packaged installer listed; Anvil remains labeled developer preview. Core, Workbench, Anvil, SkillForge, and ForgeLink pinned commits still match their current source heads.
+- Flink: latest published installer is v2.0.1; the repository version is 2.0.3. The repository was renamed from ForgeLink and transferred to ForgeWire Labs on 2026-10-25; its README and published release materials retain the former name.
+- RP-proving-grounds: the public RepoPact adversarial proving-ground repository was renamed from `repopact-proving-ground` and transferred to ForgeWire Labs on 2026-10-25. It is not represented as a released product on the website.
+- Workbench remains a source-build preview with no packaged installer listed; Anvil remains labeled developer preview. Core, Workbench, Anvil, SkillForge, and Flink pinned commits still match their current source heads.
 - ForgeWire and Fabric copy is based on the public ForgeWire overview pinned at 85d1905b0bd8db420882f00065daff34833dab27. Both remain labeled private development; the pages state no public installation, service, availability, or release date.
 
 The primary-source ledger is in content-sources.md. It records the exact pinned source commits and image provenance.

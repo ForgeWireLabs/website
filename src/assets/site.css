@@ -236,12 +236,12 @@ h3 { font-size: 1.18rem; font-weight: 720; letter-spacing: -.02em; }
 .communication-layout { display: grid; grid-template-columns: 1fr; gap: 28px; }
 .communication-copy h2 { font-size: clamp(2.5rem, 4.2vw, 4rem); }
 .communication-copy > div > p:not(.availability-copy) { color: var(--ink-soft); }
-.forgelink-figure { margin: 0; padding: 12px; background: var(--dark); }
-.forgelink-figure img { width: 100%; height: auto; }
-.forgelink-figure figcaption { margin-top: 12px; color: #d0dcda; font-size: .88rem; line-height: 1.6; }
-.forgelink-figure figcaption a { color: var(--signal-light); }
-.forgelink-figure .diagram-notes { border-color: var(--dark-line); color: #d0dcda; }
-.forgelink-figure .diagram-notes strong { color: white; }
+.flink-figure { margin: 0; padding: 12px; background: var(--dark); }
+.flink-figure img { width: 100%; height: auto; }
+.flink-figure figcaption { margin-top: 12px; color: #d0dcda; font-size: .88rem; line-height: 1.6; }
+.flink-figure figcaption a { color: var(--signal-light); }
+.flink-figure .diagram-notes { border-color: var(--dark-line); color: #d0dcda; }
+.flink-figure .diagram-notes strong { color: white; }
 .learning-section { display: grid; grid-template-columns: 1fr; gap: 24px; padding-block: 76px; }
 .learning-copy { max-width: 900px; }
 .learning-shot { width: min(100%, 1100px); min-width: 0; margin: 0; }

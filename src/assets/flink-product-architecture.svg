@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1000" width="1500" height="1000" role="img" aria-labelledby="title description">
-  <title id="title">ForgeLink product architecture</title>
-  <desc id="description">A first-class human operator uses the ForgeLink cockpit across People, Channels, and Decisions. The communications and coordination core is entered by agents and applications through a governed API and MCP boundary. Providers are channel edges, and ForgeWire and Fabric are optional integrations.</desc>
+  <title id="title">Flink product architecture</title>
+  <desc id="description">A first-class human operator uses the Flink cockpit across People, Channels, and Decisions. The communications and coordination core is entered by agents and applications through a governed API and MCP boundary. Providers are channel edges, and ForgeWire and Fabric are optional integrations.</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#9b8cff"/>
@@ -29,7 +29,7 @@
   </defs>
 
   <rect width="1500" height="1000" fill="#0b1020"/>
-  <text x="750" y="34" text-anchor="middle" class="eyebrow">FORGELINK PRODUCT MODEL</text>
+  <text x="750" y="34" text-anchor="middle" class="eyebrow">FLINK PRODUCT MODEL</text>
 
   <g aria-label="Human operator">
     <rect x="600" y="58" width="300" height="88" rx="18" class="card-core"/>
@@ -42,10 +42,10 @@
 
   <path d="M 750 146 L 750 175" class="connector-accent" marker-end="url(#arrow)"/>
 
-  <g aria-label="ForgeLink cockpit">
+  <g aria-label="Flink cockpit">
     <rect x="430" y="175" width="640" height="155" rx="22" class="card-core"/>
     <text x="750" y="228" text-anchor="middle" class="eyebrow">LOCAL-FIRST COMMUNICATIONS + COORDINATION</text>
-    <text x="750" y="267" text-anchor="middle" class="title">ForgeLink cockpit</text>
+    <text x="750" y="267" text-anchor="middle" class="title">Flink cockpit</text>
     <text x="750" y="297" text-anchor="middle" class="node-subtitle">owns local state, policy, evidence, and operator attention</text>
   </g>
 
@@ -117,9 +117,9 @@
     <rect x="35" y="752" width="330" height="94" rx="17" class="card-optional"/>
     <text x="55" y="786" class="small-strong">ForgeWire / Fabric</text>
     <text x="55" y="813" class="small">optional integration edge</text>
-    <text x="55" y="834" class="small">not ForgeLink’s product core</text>
+    <text x="55" y="834" class="small">not Flink’s product core</text>
     <path d="M 365 800 C 410 800 430 804 500 804" class="connector-dashed" marker-end="url(#arrow-muted)"/>
   </g>
 
-  <text x="1470" y="981" text-anchor="end" class="small">solid = ForgeLink ownership · dashed = optional edge</text>
+  <text x="1470" y="981" text-anchor="end" class="small">solid = Flink ownership · dashed = optional edge</text>
 </svg>

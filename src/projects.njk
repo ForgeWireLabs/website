@@ -77,24 +77,24 @@ permalink: /projects/index.html
   {% endif %}{% endfor %}
 </section>
 
-<section class="communication-section" aria-labelledby="forgelink-title">
+<section class="communication-section" aria-labelledby="flink-title">
   <div class="page-shell communication-layout">
     <div class="communication-copy">
-      <p class="eyebrow">Related work · JeremyShows</p>
-      {% for project in projects %}{% if project.id == "forgelink" %}
+      <p class="eyebrow">ForgeWire Labs · Communications</p>
+      {% for project in projects %}{% if project.id == "flink" %}
         <div data-project-id="{{ project.id }}">
           <div class="product-entry-top"><span>{{ project.kicker }}</span><span class="status status--{{ project.statusKind }}">{{ project.status }}</span></div>
-          <h2 id="forgelink-title"><a href="{{ project.url }}">{{ project.name }} <span aria-hidden="true">↗</span></a></h2>
+          <h2 id="flink-title"><a href="{{ project.url }}">{{ project.name }} <span aria-hidden="true">↗</span></a></h2>
           <p>{{ project.summary }}</p>
           <p class="availability-copy"><strong>Ownership and release.</strong> {{ project.maturity }}</p>
           <div class="product-entry-links"><a href="{{ project.url }}">{{ project.action }} <span aria-hidden="true">↗</span></a><a href="{{ project.secondaryUrl }}">{{ project.secondaryAction }} <span aria-hidden="true">↗</span></a></div>
         </div>
       {% endif %}{% endfor %}
     </div>
-    <figure class="forgelink-figure">
-      <img src="{{ site.basePath }}/assets/forgelink-product-architecture.svg" alt="ForgeLink's documented product model shows a human operator, communication cockpit, governed API and MCP boundary, providers as channel edges, and ForgeWire or Fabric as optional integration edges." aria-describedby="forgelink-diagram-notes" width="1500" height="1000" loading="lazy">
-      <figcaption>The diagram belongs to ForgeLink, maintained under JeremyShows, outside the ForgeWire Labs organization. Its dashed edges describe optional integrations in the product model; they do not establish that an integration is implemented. <a href="{{ site.basePath }}/assets/forgelink-product-architecture.svg">Open the full-size diagram</a>.</figcaption>
-      <p class="diagram-notes" id="forgelink-diagram-notes">The diagram labels solid lines as ForgeLink ownership and dashed lines as optional edges. It describes ForgeLink only; it does not imply a shared architecture across ForgeWire Labs projects.</p>
+    <figure class="flink-figure">
+      <img src="{{ site.basePath }}/assets/flink-product-architecture.svg" alt="Flink's documented product model shows a human operator, communication cockpit, governed API and MCP boundary, providers as channel edges, and ForgeWire or Fabric as optional integration edges." aria-describedby="flink-diagram-notes" width="1500" height="1000" loading="lazy">
+      <figcaption>Adapted from Flink’s public product-model diagram; its source predates the repository rename and the latest release materials retain the former ForgeLink name. Dashed edges describe optional integrations, not proof that an integration is implemented. <a href="{{ site.basePath }}/assets/flink-product-architecture.svg">Open the full-size diagram</a>.</figcaption>
+      <p class="diagram-notes" id="flink-diagram-notes">The diagram labels solid lines as Flink ownership and dashed lines as optional edges. It describes Flink only; it does not imply a shared architecture across ForgeWire Labs projects.</p>
     </figure>
   </div>
 </section>
@@ -127,7 +127,6 @@ permalink: /projects/index.html
     <li><span class="status status--released">Released</span><span>A package or application is available through the linked release channel. The repository's current branch may be newer.</span></li>
     <li><span class="status status--preview">Preview</span><span>Source or early software is available to inspect; packaging, API, schema, or platform support can still change.</span></li>
     <li><span class="status status--private">Private development</span><span>Public overview material may exist, but there is no public build or release to install.</span></li>
-    <li><span class="status status--related">Related work</span><span>Maintained outside the ForgeWire Labs organization with its own source and release channel.</span></li>
   </ul>
   <p class="source-note">Product links and maturity notes were checked against the linked public repositories and release pages. Preview and source-build status carries no production-support claim.</p>
 </section>

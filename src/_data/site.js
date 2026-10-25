@@ -5,7 +5,7 @@ export default {
   url: isPreview ? "https://forgewirelabs.github.io" : "https://forgewirelabs.com",
   basePath: isPreview ? "/website" : "",
   preview: isPreview,
-  assetVersion: "20261025-engineering",
+  assetVersion: "20261025-flink",
   description: "Independent engineering for distributed computing, agent systems, developer infrastructure, and practical software.",
   navigation: [
     { label: "Projects", url: "/projects/" },

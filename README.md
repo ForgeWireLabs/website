@@ -21,7 +21,7 @@ When CSS changes, update `site.assetVersion` in `src/_data/site.js` so browsers 
 
 ## Project records and sources
 
-Portfolio copy and maturity labels live in `src/_data/projects.json`. They are checked against each linked repository's public README or release page. ForgeLink is maintained under JeremyShows, outside the ForgeWire Labs organization. Private development is not presented as a download or supported release.
+Portfolio copy and maturity labels live in `src/_data/projects.json`. They are checked against each linked repository's public README or release page. Flink is maintained in the ForgeWire Labs organization; the repository has been renamed, while its README and latest published release materials retain the former ForgeLink name. Private development is not presented as a download or supported release.
 
 Verified diagrams and screenshots are described in [content sources](docs/content-sources.md). The current visual direction and information architecture are summarized in the [design review note](docs/design-review.md), with findings in the [design quality audit](docs/design/design-quality-audit.md). Unpublished writing drafts are not imported.
 

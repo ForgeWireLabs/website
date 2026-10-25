@@ -1,7 +1,7 @@
 ---
 layout: layouts/base.njk
 title: Engineering examples and system boundaries
-description: Specific architecture and maturity notes from RepoPact, Anvil, Workbench, SkillForge Academy, ForgeWire, Fabric, and related ForgeLink work.
+description: Specific architecture and maturity notes from RepoPact, Anvil, Workbench, SkillForge Academy, ForgeWire, Fabric, and Flink.
 permalink: /engineering/index.html
 ---
 <section class="page-lead page-shell" aria-labelledby="engineering-title">
@@ -43,7 +43,7 @@ permalink: /engineering/index.html
       <p class="eyebrow">RepoPact Core · Architecture</p>
       <h2 id="study-title">Repository records stay authoritative.</h2>
       <p>The CLI and Workbench read governed records and request supported operations from Core. The engine validates the records and prepares plans. Dashboards and graph views are derived surfaces, while the evidence records observed results.</p>
-      <p>This is RepoPact Core’s documented architecture. It does not describe ForgeWire, Fabric, Anvil, or ForgeLink.</p>
+      <p>This is RepoPact Core’s documented architecture. It does not describe ForgeWire, Fabric, Anvil, or Flink.</p>
       <a class="text-link" href="https://github.com/ForgeWireLabs/repopact-core/blob/614689b127cf52f801877cc48440f7e45c3709eb/docs/assets/readme/repopact-architecture.svg">Open the source diagram <span aria-hidden="true">↗</span></a>
     </div>
     <figure class="architecture-figure architecture-figure--large">
@@ -58,7 +58,7 @@ permalink: /engineering/index.html
   <div class="section-heading section-heading--stacked">
     <p class="eyebrow">Project register</p>
     <h2 id="ownership-title">Who owns what, and what is available</h2>
-    <p class="section-lede">ForgeLink is maintained under JeremyShows. ForgeWire and Fabric remain private, with public overview material describing their purposes and limits. RepoPact, Anvil, and SkillForge have distinct release or preview states.</p>
+    <p class="section-lede">Flink is maintained in the ForgeWire Labs organization. Its latest published installer and release materials still use the former ForgeLink name. ForgeWire and Fabric remain private, with public overview material describing their purposes and limits. RepoPact, Anvil, and SkillForge have distinct release or preview states.</p>
   </div>
   <p class="table-scroll-hint" id="ownership-table-hint">On a narrow screen, swipe horizontally to see all three columns. With a keyboard, focus the table and use the arrow keys to scroll.</p>
   <div class="ownership-table-wrap" tabindex="0" role="region" aria-label="Project ownership and maturity table" aria-describedby="ownership-table-hint">
@@ -68,7 +68,7 @@ permalink: /engineering/index.html
         <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/repopact-core">RepoPact Core</a><span class="status status--released">Released CLI · 3.1.3</span></th><td>Repository state, validation, schemas, and typed operations.</td><td>The stable package is version-scoped; the source branch may be newer.</td></tr>
         <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/repopact-workbench">RepoPact Workbench</a><span class="status status--preview">Source-build preview</span></th><td>Native presentation and application orchestration for supported Core operations.</td><td>No packaged installer is listed. Recorded platform checks do not establish universal support.</td></tr>
         <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/anvil">Anvil</a><span class="status status--preview">Developer preview</span></th><td>Local planning records and typed links to external work.</td><td>Single-writer JSON store; API and schema can change; no execution or audit-trail ownership.</td></tr>
-        <tr><th scope="row"><a href="https://github.com/JeremyShows/ForgeLink">ForgeLink · JeremyShows</a><span class="status status--related">Packaged 2.0.1</span></th><td>Local communication state and human coordination.</td><td>Separate owner and release channel; the current repository may be newer than the packaged release.</td></tr>
+        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/Flink">Flink · ForgeWire Labs</a><span class="status status--released">Latest package · v2.0.1</span></th><td>Local communication state and human coordination.</td><td>Repository version 2.0.3; published release materials retain the former ForgeLink name.</td></tr>
         <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/skillforge-academy">SkillForge Academy</a><span class="status status--released">Windows app · 1.3.2</span></th><td>Published offline-first certification learning application.</td><td>Newer course-platform work has a separate beta status.</td></tr>
         <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/ForgeWire-Overview">ForgeWire</a><span class="status status--private">Private development</span></th><td>Application and runtime direction for configured models, tools, project context, and selected workflows around work a person can review.</td><td>The overview distinguishes current paths from active architecture work. No public application build or supported install path.</td></tr>
         <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/ForgeWire-Overview/blob/85d1905b0bd8db420882f00065daff34833dab27/README.md#3-fabric-dispatch-and-remote-execution">Fabric · ForgeWire Labs</a><span class="status status--private">Private development</span></th><td>Separate control-plane direction for authenticated, policy-gated work across machines.</td><td>Limited, configuration-dependent integration for selected ForgeWire workflows; broader integration and release gates remain open. Not a public service.</td></tr>

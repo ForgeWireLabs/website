@@ -75,18 +75,18 @@
     "secondaryAction": null
   },
   {
-    "id": "forgelink",
-    "group": "related",
-    "groupLabel": "Related work · JeremyShows",
-    "name": "ForgeLink",
+    "id": "flink",
+    "group": "communications",
+    "groupLabel": "ForgeWire Labs · Communications",
+    "name": "Flink",
     "kicker": "Communication and human authority",
-    "status": "Packaged release · 2.0.1",
-    "statusKind": "related",
+    "status": "Latest package · v2.0.1",
+    "statusKind": "released",
     "summary": "A local-first communication and coordination platform. People own their communication state and decisions; agents enter through governed local interfaces.",
-    "maturity": "Maintained in JeremyShows, outside the ForgeWire Labs organization. The repository's main branch is ahead of its latest packaged release; use release notes for the installer's exact feature set.",
-    "url": "https://github.com/JeremyShows/ForgeLink",
-    "action": "Visit the JeremyShows repository",
-    "secondaryUrl": "https://github.com/JeremyShows/ForgeLink/releases",
+    "maturity": "Now maintained in the ForgeWire Labs organization as Flink. The repository version is 2.0.3; the latest published installer is v2.0.1, and its README and release materials retain the former ForgeLink name. Release notes define the installer’s exact feature set.",
+    "url": "https://github.com/ForgeWireLabs/Flink",
+    "action": "Visit the ForgeWire Labs repository",
+    "secondaryUrl": "https://github.com/ForgeWireLabs/Flink/releases",
     "secondaryAction": "Review packaged releases"
   },
   {

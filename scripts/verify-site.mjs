@@ -53,7 +53,7 @@ const requiredFiles = [
   "assets/repopact-architecture.svg",
   "assets/workbench-desktop-dashboard.jpg",
   "assets/skillforge-command-center.png",
-  "assets/forgelink-product-architecture.svg",
+  "assets/flink-product-architecture.svg",
 ];
 
 for (const required of requiredFiles) {
@@ -166,10 +166,11 @@ for (const file of htmlFiles) {
 
 const projectsPage = await readFile(path.join(outputRoot, "projects", "index.html"), "utf8");
 if ([...projectsPage.matchAll(/data-project-id="[^"]+"/g)].length !== 7) fail("Project register should render all 7 reviewed records.");
-for (const projectName of ["RepoPact Core", "RepoPact Workbench", "Anvil", "SkillForge Academy", "ForgeWire", "Fabric", "ForgeLink"]) {
+for (const projectName of ["RepoPact Core", "RepoPact Workbench", "Anvil", "SkillForge Academy", "ForgeWire", "Fabric", "Flink"]) {
   if (!projectsPage.includes(projectName)) fail(`Project register is missing ${projectName}.`);
 }
-if (!projectsPage.includes("Maintained in JeremyShows")) fail("Related ForgeLink ownership is missing.");
+if (!projectsPage.includes("ForgeWire Labs · Communications")) fail("Flink's organization ownership is missing.");
+if (!projectsPage.includes("https://github.com/ForgeWireLabs/Flink")) fail("Flink's organization repository link is missing.");
 if (!projectsPage.includes("Private development")) fail("Private development status is missing.");
 if (!projectsPage.includes("no packaged installers are listed")) fail("Workbench preview status is not explicit.");
 if (!projectsPage.includes("fixture data, not customer, production, or reliability metrics")) fail("Workbench fixture metrics are not qualified.");
@@ -193,7 +194,7 @@ if (!projectsPage.includes("separate execution control-plane direction for authe
 if (!projectsPage.includes("not a public service or deployment option")) fail("Fabric public availability limits must remain explicit.");
 
 const engineeringPage = await readFile(path.join(outputRoot, "engineering", "index.html"), "utf8");
-for (const phrase of ["canonical Rust engine", "arbitrary process confinement", "single-writer JSON", "JeremyShows", "Implementation notes"]) {
+for (const phrase of ["canonical Rust engine", "arbitrary process confinement", "single-writer JSON", "ForgeWire Labs", "Implementation notes"]) {
   if (!engineeringPage.includes(phrase)) fail(`Engineering page is missing the source-grounded example “${phrase}”.`);
 }
 

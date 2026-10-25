@@ -5,7 +5,7 @@
 - [ ] Does the opening viewport make the organization, work, and engineering focus clear?
 - [ ] Does the site read as a software engineering and research organization, rather than a governance consultancy or generic AI startup?
 - [ ] Is ForgeWire Labs clearly distinct from each product?
-- [ ] Are the maturity and ownership labels accurate, including ForgeLink under JeremyShows?
+- [ ] Are the maturity and ownership labels accurate, including Flink in ForgeWire Labs and its legacy ForgeLink release naming?
 
 ## Visual direction
 
