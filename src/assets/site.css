@@ -275,6 +275,7 @@ h3 { font-size: 1.18rem; font-weight: 720; letter-spacing: -.02em; }
 .architecture-figure--large .diagram-notes { color: var(--ink-soft); }
 .ownership-section { padding-block: 80px 93px; }
 .ownership-section .section-heading { margin-bottom: 23px; }
+.table-scroll-hint { display: none; margin: 0 0 12px; color: var(--ink-soft); font-size: .9rem; }
 .ownership-table-wrap { overflow-x: auto; border-top: 1px solid #aebbb7; }
 .ownership-table { width: 100%; border-collapse: collapse; text-align: left; }
 .ownership-table th, .ownership-table td { padding: 16px 14px; border-bottom: 1px solid #c8d2cf; vertical-align: top; }
@@ -326,6 +327,7 @@ h3 { font-size: 1.18rem; font-weight: 720; letter-spacing: -.02em; }
   .public-work-layout { grid-template-columns: minmax(0, 1.1fr) minmax(260px, .9fr); }
   .spread-heading { grid-template-columns: minmax(160px, .7fr) minmax(0, 1.3fr); gap: 14px 30px; }
   .communication-layout { grid-template-columns: 1fr; gap: 26px; }
+  .table-scroll-hint { display: block; }
   .ownership-table { min-width: 780px; }
   .engineering-example--wide { grid-column: 1 / -1; }
 }
