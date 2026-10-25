@@ -8,7 +8,7 @@
     <title>{{ title }} | {{ site.name }}</title>
     <meta name="description" content="{{ description or site.description }}">
     <link rel="canonical" href="{{ site.url }}{{ site.basePath }}{{ page.url }}">
-    {% if site.preview %}<meta name="robots" content="noindex, nofollow">{% endif %}
+    {% if site.preview %}<meta name="robots" content="index, follow">{% endif %}
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ site.name }}">
     <meta property="og:title" content="{{ title }} | {{ site.name }}">

@@ -6,16 +6,16 @@
 
 - Preview URL: `https://forgewirelabs.github.io/website/`
 - Platform: GitHub Pages, publishing the root of the `website-preview` artifact branch in the public `ForgeWireLabs/website` repository.
-- Source commit used for the preview build: `eda59d5488dc50823a5a72b6dc97cac55a735807`.
+- Source commit used for the initial preview build: `eda59d5488dc50823a5a72b6dc97cac55a735807` (the current indexing-enabled revision will be recorded after publication).
 - Published artifact commit: `21282a5ce61dc766dfb319c97eadba6cabb69d4c`.
 - Production remains intended for the existing IONOS Web Hosting Plus contract. No custom domain, IONOS domain assignment, production DNS, CDN, or hosting credentials are used by this preview.
 - The artifact branch contains generated HTML, CSS, SVG, PNG, and JPEG assets, `robots.txt`, `sitemap.xml`, `.nojekyll`, and its line-ending attributes file. It does not include source code, source maps, `node_modules`, local configuration, or internal documentation.
 
 ## Preview-only behavior
 
-`npm run build:preview` writes `_preview/` with the `/website/` path prefix, a visible “Development preview” label, and `<meta name="robots" content="noindex, nofollow">` on every page. Its `robots.txt` does not advertise a sitemap. The production build remains separate in `_site/` and does not include the preview label or noindex metadata.
+`npm run build:preview` writes `_preview/` with the `/website/` path prefix, a visible “Development preview” label, `<meta name="robots" content="index, follow">` on every page, and a sitemap advertised in `robots.txt`. This allows search engines to discover the publicly accessible review copy. Search indexing can take time and does not guarantee discovery by every search or AI tool. The production build remains separate in `_site/` and does not include the preview label or preview indexing metadata.
 
-The public URL is intentionally accessible without authentication. `noindex` asks compliant search engines not to index the pages; it is not access control and cannot prevent people from viewing or copying the public content. The preview only contains material already approved for the public prototype.
+The public URL is intentionally accessible without authentication and can be indexed. The preview only contains material already approved for the public prototype. The development label identifies the review copy; it is not access control and cannot prevent people from viewing or copying the public content.
 
 ## Rebuild and verify
 

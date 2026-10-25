@@ -14,7 +14,7 @@ The portfolio has multiple projects and distinct maturity states. The site needs
 
 Use Eleventy to generate static HTML from Nunjucks templates and JSON data. Keep CSS local and write no browser JavaScript. Build locally with a pinned Node dependency and commit the lockfile. Upload only the generated `_site/` contents to IONOS through a restricted, encrypted SFTP workflow after hosting access and domain assignment are approved.
 
-Use the existing IONOS Web Hosting Plus contract as the production-host candidate. Use GitHub for source, branches, pull requests, and code review. For temporary design review only, publish a static preview from a separate artifact branch to the generated GitHub Pages project URL. Keep its `noindex` and preview label enabled. Do not configure a custom domain, production DNS, Deploy Now, CDN activation, or production credentials.
+Use the existing IONOS Web Hosting Plus contract as the production-host candidate. Use GitHub for source, branches, pull requests, and code review. For temporary design review only, publish a static preview from a separate artifact branch to the generated GitHub Pages project URL. Keep its development preview label and allow indexing so reviewers can discover it publicly. Do not configure a custom domain, production DNS, Deploy Now, CDN activation, or production credentials.
 
 ## Alternatives considered
 

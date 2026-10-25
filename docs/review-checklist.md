@@ -23,5 +23,5 @@
 
 ## Deployment
 
-- [ ] Keep the temporary preview on its GitHub Pages project URL with `noindex` and the review banner.
+- [ ] Keep the temporary preview on its GitHub Pages project URL with indexing enabled and the review banner.
 - [ ] Do not connect `forgewirelabs.com`, change production DNS, activate a CDN, or configure IONOS credentials before approval.

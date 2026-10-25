@@ -15,7 +15,7 @@ npm run verify:preview
 npm run serve
 ```
 
-Eleventy writes the production output to `_site/`. The staging build writes to `_preview/`, adds a temporary review label and `noindex` metadata, and prefixes internal paths for `https://forgewirelabs.github.io/website/`. Run `npm run build` and `npm run verify` before `npm run serve`; the lightweight preview server binds only to `127.0.0.1`. Production hosting needs only the generated static files; it does not need Node.js.
+Eleventy writes the production output to `_site/`. The staging build writes to `_preview/`, adds a temporary review label and indexing metadata, and prefixes internal paths for `https://forgewirelabs.github.io/website/`. Run `npm run build` and `npm run verify` before `npm run serve`; the lightweight preview server binds only to `127.0.0.1`. Production hosting needs only the generated static files; it does not need Node.js.
 
 ## Project records and sources
 

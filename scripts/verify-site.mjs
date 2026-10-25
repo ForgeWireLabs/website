@@ -72,7 +72,7 @@ for (const file of htmlFiles) {
   if (!canonical?.startsWith(expectedCanonicalPrefix)) fail(`${label}: canonical URL must start with ${expectedCanonicalPrefix}.`);
 
   if (isPreview) {
-    if (!/<meta\s+name="robots"\s+content="noindex, nofollow"\s*\/?\s*>/i.test(html)) fail(`${label}: preview page is missing its noindex directive.`);
+    if (!/<meta\s+name="robots"\s+content="index, follow"\s*\/?\s*>/i.test(html)) fail(`${label}: preview page is missing its explicit indexing directive.`);
     if (!html.includes("Development preview · Temporary public review copy")) fail(`${label}: preview banner is missing.`);
   } else if (/<meta\s+name="robots"/i.test(html)) {
     fail(`${label}: production build unexpectedly contains preview robots metadata.`);
@@ -145,8 +145,13 @@ for (const phrase of ["Software for work that crosses", "people, agents, and mac
 }
 
 const robots = await readFile(path.join(outputRoot, "robots.txt"), "utf8");
-if (isPreview && /Sitemap:/i.test(robots)) fail("Preview robots.txt should not advertise a sitemap.");
-if (!isPreview && !robots.includes("Sitemap: https://forgewirelabs.com/sitemap.xml")) fail("Production robots.txt should advertise its sitemap.");
+const expectedSitemapUrl = `${referenceOrigin}${previewPathPrefix}/sitemap.xml`;
+if (!robots.includes(`Sitemap: ${expectedSitemapUrl}`)) fail(`robots.txt should advertise ${expectedSitemapUrl}.`);
+const sitemap = await readFile(path.join(outputRoot, "sitemap.xml"), "utf8");
+for (const route of ["/", "/projects/", "/engineering/", "/about/"]) {
+  const expectedUrl = `${referenceOrigin}${previewPathPrefix}${route}`;
+  if (!sitemap.includes(`<loc>${expectedUrl}</loc>`)) fail(`sitemap.xml is missing ${expectedUrl}.`);
+}
 
 for (const file of files.filter((item) => item.endsWith(".svg"))) {
   const svg = await readFile(file, "utf8");

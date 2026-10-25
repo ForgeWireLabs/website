@@ -4,6 +4,4 @@ eleventyExcludeFromCollections: true
 ---
 User-agent: *
 Allow: /
-{% if not site.preview %}
-Sitemap: {{ site.url }}/sitemap.xml
-{% endif %}
+Sitemap: {{ site.url }}{{ site.basePath }}/sitemap.xml

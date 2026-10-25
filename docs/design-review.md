@@ -19,4 +19,4 @@ The project list uses different layouts according to evidence and role instead o
 
 ## Review decisions
 
-Jeremy and ChatGPT should review the public staging candidate for visual direction, photography/screenshot balance, typography, portfolio grouping, and the level of detail on the projects and engineering pages before production design is approved. The preview is noindex, but it is public and does not provide access control.
+Jeremy and ChatGPT should review the public staging candidate for visual direction, photography/screenshot balance, typography, portfolio grouping, and the level of detail on the projects and engineering pages before production design is approved. The preview can be indexed and has no access control, so it contains only material approved for public review.
