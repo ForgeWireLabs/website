@@ -1,0 +1,73 @@
+---
+layout: layouts/base.njk
+title: Independent engineering, applied AI
+description: Practical software for governed work, planning, communication, and structured learning. Systems first. Models second.
+permalink: /index.html
+---
+<section class="hero page-shell" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span> Independent engineering · Applied AI</p>
+    <h1 id="hero-title">Build software that keeps the work <em>understandable.</em></h1>
+    <p class="hero-lede">ForgeWire Labs makes practical tools for governed work, planning, communication, and structured learning. Each project has a distinct purpose and a clearly stated stage of availability.</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="/projects/">Explore projects <span aria-hidden="true">→</span></a>
+      <a class="text-link" href="/engineering/">How the work is built</a>
+    </div>
+  </div>
+  <figure class="system-figure">
+    <svg viewBox="0 0 520 370" role="img" aria-labelledby="system-title system-description">
+      <title id="system-title">Records, systems, and people</title>
+      <desc id="system-description">Three connected layers: durable records inform systems, and people retain control of decisions.</desc>
+      <rect x="1" y="1" width="518" height="368" rx="18" fill="#0d1b2a" stroke="#274358"/>
+      <path d="M0 92H520M0 184H520M0 276H520M130 0V370M260 0V370M390 0V370" stroke="#385064" stroke-opacity=".26"/>
+      <path d="M112 185h88m94 0h102" stroke="#68cbb5" stroke-width="3" stroke-linecap="round"/>
+      <path d="M194 177l9 8-9 8m94-16 9 8-9 8" fill="none" stroke="#68cbb5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="28" y="116" width="114" height="138" rx="12" fill="#14283a" stroke="#68cbb5" stroke-width="2"/>
+      <rect x="203" y="100" width="114" height="170" rx="12" fill="#14283a" stroke="#68cbb5" stroke-width="2"/>
+      <rect x="378" y="116" width="114" height="138" rx="12" fill="#14283a" stroke="#68cbb5" stroke-width="2"/>
+      <g fill="none" stroke="#68cbb5" stroke-width="2" stroke-linecap="round">
+        <path d="M48 156h74M48 177h58M48 198h68M48 219h42"/>
+        <path d="M224 139h72M224 160h72M224 181h72M224 202h72M224 223h52"/>
+        <circle cx="435" cy="162" r="17"/><path d="M402 221c4-20 16-30 33-30s29 10 33 30"/>
+      </g>
+      <text x="85" y="284" text-anchor="middle" fill="#dce8ef" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">RECORDS</text>
+      <text x="260" y="298" text-anchor="middle" fill="#dce8ef" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">SYSTEMS</text>
+      <text x="435" y="284" text-anchor="middle" fill="#dce8ef" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">PEOPLE</text>
+      <text x="28" y="58" fill="#98b4c2" font-family="Segoe UI,Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="2">DESIGNED FOR REVIEWABLE WORK</text>
+    </svg>
+    <figcaption>Durable context. Understandable systems. Human decisions.</figcaption>
+  </figure>
+</section>
+
+<section class="principle-band" aria-label="Engineering principle">
+  <div class="page-shell principle-inner">
+    <p class="principle-label">Working principle</p>
+    <p class="principle-line">Systems first. <span>Models second.</span></p>
+    <p class="principle-note">Make authority explicit. Keep evidence close to the work. Leave room for people to step in.</p>
+  </div>
+</section>
+
+<section class="section page-shell" aria-labelledby="featured-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">The portfolio</p>
+      <h2 id="featured-title">Different tools. Clear boundaries.</h2>
+    </div>
+    <a class="text-link" href="/projects/">All projects and availability <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="project-grid project-grid--home">
+    {% for project in projects.slice(0, 4) %}
+      {% include "partials/project-card.njk" %}
+    {% endfor %}
+  </div>
+</section>
+
+<section class="method-strip">
+  <div class="page-shell method-inner">
+    <div>
+      <p class="eyebrow">A practical engineering lens</p>
+      <h2>Make the system legible when something goes wrong.</h2>
+    </div>
+    <a class="button button-outline" href="/engineering/">Read the engineering approach <span aria-hidden="true">→</span></a>
+  </div>
+</section>

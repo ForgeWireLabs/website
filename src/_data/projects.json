@@ -1,0 +1,78 @@
+[
+  {
+    "name": "RepoPact Core",
+    "group": "ForgeWire Labs",
+    "status": "Released CLI",
+    "statusKind": "released",
+    "summary": "Repository-native governance CLI and canonical semantic engine for durable work between people and coding agents.",
+    "maturity": "The CLI is released; development continues. The published package and the evolving source tree have separate release boundaries.",
+    "url": "https://github.com/ForgeWireLabs/repopact-core",
+    "action": "View repository",
+    "secondaryUrl": "https://pypi.org/project/repopact/",
+    "secondaryAction": "Package on PyPI"
+  },
+  {
+    "name": "RepoPact Workbench",
+    "group": "ForgeWire Labs",
+    "status": "Source-build preview",
+    "statusKind": "preview",
+    "summary": "A native interface for exploring RepoPact records and reviewing supported changes.",
+    "maturity": "Preview software built from source. Its build, packaging, and platform acceptance are separate from the released Core CLI.",
+    "url": "https://github.com/ForgeWireLabs/repopact-workbench",
+    "action": "View repository"
+  },
+  {
+    "name": "Anvil",
+    "group": "ForgeWire Labs",
+    "status": "Developer preview",
+    "statusKind": "preview",
+    "summary": "A local-first planning ledger for projects, issues, boards, workflows, and typed relations to external work records.",
+    "maturity": "The current preview uses a single-writer store; its API and schema may change.",
+    "url": "https://github.com/ForgeWireLabs/anvil",
+    "action": "View repository"
+  },
+  {
+    "name": "SkillForge Academy",
+    "group": "ForgeWire Labs",
+    "status": "Published Windows app",
+    "statusKind": "released",
+    "summary": "An offline-first learning application for structured courses, guided instruction, practical work, and certification preparation.",
+    "maturity": "A Windows application is published. The newer course-platform work is in beta development and has a separate maturity boundary.",
+    "url": "https://github.com/ForgeWireLabs/skillforge-academy",
+    "action": "View repository",
+    "secondaryUrl": "https://github.com/ForgeWireLabs/skillforge-academy/releases",
+    "secondaryAction": "Published releases"
+  },
+  {
+    "name": "ForgeWire",
+    "group": "Private development",
+    "status": "Private development",
+    "statusKind": "private",
+    "summary": "A private application exploring coordinated models, agents, tools, memory, compute, and distributed execution.",
+    "maturity": "No public build, supported install path, stable API, or announced release date.",
+    "url": "https://github.com/ForgeWireLabs/ForgeWire-Overview",
+    "action": "Read public overview"
+  },
+  {
+    "name": "Fabric",
+    "group": "Private development",
+    "status": "Private development",
+    "statusKind": "private",
+    "summary": "A private project in development within the ForgeWire Labs ecosystem.",
+    "maturity": "The implementation is private. No public download or release date has been announced.",
+    "url": null,
+    "action": null
+  },
+  {
+    "name": "ForgeLink",
+    "group": "Related work · JeremyShows",
+    "status": "Public repository",
+    "statusKind": "related",
+    "summary": "Locally owned communication and coordination for people, agents, and applications.",
+    "maturity": "A packaged release is available. The latest repository code can be ahead of the packaged installer; check its release notes for the exact released feature set.",
+    "url": "https://github.com/JeremyShows/ForgeLink",
+    "action": "View JeremyShows repository",
+    "secondaryUrl": "https://github.com/JeremyShows/ForgeLink/releases",
+    "secondaryAction": "Release notes"
+  }
+]
