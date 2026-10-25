@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-labelledby="title desc">
   <title id="title">ForgeWire Labs</title>
-  <desc id="desc">ForgeWire Labs, an independent software engineering and research organization. The card introduces engineering intelligent systems for work beyond the model and presents compute, providers, connectivity, platforms, authority, and evidence as engineering questions, not a system architecture.</desc>
+  <desc id="desc">ForgeWire Labs is an independent software engineering and research organization. The card presents six engineering questions about compute, providers, connectivity, platforms, authority, and evidence.</desc>
   <rect width="1200" height="630" fill="#112229"/>
   <rect x="0" width="12" height="630" fill="#8bd8cf"/>
   <text x="64" y="71" fill="#f4f6f3" font-family="Segoe UI,Arial,sans-serif" font-size="29" font-weight="730" letter-spacing="-.6">ForgeWire <tspan fill="#8bd8cf" font-weight="500">Labs</tspan></text>

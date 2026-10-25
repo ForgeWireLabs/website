@@ -6,7 +6,7 @@
 
 ForgeWire Labs is presented as an independent, founder-led software engineering and research organization. The organization investigates intelligent systems and software that crosses tools, repositories, machines, and operating constraints. The site explains its engineering disciplines and questions before it introduces individual projects.
 
-The core homepage position is **“Engineering intelligent systems for work beyond the model.”** The supporting copy describes useful context, execution, and human direction without claiming that every product provides the same capabilities. The public repository portfolio is evidence of separate work, not a completed shared platform.
+The core homepage position is **“Engineering intelligent systems for work beyond the model.”** The supporting copy connects useful context, execution, and human direction. Individual product maturity remains with the relevant project descriptions and status labels.
 
 The position and organization-level statements follow Jeremy's strategic brief. They are identified as owner-provided content in [content sources](content-sources.md), rather than being attributed to the older public profile. Final wording remains subject to approval before production.
 
@@ -16,13 +16,13 @@ The position and organization-level statements follow Jeremy's strategic brief. 
 - **Our Work:** intelligent systems, distributed computing and execution, developer infrastructure, systems integration/local software, and applied technical education. It distinguishes disciplines from their example projects.
 - **Research & Engineering:** ongoing questions separated from public implementation evidence; a project-specific RepoPact architecture diagram; RP Proving Grounds as bounded validation material.
 - **Software:** the actual seven reviewed project records, individual identity, release state, maturity notes, source links, screenshots, and a keyboard-scrollable status table.
-- **About:** purpose, origin, engineering philosophy, founder-led operating scale, leadership near the end, and repository-based contact routes.
+- **About:** purpose, origin, engineering philosophy, founder-led organization, leadership near the end, and a general contact route distinct from project security reporting.
 
 The existing route `/projects/` remains the Software page for continuity with the current staging site. The route `/engineering/` now has the Research & Engineering responsibility. The new `/work/` route explains the organizational disciplines.
 
 ## Art direction
 
-The established wordmark, typography, cool neutral surfaces, and restrained teal remain. The home visual centerpiece is a structured list of engineering questions about compute, providers, connectivity, platforms, authority, and evidence. It is an editorial index with explicit text, not a diagram of project relationships. The ForgeWire workspace capture is kept with the Software content where it can be understood as evidence from a private development build using disposable sample data.
+The established wordmark, typography, cool neutral surfaces, and restrained teal remain. The home visual centerpiece is a structured list of engineering questions about compute, providers, connectivity, platforms, authority, and evidence. The ForgeWire workspace capture stays with the Software content and its private-development/sample-data caption.
 
 The social card keeps the wordmark but replaces the product screenshot with an original organization-level question index. It identifies the questions as an engineering lens and explicitly avoids implying product architecture.
 
@@ -35,6 +35,7 @@ Open research questions are labeled as such. Public implementation notes link to
 ## Review gates
 
 - Review the updated public staging site directly. The prior public screenshots show the obsolete homepage and no replacement browser screenshots are available for this revision.
+- Confirm the general inquiry issue tracker is an appropriate public contact route and that project security reporting remains clearly separate.
 - Approve the owner-provided organization purpose and work-area statements for production.
 - Reconfirm the public ForgeWire/Fabric wording and release status if sources change before launch.
 - Finish spoken screen-reader checks for navigation, content hierarchy, diagrams, and the Software table.

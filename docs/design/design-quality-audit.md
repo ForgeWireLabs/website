@@ -6,7 +6,7 @@
 ## Current decisions
 
 - The wordmark, neutral surfaces, restrained teal, and current typography remain the organization identity. No fabricated product mark or shared-product architecture is introduced.
-- The homepage begins with ForgeWire Labs' organizational purpose. Its centerpiece is an editorial index of six engineering questions about compute, providers, connectivity, platforms, authority, and evidence. Text states that the index is not a system diagram and does not imply shared product architecture.
+- The homepage begins with ForgeWire Labs' organizational purpose. Its centerpiece is an editorial index of six engineering questions about compute, providers, connectivity, platforms, authority, and evidence. The site presents it as a practical lens for engineering decisions; it introduces no product relationships or fabricated architecture.
 - **Our Work** explains five engineering disciplines separately from products. **Research & Engineering** distinguishes open questions, bounded public implementation evidence, and private development. **Software** retains the individual project identities, maturity, evidence, and source links. **About** establishes the organization before founder context.
 - ForgeWire and Fabric stay separate, private-development directions. Their public descriptions are grounded in the pinned public overview and do not assert availability, release readiness, or unsupported capabilities. See [the public-copy record](../forgewire-fabric-public-copy.md) for source material and exclusions.
 - The authentic ForgeWire Projects capture remains with Software content, where its private-build and sample-data limitations are explained. It is not the homepage centerpiece or social-card artwork.

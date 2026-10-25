@@ -33,11 +33,17 @@ The temporary preview is an externally accessible static design-review site. No 
 
 ## Content and maturity
 
-The homepage establishes ForgeWire Labs before introducing its projects. Its engineering-question index is editorial content and explicitly not a system diagram or a representation of shared product architecture. Our Work describes organizational disciplines; Research & Engineering separates open questions from public implementation examples; Software retains individual product identities and maturity; About introduces the organization before founder context.
+The homepage establishes ForgeWire Labs before introducing its projects and frames six engineering questions as practical design considerations. Our Work describes organizational disciplines; Research & Engineering leads with current investigations and follows with public implementation examples; Software retains individual product identities and maturity; About introduces the organization before founder context.
 
 ForgeWire and Fabric remain private development and are described only from the public overview. RepoPact Proving Grounds is described as a validation repository, not a released product; its pinned instructions use RepoPact 3.0.2 and do not establish coverage of 3.1.3. Released software, source-build previews, developer previews, beta work, and private development remain distinguished. These source claims should be rechecked if upstream sources change before production.
 
 The organization purpose and focus areas are owner-provided statements and remain subject to final disclosure approval before production. No customers, team size, commercial availability, production readiness, shared runtime, or unsupported project capability is claimed. On 2026-10-25, GitHub API checks confirmed the eight pinned public repository commits in `content-sources.md` still match their current repository heads. PyPI lists RepoPact 3.1.3, SkillForge Academy's latest release is v1.3.2, and Flink's latest release is v2.0.1; Anvil and Workbench have no published releases listed.
+
+## General and security contact
+
+The public organization profile states that people can reach ForgeWire Labs through its repositories. The profile repository has Issues enabled, no Discussions, and no published organization email. The About page therefore offers that repository's public issue form for general organizational inquiries and warns visitors not to post confidential information there. This requires no invented email or new service.
+
+Security reporting is not uniformly configured. Current GitHub API checks show private vulnerability reporting enabled for RepoPact Core and RepoPact Workbench. SkillForge Academy has a security policy, but private reporting is currently disabled there. The profile, ForgeWire overview, Anvil, Flink, and RP Proving Grounds have no root security policy and no private vulnerability reporting setting enabled. The site directs visitors to check the affected project's Security policy or Security tab and warns against using the public general inquiry tracker for vulnerability details. Consistent private reporting remains an organizational follow-up; the website makes no claim that every project offers it.
 
 ## Accessibility and responsive status
 

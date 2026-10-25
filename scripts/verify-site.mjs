@@ -91,7 +91,7 @@ for (const file of htmlFiles) {
   if (canonical !== expectedCanonical) fail(`${label}: canonical URL must be ${expectedCanonical}.`);
   if (!/<meta\s+property="og:image"\s+content="[^"]+"/i.test(html)) fail(`${label}: missing social image metadata.`);
   if (!/<meta\s+property="og:image:alt"\s+content="[^"]+"/i.test(html)) fail(`${label}: missing social image alternative text.`);
-  if (!/property="og:image:alt"\s+content="[^"]*engineering intelligent systems[^\"]*not an architecture diagram/i.test(html)) fail(`${label}: social image alternative text must describe the organization-level question index and clarify that it is not an architecture diagram.`);
+  if (!/property="og:image:alt"\s+content="ForgeWire Labs presents six engineering questions about compute, providers, connectivity, platforms, authority, and evidence\.?"/i.test(html)) fail(`${label}: social image alternative text should identify ForgeWire Labs and its engineering questions.`);
   if (!/<meta\s+property="og:image:width"\s+content="1200"/i.test(html) || !/<meta\s+property="og:image:height"\s+content="630"/i.test(html)) fail(`${label}: social image dimensions must match the 1200×630 asset.`);
   if (!/<meta\s+name="twitter:card"\s+content="summary_large_image"/i.test(html)) fail(`${label}: missing large social card declaration.`);
   const socialImage = `${referenceOrigin}${previewPathPrefix}/assets/forgewire-labs-social.png`;
@@ -182,31 +182,35 @@ if (!projectsPage.includes("dashed boxes mark derived views")) fail("RepoPact di
 if (!projectsPage.includes("Software scope and maturity table")) fail("Software page is missing its accessible release status index.");
 
 const homePage = await readFile(path.join(outputRoot, "index.html"), "utf8");
-for (const phrase of ["Engineering intelligent systems for work", "beyond the model", "independent software engineering", "operating conditions", "ForgeWire", "Fabric", "released CLI package at version 3.1.3"]) {
+for (const phrase of ["Engineering intelligent systems for work", "beyond the model", "independent software engineering", "Six questions help shape practical engineering decisions", "ForgeWire", "Fabric", "released CLI package at version 3.1.3"]) {
   if (!homePage.includes(phrase)) fail(`Homepage narrative is missing “${phrase}”.`);
 }
 if (homePage.includes("forgewire-projects-workspace.png")) fail("The product screenshot should not define the homepage's organization-level centerpiece.");
 if (!homePage.includes("What can run here?") || !homePage.includes("Who can act or intervene?") || !homePage.includes("What can be checked?")) fail("Homepage's constraint index is incomplete.");
-if (!homePage.includes("not a system diagram") || !homePage.includes("not a shared product architecture")) fail("Homepage must distinguish its editorial question index from a product architecture.");
+if (!homePage.includes("A practical lens for engineering decisions.")) fail("Homepage should introduce its question index with affirmative editorial copy.");
+if (homePage.includes("not a system diagram") || homePage.includes("not a shared product architecture") || homePage.includes("not an application release")) fail("Homepage should reserve detailed qualification for project descriptions and status notes.");
 
 if (!projectsPage.includes("organizing model-assisted work around project context, tools, and selected workflows")) fail("ForgeWire project copy should explain its public technical direction.");
 if (!projectsPage.includes("separate execution control-plane direction for authenticated, policy-gated work across machines")) fail("Fabric project copy should explain its public technical direction.");
 if (!projectsPage.includes("not a public service or deployment option")) fail("Fabric public availability limits must remain explicit.");
 
 const engineeringPage = await readFile(path.join(outputRoot, "engineering", "index.html"), "utf8");
-for (const phrase of ["Open questions, not published findings", "canonical Rust engine", "single-writer JSON", "RP Proving Grounds", "pins RepoPact 3.0.2", "does not establish validation coverage for the newer 3.1.3", "It does not describe ForgeWire, Fabric, Anvil, Flink"]) {
+for (const phrase of ["How intelligent systems work across", "Current investigations", "Questions shaping the work", "ForgeWire · private development", "Fabric · private development", "canonical Rust engine", "single-writer JSON", "RP Proving Grounds", "pins RepoPact 3.0.2", "does not establish validation coverage for the newer 3.1.3", "It does not describe ForgeWire, Fabric, Anvil, Flink"]) {
   if (!engineeringPage.includes(phrase)) fail(`Research & Engineering page is missing the bounded content “${phrase}”.`);
 }
+if (engineeringPage.includes("This page separates questions") || engineeringPage.includes("not published findings") || engineeringPage.includes("not claims of completed research")) fail("Research & Engineering should lead with the investigations rather than evidence disclaimers.");
 
 const workPage = await readFile(path.join(outputRoot, "work", "index.html"), "utf8");
-for (const phrase of ["Intelligent systems", "Distributed computing and execution infrastructure", "Developer and repository infrastructure", "Systems integration and local software", "Applied technical education", "not departments", "do not assert that every project implements every principle"]) {
+for (const phrase of ["Intelligent systems", "Distributed computing and execution infrastructure", "Developer and repository infrastructure", "Systems integration and local software", "Applied technical education", "Five disciplines connect", "shape how ForgeWire Labs approaches scope, authority, evidence, and operating constraints"]) {
   if (!workPage.includes(phrase)) fail(`Our Work page is missing the organization-level scope “${phrase}”.`);
 }
 
 const aboutPage = await readFile(path.join(outputRoot, "about", "index.html"), "utf8");
-const founderHeadingPosition = aboutPage.indexOf("Jeremy Shows");
+const founderHeadingPosition = aboutPage.indexOf('id="founder-title"');
 if (founderHeadingPosition >= 0 && founderHeadingPosition < aboutPage.indexOf("</section>")) fail("About page must establish the organization before introducing its founder.");
-if (!aboutPage.includes("independent, founder-led software engineering and research organization") || !aboutPage.includes("unverified headcount or additional roles")) fail("About page must describe the organization accurately without implying an unverified team.");
+if (!aboutPage.includes("independent, founder-led software engineering and research organization")) fail("About page must describe ForgeWire Labs as an independent, founder-led organization.");
+if (!aboutPage.includes("ForgeWireLabs/ForgeWireLabs/issues/new") || !aboutPage.includes("issue tracker is public") || !aboutPage.includes("Security reporting varies by project") || !aboutPage.includes("Keep vulnerability details out of the public inquiry tracker")) fail("About page must provide a public general inquiry channel and distinguish project security reporting.");
+if (aboutPage.includes("No project listing implies") || aboutPage.includes("unverified headcount")) fail("About page contains unnecessary defensive qualification.");
 
 const robots = await readFile(path.join(outputRoot, "robots.txt"), "utf8");
 const sitemap = await readFile(path.join(outputRoot, "sitemap.xml"), "utf8");
