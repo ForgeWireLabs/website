@@ -1,16 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-labelledby="title desc">
   <title id="title">ForgeWire Labs</title>
-  <desc id="desc">Independent engineering across distributed computing, intelligent systems, developer tools, and technical learning.</desc>
-  <rect width="1200" height="630" fill="#f4f6f3"/>
-  <rect width="14" height="630" fill="#176e70"/>
-  <path d="M76 112H1124" fill="none" stroke="#c8d4d1" stroke-width="2"/>
-  <text x="78" y="82" fill="#152a31" font-family="Segoe UI,Arial,sans-serif" font-size="30" font-weight="730" letter-spacing="-.5">ForgeWire <tspan fill="#176e70" font-weight="500">Labs</tspan></text>
-  <text x="78" y="232" fill="#152a31" font-family="Segoe UI,Arial,sans-serif" font-size="58" font-weight="720" letter-spacing="-2.1">Software for work that crosses</text>
-  <text x="78" y="304" fill="#176e70" font-family="Segoe UI,Arial,sans-serif" font-size="58" font-weight="720" letter-spacing="-2.1">people, agents, and machines.</text>
-  <text x="80" y="372" fill="#44575c" font-family="Segoe UI,Arial,sans-serif" font-size="23" font-weight="400">Independent engineering in distributed computing, intelligent systems,</text>
-  <text x="80" y="407" fill="#44575c" font-family="Segoe UI,Arial,sans-serif" font-size="23" font-weight="400">developer software, and technical learning.</text>
-  <path d="M78 477H1124" fill="none" stroke="#c8d4d1" stroke-width="2"/>
-  <text x="80" y="530" fill="#152a31" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="650">DISTRIBUTED COMPUTING</text>
-  <text x="440" y="530" fill="#152a31" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="650">INTELLIGENT SYSTEMS</text>
-  <text x="794" y="530" fill="#152a31" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="650">DEVELOPER SOFTWARE</text>
+  <desc id="desc">ForgeWire Labs wordmark with the statement “Useful AI depends on the system around it,” beside a genuine ForgeWire Projects workspace capture labeled private development and sample data.</desc>
+  <rect width="1200" height="630" fill="#112229"/>
+  <rect width="14" height="630" fill="#8bd8cf"/>
+  <text x="72" y="83" fill="#f4f6f3" font-family="Segoe UI,Arial,sans-serif" font-size="32" font-weight="730" letter-spacing="-.5">ForgeWire <tspan fill="#8bd8cf" font-weight="500">Labs</tspan></text>
+  <text x="74" y="145" fill="#8bd8cf" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="2.4">INDEPENDENT ENGINEERING</text>
+  <text x="72" y="232" fill="#f4f6f3" font-family="Segoe UI,Arial,sans-serif" font-size="43" font-weight="720" letter-spacing="-1.2">Useful AI depends</text>
+  <text x="72" y="289" fill="#f4f6f3" font-family="Segoe UI,Arial,sans-serif" font-size="43" font-weight="720" letter-spacing="-1.2">on the system</text>
+  <text x="72" y="346" fill="#8bd8cf" font-family="Segoe UI,Arial,sans-serif" font-size="43" font-weight="720" letter-spacing="-1.2">around it.</text>
+  <text x="74" y="409" fill="#c9d6d4" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="400">Boundaries · state · recovery · human decisions</text>
+  <text x="74" y="438" fill="#c9d6d4" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="400">Distributed computing · developer software</text>
+  <path d="M72 500H1128" fill="none" stroke="#39545a" stroke-width="2"/>
+  <rect x="632" y="142" width="496" height="284" fill="#1b3238" stroke="#65847f" stroke-width="2"/>
+  <image href="forgewire-projects-workspace.png" x="640" y="150" width="480" height="270" preserveAspectRatio="xMidYMid meet"/>
+  <text x="640" y="458" fill="#f4f6f3" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.15">FORGEWIRE · PROJECTS WORKSPACE</text>
+  <text x="640" y="483" fill="#c1d0cf" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" letter-spacing=".5">PRIVATE DEVELOPMENT · SAMPLE DATA</text>
+  <text x="74" y="556" fill="#bdccca" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" letter-spacing=".65">SOFTWARE FOR WORK ACROSS PEOPLE, AGENTS, AND MACHINES</text>
 </svg>

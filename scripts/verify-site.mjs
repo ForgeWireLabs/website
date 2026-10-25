@@ -49,6 +49,7 @@ const requiredFiles = [
   "assets/favicon.svg",
   "assets/forgewire-labs-social.svg",
   "assets/forgewire-labs-social.png",
+  "assets/forgewire-projects-workspace.png",
   "assets/repopact-architecture.svg",
   "assets/workbench-desktop-dashboard.jpg",
   "assets/skillforge-command-center.png",
@@ -88,6 +89,7 @@ for (const file of htmlFiles) {
   if (canonical !== expectedCanonical) fail(`${label}: canonical URL must be ${expectedCanonical}.`);
   if (!/<meta\s+property="og:image"\s+content="[^"]+"/i.test(html)) fail(`${label}: missing social image metadata.`);
   if (!/<meta\s+property="og:image:alt"\s+content="[^"]+"/i.test(html)) fail(`${label}: missing social image alternative text.`);
+  if (!/property="og:image:alt"\s+content="[^"]*genuine ForgeWire Projects workspace capture[^\"]*sample data/i.test(html)) fail(`${label}: social image alternative text must describe the authentic capture and sample-data context.`);
   if (!/<meta\s+property="og:image:width"\s+content="1200"/i.test(html) || !/<meta\s+property="og:image:height"\s+content="630"/i.test(html)) fail(`${label}: social image dimensions must match the 1200×630 asset.`);
   if (!/<meta\s+name="twitter:card"\s+content="summary_large_image"/i.test(html)) fail(`${label}: missing large social card declaration.`);
   const socialImage = `${referenceOrigin}${previewPathPrefix}/assets/forgewire-labs-social.png`;
@@ -180,6 +182,15 @@ for (const phrase of ["Software for work that crosses", "people, agents, and mac
   if (!homePage.includes(phrase)) fail(`Homepage narrative is missing “${phrase}”.`);
 }
 if (homePage.indexOf("ForgeWire") > homePage.indexOf("RepoPact")) fail("Private development should be introduced before the homepage narrows into RepoPact.");
+if (!homePage.includes(`src="${previewPathPrefix}/assets/forgewire-projects-workspace.png"`) || !homePage.includes("disposable sample data") || !homePage.includes("not a full-window view or a public release")) {
+  fail("Homepage must use the genuine ForgeWire workspace capture and clearly qualify its private-build sample data.");
+}
+if (!homePage.includes("ForgeWire organizes the work. Fabric explores remote execution.")) fail("Homepage should distinguish ForgeWire and Fabric's technical directions.");
+if (!homePage.includes("authenticated, policy-gated work across machines")) fail("Homepage Fabric summary must remain grounded in the public overview.");
+
+if (!projectsPage.includes("organizing model-assisted work around project context, tools, and selected workflows")) fail("ForgeWire project copy should explain its public technical direction.");
+if (!projectsPage.includes("separate execution control-plane direction for authenticated, policy-gated work across machines")) fail("Fabric project copy should explain its public technical direction.");
+if (!projectsPage.includes("not a public service or deployment option")) fail("Fabric public availability limits must remain explicit.");
 
 const engineeringPage = await readFile(path.join(outputRoot, "engineering", "index.html"), "utf8");
 for (const phrase of ["canonical Rust engine", "arbitrary process confinement", "single-writer JSON", "JeremyShows", "Implementation notes"]) {
@@ -199,6 +210,8 @@ if (isPreview) {
   }
 }
 
+const socialSvg = await readFile(path.join(outputRoot, "assets", "forgewire-labs-social.svg"), "utf8");
+if (!socialSvg.includes('href="forgewire-projects-workspace.png"') || !socialSvg.includes("Useful AI depends")) fail("Social card must use the genuine ForgeWire capture and the public systems-first premise.");
 const socialPng = await readFile(path.join(outputRoot, "assets", "forgewire-labs-social.png"));
 if (socialPng.toString("hex", 0, 8) !== "89504e470d0a1a0a") fail("Social card is not a valid PNG.");
 if (socialPng.readUInt32BE(16) !== 1200 || socialPng.readUInt32BE(20) !== 630) fail("Social card must be 1200×630 pixels.");
