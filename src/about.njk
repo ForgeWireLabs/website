@@ -59,14 +59,33 @@ permalink: /about/index.html
 <section class="organization-section page-shell" aria-labelledby="contact-title">
   <div class="organization-copy">
     <p class="eyebrow">Contact</p>
-    <h2 id="contact-title">Get in touch with ForgeWire Labs.</h2>
-    <p>For general organizational inquiries, open an issue in the ForgeWire Labs organization repository. The issue tracker is public, so keep confidential information out of your message.</p>
-    <a class="text-link" href="https://github.com/ForgeWireLabs/ForgeWireLabs/issues/new">Start a general inquiry <span aria-hidden="true">↗</span></a>
+    <h2 id="contact-title">Choose the right route.</h2>
+    <div class="contact-route-list">
+      <article class="contact-route">
+        <h3>General correspondence</h3>
+        <p>Until an organizational email inbox is active, general inquiries can use the ForgeWire Labs organization issue tracker. Posts are public; do not include confidential or personal information.</p>
+        <a class="text-link" href="https://github.com/ForgeWireLabs/ForgeWireLabs/issues/new">Start a public inquiry <span aria-hidden="true">↗</span></a>
+      </article>
+      <article class="contact-route">
+        <h3>Software questions</h3>
+        <p>For publicly available software, use the relevant project repository for public bug reports and feature discussion. Check that project's README for its release and support scope.</p>
+        <a class="text-link" href="{{ site.basePath }}/projects/">Find a project repository <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="contact-route">
+        <h3>Security disclosures</h3>
+        <p>Check the affected repository's Security tab for private vulnerability reporting before sending details. Availability varies by project. Do not post vulnerability details in public Issues; no central security mailbox has been verified as active.</p>
+        <a class="text-link" href="{{ site.github }}">Check project security routes <span aria-hidden="true">↗</span></a>
+      </article>
+    </div>
   </div>
-  <aside class="contact-block">
-    <p class="eyebrow">Security reports</p>
-    <h3>Use the project's security route</h3>
-    <p>Security reporting varies by project. Check its Security policy or Security tab for the current private route. Keep vulnerability details out of the public inquiry tracker.</p>
-    <a class="button button-primary" href="{{ site.github }}">Find project security guidance <span aria-hidden="true">↗</span></a>
+  <aside class="contact-block" aria-labelledby="planned-email-title">
+    <p class="eyebrow">Planned email identities · inactive</p>
+    <h3 id="planned-email-title">Future .com contact routes</h3>
+    <dl class="planned-addresses">
+      <div><dt>General correspondence</dt><dd><code>contact@forgewirelabs.com</code></dd></div>
+      <div><dt>Public software questions</dt><dd><code>support@forgewirelabs.com</code></dd></div>
+      <div><dt>Private security reporting</dt><dd><code>security@forgewirelabs.com</code></dd></div>
+    </dl>
+    <p class="planned-email-note">These addresses are planning names, not active inboxes. Use the current routes above until a mailbox has been set up and tested.</p>
   </aside>
 </section>

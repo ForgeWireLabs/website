@@ -365,12 +365,22 @@ h3 { font-size: 1.18rem; font-weight: 720; letter-spacing: -.02em; }
 .about-principle h2 { max-width: 990px; }
 .about-principle p:last-child { max-width: 800px; margin: 0; color: #cfdbd9; }
 .organization-section { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(280px, .7fr); gap: 60px; padding-block: 86px 96px; }
+.contact-route-list { display: grid; gap: 22px; margin-top: 28px; }
+.contact-route { padding-top: 21px; border-top: 1px solid var(--line); }
+.contact-route h3 { margin: 0 0 8px; font-size: 1.12rem; }
+.contact-route p { max-width: 62ch; color: var(--ink-soft); }
 .organization-copy h2 { max-width: 730px; }
 .organization-copy > p:not(.eyebrow) { max-width: 750px; color: var(--ink-soft); }
 .contact-block { padding: 23px; border: 1px solid var(--line); background: var(--surface); }
 .contact-block h3 { font-size: 1.6rem; }
 .contact-block p:not(.eyebrow) { color: var(--ink-soft); font-size: .92rem; }
 .contact-block .button { max-width: 100%; }
+.planned-addresses { margin: 18px 0 0; }
+.planned-addresses > div { padding: 13px 0; border-top: 1px solid var(--line); }
+.planned-addresses dt { color: var(--ink-soft); font-size: .82rem; }
+.planned-addresses dd { margin: 5px 0 0; }
+.planned-addresses code { overflow-wrap: anywhere; font-size: .91em; }
+.planned-email-note { margin-top: 18px; }
 
 .site-footer { color: var(--paper); background: var(--dark); border-top: 1px solid var(--dark-line); }
 .footer-inner { width: min(var(--content), calc(100% - 64px)); margin-inline: auto; padding-block: 33px 39px; }

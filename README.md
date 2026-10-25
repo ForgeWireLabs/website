@@ -29,6 +29,8 @@ Verified diagrams and screenshots are described in [content sources](docs/conten
 ## Decisions and operations
 
 - [Architecture decision record](docs/adr/0001-static-site-on-ionos.md)
+- [Organizational email assessment](docs/email-architecture-assessment.md)
+- [Email handling policy and response templates](docs/email-handling-policy.md)
 - [IONOS capability and cost assessment](docs/hosting-assessment.md)
 - [Deployment procedure](docs/deployment-runbook.md)
 - [Temporary preview hosting and removal](docs/preview-hosting.md)

@@ -15,6 +15,8 @@
 ## Accuracy checks
 
 - The organization-first purpose and focus areas are owner-provided staging copy and require approval before production.
+- About distinguishes the current public general route, public project discussions, and private security reporting. Planned `.com` identities are marked inactive and have no `mailto:` links.
+- Before production, verify the IONOS email contract and account-specific charges. Activate role mailboxes only after approval, test routing and reply identity, and keep confidential security reporting separate from public issue trackers.
 - ForgeWire and Fabric stay private development; the public overview is not an installation path or release.
 - RP Proving Grounds is a validation repository, not a separately released product; its currently pinned RepoPact version is 3.0.2.
 - Flink is linked to the ForgeWire Labs repository; its current README/release naming and package boundaries remain disclosed.

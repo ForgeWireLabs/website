@@ -13,7 +13,7 @@ Do not begin the production sequence until each item is verified and approved:
 5. The invoice confirms current Web Hosting, CDN, and domain charges and renewal amounts. Do not infer the account's cost from the public catalogue.
 6. Record current DNS records and their TTLs. Preserve MX, TXT, CAA, mail, and unrelated service records.
 7. Jeremy approves connecting the .com to IONOS webspace and any specific A, AAAA, or CNAME changes. The IONOS domain-assignment wizard may propose DNS changes; stop at that prompt until those exact changes are approved.
-8. Confirm the public legal/privacy text and security contact.
+8. Confirm public legal/privacy text and the contact policy. Do not activate website mail links until each address exists and inbound delivery, reply identity, SPF/DKIM/DMARC alignment, and routing have passed controlled tests. Confirm a private security intake route before inviting security reports.
 
 No other domain is included in this deployment.
 

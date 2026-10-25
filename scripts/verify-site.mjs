@@ -209,7 +209,11 @@ const aboutPage = await readFile(path.join(outputRoot, "about", "index.html"), "
 const founderHeadingPosition = aboutPage.indexOf('id="founder-title"');
 if (founderHeadingPosition >= 0 && founderHeadingPosition < aboutPage.indexOf("</section>")) fail("About page must establish the organization before introducing its founder.");
 if (!aboutPage.includes("independent, founder-led software engineering and research organization")) fail("About page must describe ForgeWire Labs as an independent, founder-led organization.");
-if (!aboutPage.includes("ForgeWireLabs/ForgeWireLabs/issues/new") || !aboutPage.includes("issue tracker is public") || !aboutPage.includes("Security reporting varies by project") || !aboutPage.includes("Keep vulnerability details out of the public inquiry tracker")) fail("About page must provide a public general inquiry channel and distinguish project security reporting.");
+for (const phrase of ["ForgeWireLabs/ForgeWireLabs/issues/new", "Posts are public", "General correspondence", "Software questions", "Security disclosures", "no central security mailbox has been verified as active", "Planned email identities · inactive", "contact@forgewirelabs.com", "support@forgewirelabs.com", "security@forgewirelabs.com", "planning names, not active inboxes"]) {
+  if (!aboutPage.includes(phrase)) fail(`About page is missing the contact status or route “${phrase}”.`);
+}
+if (/href="mailto:(?:contact|support|security)@forgewirelabs\.com"/i.test(aboutPage)) fail("Planned email identities must not be presented as working mail links.");
+if (aboutPage.includes("@forgewirelabs.org")) fail("The owner's named .org mailbox must not be published on the website.");
 if (aboutPage.includes("No project listing implies") || aboutPage.includes("unverified headcount")) fail("About page contains unnecessary defensive qualification.");
 
 const robots = await readFile(path.join(outputRoot, "robots.txt"), "utf8");
