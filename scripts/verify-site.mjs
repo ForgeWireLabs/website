@@ -2,7 +2,13 @@ import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
-const outputRoot = path.resolve("_site");
+const isPreview = process.argv.includes("--preview");
+const outputRoot = path.resolve(isPreview ? "_preview" : "_site");
+const expectedCanonicalPrefix = isPreview
+  ? "https://forgewirelabs.github.io/website/"
+  : "https://forgewirelabs.com/";
+const referenceOrigin = isPreview ? "https://forgewirelabs.github.io" : "https://forgewirelabs.com";
+const previewPathPrefix = isPreview ? "/website" : "";
 const failures = [];
 
 async function walk(directory) {
@@ -21,7 +27,7 @@ function fail(message) { failures.push(message); }
 try {
   await stat(outputRoot);
 } catch {
-  console.error("Build output _site/ is missing. Run `npm run build` first.");
+  console.error(`Build output ${isPreview ? "_preview/" : "_site/"} is missing. Run the matching build command first.`);
   process.exit(1);
 }
 
@@ -57,7 +63,14 @@ for (const file of htmlFiles) {
   if (!/<html\s+lang="[^"]+"/i.test(html)) fail(`${label}: missing document language.`);
   if (!/<title>[^<]+<\/title>/i.test(html)) fail(`${label}: missing page title.`);
   if (!/<meta\s+name="description"\s+content="[^"]+"/i.test(html)) fail(`${label}: missing meta description.`);
-  if (!/<link\s+rel="canonical"\s+href="https:\/\/forgewirelabs\.com\//i.test(html)) fail(`${label}: canonical URL is missing or not on the production domain.`);
+  const canonical = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i)?.[1];
+  if (!canonical?.startsWith(expectedCanonicalPrefix)) fail(`${label}: canonical URL must start with ${expectedCanonicalPrefix}.`);
+  if (isPreview) {
+    if (!/<meta\s+name="robots"\s+content="noindex, nofollow"\s*\/?\s*>/i.test(html)) fail(`${label}: preview page is missing its noindex directive.`);
+    if (!html.includes("Development preview · Temporary public review copy")) fail(`${label}: preview banner is missing.`);
+  } else if (/<meta\s+name="robots"/i.test(html)) {
+    fail(`${label}: production build unexpectedly contains preview robots metadata.`);
+  }
 
   const h1Count = [...html.matchAll(/<h1\b/gi)].length;
   if (h1Count !== 1) fail(`${label}: expected one h1, found ${h1Count}.`);
@@ -88,12 +101,20 @@ for (const file of htmlFiles) {
 
     let url;
     try {
-      url = new URL(reference, "https://forgewirelabs.com/");
+      url = new URL(reference, `${referenceOrigin}/`);
     } catch {
       fail(`${label}: invalid local reference "${reference}".`);
       continue;
     }
-    let resourcePath = decodeURIComponent(url.pathname).replace(/^\/+/, "");
+    let pathname = decodeURIComponent(url.pathname);
+    if (isPreview) {
+      if (pathname !== previewPathPrefix && !pathname.startsWith(`${previewPathPrefix}/`)) {
+        fail(`${label}: preview reference is missing the ${previewPathPrefix} base path: "${reference}".`);
+        continue;
+      }
+      pathname = pathname.slice(previewPathPrefix.length);
+    }
+    let resourcePath = pathname.replace(/^\/+/, "");
     if (!resourcePath || resourcePath.endsWith("/")) resourcePath += "index.html";
     const target = path.resolve(outputRoot, resourcePath);
     if (!target.startsWith(`${outputRoot}${path.sep}`) && target !== path.join(outputRoot, "index.html")) {
@@ -113,10 +134,14 @@ for (const projectName of ["RepoPact Core", "RepoPact Workbench", "Anvil", "Skil
 const homePage = await readFile(path.join(outputRoot, "index.html"), "utf8");
 if ([...homePage.matchAll(/<article\s+class="project-card/g)].length !== 4) fail("Homepage should render 4 featured portfolio records.");
 
+const robots = await readFile(path.join(outputRoot, "robots.txt"), "utf8");
+if (isPreview && /Sitemap:/i.test(robots)) fail("Preview robots.txt should not advertise a sitemap.");
+if (!isPreview && !robots.includes("Sitemap: https://forgewirelabs.com/sitemap.xml")) fail("Production robots.txt should advertise its sitemap.");
+
 if (failures.length) {
   console.error(`Site verification failed with ${failures.length} issue(s):`);
   for (const failure of failures) console.error(`- ${failure}`);
   process.exit(1);
 }
 
-console.log(`Site verification passed: ${htmlFiles.length} HTML pages, required assets, metadata, headings, and local references checked.`);
+console.log(`Site verification passed: ${htmlFiles.length} HTML pages, required assets, metadata, headings, and local references checked${isPreview ? " for preview mode" : ""}.`);

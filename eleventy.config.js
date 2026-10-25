@@ -1,13 +1,12 @@
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
-  eleventyConfig.addPassthroughCopy("src/robots.txt");
 
   return {
     dir: {
       input: "src",
       includes: "_includes",
       data: "_data",
-      output: "_site",
+      output: process.env.FORGEWIRE_PREVIEW === "1" ? "_preview" : "_site",
     },
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk",

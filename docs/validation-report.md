@@ -1,12 +1,13 @@
 # Validation report
 
-**Status:** Local prototype validation complete. No production host or DNS validation has been performed.
+**Status:** Local production and staging build checks pass. Public preview verification is pending. No production host or DNS validation has been performed.
 
 ## Planned local checks
 
 - Install from the committed lockfile with `npm ci`.
 - Build using `npm run build`.
 - Run the local smoke/link/metadata checks using `npm run verify`.
+- Build the staging artifact using `npm run build:preview` and validate it using `npm run verify:preview`.
 - Review desktop and narrow/mobile layouts in a local browser.
 - Inspect keyboard navigation, focus visibility, headings, image alternatives, and reduced-motion behavior.
 - Check for external scripts, forms, analytics, tracking pixels, and non-local fonts.
@@ -16,6 +17,7 @@
 - `npm ci --no-audit --no-fund` completed from the lockfile.
 - `npm run build` completed with Eleventy 3.1.7. Output includes four HTML pages, `robots.txt`, `sitemap.xml`, and local assets.
 - `npm run verify` passed: page metadata, one `h1` per page, local references, expected project records, image alternatives, and no script/form/remote asset embeds.
+- `npm run build:preview` and `npm run verify:preview` passed. All four staging pages use the GitHub Pages `/website/` path prefix, point canonicals to the preview host, show the development-preview label, and include `noindex, nofollow`. The preview robots file omits a sitemap; preview output contains no source maps or environment files.
 - `npm audit` reported zero known vulnerabilities in the dependency tree at validation time.
 - Browser review covered the homepage at 1280×720 and all four pages at 390×844. The pages had no horizontal overflow. The navigation and headings appeared correctly in the browser accessibility tree. On mobile, the RepoPact diagram gives way to a readable ordered list of its stages.
 - The preview server returned HTTP 200 for all four page routes, CSS, `robots.txt`, and `sitemap.xml`. The listening address was `127.0.0.1`. It adds local-only security headers and has no external runtime service.

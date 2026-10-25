@@ -13,6 +13,16 @@
   --content: 1160px;
 }
 
+.preview-banner {
+  background: #102d3b;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  padding: 0.65rem 1rem;
+  text-align: center;
+}
+
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }

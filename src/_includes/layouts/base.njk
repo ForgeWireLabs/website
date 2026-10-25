@@ -6,30 +6,32 @@
     <meta name="color-scheme" content="light">
     <title>{{ title }} | {{ site.name }}</title>
     <meta name="description" content="{{ description or site.description }}">
-    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="canonical" href="{{ site.url }}{{ site.basePath }}{{ page.url }}">
+    {% if site.preview %}<meta name="robots" content="noindex, nofollow">{% endif %}
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ site.name }}">
     <meta property="og:title" content="{{ title }} | {{ site.name }}">
     <meta property="og:description" content="{{ description or site.description }}">
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-    <meta property="og:image" content="{{ site.url }}{{ site.socialImage }}">
+    <meta property="og:url" content="{{ site.url }}{{ site.basePath }}{{ page.url }}">
+    <meta property="og:image" content="{{ site.url }}{{ site.basePath }}{{ site.socialImage }}">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/assets/site.css">
+    <link rel="icon" href="{{ site.basePath }}/assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ site.basePath }}/assets/site.css">
   </head>
   <body>
+    {% if site.preview %}<div class="preview-banner" role="note">Development preview · Temporary public review copy</div>{% endif %}
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="header-inner">
-        <a class="wordmark" href="/" aria-label="ForgeWire Labs home">
+        <a class="wordmark" href="{{ site.basePath }}/" aria-label="ForgeWire Labs home">
           <span class="wordmark-mark" aria-hidden="true"><span>F</span><span>/</span><span>W</span></span>
           <span class="wordmark-name">ForgeWire <span>Labs</span></span>
         </a>
         <nav aria-label="Main navigation">
           <ul class="nav-list">
-            <li><a href="/projects/"{% if page.url.startsWith('/projects') %} aria-current="page"{% endif %}>Projects</a></li>
-            <li><a href="/engineering/"{% if page.url.startsWith('/engineering') %} aria-current="page"{% endif %}>Engineering</a></li>
-            <li><a href="/about/"{% if page.url.startsWith('/about') %} aria-current="page"{% endif %}>About</a></li>
+            <li><a href="{{ site.basePath }}/projects/"{% if page.url.startsWith('/projects') %} aria-current="page"{% endif %}>Projects</a></li>
+            <li><a href="{{ site.basePath }}/engineering/"{% if page.url.startsWith('/engineering') %} aria-current="page"{% endif %}>Engineering</a></li>
+            <li><a href="{{ site.basePath }}/about/"{% if page.url.startsWith('/about') %} aria-current="page"{% endif %}>About</a></li>
           </ul>
         </nav>
       </div>
@@ -42,7 +44,7 @@
         <p class="footer-brand">ForgeWire Labs <span>·</span> Independent engineering and applied AI</p>
         <div class="footer-links">
           <a href="{{ site.github }}">GitHub organization</a>
-          <a href="/projects/">Project availability</a>
+          <a href="{{ site.basePath }}/projects/">Project availability</a>
         </div>
         <p class="footer-note">Each project has its own scope, repository, and release status.</p>
       </div>
