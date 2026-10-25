@@ -6,9 +6,14 @@
 
 - Preview URL: `https://forgewirelabs.github.io/website/`
 - Platform: GitHub Pages, publishing the root of the `website-preview` artifact branch in the public `ForgeWireLabs/website` repository.
-- The current source and artifact revisions are recorded after deployment in this file and in `validation-report.md`.
+- Site source revision used for the current page build: `01a10ef99a88d8f9a6e61505a79a782ceed7779d`.
+- Generated page artifact revision: `fe1e1bf6f8ea701609d1a56f1a72b78960f25ba3`.
+- Latest artifact branch revision, which adds reviewed desktop and mobile captures: `3d707ebb6db26908e783b968cd525bc3384b675c`.
+- [Desktop homepage capture · 1200 × 900](https://forgewirelabs.github.io/website/review-captures/home-desktop.jpg?review=3d707eb)
+- [Mobile homepage capture · 390 × 844](https://forgewirelabs.github.io/website/review-captures/home-mobile.jpg?review=3d707eb)
+- The current source and artifact revisions are also listed in [validation-report.md](validation-report.md).
 - Production remains intended for the existing IONOS Web Hosting Plus contract. No custom domain, IONOS domain assignment, production DNS, CDN activation, or hosting credentials are used by this preview.
-- The artifact contains generated HTML, CSS, SVG, PNG, JPEG, review screenshots, `robots.txt`, `sitemap.xml`, `.nojekyll`, and its line-ending attributes file. It excludes source code, source maps, `node_modules`, local configuration, and internal documentation.
+- The artifact contains generated HTML, CSS, SVG, PNG, JPEG, the reviewed captures under `review-captures/`, `robots.txt`, an empty preview sitemap, `.nojekyll`, and its line-ending attributes file. It excludes source code, source maps, `node_modules`, local configuration, and internal documentation.
 
 ## Preview-only behavior
 
@@ -29,7 +34,7 @@ npm run verify:preview
 npm audit --audit-level=high
 ```
 
-Publish the contents of `_preview/` to the root of `website-preview`, including a `.nojekyll` file. Store visual review captures only under `review-captures/` on that artifact branch. Do not copy the source repository, `docs/`, `.git/`, `node_modules/`, source maps, or environment files to the artifact branch.
+Publish the contents of `_preview/` to the root of `website-preview`, including a `.nojekyll` file. Store visual review captures under `review-captures/` on that artifact branch. Do not copy the source repository, `docs/`, `.git/`, `node_modules/`, source maps, or environment files to the artifact branch.
 
 ## Remove after review
 

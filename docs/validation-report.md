@@ -1,65 +1,50 @@
-# ForgeWire Labs website review report
+# ForgeWire Labs final candidate review report
 
 - **Reviewed:** 2026-10-25
-- **Purpose:** second-round design and implementation review of the temporary public preview.
-- **Status:** ready for Jeremy and ChatGPT design review; the production site and visual direction remain unapproved.
+- **Purpose:** final identity, content, and accessibility review of the public staging candidate.
+- **Status:** ready for Jeremy and ChatGPT to approve or revise the visual direction and staging copy. Production preparation is not approved by this report.
 
-## Public preview and source revisions
+## Public preview and revisions
 
-- **Preview:** [https://forgewirelabs.github.io/website/?review=caa996c](https://forgewirelabs.github.io/website/?review=caa996c)
-- **Site source used for this build:** `bf44a0c86d92ded933918b46db5812c1e56b0400`
-- **Published Pages artifact:** `caa996c6aa33dfeb6ecc1d09b925a9425ce8fbc3`
+- **Preview:** [https://forgewirelabs.github.io/website/?review=01a10ef](https://forgewirelabs.github.io/website/?review=01a10ef)
+- **Site source revision used to build the pages:** `01a10ef99a88d8f9a6e61505a79a782ceed7779d`
+- **Generated site artifact revision:** `fe1e1bf6f8ea701609d1a56f1a72b78960f25ba3`
+- **Current `website-preview` branch revision, including review captures:** `3d707ebb6db26908e783b968cd525bc3384b675c`
 - **Draft PR:** [ForgeWireLabs/website#1](https://github.com/ForgeWireLabs/website/pull/1)
 
-The artifact contains the site generated from `bf44a0c`; its commit records that source revision. The source branch is being updated with review documentation separately. PR #1 remains open and draft. This preview is a public static site: anyone with the link can read it.
+The published site was built from the source revision above. The latest artifact commit adds two review images and does not change the generated pages. PR #1 remains open and draft. The preview is public and has no access control.
 
-## Summary of the second-round changes
+## Review captures
 
-- Rebalanced the home page so visitors first see the organization's scope across distributed computing, intelligent systems, developer software, and technical learning. ForgeWire and Fabric are prominent as separate private-development projects; RepoPact evidence follows later.
-- Replaced the generic topology mark and older acid-lime editorial direction with a wordmark-first identity, neutral surfaces, a restrained teal signal, readable sans-serif headings and body text, and limited monospace source labels. No fire or forge motifs, gradients, synthetic product screens, decorative network art, or motion were added.
-- Replaced the old social image with a matching 1200×630 wordmark card and simplified favicon to a typographic `FW` fallback.
-- Added concrete engineering examples for RepoPact Core's Rust semantics and typed operations, Workbench's separate source-build preview, and Anvil's single-writer JSON store and scope limits. Removed unsupported claims about arbitrary process confinement and private project implementation.
-- Improved image crops, captions, full-resolution links, and the mobile ownership table's keyboard scroll hint. Clarified that Workbench counts are disposable fixture data, SkillForge figures are sample account state, and ForgeLink optional lines do not prove an implemented integration.
-- Removed the obsolete profile hero asset and unused RepoPact flow prototype from source and generated output while keeping Git history intact.
-- Added a versioned stylesheet URL so the public preview does not keep showing a cached earlier stylesheet.
+Both captures show the actual public homepage with the temporary preview label:
 
-The detailed design critique, visual rationale, source review, and open accessibility concerns are recorded in [design-quality-audit.md](design/design-quality-audit.md). Research references are listed in that audit, including [Impeccable's design critique](https://impeccable.style/slop/), [Pentagram's MIT Media Lab identity](https://www.pentagram.com/work/mit-media-lab), and [IBM's technical diagram guidance](https://www.ibm.com/design/language/infographics/technical-diagrams/usage/). The work uses those sources as evaluation criteria and does not copy their visual systems.
+- [Desktop · 1200 × 900](https://forgewirelabs.github.io/website/review-captures/home-desktop.jpg?review=3d707eb)
+- [Mobile · 390 × 844](https://forgewirelabs.github.io/website/review-captures/home-mobile.jpg?review=3d707eb)
 
-## Design-quality findings
+The mobile capture uses explicit 390 × 844 device emulation and the page's mobile media rules. It is not a resized or clipped desktop view.
 
-The previous prototype had repeated SaaS cards and a generic topology symbol. Its later warm-paper, acid-lime, editorial-serif revision risked substituting a recognizable editorial-tech template for the earlier SaaS template. Repetition of small uppercase labels, monospace annotations, status badges, and abstract technical marks did not earn space where it added no information.
+## Targeted identity and composition changes
 
-The correction makes the organization's written name the primary identity and lets project-owned imagery retain each product's own visual character. Teal provides organization-level hierarchy and focus; neutral surfaces keep technical evidence legible. Sans-serif type supports long-form reading, while monospace is used only for short source or implementation labels. Section numbering, the generic topology glyph, decorative gradients, and the unused abstract diagram were removed. The design is recognizable through its editorial choices and evidence, while leaving final creative approval to Jeremy and ChatGPT.
+- Kept the existing page structure and Eleventy build. No wholesale redesign or new visual framework was introduced.
+- Made the homepage centerpiece a genuine ForgeWire Projects workspace capture from the pinned public overview. Its caption calls out private development, the capture date, disposable sample data, and that this is one widget rather than a full product tour or release.
+- Kept the social image wordmark-led, with a more specific composition using the same authentic workspace evidence and the line “Useful AI depends on the system around it.” The image does not imply a released product or feature set. [View the public social card](https://forgewirelabs.github.io/website/assets/forgewire-labs-social.png?v=01a10ef).
+- Kept project-owned diagrams on their respective project pages. No new system map or cross-product relationship was invented.
+- Preserved the neutral and teal palette, readable type, reduced-motion behavior, and visible keyboard focus treatment.
+- The design rationale and previous review criteria remain in [design-quality-audit.md](design/design-quality-audit.md).
 
-## Technical imagery and provenance
+## ForgeWire and Fabric copy review
 
-| Visual | What it shows | Source and treatment |
-|---|---|---|
-| RepoPact Core architecture | Repository records, Core engine, clients, and derived views | SVG from the pinned public Core documentation; the page identifies arrow meanings, derived views, and the optional host/CI boundary, and links to the full-size diagram. |
-| RepoPact Workbench capture | A real validation summary from a local Windows x64 build | Public Workbench repository capture from a disposable Core conformance fixture. The site uses a CSS crop without editing the image and labels its counts as fixture data, not customer or production metrics; the original opens at full resolution. |
-| ForgeLink product model | ForgeLink's own communication and coordination model | Public JeremyShows repository diagram. Caption preserves its ownership and clarifies that dashed optional edges do not establish implementation or a shared ForgeWire architecture. |
-| SkillForge Academy capture | The published Windows application's command center | Public organization-profile image. Caption identifies the 0% values and practice counts as sample account state, not learner outcomes; newer beta surfaces are not shown. |
-| Social card and favicon | ForgeWire Labs wordmark and portfolio scope | New site-authored assets aligned with the page identity; no product UI, customer imagery, or unsupported result claims. |
+The live staging text paraphrases only the public ForgeWire overview pinned at [`85d1905b0bd8db420882f00065daff34833dab27`](https://github.com/ForgeWireLabs/ForgeWire-Overview/blob/85d1905b0bd8db420882f00065daff34833dab27/README.md). Both projects are labeled **Private development**.
 
-Pinned revisions, licensing notes, ownership, image dimensions, and additional source details are recorded in [content-sources.md](content-sources.md). No private screenshots, internal documents, credentials, source maps, or environment files are in the artifact.
+The staging candidate describes ForgeWire as an application and runtime direction organizing model-assisted work around project context, tools, and selected workflows for a person to review. It describes Fabric as a separate control-plane direction for authenticated, policy-gated work across machines, with limited, configuration-dependent integration for selected ForgeWire workflows. The pages state that neither is a public installation or service and do not announce availability or a release date.
 
-## Technical claims, ownership, and maturity
-
-The RepoPact diagrams and copy were checked against the pinned Core source. The Workbench preview status is separate from the stable Core CLI release. Anvil is identified as a developer preview with a single-writer JSON store and no execution ownership or audit-trail claim. SkillForge's public Windows release is labeled v1.3.2; unreleased course-platform work remains separate. ForgeWire is described at the level of its public overview, which is not application source or a supported release. Fabric remains a separate private-development project with no implementation details disclosed. ForgeLink's JeremyShows ownership and release channel remain explicit.
-
-The site does not imply that these products are one integrated runtime. Each project page links to the source responsible for its claims. Before a production launch, recheck repository revisions and releases against [content-sources.md](content-sources.md).
-
-## Staging metadata and indexing
-
-All four preview pages carry `noindex, nofollow`. The preview `robots.txt` does not advertise a sitemap, and its generated sitemap contains no page URLs. Preview canonical metadata uses the GitHub Pages URL; the separate production build uses `forgewirelabs.com` and retains its four-route sitemap and indexing eligibility. The public URL remains directly accessible over HTTPS without authentication.
-
-`noindex` discourages search indexing; it does not restrict access, guarantee removal from every index, or make the preview discoverable through search or ChatGPT. Share the direct preview URL with reviewers. The revision query in the provided link is for cache busting.
+[forgewire-fabric-public-copy.md](forgewire-fabric-public-copy.md) separates those verified public facts, the current staging wording, two more problem-first alternatives that remain unpublished, and private details that must stay out of public copy. The alternatives would need approval before they appear on the site.
 
 ## Validation results
 
-### Build and source checks
+### Build, source checks, and dependency audit
 
-These checks passed for the redesign before this report-only documentation update:
+These checks passed for the deployed site source revision:
 
 ```text
 npm run build
@@ -67,32 +52,35 @@ npm run verify
 npm run build:preview
 npm run verify:preview
 npm audit --audit-level=high
-git diff --check
 ```
 
-Both site builds and verifiers passed; `npm audit` reported zero vulnerabilities. The verifier checks route metadata, canonical and indexing policy, local links and assets, image alternatives, release and ownership boundaries, SVG safety, preview path prefix, and output privacy scope. The report update does not change site source or generated output.
+Both builds and verifiers passed. `npm audit` reported zero vulnerabilities. The verifiers check routes, metadata and indexing policy, local links and assets, image alternatives, release and ownership boundaries, SVG safety, base paths, and output privacy scope. The final documentation changes pass `git diff --check`.
 
-### Public HTTPS and output isolation
+### Independent public requests and privacy scope
 
-- Independent HTTPS requests to the four routes and expected static assets returned HTTP 200; TLS certificate verification succeeded.
-- Navigation among Projects, Engineering, and About worked. CSS, favicon, social card, diagrams, and project images loaded; the browser console had no warnings or errors.
-- Requests for `.env`, `package-lock.json`, `src/index.njk`, `docs/`, `.git/HEAD`, `scripts/verify-site.mjs`, and `node_modules/` returned 404. Removed legacy image paths also return 404.
-- Every rendered page showed the temporary preview label and `noindex, nofollow` directive. The preview publishes no source tree or internal documentation.
+- Independent HTTPS requests to the homepage, all four routes, the stylesheet, and both screenshots returned HTTP 200. `curl` reported TLS verification result `0` for each request.
+- The screenshots were fetched successfully after the artifact branch update. The previous `review-captures` URLs briefly returned 404 while GitHub Pages was rebuilding; cache-busted requests to the final artifact now return the JPEGs.
+- Requests for `.env`, `src/index.njk`, `docs/content-sources.md`, `.git/HEAD`, `package.json`, and `node_modules/` return 404.
+- The four pages show the development-preview label and `noindex, nofollow`. The preview `robots.txt` does not advertise a sitemap; its generated sitemap contains no page URLs.
+- The artifact publishes generated static files and the two reviewed captures only. It contains no source tree, source maps, environment files, credentials, or internal documentation.
 
-### Browser and accessibility checks
+`noindex` discourages search indexing but does not restrict access or guarantee that every search or reading tool will discover the URL. Share the direct preview link with reviewers.
 
-The public site was manually inspected at 1200×820, 768×1024, and 390×844. Each route had one `h1`, no page-level horizontal overflow, a loaded local stylesheet, and image alternatives. Keyboard Tab reached the visible skip link and Enter moved focus to the main content. The mobile ownership table can be scrolled horizontally and responds to arrow keys; its scroll hint is visible on narrow screens. Reduced-motion behavior is respected, and the site adds no browser-side JavaScript.
+### Accessibility, responsive behavior, and visual review
 
-**Sixteen screenshots from the public artifact are attached directly in this review conversation:** first viewport and full-page captures for Home, Projects, Engineering, and About at desktop and mobile widths. They were captured from `caa996c`, including the lazily loaded project images.
+- Browser accessibility trees show one `h1` per route, a named main navigation, a skip link, meaningful image alternatives, and table semantics. Diagram pages pair image alternatives with nearby text keys and full-size links.
+- Keyboard focus reaches the skip link first; Enter moves focus to the main content. Navigation links are reachable by keyboard. The project table scroll region can be focused and moved horizontally with arrow keys.
+- At a 320 CSS-pixel viewport, the page itself has no horizontal overflow. The wide project table keeps its own contained horizontal scroll region. The mobile layout was visually captured at 390 × 844 and reviewed against the desktop capture at 1200 × 900.
+- Effective-width reflow checks at 640 and 320 CSS pixels cover the layouts expected at 200% and 400% zoom from a 1280-pixel desktop viewport. The browser's zoom control was not set to exact 200% or 400% during this review.
+- WCAG contrast calculations pass AA for checked standard text pairs: body text on paper 13.73:1, teal links on paper 5.52:1, teal links on alternate surfaces 5.14:1, and white button text on teal 6:1. Checked status colors also exceed 4.5:1. The focus outline has 4.75:1 contrast on the light surface and 3.17:1 on the dark surface, exceeding the 3:1 non-text contrast threshold.
 
-These checks do not constitute a formal WCAG 2.2 AA audit. Color contrast across every state, screen-reader behavior, text enlargement and reflow, and the usability of the wide ownership table at high zoom still need human review.
+The review did **not** include a formal WCAG 2.2 AA audit, speech output from Narrator or NVDA, exact browser zoom controls, or physical touch gestures. Those checks remain unverified. Keyboard and browser accessibility-tree checks provide useful coverage but do not replace screen-reader testing.
 
 ## Decisions for Jeremy and ChatGPT
 
-1. Approve or revise the wordmark-first identity, neutral/teal palette, and sans-serif type direction.
-2. Review whether the home page gives ForgeWire and Fabric enough conceptual prominence while accurately showing their private status.
-3. Review the engineering tone and project descriptions for accuracy and useful differentiation, especially Fabric's intentionally limited public description.
-4. Review mobile diagrams and the horizontally scrollable project register at phone size and high zoom.
-5. Decide when the design and copy are ready to move from public review preview toward the intended IONOS production plan.
+1. Accept or revise the restrained wordmark, neutral/teal page identity, and updated social image.
+2. Approve the currently staged ForgeWire and Fabric wording for production preparation, or choose edits from the unpublished alternatives in [forgewire-fabric-public-copy.md](forgewire-fabric-public-copy.md).
+3. Accept the authentic ForgeWire workspace capture as the homepage centerpiece, or retain the current composition and defer a different centerpiece until approved evidence exists.
+4. After the design and copy decisions, authorize production preparation if desired. This review does not authorize publication, DNS changes, IONOS changes, or a production launch.
 
-The preview remains temporary. No IONOS configuration, production DNS, production credentials, paid features, or hosting contract settings were changed. To remove the preview after review, follow the three steps in [preview-hosting.md](preview-hosting.md): set the repository Pages source to None, delete the `website-preview` artifact branch, then verify the URL no longer serves content.
+The preview remains public for review and the PR remains draft. No IONOS configuration, production DNS, production credentials, paid services, or hosting contract settings were changed. After review, remove the preview by following [preview-hosting.md](preview-hosting.md): set the repository Pages source to None, delete `website-preview`, and verify the public URLs no longer serve content.
