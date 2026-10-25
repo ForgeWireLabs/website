@@ -55,7 +55,7 @@ The approved canonical URL is the apex host: https://forgewirelabs.com.
 
 From an independent network/request, check:
 
-- https://forgewirelabs.com and all four routes return successfully with a valid certificate.
+- https://forgewirelabs.com and all five routes return successfully with a valid certificate.
 - HTTP redirects to HTTPS; www redirects to the apex only after www is approved, resolves, and has a valid certificate.
 - CSS, JavaScript if present, fonts, image assets, favicon, robots.txt, and sitemap.xml load without errors.
 - Canonical tags use the apex production URLs; production is indexable; the sitemap lists only production routes.

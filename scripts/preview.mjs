@@ -6,7 +6,8 @@ import process from "node:process";
 
 const host = "127.0.0.1";
 const port = Number(process.env.PORT || 8080);
-const root = path.resolve("_site");
+const isPreview = process.argv.includes("--preview");
+const root = path.resolve(isPreview ? "_preview" : "_site");
 const mimeTypes = new Map([
   [".css", "text/css; charset=utf-8"],
   [".html", "text/html; charset=utf-8"],
@@ -21,7 +22,7 @@ const mimeTypes = new Map([
 try {
   await stat(path.join(root, "index.html"));
 } catch {
-  console.error("Build output _site/ is missing. Run `npm run build` first.");
+  console.error(`Build output ${isPreview ? "_preview/" : "_site/"} is missing. Run the matching build command first.`);
   process.exit(1);
 }
 
@@ -43,6 +44,19 @@ const server = createServer(async (request, response) => {
   } catch {
     sendText(response, 400, "Invalid request path");
     return;
+  }
+
+  if (isPreview) {
+    if (pathname === "/") {
+      response.writeHead(302, { Location: "/website/" });
+      response.end();
+      return;
+    }
+    if (pathname !== "/website" && !pathname.startsWith("/website/")) {
+      sendText(response, 404, "Not found");
+      return;
+    }
+    pathname = pathname.slice("/website".length) || "/";
   }
 
   const relative = pathname.replace(/^[/\\]+/, "");
@@ -75,5 +89,5 @@ const server = createServer(async (request, response) => {
 });
 
 server.listen(port, host, () => {
-  console.log(`Local preview: http://${host}:${port}/`);
+  console.log(`Local ${isPreview ? "staging" : "production"} preview: http://${host}:${port}${isPreview ? "/website/" : "/"}`);
 });

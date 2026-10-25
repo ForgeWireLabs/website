@@ -1,91 +1,103 @@
 ---
 layout: layouts/base.njk
-title: Engineering examples and system boundaries
-description: Specific architecture and maturity notes from RepoPact, Anvil, Workbench, SkillForge Academy, ForgeWire, Fabric, and Flink.
+title: Research questions and engineering evidence
+description: ForgeWire Labs' research interests and public engineering examples, with questions distinguished from demonstrated behavior and private development.
 permalink: /engineering/index.html
 ---
 <section class="page-lead page-shell" aria-labelledby="engineering-title">
-  <p class="eyebrow">Engineering · Public examples</p>
-  <h1 id="engineering-title">Different projects make <em>different engineering choices.</em></h1>
-  <p class="lead-copy">The public record includes a Rust semantic engine, repository-based state, a local planning store, a native review client, and an offline-first learning application. Private projects have less to show, and their implementation details stay private.</p>
+  <p class="eyebrow">ForgeWire Labs · Research &amp; Engineering</p>
+  <h1 id="engineering-title">Questions, implementation, and <em>evidence have different jobs.</em></h1>
+  <p class="lead-copy">This page separates questions the organization investigates from behavior visible in public software. An overview can establish a project's direction; it does not establish a released implementation. Each example below is bounded by its own source and version.</p>
 </section>
 
-<section class="engineering-principles page-shell" aria-labelledby="examples-title">
+<section class="engineering-principles page-shell" aria-labelledby="questions-title">
   <div class="section-heading section-heading--stacked">
-    <p class="eyebrow">Implementation notes</p>
-    <h2 id="examples-title">Decisions visible in the public sources</h2>
+    <p class="eyebrow">Research questions · ongoing work</p>
+    <h2 id="questions-title">Open questions, not published findings</h2>
+    <p class="section-lede">These questions describe current lines of investigation. They are not claims of completed research results or capabilities implemented across the portfolio.</p>
   </div>
   <div class="engineering-examples">
     <article class="engineering-example engineering-example--wide">
-      <p class="example-label">RepoPact Core · released CLI 3.1.3</p>
-      <h3>Rust defines the semantics; the CLI exposes supported operations.</h3>
-      <p>Core reads repository records, validates them, and prepares typed operations through a canonical Rust engine. The published Python package provides the command-line surface. Admission checks do not establish arbitrary process confinement; that claim needs operating-system evidence for the specific boundary.</p>
-      <a class="text-link" href="https://github.com/ForgeWireLabs/repopact-core/blob/614689b127cf52f801877cc48440f7e45c3709eb/README.md">Read the Core design notes <span aria-hidden="true">↗</span></a>
+      <p class="example-label">Question · model-assisted work</p>
+      <h3>How can a person keep useful context and decision authority when software coordinates models and tools?</h3>
+      <p>The public ForgeWire overview describes an application and runtime direction around context, tools, selected workflows, and reviewable outcomes. ForgeWire remains private development; the overview is not an application release.</p>
+      <a class="text-link" href="https://github.com/ForgeWireLabs/ForgeWire-Overview">Read the public ForgeWire overview <span aria-hidden="true">↗</span></a>
     </article>
     <article class="engineering-example">
-      <p class="example-label">RepoPact Workbench · source-build preview</p>
-      <h3>A separate client of Core</h3>
-      <p>Workbench is a native review application with its own project and release stream. The recorded screenshot uses a disposable Core conformance fixture. No packaged installer is listed; the project’s platform notes bound its recorded checks.</p>
-      <a class="text-link" href="https://github.com/ForgeWireLabs/repopact-workbench/tree/414a4a78091796735a1b97b03fd8c3cf1c105f30">Inspect its source and platform notes <span aria-hidden="true">↗</span></a>
+      <p class="example-label">Question · distributed execution</p>
+      <h3>What should be explicit when work is placed across machines?</h3>
+      <p>Fabric explores a separate authenticated, policy-gated execution control plane. The public overview describes limited, configuration-dependent integration; it does not document a general remote service or release.</p>
+      <a class="text-link" href="https://github.com/ForgeWireLabs/ForgeWire-Overview/blob/85d1905b0bd8db420882f00065daff34833dab27/README.md#3-fabric-dispatch-and-remote-execution">Read the public Fabric scope <span aria-hidden="true">↗</span></a>
     </article>
     <article class="engineering-example">
-      <p class="example-label">Anvil · developer preview 0.1.0a0</p>
-      <h3>Local planning state</h3>
-      <p>Anvil stores planning records in a single-writer JSON file and links typed references to external work. Its API and schema may change; it does not own execution or present itself as an audit trail.</p>
-      <a class="text-link" href="https://github.com/ForgeWireLabs/anvil/tree/89ac5df34090e9ffde6a0b790620e9096fb0f15d">Read Anvil’s source documentation <span aria-hidden="true">↗</span></a>
+      <p class="example-label">Question · state and evidence</p>
+      <h3>What should a repository retain so later work can be inspected?</h3>
+      <p>RepoPact Core provides a public implementation example for repository-owned records, validation, and typed operations. Its evidence is specific to RepoPact and its released CLI package.</p>
+      <a class="text-link" href="https://github.com/ForgeWireLabs/repopact-core">Inspect RepoPact Core <span aria-hidden="true">↗</span></a>
     </article>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="evidence-heading">
+  <div class="page-shell">
+    <p class="eyebrow">Public engineering evidence</p>
+    <h2 id="evidence-heading">Examples from their own sources</h2>
+    <div class="evidence-cards">
+      <article>
+        <p class="example-label">RepoPact Core · released CLI 3.1.3</p>
+        <h3>Rust defines the semantics; the CLI exposes supported operations.</h3>
+        <p>Core reads repository records, validates them, and prepares typed operations through a canonical Rust engine. Its stable published package is version-scoped; the source tree can continue to evolve separately.</p>
+        <a class="text-link" href="https://github.com/ForgeWireLabs/repopact-core/blob/614689b127cf52f801877cc48440f7e45c3709eb/README.md">Read the Core design notes <span aria-hidden="true">↗</span></a>
+      </article>
+      <article>
+        <p class="example-label">Anvil · developer preview 0.1.0a0</p>
+        <h3>Planning state has a deliberately narrow owner.</h3>
+        <p>Anvil stores planning records in a single-writer JSON file and links typed references to external work. Its API and schema can change; its documented scope excludes execution ownership and audit trails.</p>
+        <a class="text-link" href="https://github.com/ForgeWireLabs/anvil/tree/89ac5df34090e9ffde6a0b790620e9096fb0f15d">Read Anvil's source documentation <span aria-hidden="true">↗</span></a>
+      </article>
+      <article>
+        <p class="example-label">SkillForge Academy · Windows app 1.3.2</p>
+        <h3>A published application and a beta platform have separate maturity.</h3>
+        <p>The released Windows app supports certification study. Newer course-platform development and its import/export behavior remain in beta and are not folded into the app's release claim.</p>
+        <a class="text-link" href="https://github.com/ForgeWireLabs/skillforge-academy">Inspect the public project <span aria-hidden="true">↗</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="proving-ground page-shell" aria-labelledby="proving-title">
+  <div>
+    <p class="eyebrow">Validation repository · not a released product</p>
+    <h2 id="proving-title"><a href="https://github.com/ForgeWireLabs/RP-proving-grounds">RP Proving Grounds <span aria-hidden="true">↗</span></a></h2>
+  </div>
+  <div>
+    <p>The public repository is a governed test project used to exercise RepoPact behavior under routine and adversarial cases. Its current setup pins RepoPact 3.0.2, so it does not establish validation coverage for the newer 3.1.3 Core package. The proving ground is evidence and test material, not a separate flagship or commercial product.</p>
+    <a class="text-link" href="https://github.com/ForgeWireLabs/RP-proving-grounds">Review the public validation repository <span aria-hidden="true">↗</span></a>
   </div>
 </section>
 
 <section class="architecture-study" aria-labelledby="study-title">
   <div class="page-shell study-layout">
     <div class="study-copy">
-      <p class="eyebrow">RepoPact Core · Architecture</p>
-      <h2 id="study-title">Repository records stay authoritative.</h2>
-      <p>The CLI and Workbench read governed records and request supported operations from Core. The engine validates the records and prepares plans. Dashboards and graph views are derived surfaces, while the evidence records observed results.</p>
-      <p>This is RepoPact Core’s documented architecture. It does not describe ForgeWire, Fabric, Anvil, or Flink.</p>
+      <p class="eyebrow">One project · one architecture</p>
+      <h2 id="study-title">RepoPact records stay authoritative in RepoPact's documented model.</h2>
+      <p>The CLI and Workbench read governed records and request supported operations from Core. The engine validates records and prepares plans. Dashboards and graph views are derived surfaces, while evidence records observed results.</p>
+      <p>This diagram documents RepoPact Core. It does not describe ForgeWire, Fabric, Anvil, Flink, or a shared ForgeWire Labs platform.</p>
       <a class="text-link" href="https://github.com/ForgeWireLabs/repopact-core/blob/614689b127cf52f801877cc48440f7e45c3709eb/docs/assets/readme/repopact-architecture.svg">Open the source diagram <span aria-hidden="true">↗</span></a>
     </div>
     <figure class="architecture-figure architecture-figure--large">
       <img src="{{ site.basePath }}/assets/repopact-architecture.svg" alt="RepoPact Core architecture: people and client applications interact with the canonical Rust engine; repository records remain authoritative; evidence and derived views record observed or computed information." aria-describedby="engineering-diagram-notes" width="1200" height="720" loading="lazy">
-      <figcaption>Architecture copied from RepoPact Core’s public documentation. <a href="{{ site.basePath }}/assets/repopact-architecture.svg">Open the full-size image</a>.</figcaption>
+      <figcaption>Architecture copied from RepoPact Core's public documentation. <a href="{{ site.basePath }}/assets/repopact-architecture.svg">Open the full-size diagram</a>.</figcaption>
       <p class="diagram-notes" id="engineering-diagram-notes"><strong>Diagram key.</strong> Blue arrows mark exchanges with Core. Slate arrows mark human or host interactions, evidence, and derived-view relationships. Dashed boxes are derived views; the host/CI integration is optional and provider-specific.</p>
     </figure>
   </div>
 </section>
 
-<section class="ownership-section page-shell" aria-labelledby="ownership-title">
-  <div class="section-heading section-heading--stacked">
-    <p class="eyebrow">Project register</p>
-    <h2 id="ownership-title">Who owns what, and what is available</h2>
-    <p class="section-lede">Flink is maintained in the ForgeWire Labs organization. Its latest published installer and release materials still use the former ForgeLink name. ForgeWire and Fabric remain private, with public overview material describing their purposes and limits. RepoPact, Anvil, and SkillForge have distinct release or preview states.</p>
-  </div>
-  <p class="table-scroll-hint" id="ownership-table-hint">On a narrow screen, swipe horizontally to see all three columns. With a keyboard, focus the table and use the arrow keys to scroll.</p>
-  <div class="ownership-table-wrap" tabindex="0" role="region" aria-label="Project ownership and maturity table" aria-describedby="ownership-table-hint">
-    <table class="ownership-table">
-      <thead><tr><th scope="col">Project</th><th scope="col">Public scope</th><th scope="col">Current limit</th></tr></thead>
-      <tbody>
-        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/repopact-core">RepoPact Core</a><span class="status status--released">Released CLI · 3.1.3</span></th><td>Repository state, validation, schemas, and typed operations.</td><td>The stable package is version-scoped; the source branch may be newer.</td></tr>
-        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/repopact-workbench">RepoPact Workbench</a><span class="status status--preview">Source-build preview</span></th><td>Native presentation and application orchestration for supported Core operations.</td><td>No packaged installer is listed. Recorded platform checks do not establish universal support.</td></tr>
-        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/anvil">Anvil</a><span class="status status--preview">Developer preview</span></th><td>Local planning records and typed links to external work.</td><td>Single-writer JSON store; API and schema can change; no execution or audit-trail ownership.</td></tr>
-        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/Flink">Flink · ForgeWire Labs</a><span class="status status--released">Latest package · v2.0.1</span></th><td>Local communication state and human coordination.</td><td>Repository version 2.0.3; published release materials retain the former ForgeLink name.</td></tr>
-        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/skillforge-academy">SkillForge Academy</a><span class="status status--released">Windows app · 1.3.2</span></th><td>Published offline-first certification learning application.</td><td>Newer course-platform work has a separate beta status.</td></tr>
-        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/ForgeWire-Overview">ForgeWire</a><span class="status status--private">Private development</span></th><td>Application and runtime direction for configured models, tools, project context, and selected workflows around work a person can review.</td><td>The overview distinguishes current paths from active architecture work. No public application build or supported install path.</td></tr>
-        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/ForgeWire-Overview/blob/85d1905b0bd8db420882f00065daff34833dab27/README.md#3-fabric-dispatch-and-remote-execution">Fabric · ForgeWire Labs</a><span class="status status--private">Private development</span></th><td>Separate control-plane direction for authenticated, policy-gated work across machines.</td><td>Limited, configuration-dependent integration for selected ForgeWire workflows; broader integration and release gates remain open. Not a public service.</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="source-note">The content sources page records the reviewed public revisions and asset provenance.</p>
-</section>
-
 <section class="evidence-section">
   <div class="page-shell evidence-layout">
-    <div>
-      <p class="eyebrow">Public record</p>
-      <h2>Use each project’s own source for its current status.</h2>
-    </div>
+    <div><p class="eyebrow">Evidence boundary</p><h2>Read the source that owns each claim.</h2></div>
     <div class="evidence-copy">
-      <p>A package, source build, platform check, and private overview provide different levels of evidence. Project pages link to the source that owns each claim.</p>
+      <p>A public README, a source build, a package, a platform check, and a private overview show different kinds of evidence. Release notes and project sources define the exact behavior visitors can inspect.</p>
       <a class="button button-light" href="{{ site.basePath }}/projects/">Review software and maturity <span aria-hidden="true">→</span></a>
     </div>
   </div>

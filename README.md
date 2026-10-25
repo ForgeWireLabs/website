@@ -1,6 +1,6 @@
 # ForgeWire Labs website
 
-Source for the static ForgeWire Labs website. The v1 visual direction is accepted; the current site remains a staging candidate, not a production launch. The intended production host remains the existing IONOS Web Hosting Plus contract; the temporary review build is served from a separate GitHub Pages artifact branch.
+Source for the static ForgeWire Labs website. The accepted v1 visual system remains, with an organization-first content and information architecture revision now prepared for review. The site remains a staging candidate, not a production launch. The intended production host remains the existing IONOS Web Hosting Plus contract; the temporary review build is served from a separate GitHub Pages artifact branch.
 
 ## Local workflow
 
@@ -13,9 +13,10 @@ npm run verify
 npm run build:preview
 npm run verify:preview
 npm run serve
+npm run serve:preview
 ```
 
-Eleventy writes the production output to `_site/`. The staging build writes to `_preview/`, adds a temporary review label and `noindex, nofollow` metadata, omits staging URLs from its sitemap, and prefixes internal paths for `https://forgewirelabs.github.io/website/`. Run `npm run build` and `npm run verify` before `npm run serve`; the lightweight preview server binds only to `127.0.0.1`. Production hosting needs only the generated static files; it does not need Node.js.
+Eleventy writes the production output to `_site/`. The staging build writes to `_preview/`, adds a temporary review label and `noindex, nofollow` metadata, omits staging URLs from its sitemap, and prefixes internal paths for `https://forgewirelabs.github.io/website/`. Run `npm run build` and `npm run verify` before `npm run serve` for the production configuration, or run `npm run build:preview`, `npm run verify:preview`, then `npm run serve:preview` and open `http://127.0.0.1:8080/website/` to inspect the staging configuration. Both lightweight preview servers bind only to `127.0.0.1`. Production hosting needs only the generated static files; it does not need Node.js.
 
 When CSS changes, update `site.assetVersion` in `src/_data/site.js` so browsers fetch the new stylesheet instead of a cached copy.
 

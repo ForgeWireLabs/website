@@ -8,6 +8,7 @@ const referenceOrigin = isPreview ? "https://forgewirelabs.github.io" : "https:/
 const previewPathPrefix = isPreview ? "/website" : "";
 const routeByFile = new Map([
   ["index.html", "/"],
+  ["work/index.html", "/work/"],
   ["projects/index.html", "/projects/"],
   ["engineering/index.html", "/engineering/"],
   ["about/index.html", "/about/"],
@@ -36,10 +37,11 @@ try {
 
 const files = await walk(outputRoot);
 const htmlFiles = files.filter((file) => file.endsWith(".html"));
-if (htmlFiles.length !== routeByFile.size) fail(`Expected four reviewed pages, found ${htmlFiles.length} HTML files.`);
+if (htmlFiles.length !== routeByFile.size) fail(`Expected five reviewed pages, found ${htmlFiles.length} HTML files.`);
 
 const requiredFiles = [
   "index.html",
+  "work/index.html",
   "projects/index.html",
   "engineering/index.html",
   "about/index.html",
@@ -89,7 +91,7 @@ for (const file of htmlFiles) {
   if (canonical !== expectedCanonical) fail(`${label}: canonical URL must be ${expectedCanonical}.`);
   if (!/<meta\s+property="og:image"\s+content="[^"]+"/i.test(html)) fail(`${label}: missing social image metadata.`);
   if (!/<meta\s+property="og:image:alt"\s+content="[^"]+"/i.test(html)) fail(`${label}: missing social image alternative text.`);
-  if (!/property="og:image:alt"\s+content="[^"]*genuine ForgeWire Projects workspace capture[^\"]*sample data/i.test(html)) fail(`${label}: social image alternative text must describe the authentic capture and sample-data context.`);
+  if (!/property="og:image:alt"\s+content="[^"]*engineering intelligent systems[^\"]*not an architecture diagram/i.test(html)) fail(`${label}: social image alternative text must describe the organization-level question index and clarify that it is not an architecture diagram.`);
   if (!/<meta\s+property="og:image:width"\s+content="1200"/i.test(html) || !/<meta\s+property="og:image:height"\s+content="630"/i.test(html)) fail(`${label}: social image dimensions must match the 1200×630 asset.`);
   if (!/<meta\s+name="twitter:card"\s+content="summary_large_image"/i.test(html)) fail(`${label}: missing large social card declaration.`);
   const socialImage = `${referenceOrigin}${previewPathPrefix}/assets/forgewire-labs-social.png`;
@@ -177,26 +179,34 @@ if (!projectsPage.includes("fixture data, not customer, production, or reliabili
 if (!projectsPage.includes("sample account state, not learner outcome metrics")) fail("SkillForge sample values are not qualified.");
 if (!projectsPage.includes("Open the full-resolution capture")) fail("Full-resolution Workbench screenshot link is missing.");
 if (!projectsPage.includes("dashed boxes mark derived views")) fail("RepoPact diagram legend is missing.");
+if (!projectsPage.includes("Software scope and maturity table")) fail("Software page is missing its accessible release status index.");
 
 const homePage = await readFile(path.join(outputRoot, "index.html"), "utf8");
-for (const phrase of ["Software for work that crosses", "people, agents, and machines", "ForgeWire", "Fabric", "Private development", "Released CLI 3.1.3"]) {
+for (const phrase of ["Engineering intelligent systems for work", "beyond the model", "independent software engineering", "operating conditions", "ForgeWire", "Fabric", "released CLI package at version 3.1.3"]) {
   if (!homePage.includes(phrase)) fail(`Homepage narrative is missing “${phrase}”.`);
 }
-if (homePage.indexOf("ForgeWire") > homePage.indexOf("RepoPact")) fail("Private development should be introduced before the homepage narrows into RepoPact.");
-if (!homePage.includes(`src="${previewPathPrefix}/assets/forgewire-projects-workspace.png"`) || !homePage.includes("disposable sample data") || !homePage.includes("not a full-window view or a public release")) {
-  fail("Homepage must use the genuine ForgeWire workspace capture and clearly qualify its private-build sample data.");
-}
-if (!homePage.includes("ForgeWire organizes the work. Fabric explores remote execution.")) fail("Homepage should distinguish ForgeWire and Fabric's technical directions.");
-if (!homePage.includes("authenticated, policy-gated work across machines")) fail("Homepage Fabric summary must remain grounded in the public overview.");
+if (homePage.includes("forgewire-projects-workspace.png")) fail("The product screenshot should not define the homepage's organization-level centerpiece.");
+if (!homePage.includes("What can run here?") || !homePage.includes("Who can act or intervene?") || !homePage.includes("What can be checked?")) fail("Homepage's constraint index is incomplete.");
+if (!homePage.includes("not a system diagram") || !homePage.includes("not a shared product architecture")) fail("Homepage must distinguish its editorial question index from a product architecture.");
 
 if (!projectsPage.includes("organizing model-assisted work around project context, tools, and selected workflows")) fail("ForgeWire project copy should explain its public technical direction.");
 if (!projectsPage.includes("separate execution control-plane direction for authenticated, policy-gated work across machines")) fail("Fabric project copy should explain its public technical direction.");
 if (!projectsPage.includes("not a public service or deployment option")) fail("Fabric public availability limits must remain explicit.");
 
 const engineeringPage = await readFile(path.join(outputRoot, "engineering", "index.html"), "utf8");
-for (const phrase of ["canonical Rust engine", "arbitrary process confinement", "single-writer JSON", "ForgeWire Labs", "Implementation notes"]) {
-  if (!engineeringPage.includes(phrase)) fail(`Engineering page is missing the source-grounded example “${phrase}”.`);
+for (const phrase of ["Open questions, not published findings", "canonical Rust engine", "single-writer JSON", "RP Proving Grounds", "pins RepoPact 3.0.2", "does not establish validation coverage for the newer 3.1.3", "It does not describe ForgeWire, Fabric, Anvil, Flink"]) {
+  if (!engineeringPage.includes(phrase)) fail(`Research & Engineering page is missing the bounded content “${phrase}”.`);
 }
+
+const workPage = await readFile(path.join(outputRoot, "work", "index.html"), "utf8");
+for (const phrase of ["Intelligent systems", "Distributed computing and execution infrastructure", "Developer and repository infrastructure", "Systems integration and local software", "Applied technical education", "not departments", "do not assert that every project implements every principle"]) {
+  if (!workPage.includes(phrase)) fail(`Our Work page is missing the organization-level scope “${phrase}”.`);
+}
+
+const aboutPage = await readFile(path.join(outputRoot, "about", "index.html"), "utf8");
+const founderHeadingPosition = aboutPage.indexOf("Jeremy Shows");
+if (founderHeadingPosition >= 0 && founderHeadingPosition < aboutPage.indexOf("</section>")) fail("About page must establish the organization before introducing its founder.");
+if (!aboutPage.includes("independent, founder-led software engineering and research organization") || !aboutPage.includes("unverified headcount or additional roles")) fail("About page must describe the organization accurately without implying an unverified team.");
 
 const robots = await readFile(path.join(outputRoot, "robots.txt"), "utf8");
 const sitemap = await readFile(path.join(outputRoot, "sitemap.xml"), "utf8");
@@ -212,7 +222,7 @@ if (isPreview) {
 }
 
 const socialSvg = await readFile(path.join(outputRoot, "assets", "forgewire-labs-social.svg"), "utf8");
-if (!socialSvg.includes('href="forgewire-projects-workspace.png"') || !socialSvg.includes("Useful AI depends")) fail("Social card must use the genuine ForgeWire capture and the public systems-first premise.");
+if (socialSvg.includes("forgewire-projects-workspace.png") || !socialSvg.includes("INDEPENDENT SOFTWARE ENGINEERING") || !socialSvg.includes("QUESTIONS TO CARRY INTO ENGINEERING") || !socialSvg.includes("AUTHORITY")) fail("Social card must use the organization-level engineering identity and avoid making a product screenshot the mark.");
 const socialPng = await readFile(path.join(outputRoot, "assets", "forgewire-labs-social.png"));
 if (socialPng.toString("hex", 0, 8) !== "89504e470d0a1a0a") fail("Social card is not a valid PNG.");
 if (socialPng.readUInt32BE(16) !== 1200 || socialPng.readUInt32BE(20) !== 630) fail("Social card must be 1200×630 pixels.");
@@ -231,4 +241,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`Site verification passed: ${htmlFiles.length} pages, ${isPreview ? "noindex staging" : "production"} metadata, release boundaries, social assets, images, SVG safety, and local links checked.`);
+console.log(`Site verification passed: ${htmlFiles.length} pages, ${isPreview ? "noindex staging" : "production"} metadata, organization-first content, release boundaries, social assets, images, SVG safety, and local links checked.`);

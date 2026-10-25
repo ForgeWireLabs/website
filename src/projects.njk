@@ -1,13 +1,13 @@
 ---
 layout: layouts/base.njk
-title: Systems and project availability
-description: Explore ForgeWire Labs software and research with distinct ownership, architecture, source links, and honest release boundaries.
+title: Software and release status
+description: Explore ForgeWire Labs software, public sources, screenshots, release status, and current project boundaries.
 permalink: /projects/index.html
 ---
 <section class="page-lead page-shell" aria-labelledby="projects-title">
-  <p class="eyebrow">Portfolio · Project register</p>
-  <h1 id="projects-title">A portfolio of systems with <em>separate jobs and release states.</em></h1>
-  <p class="lead-copy">The projects span repository engineering, planning, communication, distributed computing, and technical learning. Each keeps its own source, owner, architecture, and release status.</p>
+  <p class="eyebrow">ForgeWire Labs · Software</p>
+  <h1 id="projects-title">Independent software, with <em>its own purpose and release state.</em></h1>
+  <p class="lead-copy">The projects make different contributions to the organization's engineering work. Each keeps its own source, architecture, availability, and limits. This is a portfolio of separate systems, not a single released platform.</p>
   <p class="lead-index"><span>Released software</span><span>Previews</span><span>Private development</span></p>
 </section>
 
@@ -116,6 +116,30 @@ permalink: /projects/index.html
     <div class="screenshot-frame screenshot-frame--dark"><img src="{{ site.basePath }}/assets/skillforge-command-center.png" alt="SkillForge Academy command center with course navigation, a recommended study drill, progress panels, and domain coverage." width="2880" height="1800" loading="lazy"></div>
     <figcaption>Screenshot used in the public organization profile and captured from the published Windows app. The displayed 0% values and practice counts are sample account state, not learner outcome metrics. Newer course-platform beta surfaces are not shown. <a href="{{ site.basePath }}/assets/skillforge-command-center.png">Open the full-resolution image</a>.</figcaption>
   </figure>
+</section>
+
+<section class="ownership-section page-shell" aria-labelledby="ownership-title">
+  <div class="section-heading section-heading--stacked">
+    <p class="eyebrow">Software index</p>
+    <h2 id="ownership-title">Current scope and availability</h2>
+    <p class="section-lede">Release state describes the linked project's public evidence at the time of this review. It does not imply support beyond the source project's own terms.</p>
+  </div>
+  <p class="table-scroll-hint" id="ownership-table-hint">On a narrow screen, swipe horizontally to see all three columns. Keyboard users can focus this table region and use the arrow keys to scroll.</p>
+  <div class="ownership-table-wrap" tabindex="0" role="region" aria-label="Software scope and maturity table" aria-describedby="ownership-table-hint">
+    <table class="ownership-table">
+      <thead><tr><th scope="col">Project</th><th scope="col">Public scope</th><th scope="col">Current limit</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/repopact-core">RepoPact Core</a><span class="status status--released">Released CLI · 3.1.3</span></th><td>Repository state, validation, schemas, and typed operations.</td><td>The stable package is version-scoped; the source branch may be newer.</td></tr>
+        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/repopact-workbench">RepoPact Workbench</a><span class="status status--preview">Source-build preview</span></th><td>Native presentation and application orchestration for supported Core operations.</td><td>No packaged installer is listed. Recorded platform checks do not establish universal support.</td></tr>
+        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/anvil">Anvil</a><span class="status status--preview">Developer preview</span></th><td>Local planning records and typed links to external work.</td><td>Single-writer JSON store; API and schema can change; no execution or audit-trail ownership.</td></tr>
+        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/Flink">Flink · ForgeWire Labs</a><span class="status status--released">Latest package · v2.0.1</span></th><td>Local communication state and human coordination.</td><td>Repository version 2.0.3; published release materials retain the former ForgeLink name.</td></tr>
+        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/skillforge-academy">SkillForge Academy</a><span class="status status--released">Windows app · 1.3.2</span></th><td>Published offline-first certification learning application.</td><td>Newer course-platform work has a separate beta status.</td></tr>
+        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/ForgeWire-Overview">ForgeWire</a><span class="status status--private">Private development</span></th><td>Application and runtime direction for configured models, tools, project context, and selected workflows around work a person can review.</td><td>The overview distinguishes current paths from active architecture work. No public application build or supported install path.</td></tr>
+        <tr><th scope="row"><a href="https://github.com/ForgeWireLabs/ForgeWire-Overview/blob/85d1905b0bd8db420882f00065daff34833dab27/README.md#3-fabric-dispatch-and-remote-execution">Fabric · ForgeWire Labs</a><span class="status status--private">Private development</span></th><td>Separate control-plane direction for authenticated, policy-gated work across machines.</td><td>Limited, configuration-dependent integration for selected ForgeWire workflows; broader integration and release gates remain open. Not a public service.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="source-note">The source notes identify the reviewed repository revisions and image provenance.</p>
 </section>
 
 <section class="availability-foot page-shell" aria-labelledby="availability-title">
