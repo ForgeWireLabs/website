@@ -181,50 +181,62 @@ for (const file of htmlFiles) {
 }
 
 const projectsPage = await readFile(path.join(outputRoot, "projects", "index.html"), "utf8");
-if ([...projectsPage.matchAll(/data-project-id="[^"]+"/g)].length !== 7) fail("Project register should render all 7 reviewed records.");
+if ([...projectsPage.matchAll(/data-project-id="[^"]+"/g)].length !== 7) fail("Software page must render all 7 project records.");
 for (const projectName of ["RepoPact Core", "RepoPact Workbench", "Anvil", "SkillForge Academy", "ForgeWire", "Fabric", "Flink"]) {
-  if (!projectsPage.includes(projectName)) fail(`Project register is missing ${projectName}.`);
+  if (!projectsPage.includes(projectName)) fail("Software page is missing " + projectName + ".");
 }
-if (!projectsPage.includes("ForgeWire Labs · Communications")) fail("Flink's organization ownership is missing.");
-if (!projectsPage.includes("https://github.com/ForgeWireLabs/Flink")) fail("Flink's organization repository link is missing.");
+if (!projectsPage.includes("ForgeWire Labs · Communications") ||
+    !projectsPage.includes("https://github.com/ForgeWireLabs/Flink")) fail("Flink must remain linked to its organization repository.");
 if (!projectsPage.includes("Private development")) fail("Private development status is missing.");
-if (!projectsPage.includes("no packaged installers are listed")) fail("Workbench preview status is not explicit.");
-if (!projectsPage.includes("fixture data, not customer, production, or reliability metrics")) fail("Workbench fixture metrics are not qualified.");
-if (!projectsPage.includes("sample account state, not learner outcome metrics")) fail("SkillForge sample values are not qualified.");
-if (!projectsPage.includes("Open the full-resolution capture")) fail("Full-resolution Workbench screenshot link is missing.");
+if (!/No packaged installer is listed/i.test(projectsPage)) fail("Workbench source-build preview limits are missing.");
+if (!projectsPage.includes("not customer or production metrics")) fail("Workbench test counts must not be mistaken for production metrics.");
+if (!projectsPage.includes("not learner outcomes")) fail("SkillForge sample data must not be represented as learner outcomes.");
+if (!projectsPage.includes("Open the full-resolution capture")) fail("Workbench full-resolution screenshot link is missing.");
 if (!projectsPage.includes("dashed boxes mark derived views")) fail("RepoPact diagram legend is missing.");
-if (!projectsPage.includes("Software scope and maturity table")) fail("Software page is missing its accessible release status index.");
+if (!projectsPage.includes("Software scope and maturity table")) fail("Software status table is missing.");
 
 const homePage = await readFile(path.join(outputRoot, "index.html"), "utf8");
-for (const phrase of ["Engineering intelligent systems for work", "beyond the model", "independent software engineering", "Six questions help shape practical engineering decisions", "ForgeWire", "Fabric", "released CLI package at version 3.1.3"]) {
-  if (!homePage.includes(phrase)) fail(`Homepage narrative is missing “${phrase}”.`);
+for (const phrase of ["Systems first.", "Models second.", "A model can produce an answer.", "Constraints are part of the design.",
+                      "ForgeWire", "Fabric", "released CLI package at version 3.1.3"]) {
+  if (!homePage.includes(phrase)) fail("Homepage is missing current organizational copy: " + phrase);
 }
-if (homePage.includes("forgewire-projects-workspace.png")) fail("The product screenshot should not define the homepage's organization-level centerpiece.");
-if (!homePage.includes("What can run here?") || !homePage.includes("Who can act or intervene?") || !homePage.includes("What can be checked?")) fail("Homepage's constraint index is incomplete.");
-if (!homePage.includes("/assets/labs-neural-masthead.webp") || !homePage.includes("Blue branching neural structures with amber contact points.")) fail("Homepage is missing the approved neural masthead or its image alternative.");
-if (homePage.includes("labs-connected-network.webp")) fail("The Our Work network artwork should not appear on the homepage.");
-if (!homePage.includes("A practical lens for engineering decisions.")) fail("Homepage should introduce its question index with affirmative editorial copy.");
-if (homePage.includes("not a system diagram") || homePage.includes("not a shared product architecture") || homePage.includes("not an application release")) fail("Homepage should reserve detailed qualification for project descriptions and status notes.");
+for (const question of ["What can run on the hardware available?", "What can we replace without rebuilding?",
+                        "What works when a connection fails?", "What changes between machines?",
+                        "Who can act, approve, or stop the work?", "What can someone else verify?"]) {
+  if (!homePage.includes(question)) fail("Homepage's six-question framework is missing: " + question);
+}
+if (!homePage.includes("/assets/labs-neural-masthead.webp") ||
+    !homePage.includes("Blue branching neural structures with amber contact points.")) fail("Approved homepage neural masthead or alt text is missing.");
+if (homePage.includes("forgewire-projects-workspace.png") || homePage.includes("labs-connected-network.webp")) fail("Homepage must not substitute product screenshots or Our Work imagery for its approved masthead.");
+if (homePage.includes("not a system diagram") || homePage.includes("not a shared product architecture") ||
+    homePage.includes("not an application release")) fail("Homepage should not be dominated by defensive disclaimers.");
 
-if (!projectsPage.includes("organizing model-assisted work around project context, tools, and selected workflows")) fail("ForgeWire project copy should explain its public technical direction.");
-if (!projectsPage.includes("separate execution control-plane direction for authenticated, policy-gated work across machines")) fail("Fabric project copy should explain its public technical direction.");
-if (!projectsPage.includes("not a public service or deployment option")) fail("Fabric public availability limits must remain explicit.");
+if (!projectsPage.includes("Models provide inference; the surrounding system manages context")) fail("ForgeWire software description lost the runtime distinction.");
+if (!projectsPage.includes("Authentication and policy belong in the infrastructure")) fail("Fabric description lost the execution authentication boundary.");
+if (!projectsPage.includes("not a public service or supported deployment")) fail("Fabric public availability limits must remain visible.");
 
 const engineeringPage = await readFile(path.join(outputRoot, "engineering", "index.html"), "utf8");
-for (const phrase of ["How intelligent systems work across", "Current investigations", "Questions shaping the work", "ForgeWire · private development", "Fabric · private development", "canonical Rust engine", "single-writer JSON", "RP Proving Grounds", "pins RepoPact 3.0.2", "does not establish validation coverage for the newer 3.1.3", "It does not describe ForgeWire, Fabric, Anvil, Flink"]) {
-  if (!engineeringPage.includes(phrase)) fail(`Research & Engineering page is missing the bounded content “${phrase}”.`);
+for (const phrase of ["The hard problems live", "Current investigations", "Questions we're working through.",
+                      "ForgeWire · private development", "Fabric · private development", "Rust engine",
+                      "single-writer JSON", "RP Proving Grounds", "pins RepoPact 3.0.2", "Core 3.1.3",
+                      "not an architecture shared by every ForgeWire Labs project"]) {
+  if (!engineeringPage.includes(phrase)) fail("Research & Engineering page lost required context: " + phrase);
 }
-if (engineeringPage.includes("This page separates questions") || engineeringPage.includes("not published findings") || engineeringPage.includes("not claims of completed research")) fail("Research & Engineering should lead with the investigations rather than evidence disclaimers.");
+if (engineeringPage.includes("This page separates questions") || engineeringPage.includes("not published findings") ||
+    engineeringPage.includes("not claims of completed research")) fail("Research & Engineering should not read as an external audit.");
 
 const workPage = await readFile(path.join(outputRoot, "work", "index.html"), "utf8");
-for (const phrase of ["Intelligent systems", "Distributed computing and execution infrastructure", "Developer and repository infrastructure", "Systems integration and local software", "Applied technical education", "Five disciplines connect", "shape how ForgeWire Labs approaches scope, authority, evidence, and operating constraints"]) {
-  if (!workPage.includes(phrase)) fail(`Our Work page is missing the organization-level scope “${phrase}”.`);
+for (const phrase of ["Different problems.", "Intelligent systems", "Distributed computing and execution infrastructure",
+                      "Developer and repository infrastructure", "Systems integration and local software",
+                      "Applied technical education", "How we make decisions."]) {
+  if (!workPage.includes(phrase)) fail("Our Work page is missing its current editorial structure: " + phrase);
 }
-if (!workPage.includes("/assets/labs-connected-network.webp") || !workPage.includes("Different systems. Shared engineering principles.")) fail("Our Work page is missing its approved network artwork or editorial caption.");
-if (workPage.includes("labs-neural-masthead.webp")) fail("The neural masthead should appear only on the homepage.");
+if (!workPage.includes("/assets/labs-connected-network.webp") ||
+    !workPage.includes("Separate systems. Common engineering principles.")) fail("Our Work image or approved caption is missing.");
+if (workPage.includes("labs-neural-masthead.webp")) fail("Our Work must not reuse the homepage neural masthead.");
 
 const aboutPage = await readFile(path.join(outputRoot, "about", "index.html"), "utf8");
-if (!aboutPage.includes("ForgeWire Labs is an independent software engineering and research organization.")) fail("About page must describe ForgeWire Labs as an independent software engineering and research organization.");
+if (!aboutPage.includes("ForgeWire Labs is independent engineering and research") || !aboutPage.includes("We began with agent-driven software") || !aboutPage.includes("Use what works.")) fail("About page must speak in an in-house organizational voice.");
 if (/Jeremy Shows|founder|race-car builder|small-business owner|substantial help from AI systems|id="founder-title"/i.test(aboutPage)) fail("About page must not contain a founder biography or founder-led organization language.");
 for (const phrase of ["General correspondence", "Software questions", "Security reports", "contact@forgewirelabs.com", "support@forgewirelabs.com", "Private reporting routes are available for these projects", "Do not post vulnerability details in public Issues."]) {
   if (!aboutPage.includes(phrase)) fail(`About page is missing the contact status or route “${phrase}”.`);
