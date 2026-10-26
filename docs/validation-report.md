@@ -5,11 +5,13 @@
 
 | Item | Revision or status |
 |---|---|
-| Source branch | `codex/initial-website-prototype`; final source SHA is recorded in the release manifest after commit |
+| Website source and release input | `ffb6c3874009ca1abbc5e364b7eac844b334a9d5` |
 | Draft PR | [ForgeWireLabs/website#1](https://github.com/ForgeWireLabs/website/pull/1), open, draft, unmerged |
-| Public staging branch | `website-preview`; currently deployed revision will be updated from the final source after commit |
+| Public staging artifact commit | `1711c5285a3e9a237dea8d1658de8d2712697900` on `website-preview` |
 | Staging URL | [https://forgewirelabs.github.io/website/](https://forgewirelabs.github.io/website/) (temporary public preview; noindex) |
-| Production release | Local static artifact only; archive SHA-256 is recorded in the release package manifest |
+| Production release artifact | `C:\Projects\ForgeWireLabs-website-release\ffb6c38\forgewirelabs-site-ffb6c38.zip` (17 files; production `_site` only) |
+| Production archive SHA-256 | `92a98cda382bab0441c57ef2f6b29f481ccb3e5491909a8c73f9a477ef908e9d` |
+| Archive backup | `C:\Projects\ForgeWireLabs-website-release\ffb6c38\backup\forgewirelabs-site-ffb6c38.zip`; SHA-256 matches the release archive |
 
 ## Bounded acceptance results
 
@@ -21,6 +23,8 @@
 | Contact presentation | **Passed by static verifier** — only `contact@forgewirelabs.com` and `support@forgewirelabs.com` are public mailto links; security mailbox is absent; verified private reporting links remain for RepoPact Core and Workbench; no public issue disclosure route |
 | Local navigation, fragments, images, and CSS references | **Passed by static verifier** across five pages and generated assets |
 | Dependency audit | **Passed** — `npm audit --audit-level=high` reports zero vulnerabilities |
+| Independent staging requests | **Passed** — HTTPS certificate validation succeeded; all five routes, nine assets, and 22 unique external links returned HTTP 200 |
+| Preview privacy and exposure checks | **Passed** — all five routes carry `noindex, nofollow` and the preview banner; security address absent; `package.json`, internal email documentation, verifier source, `.env`, `.git/HEAD`, and a source-map path returned HTTP 404 |
 | Rendered desktop/mobile layout, overflow, keyboard/focus, 200%/400% zoom and reflow | **Not verified in this pass** — the authorized Windows computer-use workflow stopped after detecting user input and refreshing the selected window. Per the Computer Use safety instruction, GUI automation stopped; no alternate automation was used |
 | Screen reader or WCAG conformance | **Not claimed** — no Narrator/NVDA spoken review or formal conformance assessment was completed |
 
@@ -28,7 +32,7 @@ The source uses semantic landmarks, a skip link, visible focus styles, responsiv
 
 ## Public staging and production host observations
 
-Before the final source update, staging was at source artifact `8bad38f342e0bc0d810b37bb35af34100e026ac6`. The new staging artifact is to be published from the committed source and checked independently for all five routes, expected assets, preview metadata, contact links, and absence of source/internal files. The previous browser screenshots do not represent this revision.
+Staging was published from the production source commit above as artifact commit `1711c5285a3e9a237dea8d1658de8d2712697900`. Independent HTTPS checks confirmed the five routes, nine expected assets, preview metadata, contact links, and absence of source/internal files. The preview includes no JavaScript or remote font dependency. The previous browser screenshots do not represent this revision.
 
 On 2026-10-25, a query to public DNS resolver 1.1.1.1 found the apex A `74.208.236.125` and AAAA `2607:f1c0:100f:f000::200` (TTL 3600). `www` has no A/AAAA/CNAME answer. The existing MX, SPF, DKIM, and IONOS-managed DMARC records resolve to the current IONOS mail service; preserve them exactly. External HTTP and HTTPS requests to the apex returned the IONOS parking page with HTTP 200; HTTP did not redirect to HTTPS. HTTPS passed system certificate validation. `www` did not resolve. No DNS record was changed.
 

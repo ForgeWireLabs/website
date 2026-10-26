@@ -5,7 +5,7 @@
 
 ## Evidence and limits
 
-The supplied account screenshots show an active **IONOS Web Hosting Plus** contract. `forgewirelabs.com` is listed in that contract and is marked **Domain not in use**. The contract-services screen also lists **IONOS CDN powered by Cloudflare** as an additional item. The screenshots do not show the webspace quota or free space, invoice totals, CDN tier or hostname activation, or whether an SSL certificate is assigned to `.com`.
+The supplied account screenshots show **IONOS Web Hosting Plus**, active since 2026-10-24 and renewing 2027-10-23. `forgewirelabs.com` is listed in that contract and is marked **Domain not in use**. The contract-services screen also lists **IONOS CDN powered by Cloudflare** as an additional item, with no renewal date shown in the captured row. The screenshots do not show the webspace quota or free space, invoice totals, CDN tier or hostname activation, or whether an SSL certificate is assigned to `.com`.
 
 The authenticated account was not available for a read-only contract inspection during this review: the IONOS page redirected to sign-in and the authorized Windows computer-use workflow stopped on its user-input safety check. Account-specific quota, document root, SFTP configuration, invoice, certificate assignment, and CDN billing details therefore remain unverified. No credentials were entered or stored.
 
@@ -27,10 +27,9 @@ The authenticated account was not available for a read-only contract inspection 
 | Item | Assessment |
 |---|---|
 | Existing Web Hosting Plus | The contract already exists. Using its included webspace and included SSL should not require a new hosting service if the account confirms both are available. The current invoice and renewal price are not shown, so the existing monthly/annual cost cannot be stated. |
-| Public Plus reference | IONOS currently lists the US Linux Plus offer at $1/month for a one-year term, then $14/month. This is a public offer, **not** this account’s price or renewal amount. |
 | SSL | One DV wildcard certificate is included in the current Web Hosting Plus listing and in IONOS’s hosting SSL documentation. No separate certificate purchase is recommended. Confirm the included certificate is still available and assigned before launch. |
 | CDN | A CDN item appears in the contract. The screenshots and public Web Hosting CDN help pages do not expose its price, term, tier, or usage charge. Treat the current billing impact as **unknown** until checked on the invoice. Ordering another package or upgrading through IONOS can add a product to the contract; do not proceed. |
-| Domain and DNS | The `.com` is already registered and included in the contract listing. Renewal cost and any domain-related add-on charges are not shown. No domain or DNS change is needed for local development. |
+| Domain and DNS | The `.com` is already registered and included in the contract listing. Domain renewal cost and other domain-related charges are not shown. No domain or DNS change is needed for local development. |
 | Deployment tools | Eleventy and Node build locally. SFTP is available as the proposed manual transfer path. No paid build runner, Deploy Now plan, or CDN is needed for the initial static site. |
 
 **Recommendation:** Use the existing Web Hosting Plus webspace for the static site once the account confirms its operating system, usable space, document root, SFTP access, certificate assignment, and invoice treatment. Do not enable the CDN for v1. No new service is proposed, but the actual incremental cost cannot be stated as $0 until the owner checks the account and invoice.
