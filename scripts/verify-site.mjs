@@ -2,6 +2,7 @@ import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import contactChannels from "../src/_data/contactChannels.js";
+import site from "../src/_data/site.js";
 
 const isPreview = process.argv.includes("--preview");
 const outputRoot = path.resolve(isPreview ? "_preview" : "_site");
@@ -100,6 +101,8 @@ for (const file of htmlFiles) {
   if (!/<html\s+lang="[^"]+"/i.test(html)) fail(`${label}: missing document language.`);
   if (!/<title>[^<]+<\/title>/i.test(html)) fail(`${label}: missing page title.`);
   if (!/<meta\s+name="description"\s+content="[^"]+"/i.test(html)) fail(`${label}: missing meta description.`);
+  const stylesheetPath = `${previewPathPrefix}/assets/site.css?v=${site.assetVersion}`;
+  if (!html.includes(`href="${stylesheetPath}"`)) fail(`${label}: stylesheet URL must use the current asset version (${stylesheetPath}).`);
   const canonical = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i)?.[1];
   const expectedCanonical = `${referenceOrigin}${previewPathPrefix}${route ?? "/"}`;
   if (canonical !== expectedCanonical) fail(`${label}: canonical URL must be ${expectedCanonical}.`);
@@ -196,6 +199,7 @@ if (!projectsPage.includes("dashed boxes mark derived views")) fail("RepoPact di
 if (!projectsPage.includes("Software scope and maturity table")) fail("Software status table is missing.");
 
 const homePage = await readFile(path.join(outputRoot, "index.html"), "utf8");
+if (!homePage.includes('<h1 id="hero-title"><span>Systems first.</span> <em>Models second.</em></h1>')) fail("Homepage title phrases must remain intentionally balanced on separate lines.");
 for (const phrase of ["Systems first.", "Models second.", "A model can produce an answer.", "Constraints are part of the design.",
                       "ForgeWire", "Fabric", "released CLI package at version 3.1.3"]) {
   if (!homePage.includes(phrase)) fail("Homepage is missing current organizational copy: " + phrase);
@@ -278,6 +282,25 @@ if (socialPng.toString("hex", 0, 8) !== "89504e470d0a1a0a") fail("Social card is
 if (socialPng.readUInt32BE(16) !== 1200 || socialPng.readUInt32BE(20) !== 630) fail("Social card must be 1200×630 pixels.");
 const css = await readFile(path.join(outputRoot, "assets", "site.css"), "utf8");
 if (!css.includes("@media (max-width: 720px)") || !css.includes("@media (prefers-reduced-motion: reduce)")) fail("Responsive or reduced-motion styles are missing.");
+const responsiveRules = [
+  "--type-page: clamp(2.25rem, calc(3.5vw + 1.25rem), 4.25rem);",
+  "--type-section: clamp(1.75rem, calc(2.6vw + 1.1rem), 2.75rem);",
+  "--type-product: clamp(1.875rem, calc(2.5vw + 1.125rem), 3rem);",
+  "--type-card: clamp(1.125rem, calc(.55vw + 1rem), 1.375rem);",
+  "font-size: clamp(1rem, calc(.13vw + .95rem), 1.0625rem);",
+  "h1 { font-size: var(--type-page);",
+  "h3 { font-size: var(--type-card);",
+  ".spread-heading h2, .planning-entry h2, .communication-copy h2, .learning-copy h2 { font-size: var(--type-product); }",
+  ".condition-list li { grid-template-columns: 27px minmax(0, 1fr);",
+  ".condition-question { grid-column: 2; }",
+  ".work-visual figcaption { position: static;",
+  ".evidence-cards article:last-child { grid-column: 1 / -1; width: calc((100% - 16px) / 2); justify-self: center; }",
+  ".evidence-cards article:last-child { grid-column: auto; width: auto; justify-self: stretch; }",
+];
+for (const rule of responsiveRules) if (!css.includes(rule)) fail(`Responsive regression rule is missing: ${rule}`);
+if (/\.hero-copy h1[^{}]*\{[^}]*font-size:/i.test(css) || /\.page-lead h1[^{}]*\{[^}]*font-size:/i.test(css)) {
+  fail("Page-heading font size must use the shared fluid scale instead of breakpoint overrides.");
+}
 if (/fonts\.googleapis\.com|fonts\.gstatic\.com|url\(\s*['"]?https?:/i.test(css)) fail("Stylesheet must not load external fonts or other remote assets.");
 
 for (const file of files.filter((item) => item.endsWith(".svg"))) {
