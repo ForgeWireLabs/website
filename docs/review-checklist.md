@@ -1,6 +1,6 @@
 # Organization-first staging review
 
-**Status:** draft candidate for Jeremy and ChatGPT review. The previous visual system remains; the site purpose, narrative hierarchy, and information architecture have been revised. PR #1 remains draft and unmerged.
+**Status:** focused refinement for Jeremy and ChatGPT review. The accepted organization-first information architecture remains; draft PR #2 contains the current targeted visual and editorial changes.
 
 ## Review targets
 
@@ -9,7 +9,7 @@
 - Does Our Work explain the disciplines and problems, with products shown as evidence rather than used as category labels?
 - Does Research & Engineering distinguish open questions, public implementation examples, and private development?
 - Does the Software page keep product identity, maturity, screenshots, and source ownership together?
-- Does About introduce the organization before the founder, with leadership appropriately scaled near the end?
+- Does About explain the organization's purpose, engineering approach, project boundaries, and contact/security routes without a personal biography?
 - Is the question-index social card recognizable and legible at a small preview size?
 
 ## Accuracy checks

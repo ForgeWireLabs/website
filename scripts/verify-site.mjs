@@ -57,6 +57,8 @@ const requiredFiles = [
   "assets/workbench-desktop-dashboard.jpg",
   "assets/skillforge-command-center.png",
   "assets/flink-product-architecture.svg",
+  "assets/labs-neural-masthead.webp",
+  "assets/labs-connected-network.webp",
 ];
 
 if (!isPreview) requiredFiles.push(".htaccess");
@@ -199,6 +201,8 @@ for (const phrase of ["Engineering intelligent systems for work", "beyond the mo
 }
 if (homePage.includes("forgewire-projects-workspace.png")) fail("The product screenshot should not define the homepage's organization-level centerpiece.");
 if (!homePage.includes("What can run here?") || !homePage.includes("Who can act or intervene?") || !homePage.includes("What can be checked?")) fail("Homepage's constraint index is incomplete.");
+if (!homePage.includes("/assets/labs-neural-masthead.webp") || !homePage.includes("Blue branching neural structures with amber contact points.")) fail("Homepage is missing the approved neural masthead or its image alternative.");
+if (homePage.includes("labs-connected-network.webp")) fail("The Our Work network artwork should not appear on the homepage.");
 if (!homePage.includes("A practical lens for engineering decisions.")) fail("Homepage should introduce its question index with affirmative editorial copy.");
 if (homePage.includes("not a system diagram") || homePage.includes("not a shared product architecture") || homePage.includes("not an application release")) fail("Homepage should reserve detailed qualification for project descriptions and status notes.");
 
@@ -216,11 +220,12 @@ const workPage = await readFile(path.join(outputRoot, "work", "index.html"), "ut
 for (const phrase of ["Intelligent systems", "Distributed computing and execution infrastructure", "Developer and repository infrastructure", "Systems integration and local software", "Applied technical education", "Five disciplines connect", "shape how ForgeWire Labs approaches scope, authority, evidence, and operating constraints"]) {
   if (!workPage.includes(phrase)) fail(`Our Work page is missing the organization-level scope “${phrase}”.`);
 }
+if (!workPage.includes("/assets/labs-connected-network.webp") || !workPage.includes("Different systems. Shared engineering principles.")) fail("Our Work page is missing its approved network artwork or editorial caption.");
+if (workPage.includes("labs-neural-masthead.webp")) fail("The neural masthead should appear only on the homepage.");
 
 const aboutPage = await readFile(path.join(outputRoot, "about", "index.html"), "utf8");
-const founderHeadingPosition = aboutPage.indexOf('id="founder-title"');
-if (founderHeadingPosition >= 0 && founderHeadingPosition < aboutPage.indexOf("</section>")) fail("About page must establish the organization before introducing its founder.");
-if (!aboutPage.includes("independent, founder-led software engineering and research organization")) fail("About page must describe ForgeWire Labs as an independent, founder-led organization.");
+if (!aboutPage.includes("ForgeWire Labs is an independent software engineering and research organization.")) fail("About page must describe ForgeWire Labs as an independent software engineering and research organization.");
+if (/Jeremy Shows|founder|race-car builder|small-business owner|substantial help from AI systems|id="founder-title"/i.test(aboutPage)) fail("About page must not contain a founder biography or founder-led organization language.");
 for (const phrase of ["General correspondence", "Software questions", "Security reports", "contact@forgewirelabs.com", "support@forgewirelabs.com", "Private reporting routes are available for these projects", "Do not post vulnerability details in public Issues."]) {
   if (!aboutPage.includes(phrase)) fail(`About page is missing the contact status or route “${phrase}”.`);
 }
