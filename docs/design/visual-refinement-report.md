@@ -61,3 +61,9 @@ Validation completed:
 - `npm run build:preview` — passed; 5 preview routes generated.
 - `npm run verify:preview` — passed; preview `noindex, nofollow` metadata and preview paths checked.
 - `git diff --check` — passed.
+
+## Cache-version follow-up
+
+The stylesheet cache key is now `20261026-visual-refinement`. The generated production and preview pages reference it as `/assets/site.css?v=20261026-visual-refinement` and `/website/assets/site.css?v=20261026-visual-refinement`, respectively; the verifier checks both output modes against the configured version.
+
+The production and preview builds and verifiers passed again after this change. Existing screenshots cover all five pages at the eight listed CSS viewport widths and provide reflow evidence. An isolated headless Edge session could not be established: the command-line launch reported that it was opening in the existing browser session, and the separate isolated launch was blocked by local policy. The visible desktop session was not used. Actual 200%/400% zoom, keyboard operation, screen-reader output, and formal contrast analysis remain unverified. The screenshot files remain available for review; this report does not claim independent inspection of their JPEG contents by the PR reviewer.

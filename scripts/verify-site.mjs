@@ -2,6 +2,7 @@ import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import contactChannels from "../src/_data/contactChannels.js";
+import site from "../src/_data/site.js";
 
 const isPreview = process.argv.includes("--preview");
 const outputRoot = path.resolve(isPreview ? "_preview" : "_site");
@@ -100,6 +101,8 @@ for (const file of htmlFiles) {
   if (!/<html\s+lang="[^"]+"/i.test(html)) fail(`${label}: missing document language.`);
   if (!/<title>[^<]+<\/title>/i.test(html)) fail(`${label}: missing page title.`);
   if (!/<meta\s+name="description"\s+content="[^"]+"/i.test(html)) fail(`${label}: missing meta description.`);
+  const stylesheetPath = `${previewPathPrefix}/assets/site.css?v=${site.assetVersion}`;
+  if (!html.includes(`href="${stylesheetPath}"`)) fail(`${label}: stylesheet URL must use the current asset version (${stylesheetPath}).`);
   const canonical = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i)?.[1];
   const expectedCanonical = `${referenceOrigin}${previewPathPrefix}${route ?? "/"}`;
   if (canonical !== expectedCanonical) fail(`${label}: canonical URL must be ${expectedCanonical}.`);
