@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#112229">
+    <title>{{ title }} | {{ site.name }}</title>
+    <meta name="description" content="{{ description or site.description }}">
+    <link rel="canonical" href="{{ site.url }}{{ site.basePath }}{{ page.url }}">
+    {% if site.preview %}<meta name="robots" content="noindex, nofollow">{% endif %}
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ site.name }}">
+    <meta property="og:title" content="{{ title }} | {{ site.name }}">
+    <meta property="og:description" content="{{ description or site.description }}">
+    <meta property="og:url" content="{{ site.url }}{{ site.basePath }}{{ page.url }}">
+    <meta property="og:image" content="{{ site.url }}{{ site.basePath }}{{ site.socialImage }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="ForgeWire Labs presents six engineering questions about compute, providers, connectivity, platforms, authority, and evidence.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }} | {{ site.name }}">
+    <meta name="twitter:description" content="{{ description or site.description }}">
+    <meta name="twitter:image" content="{{ site.url }}{{ site.basePath }}{{ site.socialImage }}">
+    <meta name="twitter:image:alt" content="ForgeWire Labs presents six engineering questions about compute, providers, connectivity, platforms, authority, and evidence.">
+    <link rel="icon" href="{{ site.basePath }}/assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ site.basePath }}/assets/site.css?v={{ site.assetVersion }}">
+  </head>
+  <body>
+    {% if site.preview %}<div class="preview-banner" role="note">Development preview · Temporary public review copy</div>{% endif %}
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="wordmark" href="{{ site.basePath }}/" aria-label="ForgeWire Labs home">
+          <span class="brand-copy"><strong>ForgeWire <span>Labs</span></strong><small>Independent engineering</small></span>
+        </a>
+        <nav aria-label="Main navigation">
+          <ul class="nav-list">
+            <li><a href="{{ site.basePath }}/"{% if page.url == '/index.html' %} aria-current="page"{% endif %}>Home</a></li>
+            <li><a href="{{ site.basePath }}/work/"{% if page.url.startsWith('/work') %} aria-current="page"{% endif %}>Our Work</a></li>
+            <li><a href="{{ site.basePath }}/engineering/"{% if page.url.startsWith('/engineering') %} aria-current="page"{% endif %}>Research &amp; Engineering</a></li>
+            <li><a href="{{ site.basePath }}/projects/"{% if page.url.startsWith('/projects') %} aria-current="page"{% endif %}>Software</a></li>
+            <li><a href="{{ site.basePath }}/about/"{% if page.url.startsWith('/about') %} aria-current="page"{% endif %}>About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      {{ content | safe }}
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <a class="footer-name" href="{{ site.basePath }}/">ForgeWire Labs</a>
+        <p class="footer-summary">Independent software engineering and research across intelligent systems, distributed computing, developer infrastructure, and technical learning.</p>
+        <div class="footer-links">
+          <a href="{{ site.github }}">Organization profile <span aria-hidden="true">↗</span></a>
+          <a href="{{ site.basePath }}/work/">Our work</a>
+          <a href="{{ site.basePath }}/projects/">Software</a>
+          <a href="{{ site.basePath }}/engineering/">Research &amp; Engineering</a>
+          <a href="{{ site.basePath }}/about/">About the organization</a>
+        </div>
+        <p class="footer-note">Projects keep distinct purposes, architectures, and release states.</p>
+      </div>
+    </footer>
+  </body>
+</html>

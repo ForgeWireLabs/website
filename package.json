@@ -1,0 +1,19 @@
+{
+  "name": "forgewirelabs-website",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/clean-output.mjs production && eleventy",
+    "build:preview": "node scripts/clean-output.mjs preview && eleventy --config=eleventy.preview.config.js",
+    "serve": "node scripts/preview.mjs",
+    "serve:preview": "node scripts/preview.mjs --preview",
+    "verify": "node scripts/verify-site.mjs",
+    "verify:preview": "node scripts/verify-site.mjs --preview"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.7"
+  }
+}

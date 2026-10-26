@@ -1,0 +1,98 @@
+---
+layout: layouts/base.njk
+title: About ForgeWire Labs
+description: Meet ForgeWire Labs, an independent software engineering and research organization led by Jeremy Shows.
+permalink: /about/index.html
+---
+<section class="page-lead about-lead page-shell" aria-labelledby="about-title">
+  <p class="eyebrow">About ForgeWire Labs</p>
+  <h1 id="about-title">An independent organization for <em>practical systems engineering.</em></h1>
+  <p class="lead-copy">ForgeWire Labs is an independent, founder-led software engineering and research organization. It grew from hands-on work across software, IT, and engineering, and now investigates intelligent systems, distributed computing, developer infrastructure, systems integration, and applied technical education.</p>
+</section>
+
+<section class="organization-purpose page-shell" aria-labelledby="purpose-title">
+  <div>
+    <p class="eyebrow">Purpose</p>
+    <h2 id="purpose-title">Make useful software understandable under real conditions.</h2>
+  </div>
+  <div>
+    <p>The organization studies what happens when software depends on models, tools, repositories, machines, and people. Its work pays attention to constraints such as limited compute, changing providers, connectivity, platform differences, durable state, and the operator's ability to intervene.</p>
+    <p>Across software and research, ForgeWire Labs works on project context, accountable execution, durable repository state, local systems, and practical technical learning.</p>
+  </div>
+</section>
+
+<section class="about-principle" aria-labelledby="approach-title">
+  <div class="page-shell">
+    <p class="eyebrow">Operating philosophy</p>
+    <h2 id="approach-title">A result belongs to the source, the version, and the conditions that produced it.</h2>
+    <ul class="approach-list">
+      <li><strong>Make authority explicit.</strong> A tool's ability to act should have a clear scope and a human decision boundary where the project requires it.</li>
+      <li><strong>Preserve what can be inspected.</strong> Records, tests, and evidence help later work distinguish observed behavior from assumption.</li>
+      <li><strong>Describe limits with the result.</strong> A preview, package, private overview, and experiment are different levels of maturity.</li>
+    </ul>
+    <p>They shape how ForgeWire Labs frames research questions, makes engineering decisions, and documents project work.</p>
+  </div>
+</section>
+
+<section class="organization-practice page-shell" aria-labelledby="practice-title">
+  <div class="organization-copy">
+    <p class="eyebrow">How the organization works</p>
+    <h2 id="practice-title">Independent projects, inspected on their own terms.</h2>
+    <p>ForgeWire Labs develops independent software projects and publishes source, technical notes, and release information through their project repositories. The work ranges from private infrastructure research to released tools, previews, and applied technical education.</p>
+    <a class="text-link" href="{{ site.basePath }}/projects/">See software, sources, and release states <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<section class="founder-section page-shell" aria-labelledby="founder-title">
+  <div class="founder-label">
+    <p class="eyebrow">Founder &amp; Principal Engineer</p>
+    <h2 id="founder-title">Jeremy Shows</h2>
+    <p>Engineering, research, and product direction</p>
+  </div>
+  <div class="founder-story">
+    <p class="story-lede">A practical engineering outlook shaped by work on vehicles, fabrication, IT, software, and small businesses.</p>
+    <p>Before focusing on distributed systems and intelligent software, Jeremy worked as a mechanic, race-car builder, fabricator, IT professional, and small-business owner. That background informs an approach that looks at the parts, how they connect, and what happens when one fails.</p>
+    <p>Jeremy leads research, architecture, implementation, debugging, testing, and documentation with substantial help from AI systems. He evaluates the output, chooses the direction, and decides what is accepted. The work also draws on open research, open-source software, commercial tools, and established engineering practice.</p>
+  </div>
+</section>
+
+<section class="organization-section page-shell" aria-labelledby="contact-title">
+  <div class="organization-copy">
+    <p class="eyebrow">Contact</p>
+    <h2 id="contact-title">Reach ForgeWire Labs.</h2>
+    <p>Contact ForgeWire Labs for organizational inquiries, research questions, collaboration, and software support.</p>
+    <div class="contact-route-list">
+      <article class="contact-route">
+        <h3>General correspondence</h3>
+        <p>For general inquiries, research questions, collaboration, and partnerships, email <a href="mailto:contact@forgewirelabs.com">contact@forgewirelabs.com</a>.</p>
+      </article>
+      <article class="contact-route">
+        <h3>Software questions</h3>
+        <p>For questions about publicly available software, email <a href="mailto:support@forgewirelabs.com">support@forgewirelabs.com</a>. Use the relevant repository for public bug reports and feature discussion, and check its README for current release and support scope.</p>
+        <a class="text-link" href="{{ site.basePath }}/projects/">Find a project repository <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="contact-route">
+        <h3>Security reports</h3>
+        <p>Use private reporting for the affected project when available. Private reporting routes are available for these projects:</p>
+        <ul>
+          <li><a href="https://github.com/ForgeWireLabs/repopact-core/security/advisories/new">RepoPact Core</a></li>
+          <li><a href="https://github.com/ForgeWireLabs/repopact-workbench/security/advisories/new">RepoPact Workbench</a></li>
+        </ul>
+        <p>For other projects, check the repository's Security page before sharing details. Do not post vulnerability details in public Issues.</p>
+      </article>
+    </div>
+  </div>
+  <aside class="contact-block" aria-labelledby="organization-email-title">
+    <p class="eyebrow">Organizational email</p>
+    <h3 id="organization-email-title">Get in touch</h3>
+    <dl class="contact-addresses">
+{% for channel in contactChannels %}
+      <div>
+        <dt>{{ channel.title }}</dt>
+        <dd><a href="mailto:{{ channel.address }}">{{ channel.address }}</a></dd>
+      </div>
+{% endfor %}
+    </dl>
+    <p class="contact-mailbox-note">For public technical discussion, use the project's repository.</p>
+  </aside>
+</section>

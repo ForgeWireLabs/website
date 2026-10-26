@@ -1,0 +1,10 @@
+node_modules/
+_site/
+_preview/
+.env
+.env.*
+!.env.example
+*.log
+*.sftpconfig
+.DS_Store
+Thumbs.db

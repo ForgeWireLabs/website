@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-labelledby="title desc">
+  <title id="title">ForgeWire Labs</title>
+  <desc id="desc">ForgeWire Labs is an independent software engineering and research organization. The card presents six engineering questions about compute, providers, connectivity, platforms, authority, and evidence.</desc>
+  <rect width="1200" height="630" fill="#112229"/>
+  <rect x="0" width="12" height="630" fill="#8bd8cf"/>
+  <text x="64" y="71" fill="#f4f6f3" font-family="Segoe UI,Arial,sans-serif" font-size="29" font-weight="730" letter-spacing="-.6">ForgeWire <tspan fill="#8bd8cf" font-weight="500">Labs</tspan></text>
+  <text x="66" y="119" fill="#8bd8cf" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="2.2">INDEPENDENT SOFTWARE ENGINEERING &amp; RESEARCH</text>
+  <text x="64" y="218" fill="#f4f6f3" font-family="Segoe UI,Arial,sans-serif" font-size="48" font-weight="720" letter-spacing="-1.2">Intelligent systems</text>
+  <text x="64" y="276" fill="#f4f6f3" font-family="Segoe UI,Arial,sans-serif" font-size="48" font-weight="720" letter-spacing="-1.2">for work <tspan fill="#8bd8cf">beyond</tspan></text>
+  <text x="64" y="334" fill="#8bd8cf" font-family="Segoe UI,Arial,sans-serif" font-size="48" font-weight="720" letter-spacing="-1.2">the model.</text>
+  <text x="67" y="400" fill="#c9d6d4" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="400">Context · execution · human authority · evidence</text>
+  <path d="M64 483H1134" stroke="#39545a" stroke-width="2"/>
+  <text x="66" y="526" fill="#bdccca" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.35">USEFUL UNDER REAL OPERATING CONDITIONS</text>
+  <text x="66" y="557" fill="#c9d6d4" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="400">Distributed computing · developer infrastructure · applied technical education</text>
+
+  <g transform="translate(636 145)">
+    <rect width="500" height="322" rx="2" fill="#1b3238" stroke="#54747b" stroke-width="1.5"/>
+    <text x="24" y="34" fill="#8bd8cf" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">QUESTIONS TO CARRY INTO ENGINEERING</text>
+    <path d="M24 52H476" stroke="#39545a" stroke-width="1"/>
+    <g font-family="Segoe UI,Arial,sans-serif">
+      <text x="26" y="88" fill="#8bd8cf" font-size="12" font-weight="700">01</text><text x="69" y="88" fill="#f4f6f3" font-size="15" font-weight="700">COMPUTE</text><text x="213" y="88" fill="#c9d6d4" font-size="15">What can run here?</text>
+      <path d="M24 102H476" stroke="#39545a" stroke-width="1"/>
+      <text x="26" y="132" fill="#8bd8cf" font-size="12" font-weight="700">02</text><text x="69" y="132" fill="#f4f6f3" font-size="15" font-weight="700">PROVIDERS</text><text x="213" y="132" fill="#c9d6d4" font-size="15">What can be replaced?</text>
+      <path d="M24 146H476" stroke="#39545a" stroke-width="1"/>
+      <text x="26" y="176" fill="#8bd8cf" font-size="12" font-weight="700">03</text><text x="69" y="176" fill="#f4f6f3" font-size="15" font-weight="700">CONNECTIVITY</text><text x="213" y="176" fill="#c9d6d4" font-size="15">What remains available?</text>
+      <path d="M24 190H476" stroke="#39545a" stroke-width="1"/>
+      <text x="26" y="220" fill="#8bd8cf" font-size="12" font-weight="700">04</text><text x="69" y="220" fill="#f4f6f3" font-size="15" font-weight="700">PLATFORMS</text><text x="213" y="220" fill="#c9d6d4" font-size="15">Where does behavior change?</text>
+      <path d="M24 234H476" stroke="#39545a" stroke-width="1"/>
+      <text x="26" y="264" fill="#8bd8cf" font-size="12" font-weight="700">05</text><text x="69" y="264" fill="#f4f6f3" font-size="15" font-weight="700">AUTHORITY</text><text x="213" y="264" fill="#c9d6d4" font-size="15">Who can act or intervene?</text>
+      <path d="M24 278H476" stroke="#39545a" stroke-width="1"/>
+      <text x="26" y="294" fill="#8bd8cf" font-size="12" font-weight="700">06</text><text x="69" y="294" fill="#f4f6f3" font-size="15" font-weight="700">EVIDENCE</text><text x="213" y="294" fill="#c9d6d4" font-size="15">What can be checked?</text>
+    </g>
+  </g>
+</svg>
