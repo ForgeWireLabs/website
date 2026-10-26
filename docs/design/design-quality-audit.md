@@ -1,6 +1,6 @@
 # Design quality audit
 
-**Reviewed:** 2026-10-25  
+**Reviewed:** 2026-10-25
 **Scope:** organization-first website revision, static implementation, and content boundaries. The broad v1 art direction remains accepted; this pass adjusts information hierarchy and adds technical clarity. It is not another general redesign.
 
 ## Current decisions
