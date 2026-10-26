@@ -1,6 +1,6 @@
 # ADR 0001: Static site on the existing IONOS hosting contract
 
-- **Status:** Proposed production architecture; v1 visual direction accepted; deployment not authorized
+- **Status:** Production architecture selected; v1 visual direction accepted; deployment not authorized
 - **Date:** 2026-10-25
 - **Decision owners:** Jeremy and ChatGPT for major design, hosting, security, and financial choices
 

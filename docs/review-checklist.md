@@ -15,8 +15,8 @@
 ## Accuracy checks
 
 - The organization-first purpose and focus areas are owner-provided staging copy and require approval before production.
-- About links the general and software mailboxes after controlled inbound/outbound, sender-identity, and SPF/DKIM/DMARC tests passed. Security remains unlinked pending IONOS access, MFA, and forwarding review.
-- Before inviting confidential reports, verify that `security@` has a separate confidentiality boundary, restricted access, MFA, and no forwarding into general/support.
+- About links only the tested general and software mailboxes and omits the reserved security address. Project-specific private reporting links are shown where enabled.
+- Security-mailbox password setup, IONOS 2FA, and additional hardening are deferred by owner and outside v1 website launch scope.
 - ForgeWire and Fabric stay private development; the public overview is not an installation path or release.
 - RP Proving Grounds is a validation repository, not a separately released product; its currently pinned RepoPact version is 3.0.2.
 - Flink is linked to the ForgeWire Labs repository; its current README/release naming and package boundaries remain disclosed.

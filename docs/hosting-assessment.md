@@ -7,20 +7,20 @@
 
 The supplied account screenshots show an active **IONOS Web Hosting Plus** contract. `forgewirelabs.com` is listed in that contract and is marked **Domain not in use**. The contract-services screen also lists **IONOS CDN powered by Cloudflare** as an additional item. The screenshots do not show the webspace quota or free space, invoice totals, CDN tier or hostname activation, or whether an SSL certificate is assigned to `.com`.
 
-The account was not available for a read-only contract inspection during this review, so account-specific quota, invoice, certificate, and CDN billing details remain unverified. No credentials were entered or stored.
+The authenticated account was not available for a read-only contract inspection during this review: the IONOS page redirected to sign-in and the authorized Windows computer-use workflow stopped on its user-input safety check. Account-specific quota, document root, SFTP configuration, invoice, certificate assignment, and CDN billing details therefore remain unverified. No credentials were entered or stored.
 
 ## Capabilities relevant to this site
 
 | Capability | Verified product information | Account-specific result |
 |---|---|---|
-| Operating system | IONOS identifies classic Web Hosting without a “Windows” suffix as Linux hosting. The screenshot names the contract “IONOS Web Hosting Plus” with no Windows suffix. | **Linux is confirmed by the contract name shown.** |
-| Webspace | The current US Linux Plus offer lists 350 GB NVMe storage and unlimited websites. IONOS says actual available space is shown in Hosting → Webspace. | **350 GB is the current catalogue figure; assigned quota and free space must still be checked in the contract.** |
-| Secure upload | IONOS provides encrypted SFTP or FTPS, not unencrypted FTP. Tariffs introduced after August 2024 support an SFTP-only account or an SFTP+SSH account. The current Plus offer lists 200 SFTP accounts. | **SFTP is the suitable transfer method.** Confirm account options and the webspace host name before deployment. Use an SFTP-only account. |
+| Operating system | IONOS distinguishes Linux Web Hosting from Windows Web Hosting/ASP.NET. The screenshot names the product “IONOS Web Hosting Plus” but does not show an operating-system field. | **Likely Linux based on the product naming, but not independently confirmed in the account. Verify before relying on `.htaccess` or Linux-specific steps.** |
+| Webspace | The current US Linux Plus offer lists 350 GB NVMe storage and unlimited websites. IONOS says actual available space is shown in Hosting → Webspace. | **Catalogue figures only; assigned quota, free space, and document-root path are unverified.** |
+| Secure upload | IONOS documents encrypted SFTP or FTPS and supports SFTP-only accounts on eligible plans. The public Plus offer lists 200 SFTP accounts. | **SFTP is the proposed transfer method; this contract's account options, hostname, and credentials are unverified. Use a dedicated SFTP-only account if available.** |
 | Account restriction | A new SFTP account can be limited to a selected directory. IONOS says this is a transfer-layer restriction, not full webspace isolation; true isolation needs a separate webspace contract. | Suitable for a static deploy account if the webspace contains no unrelated secrets. Do not use it to store credentials or private data. |
-| SSL | The current Plus offer includes one DV wildcard certificate. IONOS documents the included SSL Starter Wildcard as covering one domain and its subdomains; it must be activated and assigned to the domain. | **Entitlement is expected from the plan. Assignment/activation for `forgewirelabs.com` is unverified.** No paid certificate is recommended. |
+| SSL | The current Plus offer includes one DV wildcard certificate. IONOS documents the included SSL Starter Wildcard as covering one domain and its subdomains; it must be activated and assigned to the domain. | A trusted certificate currently serves the public apex parking page, as an external HTTPS request succeeded with system certificate validation. **The account's included certificate entitlement and assignment to the production webspace remain unverified.** No paid certificate is recommended. |
 | Domain assignment | IONOS can assign a domain to a webspace directory when the domain is in a contract with webspace and points to IONOS webspace. Its wizard may offer to change DNS records when they do not already point there. | The `.com` is in the hosting contract but unused. Directory assignment is a production change and is not authorized yet. Stop if the wizard proposes DNS changes. |
 | Redirects | Linux Web Hosting supports `.htaccess` rewrite rules; IONOS documents that `mod_rewrite` is enabled on its Web Hosting servers. | Can implement HTTP→HTTPS and `www`→apex redirects after both hostnames resolve to the host and have valid certificates. Test before enabling. |
-| CDN | IONOS Web Hosting CDN has Basic and Pro tiers. Basic has a 50 GB/day limit; Pro has unlimited bandwidth and extra security features. Activation is for subdomains only, changes their DNS to the Cloudflare network, and cannot be used directly on the apex domain. A separate CDN package is needed per main domain. | The contract screenshot proves an IONOS CDN line item exists, not that `.com` or `www` is configured to use it. Tier, activation, usage, and fee are unknown. Do not activate or select it for this site. |
+| CDN | IONOS Web Hosting CDN has Basic and Pro tiers. Basic has a 50 GB/day limit; Pro has unlimited bandwidth and extra security features. Activation is for subdomains only, changes their DNS to the Cloudflare network, and cannot be used directly on the apex domain. A separate CDN package is needed per main domain. | The screenshot proves a CDN line item exists, not that `.com` or `www` is configured to use it. Tier, activation, usage, and fee are unknown. Do not activate or select it for this site. |
 
 ## Cost assessment
 
@@ -33,15 +33,29 @@ The account was not available for a read-only contract inspection during this re
 | Domain and DNS | The `.com` is already registered and included in the contract listing. Renewal cost and any domain-related add-on charges are not shown. No domain or DNS change is needed for local development. |
 | Deployment tools | Eleventy and Node build locally. SFTP is available as the proposed manual transfer path. No paid build runner, Deploy Now plan, or CDN is needed for the initial static site. |
 
-**Recommendation:** Use the existing Linux Web Hosting Plus webspace for the static site after Jeremy confirms the free space, included SSL assignment, and current contract invoice. Do not enable the CDN for v1. The expected incremental hosting cost is $0 only if the existing contract’s listed hosting and SSL cover this use; that account-specific condition has not yet been confirmed.
+**Recommendation:** Use the existing Web Hosting Plus webspace for the static site once the account confirms its operating system, usable space, document root, SFTP access, certificate assignment, and invoice treatment. Do not enable the CDN for v1. No new service is proposed, but the actual incremental cost cannot be stated as $0 until the owner checks the account and invoice.
+
+## Public DNS and current behavior
+
+An independent DNS query to 1.1.1.1 on 2026-10-25 returned:
+
+| Name | Observed record | TTL |
+|---|---|---:|
+| `forgewirelabs.com` | A `74.208.236.125`; AAAA `2607:f1c0:100f:f000::200` | 3600 seconds |
+| `www.forgewirelabs.com` | No A, AAAA, or CNAME answer | — |
+| `forgewirelabs.com` | MX `mx00.ionos.com`, `mx01.ionos.com`; SPF `v=spf1 include:_spf-us.ionos.com ~all` | 3600 seconds |
+| `s1-ionos._domainkey` / `s2-ionos._domainkey` | CNAMEs to `s1.dkim.ionos.com` / `s2.dkim.ionos.com` | 3600 seconds |
+| `_dmarc` | CNAME to `dmarc.ionos.com` | 3600 seconds |
+
+The apex currently returns an IONOS parking/registration page over HTTP and HTTPS. HTTP does not redirect to HTTPS. HTTPS passed the system trust check. `www` does not resolve. Preserve the apex A/AAAA and all mail-related DNS records. A possible `www CNAME forgewirelabs.com.` is only a candidate: first verify IONOS domain binding and certificate coverage, then obtain explicit owner approval before adding it. No DNS record was changed.
 
 ## Before production approval
 
-1. In Hosting → Webspace, record the total and free space and confirm the contract still exposes the Linux SFTP-only account option.
+1. In Hosting → Webspace, record the operating system, total and free space, document-root path, and confirm the contract exposes an SFTP-only account option.
 2. In Domains & SSL, confirm the included DV wildcard certificate is available and can be assigned to `forgewirelabs.com` and `www.forgewirelabs.com`.
 3. Confirm the CDN item’s Basic/Pro tier, whether it is already configured for any hostname, and the associated invoice/renewal line. Do not activate it during inspection.
 4. Confirm the hosting, domain, and CDN invoice amounts and renewal terms. Do not infer them from public promotional prices.
-5. Confirm the domain’s existing DNS state before using IONOS’s domain-binding wizard. Do not approve an automatic DNS change without separate authorization.
+5. Confirm the domain’s existing DNS state before using IONOS’s domain-binding wizard. Preserve apex A/AAAA and mail DNS. Do not approve an automatic DNS change without separate authorization. The only currently identified hostname gap is that `www` does not resolve; any proposed record must be shown to Jeremy for approval before applying it.
 
 ## Primary sources
 

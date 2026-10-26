@@ -1,64 +1,43 @@
-# ForgeWire Labs website validation report
+# ForgeWire Labs website launch acceptance
 
 **Reviewed:** 2026-10-25
+**Status:** Production deployment is blocked pending account-only IONOS facts and owner authorization. No production changes were made.
 
 | Item | Revision or status |
 |---|---|
+| Source branch | `codex/initial-website-prototype`; final source SHA is recorded in the release manifest after commit |
 | Draft PR | [ForgeWireLabs/website#1](https://github.com/ForgeWireLabs/website/pull/1), open, draft, unmerged |
-| Website implementation source used for the current page artifact | `e5a8dd1385888f53ecb863e486178ce8564619a7` |
-| Staging artifact commit | `8bad38f342e0bc0d810b37bb35af34100e026ac6` |
-| Public staging URL | [https://forgewirelabs.github.io/website/?review=8bad38f](https://forgewirelabs.github.io/website/?review=8bad38f) |
-| Contact address state | General and software channels passed controlled mail-flow checks and are linked; security remains unlinked pending access and privacy review |
+| Public staging branch | `website-preview`; currently deployed revision will be updated from the final source after commit |
+| Staging URL | [https://forgewirelabs.github.io/website/](https://forgewirelabs.github.io/website/) (temporary public preview; noindex) |
+| Production release | Local static artifact only; archive SHA-256 is recorded in the release package manifest |
 
-## Build and static checks
+## Bounded acceptance results
 
-These commands passed from the implementation source revision:
-
-```text
-npm run build
-npm run verify
-npm run build:preview
-npm run verify:preview
-npm audit --audit-level=high
-```
-
-Eleventy generated the five production and five staging routes. The dependency audit reported zero vulnerabilities. The static verifiers check canonical and preview metadata, the production sitemap, internal links and asset references, maturity labels, image alternatives and intrinsic sizes, SVG safety, duplicate IDs, local fragments, and generated artifact boundaries.
-
-The contact verifier reads `src/_data/contactChannels.js`, requires exactly the three owner-confirmed `.com` mailboxes, checks each address is present in About, and enforces the link gate: a pending address must have its verification status and no `mailto:` link; a channel marked verified must render its corresponding `mailto:` link. The general and software channels are verified and linked. The security mailbox has passed controlled delivery and authentication checks but remains unlinked pending access, MFA, and forwarding review. The named `.org` mailbox is prohibited from About.
-
-## Public staging checks
-
-Independent HTTPS requests to the deployed revision returned:
-
-- HTTP 200 for all five routes: `/`, `/work/`, `/engineering/`, `/projects/`, and `/about/`.
-- HTTP 200 for all nine expected CSS, SVG, PNG, and JPEG assets.
-- HTTPS requests completed using the system's default certificate validation.
-- The expected GitHub Pages canonical on each page, a visible **Development preview** label, and `noindex, nofollow` on all five routes.
-- `contact@forgewirelabs.com` and `support@forgewirelabs.com` have working `mailto:` links in About; `security@forgewirelabs.com` remains plain text with its access/privacy review pending.
-- No sitemap declaration in preview `robots.txt`.
-- HTTP 404 for `package.json`, internal email architecture documentation, the verifier script, `.env`, `.git/HEAD`, and a source-map path.
-
-The artifact contains generated pages and assets, `.nojekyll`, and `.gitattributes`. Source templates, internal documentation, scripts, dependencies, credentials, and review screenshots are not published. Public staging does not provide access control; `noindex` is a crawler directive, not a privacy boundary.
-
-## Organizational email
-
-The owner confirms that `contact@forgewirelabs.com`, `support@forgewirelabs.com`, and `security@forgewirelabs.com` are three separately created IONOS mailboxes. On 2026-10-25, each mailbox was tested in its separate Thunderbird account using a controlled mailbox owned by the user. The recipient address and full message headers are not recorded here.
-
-| Test | Result |
+| Check | Result |
 |---|---|
-| Incoming delivery and reply to each address | Passed; each controlled reply appeared in its corresponding separate Inbox |
-| Outgoing delivery, authenticated SMTP, and correct From/Reply-To | Passed; each message arrived with matching From/Reply-To, showed authenticated SMTP submission, and appeared in the corresponding Sent folder |
-| SPF, DKIM, and DMARC on real outbound messages | Passed for all three according to the external recipient's authentication results |
-| IMAP and SMTP secure connections | Passed for all three; IMAP `imap.ionos.com:993` with SSL/TLS, SMTP `smtp.ionos.com:465` with SSL/TLS |
-| MFA, recovery, spam protection, authorized recipients, and forwarding rules | Not inspected; owner review remains open |
-| Security mailbox access and routing isolation | Not verified; keep the address unlinked and do not send sensitive reports until reviewed |
+| Production build and static verifier | **Passed** — five routes; production apex canonicals and sitemap; no preview banner or noindex; `.htaccess` present |
+| Staging build and static verifier | **Passed** — five routes; GitHub Pages base path; visible Development preview label; `noindex, nofollow`; no production canonical, sitemap, or `.htaccess` |
+| Source/output boundary | **Passed by static verifier** — no source maps, environment files, source/docs/scripts/dependencies, repository metadata, inline scripts/handlers, or unsafe remote SVG references in generated output |
+| Contact presentation | **Passed by static verifier** — only `contact@forgewirelabs.com` and `support@forgewirelabs.com` are public mailto links; security mailbox is absent; verified private reporting links remain for RepoPact Core and Workbench; no public issue disclosure route |
+| Local navigation, fragments, images, and CSS references | **Passed by static verifier** across five pages and generated assets |
+| Dependency audit | **Passed** — `npm audit --audit-level=high` reports zero vulnerabilities |
+| Rendered desktop/mobile layout, overflow, keyboard/focus, 200%/400% zoom and reflow | **Not verified in this pass** — the authorized Windows computer-use workflow stopped after detecting user input and refreshing the selected window. Per the Computer Use safety instruction, GUI automation stopped; no alternate automation was used |
+| Screen reader or WCAG conformance | **Not claimed** — no Narrator/NVDA spoken review or formal conformance assessment was completed |
 
-On 2026-10-25, public DNS for `forgewirelabs.com` resolved MX to `mx00.ionos.com` and `mx01.ionos.com`, SPF to `include:_spf-us.ionos.com`, DKIM selectors `s1-ionos` and `s2-ionos` to IONOS, and `_dmarc` through `dmarc.ionos.com` with `p=none`. The real-message checks above confirmed authentication for the tested messages. The DMARC policy remains monitoring-only (`p=none`). No mailbox setting or DNS record was changed. See [email architecture and verification](email-architecture-assessment.md) and [email handling policy](email-handling-policy.md) for the remaining owner-side security review.
+The source uses semantic landmarks, a skip link, visible focus styles, responsive CSS, reduced-motion handling, descriptive image alternatives, and a scrollable wide-table treatment. These are implementation features, not proof of rendered accessibility. Complete one visual desktop/mobile and keyboard/zoom pass through an authorized browser session before production acceptance; record any critical defect and correct it.
 
-## Accessibility and visual review
+## Public staging and production host observations
 
-This report does not claim rendered-browser visual approval or WCAG conformance. Direct desktop/mobile browser screenshots, 200%/400% zoom and reflow, keyboard-only interaction, Narrator/NVDA review, and exhaustive contrast checks remain unverified. The source includes semantic landmarks, a skip link, visible focus styling, responsive breakpoints, reduced-motion handling, text alternatives for diagrams, and the wide-table scroller, but static source inspection cannot substitute for those practical checks.
+Before the final source update, staging was at source artifact `8bad38f342e0bc0d810b37bb35af34100e026ac6`. The new staging artifact is to be published from the committed source and checked independently for all five routes, expected assets, preview metadata, contact links, and absence of source/internal files. The previous browser screenshots do not represent this revision.
 
-## Production boundary
+On 2026-10-25, a query to public DNS resolver 1.1.1.1 found the apex A `74.208.236.125` and AAAA `2607:f1c0:100f:f000::200` (TTL 3600). `www` has no A/AAAA/CNAME answer. The existing MX, SPF, DKIM, and IONOS-managed DMARC records resolve to the current IONOS mail service; preserve them exactly. External HTTP and HTTPS requests to the apex returned the IONOS parking page with HTTP 200; HTTP did not redirect to HTTPS. HTTPS passed system certificate validation. `www` did not resolve. No DNS record was changed.
 
-PR #1 remains open, draft, and unmerged. The preview is temporary and uses no custom domain. No production website, IONOS hosting, mailbox settings, billing, credentials, or production DNS were changed. This report does not authorize production deployment or an IONOS account change.
+The supplied IONOS contract screenshot shows Web Hosting Plus, the `.com` marked **Domain not in use**, and an IONOS CDN item. It does not show webspace quota, document root, SFTP account/hostname, invoice, CDN tier/activation/charges, or certificate assignment. Authenticated account inspection was unavailable because the sign-in page and Computer Use safety stop prevented access. See [hosting assessment](hosting-assessment.md) and [deployment runbook](deployment-runbook.md).
+
+## Production and rollback boundary
+
+The intended destination is the existing IONOS Web Hosting Plus webspace, with the domain bound to the verified release directory and files uploaded over a dedicated SFTP-only account. The exact host and directory are unknown until the IONOS account is inspected. Keep apex A/AAAA and all MX/TXT/DKIM/DMARC records; `www CNAME forgewirelabs.com.` is a candidate only, subject to certificate validation and separate owner approval. The incremental cost cannot be confirmed from available evidence. Do not activate CDN or buy/upgrade any service.
+
+For first deployment, record the current DNS zone and domain assignment, and privately back up the selected webspace directory before changing it. The contract screenshot says the domain is not in use; capture the actual prelaunch assignment state in IONOS. A failed first release rolls the assignment back to that recorded state (the current public state is the IONOS parking page), restores any directory files from the private backup, and restores only DNS records changed by an explicitly approved operation. For later releases, reassign the domain to the prior versioned release directory. Keep the temporary GitHub Pages preview until production is verified and accepted.
+
+No production website, IONOS hosting configuration, certificate, DNS record, billing, mailbox setting, or credential was changed. PR #1 remains draft and unmerged. Security mailbox password, IONOS 2FA, and related hardening are explicitly deferred and are not website launch blockers while that address remains unpublished.

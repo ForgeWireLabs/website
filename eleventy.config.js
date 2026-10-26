@@ -1,5 +1,8 @@
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
+  if (process.env.FORGEWIRE_PREVIEW !== "1") {
+    eleventyConfig.addPassthroughCopy({ "src/.htaccess": ".htaccess" });
+  }
 
   return {
     dir: {

@@ -59,6 +59,8 @@ const requiredFiles = [
   "assets/flink-product-architecture.svg",
 ];
 
+if (!isPreview) requiredFiles.push(".htaccess");
+
 for (const required of requiredFiles) {
   try {
     await stat(path.join(outputRoot, required));
@@ -76,6 +78,15 @@ for (const file of files) {
 }
 if (files.some((file) => ["forgewire-labs-hero.png", "forgewire-labs-hero.svg", "repopact-flow.svg"].includes(path.basename(file)))) {
   fail("An obsolete or unreferenced prototype visual should not be published.");
+}
+if (isPreview && files.some((file) => path.basename(file) === ".htaccess")) {
+  fail("IONOS-specific server configuration must not be included in the GitHub Pages preview artifact.");
+}
+if (!isPreview) {
+  const htaccess = await readFile(path.join(outputRoot, ".htaccess"), "utf8");
+  for (const directive of ["Options -Indexes", "RewriteEngine On", "https://forgewirelabs.com%{REQUEST_URI}", "frame-ancestors 'none'", "X-Content-Type-Options", "Referrer-Policy"]) {
+    if (!htaccess.includes(directive)) fail(`Production .htaccess is missing the expected static-site protection: ${directive}.`);
+  }
 }
 
 for (const file of htmlFiles) {
@@ -210,26 +221,22 @@ const aboutPage = await readFile(path.join(outputRoot, "about", "index.html"), "
 const founderHeadingPosition = aboutPage.indexOf('id="founder-title"');
 if (founderHeadingPosition >= 0 && founderHeadingPosition < aboutPage.indexOf("</section>")) fail("About page must establish the organization before introducing its founder.");
 if (!aboutPage.includes("independent, founder-led software engineering and research organization")) fail("About page must describe ForgeWire Labs as an independent, founder-led organization.");
-for (const phrase of ["General correspondence and software inquiries can use the verified mailboxes below", "Both passed controlled send and reply tests", "SPF, DKIM, and DMARC passing on received messages", "General correspondence", "Software questions", "Security disclosures", "Three separate mailboxes", "access, MFA, and forwarding protections have not been confirmed", "private vulnerability-reporting route"]) {
+for (const phrase of ["General correspondence", "Software questions", "Security reports", "contact@forgewirelabs.com", "support@forgewirelabs.com", "Private reporting routes are available for these projects", "Do not post vulnerability details in public Issues."]) {
   if (!aboutPage.includes(phrase)) fail(`About page is missing the contact status or route “${phrase}”.`);
 }
-const expectedContactAddresses = new Set(["contact@forgewirelabs.com", "support@forgewirelabs.com", "security@forgewirelabs.com"]);
+const expectedContactAddresses = new Set(["contact@forgewirelabs.com", "support@forgewirelabs.com"]);
 if (contactChannels.length !== expectedContactAddresses.size || contactChannels.some((channel) => !expectedContactAddresses.has(channel.address))) {
-  fail("Contact channel data must contain exactly the three owner-confirmed .com mailboxes.");
-}
-for (const address of ["contact@forgewirelabs.com", "support@forgewirelabs.com"]) {
-  if (!contactChannels.find((channel) => channel.address === address)?.verified) fail(`Mail-flow verified channel ${address} must have an active mailto link.`);
-}
-if (contactChannels.find((channel) => channel.address === "security@forgewirelabs.com")?.verified) {
-  fail("Security contact must remain unlinked until access, MFA, and forwarding protections are verified.");
+  fail("Visitor-facing contact data must contain only the general and software .com mailboxes.");
 }
 for (const channel of contactChannels) {
-  if (!aboutPage.includes(channel.address)) fail(`About page is missing ${channel.address}.`);
+  if (!channel.verified || !aboutPage.includes(channel.address)) fail(`Approved visitor-facing contact address ${channel.address} must be present and active.`);
   const escapedAddress = channel.address.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const mailtoPattern = new RegExp(`<a\\b[^>]*href="mailto:${escapedAddress}"`, "i");
-  if (channel.verified && !mailtoPattern.test(aboutPage)) fail(`Verified contact address ${channel.address} must have a mailto link.`);
-  if (!channel.verified && mailtoPattern.test(aboutPage)) fail(`Unverified contact address ${channel.address} must not have a mailto link.`);
-  if (!channel.verified && !aboutPage.includes(channel.status)) fail(`Unverified contact address ${channel.address} must show its verification status.`);
+  if (!mailtoPattern.test(aboutPage)) fail(`Approved visitor-facing contact address ${channel.address} must have a mailto link.`);
+}
+if (aboutPage.includes("security@forgewirelabs.com") || /MFA|SPF, DKIM, and DMARC|controlled send and reply|privacy review pending/i.test(aboutPage)) fail("About page exposes security mailbox or operational verification details.");
+for (const privateRoute of ["https://github.com/ForgeWireLabs/repopact-core/security/advisories/new", "https://github.com/ForgeWireLabs/repopact-workbench/security/advisories/new"]) {
+  if (!aboutPage.includes(privateRoute)) fail(`About page is missing verified private reporting route ${privateRoute}.`);
 }
 if (aboutPage.includes("@forgewirelabs.org")) fail("The owner's named .org mailbox must not be published on the website.");
 if (aboutPage.includes("No project listing implies") || aboutPage.includes("unverified headcount")) fail("About page contains unnecessary defensive qualification.");
