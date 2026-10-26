@@ -224,9 +224,8 @@ if (!workPage.includes("/assets/labs-connected-network.webp") || !workPage.inclu
 if (workPage.includes("labs-neural-masthead.webp")) fail("The neural masthead should appear only on the homepage.");
 
 const aboutPage = await readFile(path.join(outputRoot, "about", "index.html"), "utf8");
-const founderHeadingPosition = aboutPage.indexOf('id="founder-title"');
-if (founderHeadingPosition >= 0 && founderHeadingPosition < aboutPage.indexOf("</section>")) fail("About page must establish the organization before introducing its founder.");
-if (!aboutPage.includes("independent, founder-led software engineering and research organization")) fail("About page must describe ForgeWire Labs as an independent, founder-led organization.");
+if (!aboutPage.includes("ForgeWire Labs is an independent software engineering and research organization.")) fail("About page must describe ForgeWire Labs as an independent software engineering and research organization.");
+if (/Jeremy Shows|founder|race-car builder|small-business owner|substantial help from AI systems|id="founder-title"/i.test(aboutPage)) fail("About page must not contain a founder biography or founder-led organization language.");
 for (const phrase of ["General correspondence", "Software questions", "Security reports", "contact@forgewirelabs.com", "support@forgewirelabs.com", "Private reporting routes are available for these projects", "Do not post vulnerability details in public Issues."]) {
   if (!aboutPage.includes(phrase)) fail(`About page is missing the contact status or route “${phrase}”.`);
 }

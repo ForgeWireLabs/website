@@ -1,10 +1,10 @@
 # Organization-first website review
 
-**Status:** organization-first staging candidate for review. This revision corrects the site's product-register emphasis while retaining the accepted v1 design system. It is not production approval.
+**Status:** the organization-first website is live on its existing host; focused content and visual refinements are under review in draft PR #2. This document records the accepted information architecture and content boundaries.
 
 ## Positioning
 
-ForgeWire Labs is presented as an independent, founder-led software engineering and research organization. The organization investigates intelligent systems and software that crosses tools, repositories, machines, and operating constraints. The site explains its engineering disciplines and questions before it introduces individual projects.
+ForgeWire Labs is presented as an independent software engineering and research organization. It investigates intelligent systems and software that crosses tools, repositories, machines, and operating constraints. The site explains its engineering disciplines and questions before it introduces individual projects.
 
 The core homepage position is **“Engineering intelligent systems for work beyond the model.”** The supporting copy connects useful context, execution, and human direction. Individual product maturity remains with the relevant project descriptions and status labels.
 
@@ -16,13 +16,13 @@ The position and organization-level statements follow Jeremy's strategic brief. 
 - **Our Work:** intelligent systems, distributed computing and execution, developer infrastructure, systems integration/local software, and applied technical education. It distinguishes disciplines from their example projects.
 - **Research & Engineering:** ongoing questions separated from public implementation evidence; a project-specific RepoPact architecture diagram; RP Proving Grounds as bounded validation material.
 - **Software:** the actual seven reviewed project records, individual identity, release state, maturity notes, source links, screenshots, and a keyboard-scrollable status table.
-- **About:** purpose, origin, engineering philosophy, founder-led organization, leadership near the end, and a general contact route distinct from project security reporting.
+- **About:** organizational purpose, engineering disciplines, operating philosophy, project boundaries, and general/security contact routes. It contains no personal founder biography.
 
 The existing route `/projects/` remains the Software page for continuity with the current staging site. The route `/engineering/` now has the Research & Engineering responsibility. The new `/work/` route explains the organizational disciplines.
 
 ## Art direction
 
-The established wordmark, typography, cool neutral surfaces, and restrained teal remain. The home visual centerpiece is a structured list of engineering questions about compute, providers, connectivity, platforms, authority, and evidence. The ForgeWire workspace capture stays with the Software content and its private-development/sample-data caption.
+The established wordmark, typography, cool neutral surfaces, and restrained teal remain. Home opens with the owner-provided neural masthead and keeps the engineering-question index as substantive content. Our Work uses the owner-provided abstract network artwork with an editorial caption. The ForgeWire workspace capture stays with Software content and its private-development/sample-data caption.
 
 The social card keeps the wordmark but replaces the product screenshot with an original organization-level question index. It identifies the questions as an engineering lens and explicitly avoids implying product architecture.
 

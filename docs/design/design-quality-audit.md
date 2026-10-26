@@ -1,13 +1,13 @@
 # Design quality audit
 
-**Reviewed:** 2026-10-25
+**Reviewed:** 2026-10-26
 **Scope:** organization-first website revision, static implementation, and content boundaries. The broad v1 art direction remains accepted; this pass adjusts information hierarchy and adds technical clarity. It is not another general redesign.
 
 ## Current decisions
 
 - The wordmark, neutral surfaces, restrained teal, and current typography remain the organization identity. No fabricated product mark or shared-product architecture is introduced.
 - The homepage opens with the owner-provided neural masthead and ForgeWire Labs' organizational purpose. Its six-question engineering index remains substantive content about compute, providers, connectivity, platforms, authority, and evidence; the artwork does not depict product architecture.
-- **Our Work** explains five engineering disciplines separately from products. **Research & Engineering** distinguishes open questions, bounded public implementation evidence, and private development. **Software** retains the individual project identities, maturity, evidence, and source links. **About** establishes the organization before founder context.
+- **Our Work** explains five engineering disciplines separately from products. **Research & Engineering** distinguishes open questions, bounded public implementation evidence, and private development. **Software** retains the individual project identities, maturity, evidence, and source links. **About** explains organizational purpose, engineering disciplines, operating philosophy, project boundaries, and contact/security routes without a personal biography.
 - Our Work uses owner-provided abstract network artwork with the caption “Different systems. Shared engineering principles.” The image is editorial artwork rather than a map of product or system connections.
 - ForgeWire and Fabric stay separate, private-development directions. Their public descriptions are grounded in the pinned public overview and do not assert availability, release readiness, or unsupported capabilities. See [the public-copy record](../forgewire-fabric-public-copy.md) for source material and exclusions.
 - The authentic ForgeWire Projects capture remains with Software content, where its private-build and sample-data limitations are explained. It is not the homepage centerpiece or social-card artwork.
@@ -23,7 +23,7 @@ The implementation remains static HTML/CSS generated with Eleventy. It adds no b
 ## Content and provenance
 
 - Public project maturity and implementation claims are bounded by the primary-source ledger in [`content-sources.md`](../content-sources.md).
-- The homepage questions describe an editorial engineering lens. The new image provenance, source hashes, and WebP conversions are recorded in [`content-sources.md`](../content-sources.md).
+- The homepage questions describe an editorial engineering lens. Image provenance and the manifest-verified WebP hashes are recorded in [`content-sources.md`](../content-sources.md).
 - Flink's repository was renamed and transferred from ForgeLink; the copy keeps the current project identity while disclosing legacy package/release naming where relevant.
 - SkillForge sample account values remain explicitly distinguished from learner results; Workbench values remain fixture data.
 - The social card is a site-authored SVG/PNG composition; the project screenshots and diagrams retain their project-specific provenance.

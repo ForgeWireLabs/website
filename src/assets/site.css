@@ -367,7 +367,7 @@ h3 { font-size: 1.18rem; font-weight: 720; letter-spacing: -.02em; }
 .proving-ground > div:last-child { padding-left: 28px; border-left: 2px solid var(--signal); }
 .proving-ground > div:last-child p { color: var(--ink-soft); }
 
-/* Organization and leadership */
+/* Organization purpose and practice */
 .organization-purpose { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 42px; padding-block: 21px 79px; border-top: 1px solid var(--line); }
 .organization-purpose h2 { max-width: 570px; font-size: clamp(1.8rem, 3.2vw, 2.8rem); }
 .organization-purpose > div:last-child p { color: var(--ink-soft); }
@@ -377,17 +377,9 @@ h3 { font-size: 1.18rem; font-weight: 720; letter-spacing: -.02em; }
 .organization-practice { padding-block: 72px 63px; }
 .organization-practice .organization-copy { max-width: 850px; }
 .organization-practice .organization-copy > p:not(.eyebrow) { color: var(--ink-soft); }
-.founder-section { border-top: 1px solid var(--line); }
 
 /* About */
 .about-lead { padding-bottom: 58px; }
-.founder-section { display: grid; grid-template-columns: minmax(230px, .7fr) minmax(0, 1.3fr); gap: 60px; padding-block: 36px 85px; border-top: 1px solid var(--line); }
-.founder-label { padding-top: 7px; }
-.founder-label h2 { margin-bottom: 10px; font-size: 2.7rem; }
-.founder-label > p:last-child { color: var(--muted); font-size: .9rem; }
-.founder-story { max-width: 730px; }
-.founder-story p { color: var(--ink-soft); }
-.founder-story .story-lede { color: var(--ink); font-size: clamp(1.25rem, 2vw, 1.65rem); line-height: 1.45; font-weight: 600; }
 .about-principle { color: var(--paper); background: var(--dark); }
 .about-principle .page-shell { padding-block: 58px 63px; }
 .about-principle .eyebrow { color: var(--signal-light); }
@@ -471,7 +463,7 @@ h3 { font-size: 1.18rem; font-weight: 720; letter-spacing: -.02em; }
   .private-register { grid-template-columns: 1fr; gap: 0; }
   .planning-spread { grid-template-columns: 1fr; gap: 12px; padding-block: 61px; }
   .planning-entry { padding-left: 18px; }
-  .communication-layout, .learning-section, .founder-section, .organization-section { grid-template-columns: 1fr; gap: 28px; }
+  .communication-layout, .learning-section, .organization-section { grid-template-columns: 1fr; gap: 28px; }
   .communication-section { padding-block: 58px; }
   .learning-section { padding-block: 63px; }
   .availability-foot { grid-template-columns: 1fr; gap: 15px; padding-block: 53px 66px; }
@@ -483,7 +475,6 @@ h3 { font-size: 1.18rem; font-weight: 720; letter-spacing: -.02em; }
   .architecture-study { padding-block: 58px; }
   .ownership-section { padding-block: 61px 70px; }
   .evidence-layout { grid-template-columns: 1fr; gap: 24px; padding-block: 54px; }
-  .founder-section { padding-block: 26px 61px; }
   .about-principle .page-shell { padding-block: 46px 51px; }
   .organization-section { padding-block: 61px 70px; }
   .discipline-item { grid-template-columns: 35px minmax(0, 1fr); gap: 12px; padding-block: 20px; }
