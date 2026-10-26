@@ -1,7 +1,7 @@
 # IONOS Web Hosting Plus: capability and cost assessment
 
 **Reviewed:** 2026-10-25
-**Scope:** `forgewirelabs.com` only. The other registered domains are out of scope. No IONOS settings, DNS, certificates, CDN, or contract details were changed.
+**Scope:** forgewirelabs.com only. The other registered domains are out of scope. The account and DNS observations below were recorded before the owner connected the domain. The post-activation update supersedes conflicting prelaunch observations.
 
 ## Evidence and limits
 
@@ -32,9 +32,9 @@ The authenticated account was not available for a read-only contract inspection 
 | Domain and DNS | The `.com` is already registered and included in the contract listing. Domain renewal cost and other domain-related charges are not shown. No domain or DNS change is needed for local development. |
 | Deployment tools | Eleventy and Node build locally. SFTP is available as the proposed manual transfer path. No paid build runner, Deploy Now plan, or CDN is needed for the initial static site. |
 
-**Recommendation:** Use the existing Web Hosting Plus webspace for the static site once the account confirms its operating system, usable space, document root, SFTP access, certificate assignment, and invoice treatment. Do not enable the CDN for v1. No new service is proposed, but the actual incremental cost cannot be stated as $0 until the owner checks the account and invoice.
+**Updated recommendation:** Keep the live apex site on the existing Web Hosting Plus contract. The production artifact and HTTPS behavior are verified publicly. Do not enable CDN or buy/upgrade services. The existing contract invoice and incremental costs remain unknown until reviewed.
 
-## Public DNS and current behavior
+## Public DNS and prelaunch behavior (2026-10-25; superseded by the post-activation update)
 
 An independent DNS query to 1.1.1.1 on 2026-10-25 returned:
 
@@ -48,14 +48,23 @@ An independent DNS query to 1.1.1.1 on 2026-10-25 returned:
 
 The apex currently returns an IONOS parking/registration page over HTTP and HTTPS. HTTP does not redirect to HTTPS. HTTPS passed the system trust check. `www` does not resolve. Preserve the apex A/AAAA and all mail-related DNS records. A possible `www CNAME forgewirelabs.com.` is only a candidate: first verify IONOS domain binding and certificate coverage, then obtain explicit owner approval before adding it. No DNS record was changed.
 
-## Before production approval
+## Remaining account-specific details after launch
 
-1. In Hosting → Webspace, record the operating system, total and free space, document-root path, and confirm the contract exposes an SFTP-only account option.
-2. In Domains & SSL, confirm the included DV wildcard certificate is available and can be assigned to `forgewirelabs.com` and `www.forgewirelabs.com`.
-3. Confirm the CDN item’s Basic/Pro tier, whether it is already configured for any hostname, and the associated invoice/renewal line. Do not activate it during inspection.
-4. Confirm the hosting, domain, and CDN invoice amounts and renewal terms. Do not infer them from public promotional prices.
-5. Confirm the domain’s existing DNS state before using IONOS’s domain-binding wizard. Preserve apex A/AAAA and mail DNS. Do not approve an automatic DNS change without separate authorization. The only currently identified hostname gap is that `www` does not resolve; any proposed record must be shown to Jeremy for approval before applying it.
+1. The actual assigned/free webspace quota and IONOS invoice totals remain unverified. The current static release serves successfully from the existing contract.
+2. The owner reported that the included certificate is assigned. Independent HTTPS validation now confirms that the apex certificate is trusted, covers forgewirelabs.com, and is currently valid. No certificate purchase or reassignment is needed.
+3. The contract screenshot showed an IONOS CDN item, but its tier, activation, usage, and charge remain unknown. No CDN activation was performed or is required for this release.
+4. Jeremy reports that IONOS accepted Connect to webspace even though its summary still showed the older Domain not in use message. The public apex now returns the exact production release. Do not reconnect or change the assignment without a concrete discrepancy.
+5. www now resolves to the same A and AAAA addresses as the apex. Its web response and redirect behavior were not checked; www remains outside this launch scope.
 
+## Post-activation update (2026-10-26 UTC)
+
+Independent requests through public DNS resolvers 1.1.1.1 and 8.8.8.8 return A 74.208.236.171 and AAAA 2607:f1c0:100f:f000::200 for both forgewirelabs.com and www.forgewirelabs.com (TTL 3600). The apex returns the verified production release over IPv4 and IPv6. The owner-reported domain connection is therefore functionally active for the apex; no further domain assignment action was made by Codex.
+
+The apex HTTPS certificate has subject CN=*.forgewirelabs.com and SANs for *.forgewirelabs.com and forgewirelabs.com. The issuer is Sectigo Public Server Authentication CA DV R36; observed validity is 2026-10-25 through 2027-04-23 UTC. System trust and hostname validation passed. HTTP redirects to apex HTTPS with HTTP 301, followed by HTTP 200 and no loop.
+
+The current public DNS observations include MX records mx01.ionos.com and mx00.ionos.com, SPF value v=spf1 include:_spf-us.ionos.com ~all, and an IONOS-managed DMARC CNAME. Codex made no DNS or mail changes. The existing DKIM and controlled mail-flow verification is documented in email-architecture-assessment.md.
+
+The IONOS account page was not refreshed during this pass because the authorized computer-use screenshot capture returned “encode latest capture frame failed: window crop is outside captured monitor,” including after refreshing the window selection. Public response checks verified the live mapping, so no reconnect was attempted. Invoice details, assigned webspace quota, and CDN activation/charges remain unverified. No additional service was activated or purchased.
 ## Primary sources
 
 - [IONOS: Linux hosting vs. Windows/ASP.NET hosting](https://www.ionos.com/help/hosting/differences-between-linux-web-hosting-and-windows-web-hosting-aspnet-hosting/)

@@ -1,47 +1,62 @@
 # ForgeWire Labs website launch acceptance
 
-**Reviewed:** 2026-10-25
-**Status:** Production deployment is blocked pending account-only IONOS facts and owner authorization. No production changes were made.
+**Reviewed:** 2026-10-25 America/Chicago (2026-10-26 UTC)
+**Status:** LIVE — the apex serves the verified production release. Browser-rendered responsive and keyboard acceptance remains unverified.
 
 | Item | Revision or status |
 |---|---|
-| Website source and release input | `ffb6c3874009ca1abbc5e364b7eac844b334a9d5` |
-| Draft PR | [ForgeWireLabs/website#1](https://github.com/ForgeWireLabs/website/pull/1), open, draft, unmerged |
-| Public staging artifact commit | `1711c5285a3e9a237dea8d1658de8d2712697900` on `website-preview` |
-| Staging URL | [https://forgewirelabs.github.io/website/](https://forgewirelabs.github.io/website/) (temporary public preview; noindex) |
-| Production release artifact | `C:\Projects\ForgeWireLabs-website-release\ffb6c38\forgewirelabs-site-ffb6c38.zip` (17 files; production `_site` only) |
-| Production archive SHA-256 | `92a98cda382bab0441c57ef2f6b29f481ccb3e5491909a8c73f9a477ef908e9d` |
-| Archive backup | `C:\Projects\ForgeWireLabs-website-release\ffb6c38\backup\forgewirelabs-site-ffb6c38.zip`; SHA-256 matches the release archive |
+| Website source and production release | ffb6c3874009ca1abbc5e364b7eac844b334a9d5 |
+| Draft PR | ForgeWireLabs/website#1; open, draft, unmerged |
+| PR head at start of launch acceptance | 20924f2003d2145a1d77433204ad96eba543581d; follow-up documentation only |
+| Public staging artifact | 1711c5285a3e9a237dea8d1658de8d2712697900 on website-preview |
+| Staging URL | https://forgewirelabs.github.io/website/ (temporary preview; noindex, nofollow) |
+| Production URL | https://forgewirelabs.com/ |
+| Production release archive | C:\Projects\ForgeWireLabs-website-release\ffb6c38\forgewirelabs-site-ffb6c38.zip |
+| Production archive SHA-256 | 92a98cda382bab0441c57ef2f6b29f481ccb3e5491909a8c73f9a477ef908e9d |
+| IONOS release area | Versioned restricted release area for ffb6c38; exact endpoint and path are retained in the private upload record |
+| IONOS file readback | 17 of 17 files matched the local manifest before domain connection |
 
-## Bounded acceptance results
+## Production acceptance — public checks on 2026-10-26 UTC
+
+The production homepage and every publicly served release file were fetched from the public domain and matched the verified local production artifact. The homepage was separately fetched and hash-compared over both IPv4 and IPv6.
 
 | Check | Result |
 |---|---|
-| Production build and static verifier | **Passed** — five routes; production apex canonicals and sitemap; no preview banner or noindex; `.htaccess` present |
-| Staging build and static verifier | **Passed** — five routes; GitHub Pages base path; visible Development preview label; `noindex, nofollow`; no production canonical, sitemap, or `.htaccess` |
-| Source/output boundary | **Passed by static verifier** — no source maps, environment files, source/docs/scripts/dependencies, repository metadata, inline scripts/handlers, or unsafe remote SVG references in generated output |
-| Contact presentation | **Passed by static verifier** — only `contact@forgewirelabs.com` and `support@forgewirelabs.com` are public mailto links; security mailbox is absent; verified private reporting links remain for RepoPact Core and Workbench; no public issue disclosure route |
-| Local navigation, fragments, images, and CSS references | **Passed by static verifier** across five pages and generated assets |
-| Dependency audit | **Passed** — `npm audit --audit-level=high` reports zero vulnerabilities |
-| Independent staging requests | **Passed** — HTTPS certificate validation succeeded; all five routes, nine assets, and 22 unique external links returned HTTP 200 |
-| Preview privacy and exposure checks | **Passed** — all five routes carry `noindex, nofollow` and the preview banner; security address absent; `package.json`, internal email documentation, verifier source, `.env`, `.git/HEAD`, and a source-map path returned HTTP 404 |
-| Rendered desktop/mobile layout, overflow, keyboard/focus, 200%/400% zoom and reflow | **Not verified in this pass** — the authorized Windows computer-use workflow stopped after detecting user input and refreshing the selected window. Per the Computer Use safety instruction, GUI automation stopped; no alternate automation was used |
-| Screen reader or WCAG conformance | **Not claimed** — no Narrator/NVDA spoken review or formal conformance assessment was completed |
+| DNS at 1.1.1.1 and 8.8.8.8 | Apex A 74.208.236.171 and AAAA 2607:f1c0:100f:f000::200, TTL 3600 |
+| www DNS | A and AAAA currently resolve to the same IONOS addresses. No www web request or configuration was made; www remains outside launch scope |
+| Homepage title | Engineering intelligent systems for work beyond the model — ForgeWire Labs |
+| HTTPS apex | **Passed** — HTTP 200, no redirect loop, curl TLS verification result 0 over IPv4 and IPv6 |
+| Certificate | **Passed** — Sectigo Public Server Authentication CA DV R36; SAN covers forgewirelabs.com and *.forgewirelabs.com; valid 2026-10-25 through 2027-04-23 UTC; Windows/.NET chain and hostname validation returned no errors |
+| HTTP apex | **Passed** — HTTP 301 to https://forgewirelabs.com/; HTTPS then returns 200 |
+| Five website routes | **Passed** — homepage, work, engineering, projects, and about each returned HTTP 200 and matched the release manifest SHA-256 |
+| Nine assets, robots.txt, sitemap.xml | **Passed** — all 11 returned HTTP 200 and matched the release manifest SHA-256 |
+| Production metadata | **Passed** — five apex canonical URLs, no noindex directives, no development-preview label; robots.txt and sitemap.xml match the artifact |
+| Contact routes | **Passed by content inspection** — general and software mail links target contact@forgewirelabs.com and support@forgewirelabs.com; the reserved security mailbox is absent |
+| Hidden/source path probes | **Passed** — .env, .git/HEAD, .htaccess, package.json, README.md, internal deployment documentation, source-map path, and asset directory listing returned 403 or 404 |
+| Nonexistent route | **Passed** — returned HTTP 404 |
+| Response security headers | **Observed** — Content-Security-Policy, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, and Permissions-Policy were present |
+| IONOS domain assignment | **Functionally confirmed** — the apex serves content matching the release uploaded to the restricted IONOS area. Jeremy reports IONOS accepted “Connect to webspace.” The summary page's older “Domain not in use” status and directory field were not refreshed in this pass |
+| Email DNS | **Preserved by this work** — Codex made no DNS or mail changes. Current public observations include IONOS MX, SPF, and managed DMARC records; the existing DKIM and mail-flow evidence is recorded in email-architecture-assessment.md |
+| CDN, billing, contract | **Unchanged** — no CDN, paid service, package, or contract change was made. The invoice and CDN entitlement/charge details remain unverified |
 
-The source uses semantic landmarks, a skip link, visible focus styles, responsive CSS, reduced-motion handling, descriptive image alternatives, and a scrollable wide-table treatment. These are implementation features, not proof of rendered accessibility. Complete one visual desktop/mobile and keyboard/zoom pass through an authorized browser session before production acceptance; record any critical defect and correct it.
+The IONOS account page was not refreshed because authorized computer-use capture repeatedly returned: “encode latest capture frame failed: window crop is outside captured monitor.” Public responses independently demonstrate that the apex serves the correct release. No reassignment or DNS change was attempted.
 
-## Public staging and production host observations
+## Build, source, and staging checks
 
-Staging was published from the production source commit above as artifact commit `1711c5285a3e9a237dea8d1658de8d2712697900`. Independent HTTPS checks confirmed the five routes, nine expected assets, preview metadata, contact links, and absence of source/internal files. The preview includes no JavaScript or remote font dependency. The previous browser screenshots do not represent this revision.
+- The production artifact was built from source commit ffb6c3874009ca1abbc5e364b7eac844b334a9d5 and was uploaded before this launch check.
+- The production package contained 17 manifest files. Remote readback verified all 17 hashes before the owner connected the domain.
+- The public site serves 16 public files byte-for-byte identical to that artifact; .htaccess is intentionally not publicly readable.
+- Prior local production and preview builds, static verification, link/fragment checks, output-boundary checks, and npm audit passed. npm audit reported zero vulnerabilities.
+- The staging artifact remains at commit 1711c5285a3e9a237dea8d1658de8d2712697900. Its pages retain the development label and noindex, nofollow. The public preview remains enabled.
 
-On 2026-10-25, a query to public DNS resolver 1.1.1.1 found the apex A `74.208.236.125` and AAAA `2607:f1c0:100f:f000::200` (TTL 3600). `www` has no A/AAAA/CNAME answer. The existing MX, SPF, DKIM, and IONOS-managed DMARC records resolve to the current IONOS mail service; preserve them exactly. External HTTP and HTTPS requests to the apex returned the IONOS parking page with HTTP 200; HTTP did not redirect to HTTPS. HTTPS passed system certificate validation. `www` did not resolve. No DNS record was changed.
+## Accessibility and rendered-browser limitations
 
-The supplied IONOS contract screenshot shows Web Hosting Plus, the `.com` marked **Domain not in use**, and an IONOS CDN item. It does not show webspace quota, document root, SFTP account/hostname, invoice, CDN tier/activation/charges, or certificate assignment. Authenticated account inspection was unavailable because the sign-in page and Computer Use safety stop prevented access. See [hosting assessment](hosting-assessment.md) and [deployment runbook](deployment-runbook.md).
+Desktop/mobile visual review, narrow-width behavior, 200%/400% zoom and reflow, keyboard focus/navigation, and screen-reader output were not verified against the production browser rendering. The authorized Sky screenshot capture failed with the exact error above including after refreshing the window selection; no alternate GUI automation was used and no screenshot from this production revision was captured.
 
-## Production and rollback boundary
+The source includes semantic landmarks, a skip link, visible focus styles, responsive CSS, reduced-motion handling, descriptive image alternatives, and a scrollable wide-table treatment. These implementation features do not establish rendered usability or WCAG 2.2 AA conformance. No screen-reader audit or formal conformance claim is made. Schedule a visual and keyboard pass when the authorized browser capture path is available; the production files and public responses are otherwise verified.
 
-The intended destination is the existing IONOS Web Hosting Plus webspace, with the domain bound to the verified release directory and files uploaded over a dedicated SFTP-only account. The exact host and directory are unknown until the IONOS account is inspected. Keep apex A/AAAA and all MX/TXT/DKIM/DMARC records; `www CNAME forgewirelabs.com.` is a candidate only, subject to certificate validation and separate owner approval. The incremental cost cannot be confirmed from available evidence. Do not activate CDN or buy/upgrade any service.
+## Rollback and launch boundaries
 
-For first deployment, record the current DNS zone and domain assignment, and privately back up the selected webspace directory before changing it. The contract screenshot says the domain is not in use; capture the actual prelaunch assignment state in IONOS. A failed first release rolls the assignment back to that recorded state (the current public state is the IONOS parking page), restores any directory files from the private backup, and restores only DNS records changed by an explicitly approved operation. For later releases, reassign the domain to the prior versioned release directory. Keep the temporary GitHub Pages preview until production is verified and accepted.
+The first release is live from source commit ffb6c3874009ca1abbc5e364b7eac844b334a9d5. For a failed release, preserve the current IONOS assignment and DNS snapshot, then use IONOS to restore the prelaunch webspace assignment or parking behavior after reviewing the exact current assignment. Restore only files from the private backup. Change DNS only with separate approval, and preserve MX, SPF, DKIM, DMARC, and all unrelated records. Keep the GitHub Pages preview until Jeremy accepts production.
 
-No production website, IONOS hosting configuration, certificate, DNS record, billing, mailbox setting, or credential was changed. PR #1 remains draft and unmerged. Security mailbox password, IONOS 2FA, and related hardening are explicitly deferred and are not website launch blockers while that address remains unpublished.
+PR #1 remains draft and unmerged. The website source commit is the deployed release; the current PR head adds acceptance documentation. No production IONOS settings, DNS, email settings, CDN, billing, or contract changes were made by Codex during this launch verification.

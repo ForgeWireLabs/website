@@ -1,36 +1,38 @@
-# Proposed IONOS deployment and rollback procedure
+# IONOS production deployment and rollback runbook
 
-**Status:** Procedure only. No production deployment, DNS change, domain assignment, certificate activation, CDN activation, or credential setup has occurred. The other registered domains are outside scope.
+**Current status (2026-10-26 UTC):** The initial apex production release is live and independently verified. The deployed site is the production artifact built from source commit ffb6c3874009ca1abbc5e364b7eac844b334a9d5. Jeremy reports that IONOS accepted “Connect to webspace.” Codex has not changed production DNS, domain assignment, SSL settings, CDN, billing, mail settings, or the hosting contract. The other registered domains remain out of scope.
 
-## Go/no-go prerequisites
+The exact SFTP endpoint, user, restricted path, and release manifest are retained in the private IONOS upload record. Do not put credentials or account-specific transfer details in public repository documentation.
 
-Do not begin the production sequence until each item is verified and approved:
+## Current production facts
 
-1. Jeremy approves the final content, accessibility status, PR #1 merge, and production launch.
-2. The IONOS Hosting → Webspace view confirms the contract's actual total/free storage and the available document-root path.
-3. The IONOS account confirms an SFTP-only account can be used and the domain can be bound to the selected webspace directory.
-4. Domains & SSL confirms a certificate can be assigned and validates for both forgewirelabs.com and www.forgewirelabs.com. Confirm the apex and www certificate behavior directly before redirecting either hostname.
-5. The invoice confirms current Web Hosting, CDN, and domain charges and renewal amounts. Do not infer the account's cost from the public catalogue.
-6. Record current DNS records and their TTLs. Preserve MX, TXT, CAA, mail, and unrelated service records.
-7. Jeremy approves connecting the .com to IONOS webspace and any specific A, AAAA, or CNAME changes. The IONOS domain-assignment wizard may propose DNS changes; stop at that prompt until those exact changes are approved.
-8. Confirm public legal/privacy text and the contact policy. Keep the verified general and software mail links active. The reserved security mailbox is omitted from v1 and does not block website launch; activating it for confidential reporting would require a separate owner-approved change.
+- Canonical host: https://forgewirelabs.com.
+- The apex serves all five routes and all 16 publicly served files byte-for-byte matching the validated ffb6c38 release. The 17th manifest entry, .htaccess, is intentionally blocked from public access.
+- Public resolvers 1.1.1.1 and 8.8.8.8 return apex A 74.208.236.171 and AAAA 2607:f1c0:100f:f000::200 (TTL 3600).
+- The same resolvers currently return those A and AAAA values for www.forgewirelabs.com. No www HTTP request, redirect setup, or other www configuration was performed; it remains out of scope until separately approved.
+- HTTP apex requests return 301 to HTTPS. HTTPS returns 200 over IPv4 and IPv6 with a trusted certificate whose SAN includes the apex and wildcard subdomains. Its observed validity is 2026-10-25 through 2027-04-23 UTC.
+- The older IONOS summary status “Domain not in use” was reported by Jeremy after using Connect to webspace. The domain-status refresh and actual directory field were not inspected in this pass because the authorized computer-use screenshot capture failed. Since the apex serves the verified release, do not reconnect or reassign without a concrete discrepancy.
+- MX, SPF, DKIM, and IONOS-managed DMARC records must be preserved. No mail or DNS changes were made by Codex in the launch verification. Existing mailbox and mail-flow evidence is in email-architecture-assessment.md.
+- Do not enable the CDN, purchase a service, change the hosting package, or modify billing. The hosting invoice and CDN tier/charge remain unverified.
+- The GitHub Pages preview remains available and noindex, nofollow. Do not retire it until Jeremy accepts the production result.
 
-No other domain is included in this deployment.
+## Go/no-go prerequisites for future releases
 
-## Current target facts (25 October 2026)
+Before any later production release or consequential hosting change:
 
-- The supplied contract page lists `forgewirelabs.com` under Web Hosting Plus with status **Domain not in use**. The screenshot does not show the document root or available quota.
-- Public DNS resolves the apex to A `74.208.236.125` and AAAA `2607:f1c0:100f:f000::200` (TTL 3600). The apex currently serves the IONOS parking page over HTTP and HTTPS; HTTP does not redirect. HTTPS passes system trust validation.
-- `www.forgewirelabs.com` has no DNS answer. Preserve both current apex records. A `www CNAME forgewirelabs.com.` is a candidate only; verify certificate coverage and obtain explicit approval before adding it.
-- MX, SPF, DKIM, and IONOS-managed DMARC records resolve to the existing mail service. Preserve them exactly. No DNS change has been made.
-- The account-only document-root path, available space, SFTP-only credentials/options, certificate assignment, invoice charges, and CDN status/fee were not available for inspection. The production destination and incremental cost are therefore unresolved; do not deploy until the account provides these facts.
+1. Jeremy approves the final content, accessibility status, release commit, and production change. Keep PR #1 draft and unmerged unless separately authorized.
+2. Verify the actual Webspace capacity and target directory in IONOS before adding files or changing assignments.
+3. Use only the existing restricted SFTP account. Keep credentials out of repositories, scripts, command histories, and logs. IONOS SFTP directory restriction is not full webspace isolation; do not place secrets in the shared webspace.
+4. Confirm certificate coverage and validity for the hostname in scope before changing SSL settings. The apex certificate currently validates publicly.
+5. Review any invoice or domain-binding prompt. Do not purchase, upgrade, activate CDN, or accept a new charge without approval.
+6. Record the current DNS zone and preserve MX, SPF, DKIM, DMARC, CAA, and unrelated service records. Do not change DNS without approval of the exact records.
+7. Keep www and the other registered domains outside scope unless Jeremy separately approves them.
+8. Keep the GitHub Pages preview until production is accepted.
 
-No deployment account or secret has been configured. The planned transfer is SFTP over a dedicated SFTP-only account with access limited to the selected release area, if the contract supports it. Do not use plain FTP or place secrets in the shared webspace.
+## Build and release procedure
 
-## Release build and review
-
-1. Merge PR #1 only after explicit approval. Record the approved source commit SHA.
-2. In a clean checkout of that SHA, run:
+1. Use an explicitly approved source commit. The current deployed release source is ffb6c3874009ca1abbc5e364b7eac844b334a9d5.
+2. In a clean checkout of the approved source, run:
 
 ~~~
 npm ci
@@ -39,55 +41,45 @@ npm run verify
 npm audit --audit-level=high
 ~~~
 
-3. Inspect the generated `_site` directory and retain only generated production files: HTML, CSS, approved image/SVG assets, `robots.txt`, `sitemap.xml`, and the production `.htaccess`. Confirm canonical URLs use `https://forgewirelabs.com` and production has no `noindex`. Reject source maps, `.env` files, credentials, documentation, source files, `node_modules`, and `.git`.
-4. Create a release folder outside the source checkout containing the exact `_site` upload tree, `SHA256SUMS.txt`, and a ZIP of that tree. Record the source SHA, build date, archive SHA-256, and manifest with the release record. Upload only the contents of the site tree; keep the ZIP and manifest outside the public document root.
+3. Inspect the generated production site. Include only reviewed HTML, CSS, image/SVG assets, robots.txt, sitemap.xml, and the production .htaccess. Confirm canonical URLs use https://forgewirelabs.com and production pages do not carry noindex. Reject source maps, .env files, credentials, docs, source code, node_modules, and .git.
+4. Create a private, versioned release directory outside the checkout. Keep the archive and SHA256SUMS.txt outside the public document root.
+5. Upload only the production site contents over restricted SFTP. Never use a destructive synchronization. Inspect the remote list before overwriting or deleting anything.
+6. Download the remote tree or otherwise hash it reliably against the local manifest. Record source SHA, archive SHA-256, file count, date, and results privately.
 
-## Prepare and upload without exposing an incomplete site
+## Domain and HTTPS handling
 
-1. Record and privately back up the current domain assignment and the selected hosting directory before changing either. Inspect and back up any existing files in that directory; the directory contents are currently unknown. Keep this backup out of the repository and public webspace.
-2. Create a versioned release directory in the verified IONOS webspace, named with the approved source SHA. Upload only the contents of the `_site` tree over SFTP. The exact host, account, and directory path must come from the Hosting panel; they have not been verified yet.
-3. Use a dedicated SFTP-only account, restricted to the release area if the account permits it. IONOS documents that this restriction applies at the SFTP layer, so the shared webspace must contain no secrets or unrelated sensitive material.
-4. Compare the uploaded file list and SHA-256 hashes with the local release manifest. Confirm directory listing is disabled and that no source or internal files are reachable.
-5. If the account offers a preview hostname that does not require DNS or a paid add-on, use it to check the uploaded directory before binding the production domain. Otherwise, complete the local artifact checks before the domain binding step.
+The initial apex connection is functioning: public responses return the expected production release and the apex HTTPS certificate validates. No further connection action is needed to serve the current release.
 
-## Bind the .com and establish canonical HTTPS
+If a future verified problem requires changing the domain assignment, use the IONOS domain-to-webspace control only after reviewing the current assignment and exact target. Stop before confirming any proposed DNS change, paid service, hosting change, or disabling of Domain Guard. Do not repeatedly reconnect an already functioning assignment.
 
-The approved canonical URL is the apex host: https://forgewirelabs.com.
+HTTP-to-HTTPS redirect behavior was verified as HTTP 301 followed by HTTPS 200, without a redirect loop. The uploaded .htaccess matches the validated artifact; public checks cannot establish whether the redirect originates specifically from .htaccess or an IONOS host rule.
 
-1. In IONOS, assign `forgewirelabs.com` to the versioned release directory. If the panel proposes DNS edits, apply only the separately approved exact records; do not accept a bundled or unexplained change. Current apex A/AAAA point to IONOS and should be preserved unless IONOS provides a documented, necessary change for approval.
-2. Confirm the domain status becomes active and the apex serves the uploaded site. Check that email and other DNS-dependent services remain unchanged.
-3. Bind `www.forgewirelabs.com` to the same site only if the owner approves it and the certificate is valid for it. If a DNS record is required, the current candidate is `www CNAME forgewirelabs.com.`; stop until that exact change is approved.
-4. Assign/activate the included SSL certificate for the approved hostnames. Confirm a valid, trusted certificate and successful HTTPS for each hostname before adding redirects.
-5. Install and verify HTTP-to-HTTPS and www-to-apex 301 redirects using the IONOS-supported Linux rewrite or domain-redirect configuration. Preserve request paths and query strings. Do not enable HSTS until the apex, www redirect, and all required HTTPS paths have been verified.
-6. The production build's canonical tags and sitemap already point to the apex. Check them on every route after deployment. Confirm production has no noindex directive and robots.txt exposes the production sitemap.
+www has DNS answers now, but remains outside the approved website behavior. Do not set up its redirect or make further www changes without approval.
 
 ## Post-deployment verification
 
-From an independent network/request, check:
+After each future release, use independent public requests to check:
 
-- https://forgewirelabs.com and all five routes return successfully with a valid certificate.
-- HTTP redirects to HTTPS; www redirects to the apex only after www is approved, resolves, and has a valid certificate.
-- CSS, JavaScript if present, fonts, image assets, favicon, robots.txt, and sitemap.xml load without errors.
-- Canonical tags use the apex production URLs; production is indexable; the sitemap lists only production routes.
-- Navigation, mail/external links, 320 CSS-pixel width, keyboard access, the wide project table, and desktop/mobile layouts work.
-- Requests for source, documentation, environment files, source maps, repository metadata, and credentials fail.
-- Uploaded hashes match the release manifest, with no unreviewed files in the public directory.
+- Apex HTTPS certificate trust, hostname coverage, dates, and response.
+- All five routes, images, stylesheets, favicon, robots.txt, and sitemap.xml.
+- Canonical tags, sitemap routes, production indexability, and absence of preview labels.
+- HTTP-to-HTTPS redirects without loops.
+- No exposure of source, documentation, .env, repository metadata, source maps, backups, credentials, or directory listings.
+- Contact links, internal navigation, 320 CSS-pixel width, keyboard access, wide-table use, and desktop/mobile behavior when the authorized browser review path is available.
+- Email-related DNS records remain unchanged.
 
-Save request results and the release manifest. Keep the GitHub Pages preview available until Jeremy accepts the production result.
+The current public request checks and limitations are in validation-report.md. Preserve the exact response results and manifest with the release record. Do not remove the public GitHub Pages preview until production acceptance.
 
 ## Rollback
 
-1. Stop the release and record the failure and affected source SHA.
-2. Reassign forgewirelabs.com to the previous document directory, or restore the backed-up document-root files if the previous version used the same directory.
-3. Restore the previous redirect configuration. Do not remove HTTPS while visitors may still use it; keep the prior valid certificate in place.
-4. Restore DNS only if this release changed DNS, and only to the exact pre-change values captured in the approved DNS record. Leave MX/TXT and unrelated records untouched.
-5. Verify the apex, any approved www redirect, certificates, routes, assets, and email-related DNS after rollback. Escalate IONOS account or certificate failures to IONOS support rather than changing unrelated settings.
-6. Keep the failed release directory and its manifest private until the incident review is complete.
-
-## Retire the staging preview
-
-After production has been verified and accepted, follow preview-hosting.md to disable the repository's GitHub Pages source and remove the website-preview artifact branch. Verify that the former public preview and review-capture URLs no longer serve the site. Do not remove the preview before production acceptance.
+1. Record the incident and affected source SHA.
+2. Review the current IONOS assignment, then restore the previously recorded domain-to-webspace assignment or prelaunch behavior. Do not guess the physical document directory.
+3. Restore only required files from the private predeployment backup. Keep unrelated files untouched.
+4. Restore redirects only if this release introduced them and only after verifying the prior intended behavior. Do not remove a valid certificate while visitors still use HTTPS.
+5. Restore DNS only if a specifically approved change occurred, using the captured prior values. Never change mail DNS as part of website rollback.
+6. Verify apex routes, assets, certificate, redirects, robots.txt, sitemap.xml, and mail DNS after rollback. Escalate IONOS account failures to IONOS support instead of changing unrelated settings.
+7. Retain failed artifacts and manifests privately until review is complete.
 
 ## Cost and service boundaries
 
-No new service is proposed. The incremental cost is **unverified**, not confirmed as $0: the screenshots do not establish usable free space, invoice totals, certificate assignment, CDN tier/status, or CDN cost. Do not activate CDN, order a package, upgrade, purchase a certificate, or change the hosting contract for v1. Using the existing included webspace and SSL must be confirmed not to add a charge before the production action is approved.
+The website uses the existing IONOS Web Hosting Plus contract. No additional service was activated or purchased by Codex during this launch verification. The account invoice and CDN tier, activation, and charges remain unverified; do not infer the account cost from public catalogue pricing. No CDN or hosting upgrade is required by this release.
