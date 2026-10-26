@@ -210,12 +210,18 @@ const aboutPage = await readFile(path.join(outputRoot, "about", "index.html"), "
 const founderHeadingPosition = aboutPage.indexOf('id="founder-title"');
 if (founderHeadingPosition >= 0 && founderHeadingPosition < aboutPage.indexOf("</section>")) fail("About page must establish the organization before introducing its founder.");
 if (!aboutPage.includes("independent, founder-led software engineering and research organization")) fail("About page must describe ForgeWire Labs as an independent, founder-led organization.");
-for (const phrase of ["Three independent organizational mailboxes have been created", "Delivery, reply identity, and mailbox security checks are still in progress", "General correspondence", "Software questions", "Security disclosures", "Three separate mailboxes", "Mailbox creation is owner-confirmed", "delivery, access, forwarding, and MFA checks", "private vulnerability-reporting route"]) {
+for (const phrase of ["General correspondence and software inquiries can use the verified mailboxes below", "Both passed controlled send and reply tests", "SPF, DKIM, and DMARC passing on received messages", "General correspondence", "Software questions", "Security disclosures", "Three separate mailboxes", "access, MFA, and forwarding protections have not been confirmed", "private vulnerability-reporting route"]) {
   if (!aboutPage.includes(phrase)) fail(`About page is missing the contact status or route “${phrase}”.`);
 }
 const expectedContactAddresses = new Set(["contact@forgewirelabs.com", "support@forgewirelabs.com", "security@forgewirelabs.com"]);
 if (contactChannels.length !== expectedContactAddresses.size || contactChannels.some((channel) => !expectedContactAddresses.has(channel.address))) {
   fail("Contact channel data must contain exactly the three owner-confirmed .com mailboxes.");
+}
+for (const address of ["contact@forgewirelabs.com", "support@forgewirelabs.com"]) {
+  if (!contactChannels.find((channel) => channel.address === address)?.verified) fail(`Mail-flow verified channel ${address} must have an active mailto link.`);
+}
+if (contactChannels.find((channel) => channel.address === "security@forgewirelabs.com")?.verified) {
+  fail("Security contact must remain unlinked until access, MFA, and forwarding protections are verified.");
 }
 for (const channel of contactChannels) {
   if (!aboutPage.includes(channel.address)) fail(`About page is missing ${channel.address}.`);

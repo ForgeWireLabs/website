@@ -1,6 +1,6 @@
 # ForgeWire Labs email handling policy
 
-**Mailbox status:** Three separate `.com` mailboxes were created through IONOS, as confirmed by the owner. Delivery, sending, authentication, mailbox access, MFA, and routing checks are pending. The site must not present a pending address as a verified operational channel.
+**Mailbox status:** Controlled delivery, reply identity, and SPF/DKIM/DMARC checks passed for all three `.com` mailboxes on 25 October 2026. The general and software channels are linked on the site. The security mailbox remains unlinked and must not receive sensitive reports until access, MFA, and forwarding protections are reviewed.
 
 ## Channel responsibilities
 
@@ -51,4 +51,4 @@ Send the security template only from the verified private security mailbox or th
 
 ## Current website behavior
 
-About shows the three owner-confirmed mailbox addresses and states that their operational checks are pending. No pending address has a `mailto:` link. It directs public software discussion to project repositories, keeps security reporting separate, and warns against public vulnerability details. It does not use the public organization issue tracker as the general contact route. The existing named `.org` mailbox is not disclosed.
+About links the verified general and software mailboxes and shows the security address without a `mailto:` link while access, MFA, and forwarding protections remain unverified. It directs public software discussion to project repositories, keeps security reporting separate, and warns against public vulnerability details. It does not use the public organization issue tracker as the general contact route. The existing named `.org` mailbox is not disclosed.

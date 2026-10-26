@@ -2,19 +2,19 @@ export default [
   {
     title: "General correspondence",
     address: "contact@forgewirelabs.com",
-    status: "Mailbox created · delivery and reply verification pending",
-    verified: false,
+    status: "Delivery, reply identity, and domain authentication verified · 25 Oct 2026",
+    verified: true,
   },
   {
     title: "Software questions",
     address: "support@forgewirelabs.com",
-    status: "Mailbox created · delivery and reply verification pending",
-    verified: false,
+    status: "Delivery, reply identity, and domain authentication verified · 25 Oct 2026",
+    verified: true,
   },
   {
-    title: "Confidential security reporting",
+    title: "Security reporting",
     address: "security@forgewirelabs.com",
-    status: "Mailbox created · security and delivery verification pending",
+    status: "Delivery, reply identity, and message authentication verified · access and privacy review pending",
     verified: false,
   },
 ];
