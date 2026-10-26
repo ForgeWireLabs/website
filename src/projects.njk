@@ -1,13 +1,13 @@
 ---
 layout: layouts/base.njk
-title: Software and release status
-description: Explore ForgeWire Labs software, public sources, screenshots, release status, and current project boundaries.
+title: Software
+description: Explore the software we build, from released RepoPact and SkillForge packages to early planning tools and private ForgeWire and Fabric development.
 permalink: /projects/index.html
 ---
 <section class="page-lead page-shell" aria-labelledby="projects-title">
   <p class="eyebrow">ForgeWire Labs · Software</p>
-  <h1 id="projects-title">Independent software, with <em>its own purpose and release state.</em></h1>
-  <p class="lead-copy">The projects make different contributions to the organization's engineering work. Each keeps its own source, architecture, availability, and limits. This is a portfolio of separate systems, not a single released platform.</p>
+  <h1 id="projects-title">Built for <em>different jobs.</em></h1>
+  <p class="lead-copy">We build repository tools, intelligent workspaces, distributed execution infrastructure, communication software, planning tools, and technical learning applications. They aren't all parts of one required stack. Here you'll find what's released, what's in preview, and what we're still developing privately.</p>
   <p class="lead-index"><span>Released software</span><span>Previews</span><span>Private development</span></p>
 </section>
 
@@ -15,7 +15,7 @@ permalink: /projects/index.html
   <div class="spread-heading">
     <p class="eyebrow">ForgeWire Labs · Repository systems</p>
     <h2 id="repopact-title">RepoPact</h2>
-    <p>Core defines and validates governed repository state. Workbench is a separate native interface that consumes Core and carries its own preview status.</p>
+    <p>RepoPact keeps the decisions behind the code available to the next contributor. Core owns repository governance and validation; Workbench provides a separate native interface using the same rules.</p>
   </div>
   <div class="repo-product-grid">
     {% for project in projects %}{% if project.id == "repopact-core" or project.id == "repopact-workbench" %}
@@ -23,7 +23,7 @@ permalink: /projects/index.html
         <div class="product-entry-top"><span>{{ project.kicker }}</span><span class="status status--{{ project.statusKind }}">{{ project.status }}</span></div>
         <h3><a href="{{ project.url }}">{{ project.name }} <span aria-hidden="true">↗</span></a></h3>
         <p>{{ project.summary }}</p>
-        <p class="availability-copy"><strong>Availability.</strong> {{ project.maturity }}</p>
+        <p class="availability-copy"><strong>Current status.</strong> {{ project.maturity }}</p>
         <div class="product-entry-links"><a href="{{ project.url }}">{{ project.action }} <span aria-hidden="true">↗</span></a>{% if project.secondaryUrl %}<a href="{{ project.secondaryUrl }}">{{ project.secondaryAction }} <span aria-hidden="true">↗</span></a>{% endif %}</div>
       </article>
     {% endif %}{% endfor %}
@@ -31,12 +31,12 @@ permalink: /projects/index.html
   <div class="repo-evidence-grid">
     <figure class="architecture-figure architecture-figure--page">
       <img src="{{ site.basePath }}/assets/repopact-architecture.svg" alt="RepoPact Core architecture: repository records connect to a canonical Rust engine, which serves CLI and Workbench clients and produces evidence and derived views. An optional host or CI integration has a provider-specific boundary." aria-describedby="repopact-diagram-notes" width="1200" height="720" loading="lazy">
-      <figcaption>RepoPact Core architecture from its <a href="https://github.com/ForgeWireLabs/repopact-core/blob/614689b127cf52f801877cc48440f7e45c3709eb/docs/assets/readme/repopact-architecture.svg">public architecture documentation</a>.</figcaption>
+      <figcaption>How RepoPact works: source records remain authoritative, Core interprets them, and clients provide different ways to work with them. See the <a href="https://github.com/ForgeWireLabs/repopact-core/blob/614689b127cf52f801877cc48440f7e45c3709eb/docs/assets/readme/repopact-architecture.svg">public architecture documentation</a>.</figcaption>
       <p class="diagram-notes" id="repopact-diagram-notes"><strong>Diagram key.</strong> Blue arrows show exchanges with the Core engine; slate arrows show people, host integrations, evidence, and derived views; dashed boxes mark derived views. The host/CI box is optional and provider-specific. <a href="{{ site.basePath }}/assets/repopact-architecture.svg">Open the full-size diagram</a>.</p>
     </figure>
     <figure class="screenshot-figure">
       <div class="screenshot-focus screenshot-frame--light"><img src="{{ site.basePath }}/assets/workbench-desktop-dashboard.jpg" alt="RepoPact Workbench desktop capture focused on its repository validation summary. The capture was made from a Windows x64 source build." width="1362" height="930" loading="lazy"></div>
-      <figcaption><strong>RepoPact Workbench · Source-build preview.</strong> The README documents this genuine Windows x64 capture as a local build using a disposable Core conformance fixture. The visible counts are fixture data, not customer, production, or reliability metrics. Packaged installers are not listed. <a href="{{ site.basePath }}/assets/workbench-desktop-dashboard.jpg">Open the full-resolution capture</a> · <a href="https://github.com/ForgeWireLabs/repopact-workbench/blob/414a4a78091796735a1b97b03fd8c3cf1c105f30/docs/assets/readme/workbench-desktop-dashboard.jpg">View its source and provenance ↗</a></figcaption>
+      <figcaption><strong>RepoPact Workbench · Source-build preview.</strong> Windows x64 source build with disposable Core conformance records. The visible counts are test data, not customer or production metrics. Packaged installers are not listed. <a href="{{ site.basePath }}/assets/workbench-desktop-dashboard.jpg">Open the full-resolution capture</a> · <a href="https://github.com/ForgeWireLabs/repopact-workbench/blob/414a4a78091796735a1b97b03fd8c3cf1c105f30/docs/assets/readme/workbench-desktop-dashboard.jpg">View its source and provenance ↗</a></figcaption>
     </figure>
   </div>
 </section>
@@ -45,8 +45,8 @@ permalink: /projects/index.html
   <div class="page-shell">
     <div class="private-heading">
       <p class="eyebrow">Research and private development</p>
-      <h2 id="private-title">Work can be architecturally important before it is available.</h2>
-      <p>The public materials describe direction and status. No public build or supported deployment is available for these projects.</p>
+      <h2 id="private-title">What we're developing privately.</h2>
+      <p>ForgeWire and Fabric have public technical overviews, but we aren't offering public application builds or supported deployments yet.</p>
     </div>
     <div class="private-register">
       {% for project in projects %}{% if project.group == "private" %}
@@ -71,7 +71,7 @@ permalink: /projects/index.html
       <div class="product-entry-top"><span>{{ project.kicker }}</span><span class="status status--{{ project.statusKind }}">{{ project.status }}</span></div>
       <h2 id="anvil-title"><a href="{{ project.url }}">{{ project.name }} <span aria-hidden="true">↗</span></a></h2>
       <p class="planning-summary">{{ project.summary }}</p>
-      <p class="availability-copy"><strong>Boundary.</strong> {{ project.maturity }}</p>
+      <p class="availability-copy"><strong>Current status.</strong> {{ project.maturity }}</p>
       <a class="text-link" href="{{ project.url }}">{{ project.action }} <span aria-hidden="true">↗</span></a>
     </article>
   {% endif %}{% endfor %}
@@ -86,14 +86,14 @@ permalink: /projects/index.html
           <div class="product-entry-top"><span>{{ project.kicker }}</span><span class="status status--{{ project.statusKind }}">{{ project.status }}</span></div>
           <h2 id="flink-title"><a href="{{ project.url }}">{{ project.name }} <span aria-hidden="true">↗</span></a></h2>
           <p>{{ project.summary }}</p>
-          <p class="availability-copy"><strong>Ownership and release.</strong> {{ project.maturity }}</p>
+          <p class="availability-copy"><strong>Current status.</strong> {{ project.maturity }}</p>
           <div class="product-entry-links"><a href="{{ project.url }}">{{ project.action }} <span aria-hidden="true">↗</span></a><a href="{{ project.secondaryUrl }}">{{ project.secondaryAction }} <span aria-hidden="true">↗</span></a></div>
         </div>
       {% endif %}{% endfor %}
     </div>
     <figure class="flink-figure">
       <img src="{{ site.basePath }}/assets/flink-product-architecture.svg" alt="Flink's documented product model shows a human operator, communication cockpit, governed API and MCP boundary, providers as channel edges, and ForgeWire or Fabric as optional integration edges." aria-describedby="flink-diagram-notes" width="1500" height="1000" loading="lazy">
-      <figcaption>Adapted from Flink’s public product-model diagram; its source predates the repository rename and the latest release materials retain the former ForgeLink name. Dashed edges describe optional integrations, not proof that an integration is implemented. <a href="{{ site.basePath }}/assets/flink-product-architecture.svg">Open the full-size diagram</a>.</figcaption>
+      <figcaption>Flink owns communication and human decision state. Providers connect as channels; agents and applications enter through governed interfaces. This public product-model diagram predates the Flink rename, and the current packaged release still uses ForgeLink naming. Dashed lines show optional integrations, not verified implementations. <a href="{{ site.basePath }}/assets/flink-product-architecture.svg">Open the full-size diagram</a>.</figcaption>
       <p class="diagram-notes" id="flink-diagram-notes">The diagram labels solid lines as Flink ownership and dashed lines as optional edges. It describes Flink only; it does not imply a shared architecture across ForgeWire Labs projects.</p>
     </figure>
   </div>
@@ -107,14 +107,14 @@ permalink: /projects/index.html
         <div class="product-entry-top"><span>{{ project.kicker }}</span><span class="status status--{{ project.statusKind }}">{{ project.status }}</span></div>
         <h2 id="skillforge-title"><a href="{{ project.url }}">{{ project.name }} <span aria-hidden="true">↗</span></a></h2>
         <p>{{ project.summary }}</p>
-        <p class="availability-copy"><strong>Release boundary.</strong> {{ project.maturity }}</p>
+        <p class="availability-copy"><strong>Current status.</strong> {{ project.maturity }}</p>
         <div class="product-entry-links"><a href="{{ project.url }}">{{ project.action }} <span aria-hidden="true">↗</span></a><a href="{{ project.secondaryUrl }}">{{ project.secondaryAction }} <span aria-hidden="true">↗</span></a></div>
       </div>
     {% endif %}{% endfor %}
   </div>
   <figure class="learning-shot">
     <div class="screenshot-frame screenshot-frame--dark"><img src="{{ site.basePath }}/assets/skillforge-command-center.png" alt="SkillForge Academy command center with course navigation, a recommended study drill, progress panels, and domain coverage." width="2880" height="1800" loading="lazy"></div>
-    <figcaption>Screenshot used in the public organization profile and captured from the published Windows app. The displayed 0% values and practice counts are sample account state, not learner outcome metrics. Newer course-platform beta surfaces are not shown. <a href="{{ site.basePath }}/assets/skillforge-command-center.png">Open the full-resolution image</a>.</figcaption>
+    <figcaption>SkillForge Academy's published Windows application with sample learner data. Progress and practice counts are examples, not learner outcomes. Newer course-platform beta surfaces are not shown. <a href="{{ site.basePath }}/assets/skillforge-command-center.png">Open the full-resolution image</a>.</figcaption>
   </figure>
 </section>
 
@@ -122,7 +122,7 @@ permalink: /projects/index.html
   <div class="section-heading section-heading--stacked">
     <p class="eyebrow">Software index</p>
     <h2 id="ownership-title">Current scope and availability</h2>
-    <p class="section-lede">Release state describes the linked project's public evidence at the time of this review. It does not imply support beyond the source project's own terms.</p>
+    <p class="section-lede">Different release stages mean different things. Check each project's source and release notes for what you can use today.</p>
   </div>
   <p class="table-scroll-hint" id="ownership-table-hint">On a narrow screen, swipe horizontally to see all three columns. Keyboard users can focus this table region and use the arrow keys to scroll.</p>
   <div class="ownership-table-wrap" tabindex="0" role="region" aria-label="Software scope and maturity table" aria-describedby="ownership-table-hint">
@@ -139,18 +139,18 @@ permalink: /projects/index.html
       </tbody>
     </table>
   </div>
-  <p class="source-note">The source notes identify the reviewed repository revisions and image provenance.</p>
+  <p class="source-note">Technical sources and image provenance are recorded in the site's source notes.</p>
 </section>
 
 <section class="availability-foot page-shell" aria-labelledby="availability-title">
   <div>
     <p class="eyebrow">Status guide</p>
-    <h2 id="availability-title">Availability means what the source says.</h2>
+    <h2 id="availability-title">What the status labels mean.</h2>
   </div>
   <ul>
     <li><span class="status status--released">Released</span><span>A package or application is available through the linked release channel. The repository's current branch may be newer.</span></li>
     <li><span class="status status--preview">Preview</span><span>Source or early software is available to inspect; packaging, API, schema, or platform support can still change.</span></li>
     <li><span class="status status--private">Private development</span><span>Public overview material may exist, but there is no public build or release to install.</span></li>
   </ul>
-  <p class="source-note">Product links and maturity notes were checked against the linked public repositories and release pages. Preview and source-build status carries no production-support claim.</p>
+  <p class="source-note">Read the linked repository and release notes for each product's current capabilities and support. Previews and source builds are not production-support promises.</p>
 </section>
