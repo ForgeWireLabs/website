@@ -6,7 +6,7 @@ export default {
   basePath: isPreview ? "/website" : "",
   preview: isPreview,
   assetVersion: "20261026-visual-integration",
-  description: "Independent software engineering and research across intelligent systems, distributed computing, developer infrastructure, systems integration, and applied technical education.",
+  description: "We build intelligent systems, distributed execution infrastructure, repository tools, communications software, and technical learning applications. Systems first. Models second.",
   navigation: [
     { label: "Home", url: "/" },
     { label: "Our Work", url: "/work/" },
