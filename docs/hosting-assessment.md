@@ -1,6 +1,6 @@
 # IONOS Web Hosting Plus: capability and cost assessment
 
-**Reviewed:** 2026-10-25
+**Reviewed:** 2026-10-26
 **Scope:** forgewirelabs.com only. The other registered domains are out of scope. The account and DNS observations below were recorded before the owner connected the domain. The post-activation update supersedes conflicting prelaunch observations.
 
 ## Evidence and limits
@@ -54,7 +54,7 @@ The apex currently returns an IONOS parking/registration page over HTTP and HTTP
 2. The owner reported that the included certificate is assigned. Independent HTTPS validation now confirms that the apex certificate is trusted, covers forgewirelabs.com, and is currently valid. No certificate purchase or reassignment is needed.
 3. The contract screenshot showed an IONOS CDN item, but its tier, activation, usage, and charge remain unknown. No CDN activation was performed or is required for this release.
 4. Jeremy reports that IONOS accepted Connect to webspace even though its summary still showed the older Domain not in use message. The public apex now returns the exact production release. Do not reconnect or change the assignment without a concrete discrepancy.
-5. www now resolves to the same A and AAAA addresses as the apex. Its web response and redirect behavior were not checked; www remains outside this launch scope.
+5. www resolves to the same A and AAAA addresses as the apex and has been checked over HTTP and HTTPS. Both redirect to the canonical apex with paths and query strings preserved; the certificate covers the hostname. No change was required.
 
 ## Post-activation update (2026-10-26 UTC)
 
@@ -65,6 +65,14 @@ The apex HTTPS certificate has subject CN=*.forgewirelabs.com and SANs for *.for
 The current public DNS observations include MX records mx01.ionos.com and mx00.ionos.com, SPF value v=spf1 include:_spf-us.ionos.com ~all, and an IONOS-managed DMARC CNAME. Codex made no DNS or mail changes. The existing DKIM and controlled mail-flow verification is documented in email-architecture-assessment.md.
 
 The IONOS account page was not refreshed during this pass because the authorized computer-use screenshot capture returned “encode latest capture frame failed: window crop is outside captured monitor,” including after refreshing the window selection. Public response checks verified the live mapping, so no reconnect was attempted. Invoice details, assigned webspace quota, and CDN activation/charges remain unverified. No additional service was activated or purchased.
+
+## Post-launch DNS and hostname verification (2026-10-26 UTC)
+
+The four IONOS authoritative name servers and public resolvers 1.1.1.1 and 8.8.8.8 agree on the current apex and www answers: A 74.208.236.171 and AAAA 2607:f1c0:100f:f000::200 (TTL 3600). The earlier apex observation 74.208.236.125 is no longer present. The observed address change is consistent with the currently serving IONOS web host; the available evidence does not establish what caused the change.
+
+Requests to https://www.forgewirelabs.com/ and its HTTP equivalent return 301 to https://forgewirelabs.com/. A /work/ request with a query string preserved both when redirected. The Sectigo certificate is trusted for the apex and www and is valid through 2027-04-23 UTC. No DNS, www assignment, redirect, or certificate setting was changed during this check.
+
+Authoritative MX, SPF, DKIM selector CNAME, and IONOS-managed DMARC CNAME records match the prelaunch values in email-architecture-assessment.md. All four name servers returned MX mx00.ionos.com and mx01.ionos.com, SPF v=spf1 include:_spf-us.ionos.com ~all, s1-ionos and s2-ionos DKIM CNAMEs, and _dmarc pointing to dmarc.ionos.com. The existing controlled mail-flow tests reported SPF, DKIM, and DMARC pass. No mail record was changed.
 ## Primary sources
 
 - [IONOS: Linux hosting vs. Windows/ASP.NET hosting](https://www.ionos.com/help/hosting/differences-between-linux-web-hosting-and-windows-web-hosting-aspnet-hosting/)
