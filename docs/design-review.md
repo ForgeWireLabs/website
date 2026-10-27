@@ -22,7 +22,7 @@ The existing route `/projects/` remains the Software page for continuity with th
 
 ## Art direction
 
-The established wordmark, typography, cool neutral surfaces, and restrained teal remain. Each page opens with the owner-provided, full-bleed neural masthead; the accessible text wordmark sits immediately below it, and centered navigation occupies the top header. The Home page's engineering-question index remains substantive content. Our Work uses the owner-provided abstract network artwork with an editorial caption. The ForgeWire workspace capture stays with Software content and its private-development/sample-data caption.
+The established wordmark, typography, cool neutral surfaces, and restrained teal remain. Each page opens with the owner-provided, full-bleed neural masthead, followed immediately by one dark header with the ForgeWire Labs wordmark on the left and all five navigation links on the right on wide layouts. At narrow widths, navigation wraps below the wordmark within the same header. Main page content follows the header. The Home page's engineering-question index remains substantive content. Our Work uses the owner-provided abstract network artwork with an editorial caption. The ForgeWire workspace capture stays with Software content and its private-development/sample-data caption.
 
 The social card keeps the wordmark but replaces the product screenshot with an original organization-level question index. It identifies the questions as an engineering lens and explicitly avoids implying product architecture.
 

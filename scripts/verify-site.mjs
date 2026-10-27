@@ -104,16 +104,33 @@ for (const file of htmlFiles) {
   const stylesheetPath = `${previewPathPrefix}/assets/site.css?v=${site.assetVersion}`;
   if (!html.includes(`href="${stylesheetPath}"`)) fail(`${label}: stylesheet URL must use the current asset version (${stylesheetPath}).`);
   const mastheadPath = `${previewPathPrefix}/assets/labs-neural-masthead.webp`;
-  if (!html.includes('<figure class="neural-masthead">') ||
-      !html.includes(`<img src="${mastheadPath}" alt="Blue branching neural structures with amber contact points."`)) {
-    fail(`${label}: shared neural masthead or its accessible alternative is missing.`);
+  const mastheads = [...html.matchAll(/<figure\b[^>]*class="[^"]*\bneural-masthead\b[^"]*"[^>]*>/gi)];
+  const mastheadStart = html.indexOf('<figure class="neural-masthead">');
+  const mastheadClose = mastheadStart < 0 ? -1 : html.indexOf("</figure>", mastheadStart);
+  const mastheadEnd = mastheadClose < 0 ? -1 : mastheadClose + "</figure>".length;
+  const headerMatches = [...html.matchAll(/<header\b[^>]*class="site-header"[^>]*>[\s\S]*?<\/header>/gi)];
+  const headerStart = html.indexOf('<header class="site-header">');
+  const headerEnd = headerMatches[0]?.index + (headerMatches[0]?.[0].length ?? 0);
+  const mainMatches = [...html.matchAll(/<main\b[^>]*>/gi)];
+  const mainStart = html.indexOf('<main id="main"');
+  if (mastheads.length !== 1 ||
+      !html.includes(`<img src="${mastheadPath}" alt="ForgeWire Labs — Independent engineering &amp; applied AI. A blue neural network with amber contact points."`)) {
+    fail(`${label}: expected exactly one shared neural masthead with its accessible alternative.`);
   }
-  if (!html.includes('<div class="masthead-brandbar">') ||
-      !html.includes('<div class="header-inner header-inner--masthead">')) {
-    fail(`${label}: masthead wordmark bar or centered navigation wrapper is missing.`);
+  if (html.includes('masthead-brandbar')) fail(`${label}: redundant masthead brand bar must not be present.`);
+  if (headerMatches.length !== 1) fail(`${label}: expected exactly one shared site header.`);
+  if (mainMatches.length !== 1) fail(`${label}: expected exactly one main content region.`);
+  if (!(mastheadStart >= 0 && mastheadEnd > mastheadStart && headerStart >= mastheadEnd && headerEnd > headerStart && mainStart >= headerEnd)) {
+    fail(`${label}: required order is neural masthead, complete header, then main content.`);
   }
-  const header = html.match(/<header\b[\s\S]*?<\/header>/i)?.[0] ?? "";
-  if (header.includes('class="wordmark"')) fail(`${label}: the wordmark belongs beneath the shared masthead, not in the top navigation.`);
+  const header = headerMatches[0]?.[0] ?? "";
+  if (/class="(?:wordmark|brand-copy)"/.test(header) || header.includes("ForgeWire Labs") ||
+      (header.match(/<nav\b/g) ?? []).length !== 1 || !header.includes('<nav aria-label="Main navigation">')) {
+    fail(`${label}: the shared header should contain centered navigation without a duplicate wordmark.`);
+  }
+  for (const navigationLabel of ["Home", "Our Work", "Research &amp; Engineering", "Software", "About"]) {
+    if (!header.includes(`>${navigationLabel}</a>`)) fail(`${label}: the shared header is missing ${navigationLabel} navigation.`);
+  }
   const canonical = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i)?.[1];
   const expectedCanonical = `${referenceOrigin}${previewPathPrefix}${route ?? "/"}`;
   if (canonical !== expectedCanonical) fail(`${label}: canonical URL must be ${expectedCanonical}.`);
@@ -221,7 +238,7 @@ for (const question of ["What can run on the hardware available?", "What can we 
   if (!homePage.includes(question)) fail("Homepage's six-question framework is missing: " + question);
 }
 if (!homePage.includes("/assets/labs-neural-masthead.webp") ||
-    !homePage.includes("Blue branching neural structures with amber contact points.")) fail("Approved shared neural masthead or alt text is missing.");
+    !homePage.includes("ForgeWire Labs — Independent engineering &amp; applied AI.")) fail("Original shared neural masthead or its text alternative is missing.");
 if (homePage.includes("forgewire-projects-workspace.png") || homePage.includes("labs-connected-network.webp")) fail("Homepage must not substitute product screenshots or Our Work imagery for its approved masthead.");
 if (homePage.includes("not a system diagram") || homePage.includes("not a shared product architecture") ||
     homePage.includes("not an application release")) fail("Homepage should not be dominated by defensive disclaimers.");
@@ -291,6 +308,12 @@ if (socialPng.toString("hex", 0, 8) !== "89504e470d0a1a0a") fail("Social card is
 if (socialPng.readUInt32BE(16) !== 1200 || socialPng.readUInt32BE(20) !== 630) fail("Social card must be 1200×630 pixels.");
 const css = await readFile(path.join(outputRoot, "assets", "site.css"), "utf8");
 if (!css.includes("@media (max-width: 720px)") || !css.includes("@media (prefers-reduced-motion: reduce)")) fail("Responsive or reduced-motion styles are missing.");
+if (/\.masthead-brandbar\b|\.header-inner--masthead\b/.test(css)) fail("Obsolete split masthead and centered-navigation styles must not remain.");
+if (!/\.neural-masthead\s*\{[^}]*width:\s*100%;[^}]*margin:\s*0;/s.test(css)) fail("Shared neural masthead must stay full-width and gap-free.");
+if (!css.includes(".neural-masthead img { display: block; width: 100%; height: auto; }")) fail("Original masthead must scale to the viewport without cropping.");
+if (!css.includes(".nav-list { display: flex; align-items: center; justify-content: center; flex-wrap: nowrap;") || !css.includes("white-space: nowrap;")) fail("Primary navigation must remain centered on one line.");
+if (!css.includes("gap: clamp(6px, 1.5vw, 8px);") || !css.includes("font-size: clamp(.66rem, 2.9vw, .72rem);")) fail("Mobile navigation labels must scale down and retain spacing on one line.");
+if (files.some((file) => path.basename(file) === "labs-neural-masthead.svg")) fail("The neural masthead must use the approved original raster artwork.");
 const responsiveRules = [
   "--type-page: clamp(2.25rem, calc(3.5vw + 1.25rem), 4.25rem);",
   "--type-section: clamp(1.75rem, calc(2.6vw + 1.1rem), 2.75rem);",
