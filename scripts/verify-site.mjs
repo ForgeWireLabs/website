@@ -58,7 +58,7 @@ const requiredFiles = [
   "assets/workbench-desktop-dashboard.jpg",
   "assets/skillforge-command-center.png",
   "assets/flink-product-architecture.svg",
-  "assets/labs-neural-masthead.svg",
+  "assets/labs-neural-masthead.webp",
   "assets/labs-connected-network.webp",
 ];
 
@@ -103,7 +103,7 @@ for (const file of htmlFiles) {
   if (!/<meta\s+name="description"\s+content="[^"]+"/i.test(html)) fail(`${label}: missing meta description.`);
   const stylesheetPath = `${previewPathPrefix}/assets/site.css?v=${site.assetVersion}`;
   if (!html.includes(`href="${stylesheetPath}"`)) fail(`${label}: stylesheet URL must use the current asset version (${stylesheetPath}).`);
-  const mastheadPath = `${previewPathPrefix}/assets/labs-neural-masthead.svg`;
+  const mastheadPath = `${previewPathPrefix}/assets/labs-neural-masthead.webp`;
   const mastheads = [...html.matchAll(/<figure\b[^>]*class="[^"]*\bneural-masthead\b[^"]*"[^>]*>/gi)];
   const mastheadStart = html.indexOf('<figure class="neural-masthead">');
   const mastheadClose = mastheadStart < 0 ? -1 : html.indexOf("</figure>", mastheadStart);
@@ -114,7 +114,7 @@ for (const file of htmlFiles) {
   const mainMatches = [...html.matchAll(/<main\b[^>]*>/gi)];
   const mainStart = html.indexOf('<main id="main"');
   if (mastheads.length !== 1 ||
-      !html.includes(`<img src="${mastheadPath}" alt="Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering &amp; applied AI."`)) {
+      !html.includes(`<img src="${mastheadPath}" alt="ForgeWire Labs — Independent engineering &amp; applied AI. A blue neural network with amber contact points."`)) {
     fail(`${label}: expected exactly one shared neural masthead with its accessible alternative.`);
   }
   if (html.includes('masthead-brandbar')) fail(`${label}: redundant masthead brand bar must not be present.`);
@@ -124,8 +124,9 @@ for (const file of htmlFiles) {
     fail(`${label}: required order is neural masthead, complete header, then main content.`);
   }
   const header = headerMatches[0]?.[0] ?? "";
-  if (!header.includes('class="wordmark"') || !header.includes('aria-label="Main navigation"')) {
-    fail(`${label}: the shared header must contain both the ForgeWire Labs wordmark and navigation.`);
+  if (/class="(?:wordmark|brand-copy)"/.test(header) || header.includes("ForgeWire Labs") ||
+      (header.match(/<nav\b/g) ?? []).length !== 1 || !header.includes('<nav aria-label="Main navigation">')) {
+    fail(`${label}: the shared header should contain centered navigation without a duplicate wordmark.`);
   }
   for (const navigationLabel of ["Home", "Our Work", "Research &amp; Engineering", "Software", "About"]) {
     if (!header.includes(`>${navigationLabel}</a>`)) fail(`${label}: the shared header is missing ${navigationLabel} navigation.`);
@@ -236,8 +237,8 @@ for (const question of ["What can run on the hardware available?", "What can we 
                         "Who can act, approve, or stop the work?", "What can someone else verify?"]) {
   if (!homePage.includes(question)) fail("Homepage's six-question framework is missing: " + question);
 }
-if (!homePage.includes("/assets/labs-neural-masthead.svg") ||
-    !homePage.includes("Blue neural branches and amber contact points frame the words ForgeWire Labs")) fail("Scalable shared neural masthead or its text alternative is missing.");
+if (!homePage.includes("/assets/labs-neural-masthead.webp") ||
+    !homePage.includes("ForgeWire Labs — Independent engineering &amp; applied AI.")) fail("Original shared neural masthead or its text alternative is missing.");
 if (homePage.includes("forgewire-projects-workspace.png") || homePage.includes("labs-connected-network.webp")) fail("Homepage must not substitute product screenshots or Our Work imagery for its approved masthead.");
 if (homePage.includes("not a system diagram") || homePage.includes("not a shared product architecture") ||
     homePage.includes("not an application release")) fail("Homepage should not be dominated by defensive disclaimers.");
@@ -308,12 +309,11 @@ if (socialPng.readUInt32BE(16) !== 1200 || socialPng.readUInt32BE(20) !== 630) f
 const css = await readFile(path.join(outputRoot, "assets", "site.css"), "utf8");
 if (!css.includes("@media (max-width: 720px)") || !css.includes("@media (prefers-reduced-motion: reduce)")) fail("Responsive or reduced-motion styles are missing.");
 if (/\.masthead-brandbar\b|\.header-inner--masthead\b/.test(css)) fail("Obsolete split masthead and centered-navigation styles must not remain.");
-if (!/\.neural-masthead\s*\{[^}]*width:\s*100%;[^}]*height:\s*clamp\(130px,\s*18vw,\s*260px\);[^}]*margin:\s*0;/s.test(css)) fail("Shared neural masthead must stay full-width, panoramic, and gap-free.");
-if (!/\.neural-masthead img\s*\{[^}]*object-fit:\s*cover;/.test(css) || !css.includes(".neural-masthead img { object-position: left 58%; }")) fail("Neural image crop must preserve the artwork on narrow screens.");
-if (!css.includes(".neural-masthead { height: auto; aspect-ratio: 2048 / 682; }") || !css.includes(".neural-masthead img { object-fit: contain; object-position: center; }")) fail("Phone-width masthead must show the full scalable artwork without cropping.");
-if (files.some((file) => path.basename(file) === "labs-neural-masthead.webp")) fail("The shared neural masthead must use scalable vector artwork, not a raster masthead image.");
-const mastheadSvg = await readFile(path.join(outputRoot, "assets", "labs-neural-masthead.svg"), "utf8");
-if (!/<svg\b[^>]*viewBox="0 0 2048 682"/i.test(mastheadSvg) || !/<path\b/i.test(mastheadSvg) || /<image\b/i.test(mastheadSvg)) fail("Neural masthead must be scalable vector paths rather than an embedded raster image.");
+if (!/\.neural-masthead\s*\{[^}]*width:\s*100%;[^}]*margin:\s*0;/s.test(css)) fail("Shared neural masthead must stay full-width and gap-free.");
+if (!css.includes(".neural-masthead img { display: block; width: 100%; height: auto; }")) fail("Original masthead must scale to the viewport without cropping.");
+if (!css.includes(".nav-list { display: flex; align-items: center; justify-content: center; flex-wrap: nowrap;") || !css.includes("white-space: nowrap;")) fail("Primary navigation must remain centered on one line.");
+if (!css.includes("gap: clamp(6px, 1.5vw, 8px);") || !css.includes("font-size: clamp(.66rem, 2.9vw, .72rem);")) fail("Mobile navigation labels must scale down and retain spacing on one line.");
+if (files.some((file) => path.basename(file) === "labs-neural-masthead.svg")) fail("The neural masthead must use the approved original raster artwork.");
 const responsiveRules = [
   "--type-page: clamp(2.25rem, calc(3.5vw + 1.25rem), 4.25rem);",
   "--type-section: clamp(1.75rem, calc(2.6vw + 1.1rem), 2.75rem);",

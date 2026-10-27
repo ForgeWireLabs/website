@@ -79,25 +79,20 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
   border: 0;
 }
 
-/* The ForgeWire Labs name is the primary mark. Project colors stay in project-owned assets. */
+/* The masthead carries the ForgeWire Labs identity; the bar below holds navigation only. */
 .site-header { color: var(--paper); background: var(--dark); border-bottom: 1px solid var(--dark-line); }
 .header-inner {
   width: min(1320px, calc(100% - 64px));
-  min-height: 82px;
+  min-height: 72px;
   margin-inline: auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 28px;
+  justify-content: center;
 }
-.wordmark { display: inline-flex; align-items: center; color: inherit; text-decoration: none; }
-.wordmark:hover { color: white; }
-.brand-copy { display: flex; flex-direction: column; gap: 1px; line-height: 1.2; }
-.brand-copy strong { font-size: 19px; letter-spacing: -.025em; }
-.brand-copy strong span { color: var(--signal-light); font-weight: 500; }
-.brand-copy small { color: #c1d0cf; font-size: 12px; letter-spacing: .015em; }
-.nav-list { display: flex; align-items: center; gap: 8px; margin: 0; padding: 0; list-style: none; }
-.nav-list a { display: inline-block; padding: 10px 13px; color: #d4e0de; border-bottom: 2px solid transparent; font-size: 15px; font-weight: 650; text-decoration: none; }
+/* Center one uninterrupted navigation row across the full bar. */
+.header-inner nav { width: 100%; }
+.nav-list { display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: clamp(4px, 1vw, 14px); margin: 0; padding: 0; list-style: none; white-space: nowrap; }
+.nav-list a { display: inline-block; padding: 10px clamp(5px, .8vw, 13px); color: #d4e0de; border-bottom: 2px solid transparent; font-size: 15px; font-weight: 650; text-decoration: none; white-space: nowrap; }
 .nav-list a:hover, .nav-list a[aria-current="page"] { color: white; border-bottom-color: var(--signal-light); }
 .eyebrow { margin: 0 0 13px; color: var(--signal); font-size: .9rem; font-weight: 720; line-height: 1.45; }
 .text-link { font-size: .94rem; font-weight: 730; }
@@ -109,16 +104,14 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
 .section-heading > .text-link { flex: none; margin-bottom: 7px; }
 .section-heading--stacked { display: block; }
 
-/* Owner-provided neural masthead anchors every page with the same full-bleed, short crop. */
+/* Original neural masthead stays full-bleed and scales as one uncropped image. */
 .neural-masthead {
   width: 100%;
-  height: clamp(130px, 18vw, 260px);
   margin: 0;
-  overflow: hidden;
   border: 0;
   background: var(--surface-alt);
 }
-.neural-masthead img { width: 100%; height: 100%; object-fit: cover; object-position: center 58%; }
+.neural-masthead img { display: block; width: 100%; height: auto; }
 
 /* Homepage: scope first, then two private projects and public engineering evidence. */
 .front-hero {
@@ -430,14 +423,13 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
   .engineering-example--wide { grid-column: 1 / -1; }
   .evidence-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .evidence-cards article:last-child { grid-column: 1 / -1; width: calc((100% - 16px) / 2); justify-self: center; }
-  .header-inner { flex-wrap: wrap; padding-block: 13px; }
-  .nav-list { flex-wrap: wrap; }
 }
 
 @media (max-width: 720px) {
   .page-shell, .footer-inner { width: calc(100% - 38px); }
-  .neural-masthead img { object-position: left 58%; }
-  .header-inner { width: calc(100% - 34px); min-height: 73px; }
+  .header-inner { width: calc(100% - 20px); min-height: 60px; }
+  .nav-list { gap: clamp(3px, 1vw, 8px); }
+  .nav-list a { padding: 8px clamp(1px, .45vw, 5px); font-size: clamp(.6rem, 2.2vw, .88rem); }
   .front-hero { gap: 30px; }
   .hero-capture { max-width: 760px; }
   .public-work-section { padding-block: 57px 64px; }
@@ -489,12 +481,9 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
 }
 
 @media (max-width: 460px) {
-  .neural-masthead { height: auto; aspect-ratio: 2048 / 682; }
-  .neural-masthead img { object-fit: contain; object-position: center; }
-  .header-inner { align-items: flex-start; flex-direction: column; gap: 8px; padding-block: 11px 7px; }
-  .brand-copy strong { font-size: 18px; }
-  .nav-list { width: 100%; flex-wrap: wrap; justify-content: flex-start; gap: 3px 16px; }
-  .nav-list a { padding: 5px 0; font-size: .86rem; }
+  .header-inner { width: 100%; min-height: 52px; }
+  .nav-list { gap: clamp(6px, 1.5vw, 8px); }
+  .nav-list a { padding-inline: 0; font-size: clamp(.66rem, 2.9vw, .72rem); }
   .hero-lede { font-size: 1.06rem; }
   .hero-capture { padding: 9px; }
   .research-project-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
