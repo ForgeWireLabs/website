@@ -178,7 +178,6 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
 .narrative-indicator span { width: 10px; height: 10px; border: 2px solid var(--signal); border-radius: 50%; background: transparent; }
 .narrative-indicator[aria-pressed="true"] span { background: var(--signal); }
 .home-exploration { padding-block: clamp(38px, 4.8vw, 64px) clamp(58px, 6vw, 82px); }
-.home-exploration-inner > .eyebrow { margin-bottom: 9px; }
 .home-exploration h2 { margin-bottom: 24px; }
 .exploration-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .exploration-card {

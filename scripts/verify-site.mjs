@@ -295,6 +295,7 @@ for (const retiredPhrase of [
   "released CLI package at version 3.1.3",
   "RepoPact Core",
   "Follow the work, not the claims.",
+  "Start with the work",
 ]) {
   if (homePage.includes(retiredPhrase)) fail(`Homepage still contains catalog or explanatory copy that should move to the substantive pages: ${retiredPhrase}`);
 }
