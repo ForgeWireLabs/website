@@ -62,5 +62,6 @@
         <p class="footer-note">Different projects. Separate responsibilities. Source and releases where the work lives.</p>
       </div>
     </footer>
+    {% if page.url == '/' %}<script src="{{ site.basePath }}/assets/homepage-carousel.js?v={{ site.assetVersion }}" defer></script>{% endif %}
   </body>
 </html>
