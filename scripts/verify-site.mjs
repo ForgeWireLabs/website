@@ -103,6 +103,17 @@ for (const file of htmlFiles) {
   if (!/<meta\s+name="description"\s+content="[^"]+"/i.test(html)) fail(`${label}: missing meta description.`);
   const stylesheetPath = `${previewPathPrefix}/assets/site.css?v=${site.assetVersion}`;
   if (!html.includes(`href="${stylesheetPath}"`)) fail(`${label}: stylesheet URL must use the current asset version (${stylesheetPath}).`);
+  const mastheadPath = `${previewPathPrefix}/assets/labs-neural-masthead.webp`;
+  if (!html.includes('<figure class="neural-masthead">') ||
+      !html.includes(`<img src="${mastheadPath}" alt="Blue branching neural structures with amber contact points."`)) {
+    fail(`${label}: shared neural masthead or its accessible alternative is missing.`);
+  }
+  if (!html.includes('<div class="masthead-brandbar">') ||
+      !html.includes('<div class="header-inner header-inner--masthead">')) {
+    fail(`${label}: masthead wordmark bar or centered navigation wrapper is missing.`);
+  }
+  const header = html.match(/<header\b[\s\S]*?<\/header>/i)?.[0] ?? "";
+  if (header.includes('class="wordmark"')) fail(`${label}: the wordmark belongs beneath the shared masthead, not in the top navigation.`);
   const canonical = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i)?.[1];
   const expectedCanonical = `${referenceOrigin}${previewPathPrefix}${route ?? "/"}`;
   if (canonical !== expectedCanonical) fail(`${label}: canonical URL must be ${expectedCanonical}.`);
@@ -210,7 +221,7 @@ for (const question of ["What can run on the hardware available?", "What can we 
   if (!homePage.includes(question)) fail("Homepage's six-question framework is missing: " + question);
 }
 if (!homePage.includes("/assets/labs-neural-masthead.webp") ||
-    !homePage.includes("Blue branching neural structures with amber contact points.")) fail("Approved homepage neural masthead or alt text is missing.");
+    !homePage.includes("Blue branching neural structures with amber contact points.")) fail("Approved shared neural masthead or alt text is missing.");
 if (homePage.includes("forgewire-projects-workspace.png") || homePage.includes("labs-connected-network.webp")) fail("Homepage must not substitute product screenshots or Our Work imagery for its approved masthead.");
 if (homePage.includes("not a system diagram") || homePage.includes("not a shared product architecture") ||
     homePage.includes("not an application release")) fail("Homepage should not be dominated by defensive disclaimers.");
@@ -237,8 +248,6 @@ for (const phrase of ["Different problems.", "Intelligent systems", "Distributed
 }
 if (!workPage.includes("/assets/labs-connected-network.webp") ||
     !workPage.includes("Separate systems. Common engineering principles.")) fail("Our Work image or approved caption is missing.");
-if (workPage.includes("labs-neural-masthead.webp")) fail("Our Work must not reuse the homepage neural masthead.");
-
 const aboutPage = await readFile(path.join(outputRoot, "about", "index.html"), "utf8");
 if (!aboutPage.includes("ForgeWire Labs is independent engineering and research") || !aboutPage.includes("We began with agent-driven software") || !aboutPage.includes("Use what works.")) fail("About page must speak in an in-house organizational voice.");
 if (/Jeremy Shows|founder|race-car builder|small-business owner|substantial help from AI systems|id="founder-title"/i.test(aboutPage)) fail("About page must not contain a founder biography or founder-led organization language.");

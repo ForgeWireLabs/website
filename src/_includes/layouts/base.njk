@@ -30,13 +30,10 @@
     {% if site.preview %}<div class="preview-banner" role="note">Development preview · Temporary public review copy</div>{% endif %}
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
-      <div class="header-inner">
-        <a class="wordmark" href="{{ site.basePath }}/" aria-label="ForgeWire Labs home">
-          <span class="brand-copy"><strong>ForgeWire <span>Labs</span></strong><small>Independent engineering</small></span>
-        </a>
+      <div class="header-inner header-inner--masthead">
         <nav aria-label="Main navigation">
           <ul class="nav-list">
-            <li><a href="{{ site.basePath }}/"{% if page.url == '/index.html' %} aria-current="page"{% endif %}>Home</a></li>
+            <li><a href="{{ site.basePath }}/"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a></li>
             <li><a href="{{ site.basePath }}/work/"{% if page.url.startsWith('/work') %} aria-current="page"{% endif %}>Our Work</a></li>
             <li><a href="{{ site.basePath }}/engineering/"{% if page.url.startsWith('/engineering') %} aria-current="page"{% endif %}>Research &amp; Engineering</a></li>
             <li><a href="{{ site.basePath }}/projects/"{% if page.url.startsWith('/projects') %} aria-current="page"{% endif %}>Software</a></li>
@@ -45,6 +42,15 @@
         </nav>
       </div>
     </header>
+    <figure class="neural-masthead">
+      <img src="{{ site.basePath }}/assets/labs-neural-masthead.webp" alt="Blue branching neural structures with amber contact points." width="2048" height="682" decoding="async" fetchpriority="high">
+      <figcaption class="visually-hidden">The full-width artwork includes the ForgeWire Labs wordmark and the tagline “Independent engineering &amp; applied AI.” The text wordmark follows the masthead.</figcaption>
+    </figure>
+    <div class="masthead-brandbar">
+      <a class="wordmark" href="{{ site.basePath }}/" aria-label="ForgeWire Labs home">
+        <span class="brand-copy"><strong>ForgeWire <span>Labs</span></strong><small>Independent engineering</small></span>
+      </a>
+    </div>
     <main id="main" tabindex="-1">
       {{ content | safe }}
     </main>
