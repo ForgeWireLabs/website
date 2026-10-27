@@ -5,7 +5,7 @@ export default {
   url: isPreview ? "https://forgewirelabs.github.io" : "https://forgewirelabs.com",
   basePath: isPreview ? "/website" : "",
   preview: isPreview,
-  assetVersion: "20261026-masthead-order-v2",
+  assetVersion: "20261027-vector-masthead",
   description: "We build intelligent systems, distributed execution infrastructure, repository tools, communications software, and technical learning applications. Systems first. Models second.",
   navigation: [
     { label: "Home", url: "/" },

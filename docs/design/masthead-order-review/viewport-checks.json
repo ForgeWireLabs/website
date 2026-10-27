@@ -1,28 +1,36 @@
 [
   {
-    "page": "Home",
+    "page": "home",
     "route": "/",
     "width": 320,
     "passed": true,
+    "fullArtworkOnPhone": true,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 305,
     "documentWidth": 305,
     "fullBleed": true,
     "header": {
-      "bottom": 304,
-      "top": 130
+      "bottom": 276,
+      "top": 102
     },
     "headerCount": 1,
+    "imageFit": "contain",
     "imageLoaded": true,
+    "imagePosition": "50% 50%",
     "linksWithinHeader": true,
-    "mainTop": 304,
+    "mainCount": 1,
+    "mainTop": 276,
     "masthead": {
-      "bottom": 130,
+      "bottom": 102,
+      "height": 102,
       "left": 0,
+      "ratio": 3.003,
       "width": 305
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -32,32 +40,41 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 320
   },
   {
-    "page": "Home",
+    "page": "home",
     "route": "/",
     "width": 390,
     "passed": true,
+    "fullArtworkOnPhone": true,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 375,
     "documentWidth": 375,
     "fullBleed": true,
     "header": {
-      "bottom": 266,
-      "top": 130
+      "bottom": 261,
+      "top": 125
     },
     "headerCount": 1,
+    "imageFit": "contain",
     "imageLoaded": true,
+    "imagePosition": "50% 50%",
     "linksWithinHeader": true,
-    "mainTop": 266,
+    "mainCount": 1,
+    "mainTop": 261,
     "masthead": {
-      "bottom": 130,
+      "bottom": 125,
+      "height": 125,
       "left": 0,
+      "ratio": 3.003,
       "width": 375
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -67,13 +84,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 390
   },
   {
-    "page": "Home",
+    "page": "home",
     "route": "/",
     "width": 720,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 705,
@@ -84,15 +104,21 @@
       "top": 130
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "0% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 270,
     "masthead": {
       "bottom": 130,
+      "height": 130,
       "left": 0,
+      "ratio": 5.423,
       "width": 705
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -102,13 +128,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 720
   },
   {
-    "page": "Home",
+    "page": "home",
     "route": "/",
     "width": 721,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 706,
@@ -119,15 +148,21 @@
       "top": 130
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "50% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 270,
     "masthead": {
       "bottom": 130,
+      "height": 130,
       "left": 0,
+      "ratio": 5.431,
       "width": 706
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -137,13 +172,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 721
   },
   {
-    "page": "Home",
+    "page": "home",
     "route": "/",
     "width": 980,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 965,
@@ -154,15 +192,21 @@
       "top": 176
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "50% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 259,
     "masthead": {
       "bottom": 176,
+      "height": 176,
       "left": 0,
+      "ratio": 5.471,
       "width": 965
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -172,13 +216,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 980
   },
   {
-    "page": "Home",
+    "page": "home",
     "route": "/",
     "width": 1440,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 1425,
@@ -189,15 +236,21 @@
       "top": 259
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "50% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 342,
     "masthead": {
       "bottom": 259,
+      "height": 259,
       "left": 0,
+      "ratio": 5.498,
       "width": 1425
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -207,32 +260,41 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 1440
   },
   {
-    "page": "Our Work",
+    "page": "our-work",
     "route": "/work/",
     "width": 320,
     "passed": true,
+    "fullArtworkOnPhone": true,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 305,
     "documentWidth": 305,
     "fullBleed": true,
     "header": {
-      "bottom": 304,
-      "top": 130
+      "bottom": 276,
+      "top": 102
     },
     "headerCount": 1,
+    "imageFit": "contain",
     "imageLoaded": true,
+    "imagePosition": "50% 50%",
     "linksWithinHeader": true,
-    "mainTop": 304,
+    "mainCount": 1,
+    "mainTop": 276,
     "masthead": {
-      "bottom": 130,
+      "bottom": 102,
+      "height": 102,
       "left": 0,
+      "ratio": 3.003,
       "width": 305
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -242,32 +304,41 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 320
   },
   {
-    "page": "Our Work",
+    "page": "our-work",
     "route": "/work/",
     "width": 390,
     "passed": true,
+    "fullArtworkOnPhone": true,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 375,
     "documentWidth": 375,
     "fullBleed": true,
     "header": {
-      "bottom": 266,
-      "top": 130
+      "bottom": 261,
+      "top": 125
     },
     "headerCount": 1,
+    "imageFit": "contain",
     "imageLoaded": true,
+    "imagePosition": "50% 50%",
     "linksWithinHeader": true,
-    "mainTop": 266,
+    "mainCount": 1,
+    "mainTop": 261,
     "masthead": {
-      "bottom": 130,
+      "bottom": 125,
+      "height": 125,
       "left": 0,
+      "ratio": 3.003,
       "width": 375
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -277,13 +348,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 390
   },
   {
-    "page": "Our Work",
+    "page": "our-work",
     "route": "/work/",
     "width": 720,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 705,
@@ -294,15 +368,21 @@
       "top": 130
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "0% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 270,
     "masthead": {
       "bottom": 130,
+      "height": 130,
       "left": 0,
+      "ratio": 5.423,
       "width": 705
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -312,13 +392,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 720
   },
   {
-    "page": "Our Work",
+    "page": "our-work",
     "route": "/work/",
     "width": 721,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 706,
@@ -329,15 +412,21 @@
       "top": 130
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "50% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 270,
     "masthead": {
       "bottom": 130,
+      "height": 130,
       "left": 0,
+      "ratio": 5.431,
       "width": 706
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -347,13 +436,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 721
   },
   {
-    "page": "Our Work",
+    "page": "our-work",
     "route": "/work/",
     "width": 980,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 965,
@@ -364,15 +456,21 @@
       "top": 176
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "50% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 259,
     "masthead": {
       "bottom": 176,
+      "height": 176,
       "left": 0,
+      "ratio": 5.471,
       "width": 965
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -382,13 +480,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 980
   },
   {
-    "page": "Our Work",
+    "page": "our-work",
     "route": "/work/",
     "width": 1440,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 1425,
@@ -399,15 +500,21 @@
       "top": 259
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "50% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 342,
     "masthead": {
       "bottom": 259,
+      "height": 259,
       "left": 0,
+      "ratio": 5.498,
       "width": 1425
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -417,32 +524,41 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 1440
   },
   {
-    "page": "Research & Engineering",
+    "page": "research-engineering",
     "route": "/engineering/",
     "width": 320,
     "passed": true,
+    "fullArtworkOnPhone": true,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 305,
     "documentWidth": 305,
     "fullBleed": true,
     "header": {
-      "bottom": 304,
-      "top": 130
+      "bottom": 276,
+      "top": 102
     },
     "headerCount": 1,
+    "imageFit": "contain",
     "imageLoaded": true,
+    "imagePosition": "50% 50%",
     "linksWithinHeader": true,
-    "mainTop": 304,
+    "mainCount": 1,
+    "mainTop": 276,
     "masthead": {
-      "bottom": 130,
+      "bottom": 102,
+      "height": 102,
       "left": 0,
+      "ratio": 3.003,
       "width": 305
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -452,32 +568,41 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 320
   },
   {
-    "page": "Research & Engineering",
+    "page": "research-engineering",
     "route": "/engineering/",
     "width": 390,
     "passed": true,
+    "fullArtworkOnPhone": true,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 375,
     "documentWidth": 375,
     "fullBleed": true,
     "header": {
-      "bottom": 266,
-      "top": 130
+      "bottom": 261,
+      "top": 125
     },
     "headerCount": 1,
+    "imageFit": "contain",
     "imageLoaded": true,
+    "imagePosition": "50% 50%",
     "linksWithinHeader": true,
-    "mainTop": 266,
+    "mainCount": 1,
+    "mainTop": 261,
     "masthead": {
-      "bottom": 130,
+      "bottom": 125,
+      "height": 125,
       "left": 0,
+      "ratio": 3.003,
       "width": 375
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -487,13 +612,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 390
   },
   {
-    "page": "Research & Engineering",
+    "page": "research-engineering",
     "route": "/engineering/",
     "width": 720,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 705,
@@ -504,15 +632,21 @@
       "top": 130
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "0% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 270,
     "masthead": {
       "bottom": 130,
+      "height": 130,
       "left": 0,
+      "ratio": 5.423,
       "width": 705
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -522,13 +656,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 720
   },
   {
-    "page": "Research & Engineering",
+    "page": "research-engineering",
     "route": "/engineering/",
     "width": 721,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 706,
@@ -539,15 +676,21 @@
       "top": 130
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "50% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 270,
     "masthead": {
       "bottom": 130,
+      "height": 130,
       "left": 0,
+      "ratio": 5.431,
       "width": 706
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -557,13 +700,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 721
   },
   {
-    "page": "Research & Engineering",
+    "page": "research-engineering",
     "route": "/engineering/",
     "width": 980,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 965,
@@ -574,15 +720,21 @@
       "top": 176
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "50% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 259,
     "masthead": {
       "bottom": 176,
+      "height": 176,
       "left": 0,
+      "ratio": 5.471,
       "width": 965
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -592,13 +744,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 980
   },
   {
-    "page": "Research & Engineering",
+    "page": "research-engineering",
     "route": "/engineering/",
     "width": 1440,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 1425,
@@ -609,15 +764,21 @@
       "top": 259
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "50% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 342,
     "masthead": {
       "bottom": 259,
+      "height": 259,
       "left": 0,
+      "ratio": 5.498,
       "width": 1425
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -627,32 +788,41 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 1440
   },
   {
-    "page": "Software",
+    "page": "software",
     "route": "/projects/",
     "width": 320,
     "passed": true,
+    "fullArtworkOnPhone": true,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 305,
     "documentWidth": 305,
     "fullBleed": true,
     "header": {
-      "bottom": 304,
-      "top": 130
+      "bottom": 276,
+      "top": 102
     },
     "headerCount": 1,
+    "imageFit": "contain",
     "imageLoaded": true,
+    "imagePosition": "50% 50%",
     "linksWithinHeader": true,
-    "mainTop": 304,
+    "mainCount": 1,
+    "mainTop": 276,
     "masthead": {
-      "bottom": 130,
+      "bottom": 102,
+      "height": 102,
       "left": 0,
+      "ratio": 3.003,
       "width": 305
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -662,32 +832,41 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 320
   },
   {
-    "page": "Software",
+    "page": "software",
     "route": "/projects/",
     "width": 390,
     "passed": true,
+    "fullArtworkOnPhone": true,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 375,
     "documentWidth": 375,
     "fullBleed": true,
     "header": {
-      "bottom": 266,
-      "top": 130
+      "bottom": 261,
+      "top": 125
     },
     "headerCount": 1,
+    "imageFit": "contain",
     "imageLoaded": true,
+    "imagePosition": "50% 50%",
     "linksWithinHeader": true,
-    "mainTop": 266,
+    "mainCount": 1,
+    "mainTop": 261,
     "masthead": {
-      "bottom": 130,
+      "bottom": 125,
+      "height": 125,
       "left": 0,
+      "ratio": 3.003,
       "width": 375
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -697,13 +876,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 390
   },
   {
-    "page": "Software",
+    "page": "software",
     "route": "/projects/",
     "width": 720,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 705,
@@ -714,15 +896,21 @@
       "top": 130
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "0% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 270,
     "masthead": {
       "bottom": 130,
+      "height": 130,
       "left": 0,
+      "ratio": 5.423,
       "width": 705
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -732,13 +920,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 720
   },
   {
-    "page": "Software",
+    "page": "software",
     "route": "/projects/",
     "width": 721,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 706,
@@ -749,15 +940,21 @@
       "top": 130
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "50% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 270,
     "masthead": {
       "bottom": 130,
+      "height": 130,
       "left": 0,
+      "ratio": 5.431,
       "width": 706
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -767,13 +964,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 721
   },
   {
-    "page": "Software",
+    "page": "software",
     "route": "/projects/",
     "width": 980,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 965,
@@ -784,15 +984,21 @@
       "top": 176
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "50% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 259,
     "masthead": {
       "bottom": 176,
+      "height": 176,
       "left": 0,
+      "ratio": 5.471,
       "width": 965
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -802,13 +1008,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 980
   },
   {
-    "page": "Software",
+    "page": "software",
     "route": "/projects/",
     "width": 1440,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 1425,
@@ -819,15 +1028,21 @@
       "top": 259
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "50% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 342,
     "masthead": {
       "bottom": 259,
+      "height": 259,
       "left": 0,
+      "ratio": 5.498,
       "width": 1425
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -837,32 +1052,41 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 1440
   },
   {
-    "page": "About",
+    "page": "about",
     "route": "/about/",
     "width": 320,
     "passed": true,
+    "fullArtworkOnPhone": true,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 305,
     "documentWidth": 305,
     "fullBleed": true,
     "header": {
-      "bottom": 304,
-      "top": 130
+      "bottom": 276,
+      "top": 102
     },
     "headerCount": 1,
+    "imageFit": "contain",
     "imageLoaded": true,
+    "imagePosition": "50% 50%",
     "linksWithinHeader": true,
-    "mainTop": 304,
+    "mainCount": 1,
+    "mainTop": 276,
     "masthead": {
-      "bottom": 130,
+      "bottom": 102,
+      "height": 102,
       "left": 0,
+      "ratio": 3.003,
       "width": 305
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -872,32 +1096,41 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 320
   },
   {
-    "page": "About",
+    "page": "about",
     "route": "/about/",
     "width": 390,
     "passed": true,
+    "fullArtworkOnPhone": true,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 375,
     "documentWidth": 375,
     "fullBleed": true,
     "header": {
-      "bottom": 266,
-      "top": 130
+      "bottom": 261,
+      "top": 125
     },
     "headerCount": 1,
+    "imageFit": "contain",
     "imageLoaded": true,
+    "imagePosition": "50% 50%",
     "linksWithinHeader": true,
-    "mainTop": 266,
+    "mainCount": 1,
+    "mainTop": 261,
     "masthead": {
-      "bottom": 130,
+      "bottom": 125,
+      "height": 125,
       "left": 0,
+      "ratio": 3.003,
       "width": 375
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -907,13 +1140,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 390
   },
   {
-    "page": "About",
+    "page": "about",
     "route": "/about/",
     "width": 720,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 705,
@@ -924,15 +1160,21 @@
       "top": 130
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "0% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 270,
     "masthead": {
       "bottom": 130,
+      "height": 130,
       "left": 0,
+      "ratio": 5.423,
       "width": 705
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -942,13 +1184,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 720
   },
   {
-    "page": "About",
+    "page": "about",
     "route": "/about/",
     "width": 721,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 706,
@@ -959,15 +1204,21 @@
       "top": 130
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "50% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 270,
     "masthead": {
       "bottom": 130,
+      "height": 130,
       "left": 0,
+      "ratio": 5.431,
       "width": 706
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -977,13 +1228,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 721
   },
   {
-    "page": "About",
+    "page": "about",
     "route": "/about/",
     "width": 980,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 965,
@@ -994,15 +1248,21 @@
       "top": 176
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "50% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 259,
     "masthead": {
       "bottom": 176,
+      "height": 176,
       "left": 0,
+      "ratio": 5.471,
       "width": 965
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -1012,13 +1272,16 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 980
   },
   {
-    "page": "About",
+    "page": "about",
     "route": "/about/",
     "width": 1440,
     "passed": true,
+    "fullArtworkOnPhone": null,
+    "alt": "Blue neural branches and amber contact points frame the words ForgeWire Labs, Independent engineering & applied AI.",
     "brandInHeader": true,
     "brandbarCount": 0,
     "clientWidth": 1425,
@@ -1029,15 +1292,21 @@
       "top": 259
     },
     "headerCount": 1,
+    "imageFit": "cover",
     "imageLoaded": true,
+    "imagePosition": "50% 58%",
     "linksWithinHeader": true,
+    "mainCount": 1,
     "mainTop": 342,
     "masthead": {
       "bottom": 259,
+      "height": 259,
       "left": 0,
+      "ratio": 5.498,
       "width": 1425
     },
     "mastheadCount": 1,
+    "naturalRatio": 3.003,
     "navLabels": [
       "Home",
       "Our Work",
@@ -1047,6 +1316,7 @@
     ],
     "noHorizontalOverflow": true,
     "requiredOrder": true,
+    "vectorSrc": "http://127.0.0.1:8080/assets/labs-neural-masthead.svg",
     "viewport": 1440
   }
 ]

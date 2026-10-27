@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="682" viewBox="0 0 2048 682" role="img" aria-labelledby="masthead-title masthead-description">
+  <title id="masthead-title">ForgeWire Labs — Independent engineering and applied AI</title>
+  <desc id="masthead-description">A blue neural cell and branching processes frame the ForgeWire Labs wordmark on a warm ivory background, with restrained amber contact points.</desc>
+  <defs>
+    <linearGradient id="field" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fbf5e7"/>
+      <stop offset=".5" stop-color="#f0f2e9"/>
+      <stop offset="1" stop-color="#dce9e7"/>
+    </linearGradient>
+    <linearGradient id="fiber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#347e89"/>
+      <stop offset=".48" stop-color="#15576b"/>
+      <stop offset="1" stop-color="#0c354b"/>
+    </linearGradient>
+    <linearGradient id="fiber-light" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#76b2b5"/>
+      <stop offset=".55" stop-color="#357e8b"/>
+      <stop offset="1" stop-color="#165368"/>
+    </linearGradient>
+    <radialGradient id="soma" cx="38%" cy="28%" r="76%">
+      <stop offset="0" stop-color="#c2ded7"/>
+      <stop offset=".3" stop-color="#478b92"/>
+      <stop offset=".72" stop-color="#15576c"/>
+      <stop offset="1" stop-color="#0c354b"/>
+    </radialGradient>
+    <radialGradient id="contact" cx="35%" cy="30%" r="75%">
+      <stop offset="0" stop-color="#fff6c9"/>
+      <stop offset=".42" stop-color="#f0c56d"/>
+      <stop offset="1" stop-color="#bf7b35"/>
+    </radialGradient>
+    <radialGradient id="soft-light">
+      <stop offset="0" stop-color="#edbd63" stop-opacity=".56"/>
+      <stop offset="1" stop-color="#edbd63" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft-glow" x="-150%" y="-150%" width="400%" height="400%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+    <filter id="cell-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="15" result="blur"/>
+      <feOffset dy="8" result="offset"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".22"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="2048" height="682" fill="url(#field)"/>
+  <ellipse cx="1480" cy="340" rx="520" ry="310" fill="#8bb8b6" opacity=".09"/>
+  <path d="M1020 0H2048V682H1000c165-96 216-190 213-340C1212 178 1150 76 1020 0Z" fill="#c8dedb" opacity=".13"/>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="url(#fiber)" opacity=".9">
+      <path d="M1454 337C1534 277 1580 198 1678 142S1875 94 2048 9" stroke-width="15"/>
+      <path d="M1656 153C1712 75 1732 25 1785-30M1792 105C1867 124 1942 115 2048 91" stroke-width="8"/>
+      <path d="M1742 117C1801 62 1832 12 1867-50M1894 78C1945 40 1981-8 2011-55" stroke-width="6"/>
+      <path d="M1500 321C1631 296 1739 298 1865 275S1989 243 2075 226" stroke-width="13"/>
+      <path d="M1714 293C1772 241 1804 201 1840 150M1885 271C1930 302 1983 319 2055 322" stroke-width="7"/>
+      <path d="M1450 379C1545 435 1601 507 1705 545S1914 589 2050 689" stroke-width="16"/>
+      <path d="M1690 538C1745 471 1795 437 1844 400M1830 579C1893 535 1959 523 2045 520" stroke-width="8"/>
+      <path d="M1780 560C1830 616 1862 657 1895 714M1940 598C1980 648 2010 676 2058 701" stroke-width="6"/>
+      <path d="M1390 405C1345 473 1290 515 1201 560S1015 630 899 701" stroke-width="14"/>
+      <path d="M1216 554C1168 495 1124 463 1066 438M1087 617C1024 586 963 569 900 567" stroke-width="8"/>
+      <path d="M1118 596C1087 657 1051 688 1000 724M954 589C896 623 835 643 765 653" stroke-width="6"/>
+      <path d="M1365 289C1296 220 1234 162 1145 126S964 98 862 69 711 28 620-34" stroke-width="14"/>
+      <path d="M1150 127C1113 71 1076 31 1017-12M1000 104C936 155 886 169 818 170" stroke-width="8"/>
+      <path d="M955 93C900 42 858-5 838-57M792 70C745 104 690 123 625 124" stroke-width="6"/>
+      <path d="M1328 315C1268 289 1228 267 1182 235" stroke-width="9"/>
+    </g>
+    <g stroke="url(#fiber-light)" opacity=".67">
+      <path d="M1454 337C1534 277 1580 198 1678 142S1875 94 2048 9" stroke-width="3.5"/>
+      <path d="M1500 321C1631 296 1739 298 1865 275S1989 243 2075 226" stroke-width="3"/>
+      <path d="M1450 379C1545 435 1601 507 1705 545S1914 589 2050 689" stroke-width="4"/>
+      <path d="M1390 405C1345 473 1290 515 1201 560S1015 630 899 701" stroke-width="3.5"/>
+      <path d="M1365 289C1296 220 1234 162 1145 126S964 98 862 69 711 28 620-34" stroke-width="3.5"/>
+    </g>
+    <g stroke="#5c9ba1" opacity=".58">
+      <path d="M1603 203C1584 160 1562 130 1529 105M1516 252C1490 205 1466 177 1427 157M1565 436C1604 462 1633 489 1654 522" stroke-width="4"/>
+      <path d="M1297 485C1265 475 1234 469 1199 470M1250 527C1218 544 1195 565 1176 592M1193 178C1167 205 1144 219 1112 228" stroke-width="4"/>
+      <path d="M1776 120C1797 157 1818 180 1849 199M1845 286C1869 249 1893 225 1927 207M1742 558C1725 594 1715 624 1714 660" stroke-width="4"/>
+      <path d="M1070 100C1048 58 1024 32 990 8M922 84C891 115 861 133 824 144M1002 623C984 658 971 687 968 721" stroke-width="4"/>
+    </g>
+  </g>
+
+  <g opacity=".9">
+    <circle cx="1678" cy="142" r="38" fill="url(#soft-light)" filter="url(#soft-glow)"/>
+    <circle cx="1678" cy="142" r="10" fill="url(#contact)"/>
+    <circle cx="1840" cy="150" r="29" fill="url(#soft-light)" filter="url(#soft-glow)"/>
+    <circle cx="1840" cy="150" r="7" fill="url(#contact)"/>
+    <circle cx="1865" cy="275" r="33" fill="url(#soft-light)" filter="url(#soft-glow)"/>
+    <circle cx="1865" cy="275" r="8" fill="url(#contact)"/>
+    <circle cx="1705" cy="545" r="40" fill="url(#soft-light)" filter="url(#soft-glow)"/>
+    <circle cx="1705" cy="545" r="10" fill="url(#contact)"/>
+    <circle cx="1201" cy="560" r="34" fill="url(#soft-light)" filter="url(#soft-glow)"/>
+    <circle cx="1201" cy="560" r="8" fill="url(#contact)"/>
+    <circle cx="1145" cy="126" r="32" fill="url(#soft-light)" filter="url(#soft-glow)"/>
+    <circle cx="1145" cy="126" r="8" fill="url(#contact)"/>
+    <circle cx="862" cy="69" r="26" fill="url(#soft-light)" filter="url(#soft-glow)"/>
+    <circle cx="862" cy="69" r="6" fill="url(#contact)"/>
+    <circle cx="900" cy="567" r="28" fill="url(#soft-light)" filter="url(#soft-glow)"/>
+    <circle cx="900" cy="567" r="7" fill="url(#contact)"/>
+  </g>
+
+  <g filter="url(#cell-shadow)">
+    <path d="M1452 208C1514 206 1573 250 1591 308C1608 362 1587 420 1543 455C1500 490 1437 492 1388 461C1341 432 1312 376 1325 322C1338 267 1392 215 1452 208Z" fill="url(#soma)" stroke="#2a7480" stroke-width="8"/>
+    <path d="M1374 287C1401 259 1435 248 1472 255C1513 263 1541 293 1550 328M1357 350C1385 328 1418 318 1452 325C1492 332 1521 354 1540 389M1382 419C1415 393 1452 384 1492 395C1510 400 1527 410 1540 425" fill="none" stroke="#9fcac3" stroke-opacity=".55" stroke-width="7" stroke-linecap="round"/>
+    <path d="M1405 235C1385 271 1378 308 1388 344C1398 382 1422 421 1450 459M1468 219C1450 264 1449 303 1467 340C1485 379 1511 407 1556 431M1527 247C1507 283 1501 316 1512 350C1521 378 1545 402 1571 415" fill="none" stroke="#b4d7d0" stroke-opacity=".28" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="1457" cy="344" rx="31" ry="38" fill="#0d4056" opacity=".62"/>
+    <ellipse cx="1448" cy="330" rx="13" ry="16" fill="#b7d8d0" opacity=".65"/>
+    <circle cx="1411" cy="286" r="8" fill="#d8e7dc" opacity=".68"/>
+    <circle cx="1516" cy="365" r="7" fill="#d8e7dc" opacity=".65"/>
+    <circle cx="1434" cy="411" r="6" fill="#d8e7dc" opacity=".62"/>
+  </g>
+
+  <g aria-hidden="true">
+    <text x="84" y="352" fill="#10224f" font-family="Arial, Helvetica, sans-serif" font-size="104" font-weight="700" letter-spacing="-1.5">FORGEWIRE LABS</text>
+    <rect x="88" y="386" width="130" height="10" rx="2" fill="#39b7b6"/>
+    <text x="84" y="455" fill="#10224f" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="500" letter-spacing="-.35">Independent engineering &amp; applied AI</text>
+  </g>
+</svg>

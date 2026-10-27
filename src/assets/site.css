@@ -489,6 +489,8 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
 }
 
 @media (max-width: 460px) {
+  .neural-masthead { height: auto; aspect-ratio: 2048 / 682; }
+  .neural-masthead img { object-fit: contain; object-position: center; }
   .header-inner { align-items: flex-start; flex-direction: column; gap: 8px; padding-block: 11px 7px; }
   .brand-copy strong { font-size: 18px; }
   .nav-list { width: 100%; flex-wrap: wrap; justify-content: flex-start; gap: 3px 16px; }
