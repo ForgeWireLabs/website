@@ -90,8 +90,6 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
   justify-content: space-between;
   gap: 28px;
 }
-.header-inner--masthead { justify-content: center; }
-.header-inner--masthead nav { width: 100%; }
 .wordmark { display: inline-flex; align-items: center; color: inherit; text-decoration: none; }
 .wordmark:hover { color: white; }
 .brand-copy { display: flex; flex-direction: column; gap: 1px; line-height: 1.2; }
@@ -114,24 +112,13 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
 /* Owner-provided neural masthead anchors every page with the same full-bleed, short crop. */
 .neural-masthead {
   width: 100%;
-  height: clamp(180px, 15vw, 310px);
+  height: clamp(130px, 18vw, 260px);
   margin: 0;
   overflow: hidden;
   border: 0;
   background: var(--surface-alt);
 }
-.neural-masthead img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.masthead-brandbar {
-  min-height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  color: var(--paper);
-  background: var(--dark);
-  border-bottom: 1px solid var(--dark-line);
-}
-.masthead-brandbar .brand-copy { text-align: center; }
+.neural-masthead img { width: 100%; height: 100%; object-fit: cover; object-position: center 58%; }
 
 /* Homepage: scope first, then two private projects and public engineering evidence. */
 .front-hero {
@@ -449,10 +436,8 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
 
 @media (max-width: 720px) {
   .page-shell, .footer-inner { width: calc(100% - 38px); }
-  .neural-masthead { height: clamp(170px, 56vw, 320px); }
-  .neural-masthead img { object-position: right center; }
+  .neural-masthead img { object-position: left 58%; }
   .header-inner { width: calc(100% - 34px); min-height: 73px; }
-  .header-inner--masthead { justify-content: center; }
   .front-hero { gap: 30px; }
   .hero-capture { max-width: 760px; }
   .public-work-section { padding-block: 57px 64px; }
@@ -505,9 +490,8 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
 
 @media (max-width: 460px) {
   .header-inner { align-items: flex-start; flex-direction: column; gap: 8px; padding-block: 11px 7px; }
-  .header-inner--masthead { align-items: center; flex-direction: row; padding-block: 11px; }
   .brand-copy strong { font-size: 18px; }
-  .nav-list { width: 100%; flex-wrap: wrap; justify-content: center; gap: 3px 16px; }
+  .nav-list { width: 100%; flex-wrap: wrap; justify-content: flex-start; gap: 3px 16px; }
   .nav-list a { padding: 5px 0; font-size: .86rem; }
   .hero-lede { font-size: 1.06rem; }
   .hero-capture { padding: 9px; }
