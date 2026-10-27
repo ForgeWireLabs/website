@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
@@ -58,9 +59,28 @@ const requiredFiles = [
   "assets/workbench-desktop-dashboard.jpg",
   "assets/skillforge-command-center.png",
   "assets/flink-product-architecture.svg",
+  "assets/homepage-carousel.js",
+  "assets/homepage-narrative/01_systems_first_models_second.webp",
+  "assets/homepage-narrative/02_world_beyond_the_prompt.webp",
+  "assets/homepage-narrative/03_intelligence_needs_infrastructure.webp",
+  "assets/homepage-narrative/04_build_the_missing_pieces.webp",
   "assets/labs-neural-masthead.webp",
   "assets/labs-connected-network.webp",
 ];
+
+const approvedSlideAssets = [
+  ["01_systems_first_models_second.png", "261386afd628c86a61a57868576b508a7293be6068c0d2276edce636d099ceb3", "01_systems_first_models_second.webp", "6cc3fabee43032b3a5fc052c944ee8f438d99f2e78e4cf7b52b35df4982c6140"],
+  ["02_world_beyond_the_prompt.png", "09a0c3fd642057bdf70230b2a270fb9687af269c42070dd8ebf901db8c6e257a", "02_world_beyond_the_prompt.webp", "e3ebff5995a56a0747dc8eb8b71aad1dec0ed994c4ddfa68a0e51a649ba18d88"],
+  ["03_intelligence_needs_infrastructure.png", "dd93094ce34dce2bf9d66916a1b3b73b6462fe82deef5e7849df47814c61d6fc", "03_intelligence_needs_infrastructure.webp", "4c7e943220baef629e31b0f432dc1f3f39975282a7a09601e3716bd5a603c6ba"],
+  ["04_build_the_missing_pieces.png", "e046c820b160ce3abc3764b8be291d9168659acb1a2798185dae453e27150229", "04_build_the_missing_pieces.webp", "0054730ae4797b46ccd6649bda4847e46fb43bfe00d77bd3ba6eb43a677cdf06"],
+];
+
+for (const [sourceName, sourceHash, publicName, publicHash] of approvedSlideAssets) {
+  const sourceBytes = await readFile(path.resolve("artwork", "homepage-slides-original", sourceName));
+  const publicBytes = await readFile(path.join(outputRoot, "assets", "homepage-narrative", publicName));
+  if (createHash("sha256").update(sourceBytes).digest("hex") !== sourceHash) fail(`Approved source artwork hash changed: ${sourceName}.`);
+  if (createHash("sha256").update(publicBytes).digest("hex") !== publicHash) fail(`Optimized slide asset hash changed: ${publicName}.`);
+}
 
 if (!isPreview) requiredFiles.push(".htaccess");
 
@@ -81,6 +101,9 @@ for (const file of files) {
 }
 if (files.some((file) => ["forgewire-labs-hero.png", "forgewire-labs-hero.svg", "repopact-flow.svg"].includes(path.basename(file)))) {
   fail("An obsolete or unreferenced prototype visual should not be published.");
+}
+if (files.some((file) => approvedSlideAssets.some(([sourceName]) => path.basename(file) === sourceName))) {
+  fail("Full-resolution source slide PNGs must remain outside the generated website output.");
 }
 if (isPreview && files.some((file) => path.basename(file) === ".htaccess")) {
   fail("IONOS-specific server configuration must not be included in the GitHub Pages preview artifact.");
@@ -152,8 +175,19 @@ for (const file of htmlFiles) {
   }
 
   if ([...html.matchAll(/<h1\b/gi)].length !== 1) fail(`${label}: expected exactly one h1.`);
-  if (/<script\b|\son[a-z]+\s*=|<form\b|<iframe\b|javascript:/i.test(html)) {
-    fail(`${label}: found browser script, inline handler, form, iframe, or executable URL.`);
+  const scriptTags = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
+  if (scriptTags.some(([, attributes, body]) => !/\bsrc="[^"]+"/i.test(attributes) || body.trim())) {
+    fail(`${label}: scripts must be empty external references with no inline code.`);
+  }
+  const carouselScriptUrl = `${previewPathPrefix}/assets/homepage-carousel.js?v=${site.assetVersion}`;
+  if (route === "/" && (scriptTags.length !== 1 || !html.includes(`<script src="${carouselScriptUrl}" defer></script>`))) {
+    fail(`${label}: homepage must load exactly one versioned local carousel script.`);
+  }
+  if (route !== "/" && scriptTags.length !== 0) {
+    fail(`${label}: the carousel script must not be loaded on other pages.`);
+  }
+  if (/\son[a-z]+\s*=|<form\b|<iframe\b|javascript:/i.test(html)) {
+    fail(`${label}: found an inline handler, form, iframe, or executable URL.`);
   }
   if (/<(?:script|img|iframe)\b[^>]*\bsrc="https?:\/\//i.test(html) || /<link\b[^>]*\brel="stylesheet"[^>]*\bhref="https?:\/\//i.test(html)) {
     fail(`${label}: found a remote executable, image, frame, or stylesheet resource.`);
@@ -227,21 +261,55 @@ if (!projectsPage.includes("dashed boxes mark derived views")) fail("RepoPact di
 if (!projectsPage.includes("Software scope and maturity table")) fail("Software status table is missing.");
 
 const homePage = await readFile(path.join(outputRoot, "index.html"), "utf8");
-if (!homePage.includes('<h1 id="hero-title"><span>Systems first.</span> <em>Models second.</em></h1>')) fail("Homepage title phrases must remain intentionally balanced on separate lines.");
-for (const phrase of ["Systems first.", "Models second.", "A model can produce an answer.", "Constraints are part of the design.",
-                      "ForgeWire", "Fabric", "released CLI package at version 3.1.3"]) {
-  if (!homePage.includes(phrase)) fail("Homepage is missing current organizational copy: " + phrase);
+const homeSlideCount = [...homePage.matchAll(/\bdata-slide(?=\s|>)/g)].length;
+if (homeSlideCount !== 4) fail(`Homepage must render exactly four narrative slides, found ${homeSlideCount}.`);
+if ([...homePage.matchAll(/<section\b/g)].length !== 2) fail("Homepage must contain only the narrative and static destination sections.");
+if ([...homePage.matchAll(/data-home-carousel/g)].length !== 1 || [...homePage.matchAll(/data-carousel-controls/g)].length !== 1) fail("Homepage must contain exactly one carousel and its control group.");
+if (!homePage.includes('<h1 class="visually-hidden" id="homepage-title">ForgeWire Labs</h1>')) fail("Homepage must provide one semantic organization heading without adding visible desktop copy.");
+if (!homePage.includes('aria-roledescription="carousel"') || !homePage.includes('data-carousel-controls hidden')) fail("Homepage carousel must be named and keep controls hidden in its no-JavaScript fallback.");
+if ([...homePage.matchAll(/data-carousel-slide-to=/g)].length !== 4) fail("Homepage must provide four visible slide indicators.");
+for (const phrase of [
+  "Systems first. Models second.",
+  "Models can write code, solve problems, and help direct complex work.",
+  "The world doesn’t fit inside a prompt.",
+  "Real work moves between people, repositories, tools, machines, and providers.",
+  "Intelligence needs infrastructure.",
+  "A model proposing an action isn’t the same as a system being authorized to perform it.",
+  "So we build the missing pieces.",
+  "They aren’t all one platform, and they aren’t all at the same stage of development.",
+  "Explore ForgeWire Labs",
+  "Research &amp; Engineering",
+  "including their current availability",
+  "implementation evidence behind the work",
+  "engineering principles connecting the projects",
+]) {
+  if (!homePage.includes(phrase)) fail("Homepage is missing approved narrative or exploration content: " + phrase);
 }
-for (const question of ["What can run on the hardware available?", "What can we replace without rebuilding?",
-                        "What works when a connection fails?", "What changes between machines?",
-                        "Who can act, approve, or stop the work?", "What can someone else verify?"]) {
-  if (!homePage.includes(question)) fail("Homepage's six-question framework is missing: " + question);
+for (const [route, label] of [["/projects/", "Software"], ["/engineering/", "Research &amp; Engineering"], ["/work/", "Our Work"]]) {
+  if (!homePage.includes(`href="${previewPathPrefix}${route}"`) || !homePage.includes(`<h3>${label}</h3>`)) fail(`Homepage exploration section is missing its ${label} destination (${route}).`);
+}
+for (const retiredPhrase of [
+  "What can run on the hardware available?",
+  "Constraints are part of the design.",
+  "Two problems at the center of our research.",
+  "released CLI package at version 3.1.3",
+  "RepoPact Core",
+  "Follow the work, not the claims.",
+]) {
+  if (homePage.includes(retiredPhrase)) fail(`Homepage still contains catalog or explanatory copy that should move to the substantive pages: ${retiredPhrase}`);
 }
 if (!homePage.includes("/assets/labs-neural-masthead.webp") ||
     !homePage.includes("ForgeWire Labs — Independent engineering &amp; applied AI.")) fail("Original shared neural masthead or its text alternative is missing.");
-if (homePage.includes("forgewire-projects-workspace.png") || homePage.includes("labs-connected-network.webp")) fail("Homepage must not substitute product screenshots or Our Work imagery for its approved masthead.");
-if (homePage.includes("not a system diagram") || homePage.includes("not a shared product architecture") ||
-    homePage.includes("not an application release")) fail("Homepage should not be dominated by defensive disclaimers.");
+if (homePage.includes("forgewire-projects-workspace.png") || homePage.includes("labs-connected-network.webp")) fail("Homepage narrative must not substitute other product or project artwork.");
+
+const carouselScript = await readFile(path.join(outputRoot, "assets", "homepage-carousel.js"), "utf8");
+if (/\b(?:fetch|XMLHttpRequest|sendBeacon|WebSocket|EventSource|eval)\b|document\.write|https?:\/\//i.test(carouselScript)) {
+  fail("Homepage carousel script must not make network requests, evaluate code, or load remote assets.");
+}
+for (const behavior of ["20_000", "prefers-reduced-motion", "pointerenter", "pointerleave", "focusin", "focusout", "visibilitychange", "data-carousel-previous", "data-carousel-next", "data-carousel-toggle"]) {
+  if (!carouselScript.includes(behavior)) fail(`Homepage carousel behavior is missing: ${behavior}.`);
+}
+if (carouselScript.includes("aria-live") || carouselScript.includes("focus()")) fail("Carousel must not force announcements or move keyboard focus.");
 
 if (!projectsPage.includes("Models provide inference; the surrounding system manages context")) fail("ForgeWire software description lost the runtime distinction.");
 if (!projectsPage.includes("Authentication and policy belong in the infrastructure")) fail("Fabric description lost the execution authentication boundary.");
@@ -308,6 +376,16 @@ if (socialPng.toString("hex", 0, 8) !== "89504e470d0a1a0a") fail("Social card is
 if (socialPng.readUInt32BE(16) !== 1200 || socialPng.readUInt32BE(20) !== 630) fail("Social card must be 1200×630 pixels.");
 const css = await readFile(path.join(outputRoot, "assets", "site.css"), "utf8");
 if (!css.includes("@media (max-width: 720px)") || !css.includes("@media (prefers-reduced-motion: reduce)")) fail("Responsive or reduced-motion styles are missing.");
+if (!/\.narrative-frame\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9;/s.test(css)) fail("Narrative artwork must retain its fixed desktop 16:9 frame.");
+if (!/\.home-narrative\.is-enhanced \.narrative-track\s*\{[^}]*grid-template-areas:\s*"slide";[^}]*gap:\s*0;/s.test(css) ||
+    !/\.home-narrative\.is-enhanced \.narrative-slide\s*\{[^}]*grid-area:\s*slide;/s.test(css)) {
+  fail("Enhanced slides must share one stable frame size to prevent layout shifts during transitions.");
+}
+if (!/@media\s*\(max-width:\s*720px\)[\s\S]*?\.narrative-frame img\s*\{[^}]*left:\s*-100%;[^}]*width:\s*200%;/s.test(css) ||
+    !/\.slide-copy\.visually-hidden\s*\{(?=[^}]*position:\s*static;)(?=[^}]*white-space:\s*normal;)(?=[^}]*flex:\s*1;)[^}]*\}/s.test(css)) {
+  fail("Mobile slides must use the text-free image crop with readable HTML narrative copy.");
+}
+if (!/\.narrative-controls\[hidden\]\s*\{\s*display:\s*none;\s*\}/.test(css)) fail("Carousel controls must remain hidden when the no-JavaScript fallback is used.");
 if (/\.masthead-brandbar\b|\.header-inner--masthead\b/.test(css)) fail("Obsolete split masthead and centered-navigation styles must not remain.");
 if (!/\.neural-masthead\s*\{[^}]*width:\s*100%;[^}]*margin:\s*0;/s.test(css)) fail("Shared neural masthead must stay full-width and gap-free.");
 if (!css.includes(".neural-masthead img { display: block; width: 100%; height: auto; }")) fail("Original masthead must scale to the viewport without cropping.");
@@ -323,8 +401,6 @@ const responsiveRules = [
   "h1 { font-size: var(--type-page);",
   "h3 { font-size: var(--type-card);",
   ".spread-heading h2, .planning-entry h2, .communication-copy h2, .learning-copy h2 { font-size: var(--type-product); }",
-  ".condition-list li { grid-template-columns: 27px minmax(0, 1fr);",
-  ".condition-question { grid-column: 2; }",
   ".work-visual figcaption { position: static;",
   ".evidence-cards article:last-child { grid-column: 1 / -1; width: calc((100% - 16px) / 2); justify-self: center; }",
   ".evidence-cards article:last-child { grid-column: auto; width: auto; justify-self: stretch; }",

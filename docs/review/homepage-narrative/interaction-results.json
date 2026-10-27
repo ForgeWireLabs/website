@@ -1,0 +1,56 @@
+{
+  "noJavascript": {
+    "metrics": {
+      "slides": 4,
+      "controlsHidden": true,
+      "controlsDisplay": "none",
+      "visibleSlideCount": 4,
+      "visibleTextCopies": 4,
+      "viewportWidth": 320,
+      "documentWidth": 320
+    },
+    "screenshot": "no-javascript-320px.jpg",
+    "sourceFallbackVerified": "in-browser DOM metrics verified"
+  },
+  "reducedMotion": {
+    "initial": {
+      "reducedMotion": true,
+      "toggle": "Play",
+      "togglePressed": "true",
+      "active": 0,
+      "ariaLiveCount": 0,
+      "focusedTag": "BODY",
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    "keyboardFocusReached": {
+      "tag": "BUTTON",
+      "label": "Next slide",
+      "next": true,
+      "slide": 0
+    },
+    "afterKeyboard": {
+      "active": 1,
+      "toggle": "Play",
+      "focusStayedOnNext": true
+    }
+  },
+  "accessibilityTree": {
+    "browser": "Microsoft Edge 156",
+    "carouselHeading": true,
+    "activeSlide": true,
+    "inactiveSlideTextExposed": false,
+    "controls": [
+      "Previous slide",
+      "Pause automatic slide changes",
+      "Next slide",
+      "Show slide 1: Systems first. Models second.",
+      "Show slide 2: The world doesn’t fit inside a prompt.",
+      "Show slide 3: Intelligence needs infrastructure.",
+      "Show slide 4: So we build the missing pieces."
+    ],
+    "ariaLiveRegions": 0,
+    "allLabeledControlsPresent": true
+  },
+  "manualScreenReaderSession": "Not performed"
+}

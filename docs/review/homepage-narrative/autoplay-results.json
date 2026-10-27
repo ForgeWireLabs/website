@@ -1,0 +1,15 @@
+{
+  "delaySeconds": 21,
+  "initial": {
+    "ready": true,
+    "active": 0,
+    "toggle": "Pause",
+    "hidden": false
+  },
+  "final": {
+    "active": 1,
+    "toggle": "Pause",
+    "hidden": false
+  },
+  "passed": true
+}
