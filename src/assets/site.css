@@ -437,40 +437,6 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
 
 @media (max-width: 720px) {
   .home-narrative { width: calc(100% - 38px); margin-top: 16px; }
-  .narrative-track { gap: 18px; }
-  .narrative-frame { height: clamp(84px, 27vw, 120px); aspect-ratio: auto; border-bottom: 0; }
-  .narrative-frame img {
-    position: absolute;
-    top: 50%;
-    left: -100%;
-    width: 200%;
-    max-width: none;
-    height: auto;
-    transform: translateY(-50%);
-  }
-  .narrative-slide { display: flex; flex-direction: column; overflow: hidden; color: var(--paper); background: var(--dark); }
-  .narrative-frame { flex: 0 0 auto; }
-  .slide-copy.visually-hidden {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: flex-start;
-    position: static;
-    width: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-    white-space: normal;
-    border: 0;
-    padding: 17px clamp(16px, 5vw, 22px) 21px;
-    color: var(--paper);
-    background: var(--dark);
-  }
-  .slide-copy h2 { margin: 0 0 13px; color: var(--paper); font-size: clamp(1.35rem, 6.2vw, 1.9rem); letter-spacing: -.035em; }
-  .slide-copy p { margin: 0 0 12px; color: #d2dfdd; font-size: .94rem; line-height: 1.52; }
-  .slide-copy p:last-child { margin-bottom: 0; }
   .narrative-controls { gap: 3px; margin-top: 10px; }
   .narrative-control { min-width: 44px; padding-inline: 6px; }
   .narrative-control--toggle { min-width: 55px; }

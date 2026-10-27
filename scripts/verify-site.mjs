@@ -79,7 +79,7 @@ for (const [sourceName, sourceHash, publicName, publicHash] of approvedSlideAsse
   const sourceBytes = await readFile(path.resolve("artwork", "homepage-slides-original", sourceName));
   const publicBytes = await readFile(path.join(outputRoot, "assets", "homepage-narrative", publicName));
   if (createHash("sha256").update(sourceBytes).digest("hex") !== sourceHash) fail(`Approved source artwork hash changed: ${sourceName}.`);
-  if (createHash("sha256").update(publicBytes).digest("hex") !== publicHash) fail(`Optimized slide asset hash changed: ${publicName}.`);
+  if (createHash("sha256").update(publicBytes).digest("hex") !== publicHash) fail(`Approved WebP slide asset changed: ${publicName}.`);
 }
 
 if (!isPreview) requiredFiles.push(".htaccess");
@@ -103,7 +103,7 @@ if (files.some((file) => ["forgewire-labs-hero.png", "forgewire-labs-hero.svg", 
   fail("An obsolete or unreferenced prototype visual should not be published.");
 }
 if (files.some((file) => approvedSlideAssets.some(([sourceName]) => path.basename(file) === sourceName))) {
-  fail("Full-resolution source slide PNGs must remain outside the generated website output.");
+  fail("Full-resolution source slide PNGs must remain in the artwork archive, outside generated website output.");
 }
 if (isPreview && files.some((file) => path.basename(file) === ".htaccess")) {
   fail("IONOS-specific server configuration must not be included in the GitHub Pages preview artifact.");
@@ -382,10 +382,9 @@ if (!/\.home-narrative\.is-enhanced \.narrative-track\s*\{[^}]*grid-template-are
     !/\.home-narrative\.is-enhanced \.narrative-slide\s*\{[^}]*grid-area:\s*slide;/s.test(css)) {
   fail("Enhanced slides must share one stable frame size to prevent layout shifts during transitions.");
 }
-if (!/@media\s*\(max-width:\s*720px\)[\s\S]*?\.narrative-frame img\s*\{[^}]*left:\s*-100%;[^}]*width:\s*200%;/s.test(css) ||
-    !/\.slide-copy\.visually-hidden\s*\{(?=[^}]*position:\s*static;)(?=[^}]*white-space:\s*normal;)(?=[^}]*flex:\s*1;)[^}]*\}/s.test(css)) {
-  fail("Mobile slides must use the text-free image crop with readable HTML narrative copy.");
-}
+if (!css.includes(".narrative-frame img { width: 100%; height: 100%; object-fit: contain; }")) fail("Narrative slides must show the complete image within their frame.");
+if (/\.narrative-frame img\s*\{[^}]*left:\s*-100%|\.narrative-frame img\s*\{[^}]*width:\s*200%|\.narrative-frame img\s*\{[^}]*object-fit:\s*cover/s.test(css)) fail("Narrative images must never be cropped by mobile-specific positioning.");
+if (/\.slide-copy\.visually-hidden\s*\{/.test(css)) fail("Slide HTML copy must remain visually hidden so the supplied image artwork is not duplicated on mobile.");
 if (!/\.narrative-controls\[hidden\]\s*\{\s*display:\s*none;\s*\}/.test(css)) fail("Carousel controls must remain hidden when the no-JavaScript fallback is used.");
 if (/\.masthead-brandbar\b|\.header-inner--masthead\b/.test(css)) fail("Obsolete split masthead and centered-navigation styles must not remain.");
 if (!/\.neural-masthead\s*\{[^}]*width:\s*100%;[^}]*margin:\s*0;/s.test(css)) fail("Shared neural masthead must stay full-width and gap-free.");
