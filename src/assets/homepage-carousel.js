@@ -10,7 +10,7 @@
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const rotationDelay = 20_000;
-  const interactionPause = 30_000;
+  const interactionPause = 60_000;
   let activeIndex = 0;
   let pausedUntil = 0;
   let keyboardFocus = false;
@@ -44,19 +44,25 @@
     scheduleRotation();
   }
 
-  function manualAction(index) {
+  // A center tap holds the current slide for one minute.
+  function holdSlide() {
     pausedUntil = Date.now() + interactionPause;
-    if (Number.isInteger(index)) showSlide(index);
-    else scheduleRotation();
+    scheduleRotation();
+  }
+
+  // Swipes, edge taps, and dot selection clear any timed hold and resume the normal rotation interval.
+  function navigateSlide(index) {
+    pausedUntil = 0;
+    showSlide(index);
   }
 
   indicators.forEach((indicator) => {
     indicator.addEventListener("click", () => {
-      manualAction(Number(indicator.dataset.carouselSlideTo));
+      navigateSlide(Number(indicator.dataset.carouselSlideTo));
     });
   });
 
-  // The left/right thirds navigate; the center pauses for 30 seconds.
+  // The left/right thirds navigate; the center holds the current slide for one minute.
   // Swiping never blocks the browser's normal vertical scrolling.
   surface.addEventListener("pointerdown", (event) => {
     if (!event.isPrimary || event.button !== 0) return;
@@ -74,7 +80,7 @@
     downPoint = null;
     if (Math.abs(dx) >= 45 && Math.abs(dx) > Math.abs(dy) * 1.35) {
       suppressedClick = { id: event.pointerId, x: event.clientX, y: event.clientY, time: Date.now(), allowFallback: true };
-      manualAction(activeIndex + (dx < 0 ? 1 : -1));
+      navigateSlide(activeIndex + (dx < 0 ? 1 : -1));
     }
   }, { passive: true });
   surface.addEventListener("pointercancel", (event) => {
@@ -98,9 +104,9 @@
     const box = surface.getBoundingClientRect();
     if (!box.width) return;
     const relativeX = (event.clientX - box.left) / box.width;
-    if (relativeX < 0.34) manualAction(activeIndex - 1);
-    else if (relativeX > 0.66) manualAction(activeIndex + 1);
-    else manualAction();
+    if (relativeX < 0.34) navigateSlide(activeIndex - 1);
+    else if (relativeX > 0.66) navigateSlide(activeIndex + 1);
+    else holdSlide();
   });
 
   // Focused keyboard users can read a slide without an unexpected transition.
@@ -109,11 +115,11 @@
     if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
       event.preventDefault();
       keyboardFocus = true;
-      manualAction(activeIndex + (event.key === "ArrowLeft" ? -1 : 1));
+      navigateSlide(activeIndex + (event.key === "ArrowLeft" ? -1 : 1));
     } else if (event.target === surface && (event.key === " " || event.key === "Enter")) {
       event.preventDefault();
       keyboardFocus = true;
-      manualAction();
+      holdSlide();
     }
   });
   carousel.addEventListener("focusin", (event) => {
@@ -131,7 +137,7 @@
 
   carousel.classList.add("is-enhanced");
   surface.tabIndex = 0;
-  surface.setAttribute("aria-label", "Slide image: tap left for previous, right for next, or center to pause for 30 seconds. Swipe left or right to navigate. Use left and right arrow keys when focused.");
+  surface.setAttribute("aria-label", "Slide image: tap left for previous, right for next, or center to pause for one minute. Swipe left or right to navigate and resume automatic changes. Use left and right arrow keys when focused.");
   controls.hidden = false;
   render();
   scheduleRotation();
