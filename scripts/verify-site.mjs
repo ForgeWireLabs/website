@@ -66,6 +66,7 @@ const requiredFiles = [
   "assets/homepage-narrative/04_build_the_missing_pieces.webp",
   "assets/labs-neural-masthead.webp",
   "assets/labs-connected-network.webp",
+  "assets/labs-connected-network-rotated.svg",
 ];
 
 const approvedSlideAssets = [
@@ -386,7 +387,7 @@ if (!/\.home-narrative\.is-enhanced \.narrative-track\s*\{[^}]*grid-template-are
     !/\.home-narrative\.is-enhanced \.narrative-slide\s*\{[^}]*grid-area:\s*slide;/s.test(css)) {
   fail("Enhanced slides must share one stable frame size to prevent layout shifts during transitions.");
 }
-if (!css.includes("background-image: url(\"/assets/labs-connected-network-rotated.svg\");") || !css.includes("background: rgb(4 22 33 / 80%);")) fail("Our Work must retain the rotated network and translucent panels.");
+if (!css.includes("background-image: url(\"labs-connected-network-rotated.svg\");") || !css.includes("background: rgb(4 22 33 / 80%);")) fail("Our Work must retain the rotated network and translucent panels.");
 if (!css.includes(".narrative-frame img { width: 100%; height: 100%; object-fit: contain; }")) fail("Narrative slides must show the complete image within their frame.");
 if (/\.narrative-frame img\s*\{[^}]*left:\s*-100%|\.narrative-frame img\s*\{[^}]*width:\s*200%|\.narrative-frame img\s*\{[^}]*object-fit:\s*cover/s.test(css)) fail("Narrative images must never be cropped by mobile-specific positioning.");
 if (/\.slide-copy\.visually-hidden\s*\{/.test(css)) fail("Slide HTML copy must remain visually hidden so the supplied image artwork is not duplicated on mobile.");

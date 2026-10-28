@@ -325,7 +325,7 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
   padding-block: clamp(34px, 4.2vw, 66px) clamp(62px, 6vw, 94px);
   color: var(--paper);
   background-color: #061724;
-  background-image: url("/assets/labs-connected-network-rotated.svg");
+  background-image: url("labs-connected-network-rotated.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
