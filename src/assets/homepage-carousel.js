@@ -69,6 +69,7 @@
     downPoint = null;
     if (Math.abs(dx) >= 45 && Math.abs(dx) > Math.abs(dy) * 1.35) {
       skipSynthesizedClick = true;
+      window.setTimeout(() => { skipSynthesizedClick = false; }, 0);
       manualAction(activeIndex + (dx < 0 ? 1 : -1));
     }
   }, { passive: true });

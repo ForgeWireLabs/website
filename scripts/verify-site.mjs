@@ -393,8 +393,8 @@ if (!/\.home-narrative\.is-enhanced \.narrative-track\s*\{[^}]*grid-template-are
 }
 if (!css.includes("background-image: url(\"labs-connected-network-rotated.svg\");") || !css.includes("background: rgb(4 22 33 / 80%);")) fail("Our Work must retain the rotated network and translucent panels.");
 if (!css.includes(".home-narrative { position: relative; width: 100%; margin: 0; }") || !css.includes("position: absolute;") || !css.includes("transform: translateX(-50%);")) fail("Homepage must use a full-width carousel and overlay navigation dots.");
-if (/\\.exploration-number\\b|\\.work-card-number\\b|\\.narrative-control--previous\\b|\\.narrative-control--toggle\\b|\\.narrative-control--next\\b/.test(css)) fail("Retired numbering and controls styling must not remain.");
-if (!css.includes(".narrative-frame img { width: 100%; height: 100%; object-fit: contain; }")) fail("Narrative slides must show the complete image within their frame.");
+if (/\.exploration-number\b|\.work-card-number\b|\.narrative-control--previous\b|\.narrative-control--toggle\b|\.narrative-control--next\b/.test(css)) fail("Retired numbering and controls styling must not remain.");
+if (!css.includes(".narrative-frame img { display: block; width: 100%; height: 100%; object-fit: contain; }")) fail("Narrative slides must show the complete image within their frame.");
 if (/\.narrative-frame img\s*\{[^}]*left:\s*-100%|\.narrative-frame img\s*\{[^}]*width:\s*200%|\.narrative-frame img\s*\{[^}]*object-fit:\s*cover/s.test(css)) fail("Narrative images must never be cropped by mobile-specific positioning.");
 if (/\.slide-copy\.visually-hidden\s*\{/.test(css)) fail("Slide HTML copy must remain visually hidden so the supplied image artwork is not duplicated on mobile.");
 if (!/\.narrative-controls\[hidden\]\s*\{\s*display:\s*none;\s*\}/.test(css)) fail("Carousel controls must remain hidden when the no-JavaScript fallback is used.");
