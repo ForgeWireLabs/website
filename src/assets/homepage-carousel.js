@@ -16,7 +16,7 @@
   let keyboardFocus = false;
   let rotationTimer;
   let downPoint = null;
-  let skipSynthesizedClick = false;
+  let suppressedClick = null;
 
   function render() {
     slides.forEach((slide, index) => {
@@ -59,7 +59,12 @@
   // The left/right thirds navigate; the center pauses for 30 seconds.
   // Swiping never blocks the browser's normal vertical scrolling.
   surface.addEventListener("pointerdown", (event) => {
-    if (!event.isPrimary) return;
+    if (!event.isPrimary || event.button !== 0) return;
+    // A new gesture must remain usable even if the previous swipe had no click.
+    if (suppressedClick) {
+      if (suppressedClick.id === event.pointerId) suppressedClick = null;
+      else suppressedClick.allowFallback = false;
+    }
     downPoint = { x: event.clientX, y: event.clientY, id: event.pointerId };
   }, { passive: true });
   surface.addEventListener("pointerup", (event) => {
@@ -68,16 +73,27 @@
     const dy = event.clientY - downPoint.y;
     downPoint = null;
     if (Math.abs(dx) >= 45 && Math.abs(dx) > Math.abs(dy) * 1.35) {
-      skipSynthesizedClick = true;
-      window.setTimeout(() => { skipSynthesizedClick = false; }, 0);
+      suppressedClick = { id: event.pointerId, x: event.clientX, y: event.clientY, time: Date.now(), allowFallback: true };
       manualAction(activeIndex + (dx < 0 ? 1 : -1));
     }
   }, { passive: true });
-  surface.addEventListener("pointercancel", () => { downPoint = null; }, { passive: true });
+  surface.addEventListener("pointercancel", (event) => {
+    if (!downPoint || event.pointerId !== downPoint.id) return;
+    suppressedClick = { id: event.pointerId, x: event.clientX, y: event.clientY, time: Date.now(), allowFallback: true };
+    downPoint = null;
+  }, { passive: true });
   surface.addEventListener("click", (event) => {
-    if (skipSynthesizedClick) {
-      skipSynthesizedClick = false;
-      return;
+    if (suppressedClick) {
+      const recent = Date.now() - suppressedClick.time < 1000;
+      const hasPointerId = typeof event.pointerId === "number" && event.pointerId > 0;
+      const samePointer = hasPointerId && event.pointerId === suppressedClick.id;
+      const nearEnd = Math.abs(event.clientX - suppressedClick.x) < 25 && Math.abs(event.clientY - suppressedClick.y) < 25;
+      const fallbackMatch = !hasPointerId && suppressedClick.allowFallback && event.detail !== 0 && nearEnd;
+      if (recent && (samePointer || fallbackMatch)) {
+        suppressedClick = null;
+        return;
+      }
+      if (!recent) suppressedClick = null;
     }
     const box = surface.getBoundingClientRect();
     if (!box.width) return;
@@ -88,13 +104,13 @@
   });
 
   // Focused keyboard users can read a slide without an unexpected transition.
-  surface.addEventListener("keydown", (event) => {
-    if (event.target !== surface) return;
+  carousel.addEventListener("keydown", (event) => {
+    if (event.target !== surface && !indicators.includes(event.target)) return;
     if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
       event.preventDefault();
       keyboardFocus = true;
       manualAction(activeIndex + (event.key === "ArrowLeft" ? -1 : 1));
-    } else if (event.key === " " || event.key === "Enter") {
+    } else if (event.target === surface && (event.key === " " || event.key === "Enter")) {
       event.preventDefault();
       keyboardFocus = true;
       manualAction();

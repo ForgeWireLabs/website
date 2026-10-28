@@ -1,0 +1,134 @@
+[
+  {
+    "viewport": 320,
+    "documentWidth": 320,
+    "scrollWidth": 320,
+    "frame": {
+      "x": 0,
+      "width": 320,
+      "height": 180
+    },
+    "image": {
+      "naturalWidth": 834,
+      "naturalHeight": 468,
+      "fit": "contain"
+    },
+    "dots": {
+      "x": 64,
+      "y": 295.5625,
+      "width": 192,
+      "height": 44
+    },
+    "touchAction": "pan-y pinch-zoom"
+  },
+  {
+    "viewport": 390,
+    "documentWidth": 390,
+    "scrollWidth": 390,
+    "frame": {
+      "x": 0,
+      "width": 390,
+      "height": 219.375
+    },
+    "image": {
+      "naturalWidth": 834,
+      "naturalHeight": 468,
+      "fit": "contain"
+    },
+    "dots": {
+      "x": 99,
+      "y": 358.234375,
+      "width": 192,
+      "height": 44
+    },
+    "touchAction": "pan-y pinch-zoom"
+  },
+  {
+    "viewport": 768,
+    "documentWidth": 768,
+    "scrollWidth": 768,
+    "frame": {
+      "x": 0,
+      "width": 768,
+      "height": 432
+    },
+    "image": {
+      "naturalWidth": 834,
+      "naturalHeight": 468,
+      "fit": "contain"
+    },
+    "dots": {
+      "x": 288,
+      "y": 704,
+      "width": 192,
+      "height": 46
+    },
+    "touchAction": "pan-y pinch-zoom"
+  },
+  {
+    "viewport": 980,
+    "documentWidth": 980,
+    "scrollWidth": 980,
+    "frame": {
+      "x": 0,
+      "width": 980,
+      "height": 551.25
+    },
+    "image": {
+      "naturalWidth": 834,
+      "naturalHeight": 468,
+      "fit": "contain"
+    },
+    "dots": {
+      "x": 394,
+      "y": 890.875,
+      "width": 192,
+      "height": 46
+    },
+    "touchAction": "pan-y pinch-zoom"
+  },
+  {
+    "viewport": 1440,
+    "documentWidth": 1440,
+    "scrollWidth": 1440,
+    "frame": {
+      "x": 0,
+      "width": 1440,
+      "height": 810
+    },
+    "image": {
+      "naturalWidth": 834,
+      "naturalHeight": 468,
+      "fit": "contain"
+    },
+    "dots": {
+      "x": 624,
+      "y": 1296.375,
+      "width": 192,
+      "height": 46
+    },
+    "touchAction": "pan-y pinch-zoom"
+  },
+  {
+    "viewport": 1920,
+    "documentWidth": 1920,
+    "scrollWidth": 1920,
+    "frame": {
+      "x": 0,
+      "width": 1920,
+      "height": 1080
+    },
+    "image": {
+      "naturalWidth": 834,
+      "naturalHeight": 468,
+      "fit": "contain"
+    },
+    "dots": {
+      "x": 864,
+      "y": 1722.375,
+      "width": 192,
+      "height": 46
+    },
+    "touchAction": "pan-y pinch-zoom"
+  }
+]

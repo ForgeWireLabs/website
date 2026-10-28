@@ -1,0 +1,25 @@
+{
+  "browser": "isolated headless Edge",
+  "results": [
+    {
+      "name": "timing and thirds",
+      "detail": "20 s autoplay, 30 s hold, 20 s following interval, left/right wrap and center reset"
+    },
+    {
+      "name": "gesture guard and reduced motion",
+      "detail": "delayed synthesized click, cancellation, five rapid clicks, next tap and 120 s reduced-motion hold"
+    },
+    {
+      "name": "keyboard and accessibility state",
+      "detail": "visible focus, arrows on surface and dots, Enter on dot, focus hold, labels, inactive aria-hidden and inert"
+    },
+    {
+      "name": "no JavaScript",
+      "detail": "four visible slides in reading order, hidden dots and three navigable destination cards"
+    },
+    {
+      "name": "real touch input",
+      "detail": "left/right swipes, rapid overlay dot taps, adjacent tap and vertical scrolling (0 to 128 px)"
+    }
+  ]
+}

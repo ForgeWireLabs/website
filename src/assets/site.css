@@ -115,7 +115,7 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
 
 /* Homepage: one full-bleed cinematic narrative, followed by static destinations. */
 .home-narrative { position: relative; width: 100%; margin: 0; }
-.narrative-track { display: grid; gap: 20px; touch-action: pan-y; }
+.narrative-track { display: grid; gap: 20px; touch-action: pan-y pinch-zoom; }
 .narrative-slide { min-width: 0; }
 .narrative-frame { position: relative; width: 100%; margin: 0; overflow: hidden; aspect-ratio: 16 / 9; background: #0b1519; }
 .narrative-frame img { display: block; width: 100%; height: 100%; object-fit: contain; }
@@ -151,6 +151,7 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
   border-radius: 50%;
   color: var(--paper);
   background: transparent;
+  touch-action: manipulation;
   cursor: pointer;
 }
 .narrative-indicator:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
@@ -420,6 +421,9 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
 }
 
 @media (max-width: 720px) {
+  .narrative-controls { bottom: 0; }
+  .narrative-indicators { padding-block: 0; background: transparent; }
+  .narrative-indicator { align-items: flex-end; padding-bottom: 1px; }
   .home-exploration { padding-block: 41px 59px; }
   .home-exploration h2 { margin-bottom: 20px; }
   .exploration-card { padding: 17px 18px; }
