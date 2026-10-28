@@ -14,6 +14,7 @@
   let activeIndex = 0;
   let pausedUntil = 0;
   let keyboardFocus = false;
+  let pointerHover = false;
   let rotationTimer;
   let downPoint = null;
   let suppressedClick = null;
@@ -32,7 +33,7 @@
 
   function scheduleRotation() {
     window.clearTimeout(rotationTimer);
-    if (document.hidden || reducedMotion.matches || keyboardFocus) return;
+    if (document.hidden || reducedMotion.matches || keyboardFocus || pointerHover) return;
     const remainingPause = pausedUntil - Date.now();
     const delay = remainingPause > 0 ? remainingPause : rotationDelay;
     rotationTimer = window.setTimeout(() => showSlide(activeIndex + 1), delay);
@@ -60,6 +61,15 @@
     indicator.addEventListener("click", () => {
       navigateSlide(Number(indicator.dataset.carouselSlideTo));
     });
+  });
+
+  carousel.addEventListener("pointerenter", (event) => {
+    if (event.pointerType !== "touch") pointerHover = true;
+    scheduleRotation();
+  });
+  carousel.addEventListener("pointerleave", (event) => {
+    if (event.pointerType !== "touch") pointerHover = false;
+    scheduleRotation();
   });
 
   // The left/right thirds navigate; the center holds the current slide for one minute.

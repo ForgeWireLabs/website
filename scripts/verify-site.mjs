@@ -311,7 +311,7 @@ const carouselScript = await readFile(path.join(outputRoot, "assets", "homepage-
 if (/\b(?:fetch|XMLHttpRequest|sendBeacon|WebSocket|EventSource|eval)\b|document\.write|https?:\/\//i.test(carouselScript)) {
   fail("Homepage carousel script must not make network requests, evaluate code, or load remote assets.");
 }
-for (const behavior of ["20_000", "60_000", "prefers-reduced-motion", "pointerdown", "pointerup", "pointercancel", "focusin", "focusout", "visibilitychange", "ArrowLeft", "ArrowRight", "relativeX", "navigateSlide", "holdSlide"]) {
+for (const behavior of ["20_000", "60_000", "prefers-reduced-motion", "pointerdown", "pointerup", "pointercancel", "pointerenter", "pointerleave", "focusin", "focusout", "visibilitychange", "ArrowLeft", "ArrowRight", "relativeX", "navigateSlide", "holdSlide"]) {
   if (!carouselScript.includes(behavior)) fail(`Homepage carousel behavior is missing: ${behavior}.`);
 }
 if (carouselScript.includes("aria-live") || carouselScript.includes("focus()")) fail("Carousel must not force announcements or move keyboard focus.");

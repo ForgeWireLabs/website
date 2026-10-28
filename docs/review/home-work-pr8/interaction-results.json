@@ -1,25 +1,36 @@
 {
-  "browser": "isolated headless Edge",
+  "browser": "isolated headless Microsoft Edge/Chromium",
+  "automatedRegression": {
+    "command": "npm run test:carousel",
+    "tests": 5,
+    "passed": 5,
+    "failed": 0
+  },
   "results": [
     {
-      "name": "timing and thirds",
-      "detail": "20 s autoplay, 30 s hold, 20 s following interval, left/right wrap and center reset"
-    },
-    {
-      "name": "gesture guard and reduced motion",
-      "detail": "delayed synthesized click, cancellation, five rapid clicks, next tap and 120 s reduced-motion hold"
-    },
-    {
-      "name": "keyboard and accessibility state",
-      "detail": "visible focus, arrows on surface and dots, Enter on dot, focus hold, labels, inactive aria-hidden and inert"
-    },
-    {
-      "name": "no JavaScript",
-      "detail": "four visible slides in reading order, hidden dots and three navigable destination cards"
+      "name": "clocked rotation",
+      "detail": "20 s initial interval; 60 s center hold; repeated hold resets; edge and dot navigation clear hold and restart full 20 s interval"
     },
     {
       "name": "real touch input",
-      "detail": "left/right swipes, rapid overlay dot taps, adjacent tap and vertical scrolling (0 to 128 px)"
+      "detail": "left/right swipes, delayed synthetic-click suppression, navigation interval, dot selection and vertical page scrolling (0 to 128 px)"
+    },
+    {
+      "name": "hover, visibility and preference changes",
+      "detail": "hover and hidden document suspend; leaving/showing restarts full interval; runtime reduced-motion changes suspend and resume"
+    },
+    {
+      "name": "keyboard and accessibility state",
+      "detail": "visible stable focus, arrow navigation, focus suspension, four distinct dot labels and inactive slides aria-hidden/inert"
+    },
+    {
+      "name": "no-JavaScript fallback",
+      "detail": "all four slides remain visible in reading order; dots hidden; three destination links remain navigable"
     }
+  ],
+  "limitations": [
+    "No physical-device testing was performed.",
+    "Independent screen-reader testing was not performed.",
+    "Hidden-tab behavior was exercised by script-controlled document.hidden and visibilitychange, not OS tab switching."
   ]
 }

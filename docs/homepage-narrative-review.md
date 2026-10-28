@@ -1,31 +1,32 @@
 # Homepage narrative review
 
-The Home page presents the four owner-approved cinematic image slides followed by three static destinations. This change removes decorative card numbering on Home and Our Work and revises the carousel's interaction without changing the artwork, narratives, shared masthead, or substantive destination copy.
-
-## Supplied artwork
-
-Original PNG source assets and hashes remain in [artwork/homepage-slides-original/README.md](../artwork/homepage-slides-original/README.md). The published WebP derivatives are unchanged. Both production and preview validation enforce these hashes.
+The Home page presents four owner-approved cinematic slides followed by three static destinations. Home and Our Work keep the approved layout and remove decorative card numbering. The four published WebP images remain unchanged.
 
 ## Presentation and interaction
 
-- The homepage image is full viewport width, preserves its complete 16:9 composition, and has no mobile crop. Height scales naturally with width.
-- The only visible controls are four accessible slide-select dots, overlaid at the bottom center of the image.
-- Click/tap the left third for the previous slide, or the right third for the next slide; click/tap the middle third to pause. Horizontal swipes navigate on mobile; vertical scrolling is not intercepted.
-- A click or touch in the center third holds the current slide for one minute; afterward it advances and resumes the standard 20-second cycle. Edge taps, swipes and dots clear any hold, navigate immediately, and restart the 20-second rotation interval.
-- With keyboard focus on the carousel, autoplay pauses; ArrowLeft/ArrowRight change slides and Space/Enter hold the current slide. Focus leaving the carousel resumes normal scheduling after any remaining interaction hold.
-- Reduced-motion preference disables autoplay, including after interactions. The carousel never rotates while the document is hidden.
-- Only one active slide is exposed to assistive technology after progressive enhancement. Original image copy is preserved as visually hidden HTML, with no duplicate visible overlay.
-- With JavaScript disabled, all four slides remain visible in reading order, and the dots stay hidden.
-- The site retains one shared masthead/navigation system. Other routes are unchanged apart from the decorative numbering removal on Our Work.
+- The Home carousel spans the viewport and preserves each full 16:9 image composition.
+- Exactly four keyboard-accessible dot controls sit over the bottom center of the artwork; there is no visible pause/play button or separate control row.
+- Click/tap the left third for the previous slide, the right third for the next slide, and the center to hold the current slide for 60 seconds. Repeated center input resets the 60-second hold.
+- Edge clicks, horizontal swipes, and dot selections navigate immediately, clear the timed hold, and start a fresh 20-second interval. Swipe clicks are guarded against delayed synthesized clicks.
+- Hovering the carousel with a mouse or pen suspends autoplay; leaving resumes a complete 20-second interval. Touch pointer events do not create a hover state.
+- Keyboard focus suspends autoplay while it remains inside the carousel. Arrow keys navigate without moving focus; Enter/Space on the focused slide surface holds the current slide for 60 seconds.
+- Hidden documents suspend autoplay. Showing the document restarts a full interval. Reduced motion disables autoplay; runtime preference changes suspend or resume it.
+- The swipe surface allows normal vertical scrolling and pinch-to-zoom. Only the active slide is exposed to assistive technology after enhancement. Without JavaScript all slides remain visible in reading order and navigation links remain available.
 
-## Browser review evidence
+## Interaction validation
 
-Fresh isolated headless Edge/Chromium captures for all four slides at 320, 390, 768, 980, 1440 and 1920 CSS px, plus Our Work at 390 and 1440 px, are in [the PR #8 screenshot gallery](review/home-work-pr8/README.md). Captures were taken from the built local preview after the latest CSS change. At every requested width the page has no horizontal overflow; the carousel spans the viewport and its image uses `object-fit: contain`. The mobile dots are centered at the image bottom with 44 px targets and no longer cover the embedded image copy. Our Work shows six unnumbered cards in one mobile column and two desktop columns.
+`npm run test:carousel` runs five dependency-free deterministic regression tests for the 20-second interval, 60-second hold/reset, hold-clearing navigation, swipe/click suppression, hover, focus, document visibility, reduced-motion changes, and inactive-slide state.
 
-The screenshot gallery and previously recorded browser checks were captured against the earlier 30-second interaction behavior. They remain evidence for layout, swipe direction, click zones, keyboard, reduced motion, and no-JavaScript behavior, **not** for the revised 60-second hold. The new one-minute hold and immediate resume on swipe, edge click, and dot selection were committed on the PR branch on October 28, 2026 and passed a JavaScript syntax/source review here; **the revised timing behavior has not yet been browser retested**. Re-run the timer and interaction suite before considering merge or deployment.
+`scripts/homepage-carousel.browser.cjs` was also run against the production build in an isolated headless Microsoft Edge/Chromium instance. It verified controlled 20- and 60-second timing, hold reset, edge/dot/swipe hold clearing, delayed synthesized-click suppression, rapid touch gestures, hover, visibility changes, reduced-motion changes, keyboard focus and arrows, touch scrolling, accessible slide state, and the no-JavaScript fallback. Results are recorded in [the interaction run log](review/home-work-pr8/interaction-results.json). The [responsive screenshot gallery](review/home-work-pr8/README.md) contains the Home layout at 320, 390, 768, 980, 1440 and 1920 CSS px and Our Work at mobile and desktop widths.
 
-**Visual limitation:** Each approved cinematic WebP is 834 × 468. At 1920 CSS px it is enlarged about 2.3×, so the raster looks soft. At 320/390 px the artwork-baked lettering is small. The semantic copy remains available to assistive technology; this does not make the image lettering visually legible at small sizes. The owner-approved artwork was kept byte-identical.
+These are automated checks in headless Edge. They do not include physical-device testing, a real background-tab lifecycle across operating systems, or independent screen-reader testing. The static screenshots were captured before the latest hover-only behavior change; carousel layout and artwork are unchanged, and interaction behavior has separate updated browser results.
 
-**Accessibility decision:** The requested interaction pauses autoplay for one minute without a permanent visible stop button. Pointer/touch users therefore cannot stop rotation indefinitely within the carousel. Keyboard focus pauses it while focus remains, and reduced-motion preference disables it; these mitigations do not establish WCAG 2.2.2 conformance. Keep the PR draft until the owner reviews the screenshots and accepts the timed-only pause, with an accessibility review before any conformance claim.
+## Accessibility decision
 
-**No production release is authorized by this source change.**
+The requested center interaction pauses automatic rotation for 60 seconds without a permanent visible pause control. Pointer/touch users cannot stop rotation indefinitely through the carousel. Keyboard focus suspends rotation while it remains in the carousel, and reduced-motion preference disables it. These mitigations do not establish WCAG 2.2.2 conformance. No conformance claim is made; keep PR #8 draft pending owner review and accessibility assessment.
+
+## Artwork approval gate
+
+The existing artwork is a visual-direction proof, not an acceptable final resolution for a full-bleed slideshow. [Artwork feasibility findings and requested source material](homepage-artwork-feasibility.md) are recorded separately. The current images remain unchanged while the replacement direction is prepared for explicit owner approval.
+
+**No merge or production release is authorized by this source change.**

@@ -25,10 +25,14 @@ Both views show six unnumbered discipline cards. Mobile uses one column; desktop
 
 ## Browser interaction evidence
 
-The controlled-clock and isolated headless Edge interaction run passed: 20-second automatic advance, 30-second manual-action hold and reset, previous/next thirds and wrap, delayed synthesized-click suppression after swipes, cancellation, rapid clicks, real CDP touch swipes and dot taps, vertical page scrolling, visible focus and arrow keys, reduced-motion hold, inactive slide `aria-hidden`/`inert`, and the no-JavaScript reading-order fallback. This is automated browser evidence, not physical-device or external screen-reader testing. See `interaction-results.json` and `metrics.json`.
+The screenshot captures show the responsive layout; they were recorded before the latest hover-only behavior correction, which does not change the static rendering. The current implementation was separately tested against a production build in isolated headless Edge. It passed the 20-second interval; 60-second center hold and repeated reset; edge, swipe and dot navigation clearing the hold and restarting a full interval; delayed synthesized-click suppression; rapid touch swipes; hover and hidden-document suspension; runtime reduced-motion changes; keyboard focus and arrow navigation; touch scrolling; active/inactive slide accessibility state; and no-JavaScript fallback. The five deterministic regression tests run with `npm run test:carousel`. See `interaction-results.json` and `metrics.json`.
+
+These are automated desktop-browser tests. They do not include physical-device or independent screen-reader testing, and the hidden-document case was exercised by browser scripting rather than operating-system tab switching.
+
+See [artwork feasibility](../../homepage-artwork-feasibility.md) for the separate visual approval gate. The available source is too small and has baked-in typography; replacement artwork has not been created or substituted.
 
 ## Review limitations
 
-The source art is rasterized at 834 × 468. At a 1920 CSS px viewport it scales about 2.3× and looks soft; at 320/390 px its artwork-baked lettering is small. The semantic copy remains present to assistive technology, but that does not make tiny image lettering visually readable.
+The source art is rasterized at approximately 834 × 468. At a 1920 CSS px viewport it is enlarged about 2.3× and looks soft; at 320/390 px its artwork-baked lettering is small. The semantic copy remains present to assistive technology, but that does not make tiny image lettering visually readable.
 
-The owner requested an automatic 30-second pause without a permanent visible pause button. Pointer/touch users cannot stop rotation indefinitely through the carousel itself. Focus pauses rotation for keyboard users and reduced-motion preference stops it, but neither fact demonstrates WCAG 2.2.2 conformance. Accessibility review and owner acceptance of this timed-only control remain needed before merge.
+The owner requested an automatic 60-second pause without a permanent visible pause button. Pointer/touch users cannot stop rotation indefinitely through the carousel itself. Hover and keyboard focus suspend rotation while active, and reduced-motion preference disables it, but none of these facts demonstrates WCAG 2.2.2 conformance. Accessibility review and owner acceptance of this timed-only control remain needed before merge.
