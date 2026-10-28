@@ -1,62 +1,71 @@
 ---
 layout: layouts/base.njk
 title: Our Work
-description: Our engineering spans intelligent systems, distributed execution, repository governance, local software, communication, and technical education.
+description: Explore six ForgeWire Labs engineering disciplines: intelligent systems, distributed execution, developer infrastructure, local planning, communication, and technical education.
 permalink: /work/index.html
 ---
-<section class="page-lead page-shell" aria-labelledby="work-title">
-  <p class="eyebrow">ForgeWire Labs · Our work</p>
-  <h1 id="work-title">Different problems. <em>Engineering that holds together.</em></h1>
-  <p class="lead-copy">We didn't set out to build a list of unrelated apps. We kept running into problems that existing boundaries didn't solve for us: context lost between sessions, authority buried in tool configurations, work spread across machines, and decisions that disappeared when a task was marked done. Some of those problems became infrastructure. Others became independent products. We keep the responsibilities separate so each system remains useful on its own.</p>
-</section>
+<div class="work-page">
+  <div class="work-page-inner page-shell">
+    <section class="work-intro work-glass" aria-labelledby="work-title">
+      <p class="eyebrow">ForgeWire Labs · Our Work</p>
+      <h1 id="work-title">Engineering across systems, <em>infrastructure, and software.</em></h1>
+      <p>ForgeWire Labs works across intelligent systems, distributed execution, developer infrastructure, local applications, communication, and technical education. Some of our projects connect; others stand on their own. Each addresses a distinct engineering problem with its own responsibilities and requirements.</p>
+    </section>
 
-<section class="work-art page-shell" aria-labelledby="work-art-title">
-  <figure class="work-visual">
-    <img src="{{ site.basePath }}/assets/labs-connected-network.webp" alt="Abstract network artwork with cyan and green nodes linked by fine lines against a deep blue field." width="1619" height="860" loading="lazy" decoding="async">
-    <figcaption><h2 id="work-art-title">Separate systems. Common engineering principles.</h2></figcaption>
-  </figure>
-</section>
+    <section class="work-directions" aria-labelledby="work-directions-title">
+      <div class="work-section-heading">
+        <p class="eyebrow">Engineering disciplines</p>
+        <h2 id="work-directions-title">Where we work.</h2>
+      </div>
+      <div class="work-card-grid">
+        <article class="work-card work-glass">
+          <span class="work-card-number">01</span>
+          <h3>Intelligent systems</h3>
+          <p>We build software that lets language models participate in complex, longer-running work without placing every responsibility on the model itself. ForgeWire explores provider-neutral orchestration, coordinated tools and agents, persistent context, and workflows that people can direct, inspect, and control.</p>
+          <p class="work-card-project">Related work: <a href="https://github.com/ForgeWireLabs/ForgeWire-Overview">ForgeWire <span aria-hidden="true">↗</span></a></p>
+        </article>
+        <article class="work-card work-glass">
+          <span class="work-card-number">02</span>
+          <h3>Distributed computing &amp; execution</h3>
+          <p>Moving work between machines involves more than connectivity. Tasks need authenticated dispatch, scoped authority, reliable execution state, and boundaries between the systems requesting work and those performing it. Fabric is our distributed execution effort built around those requirements.</p>
+          <p class="work-card-project">Related work: <a href="{{ site.basePath }}/engineering/">Fabric <span aria-hidden="true">→</span></a></p>
+        </article>
+        <article class="work-card work-glass">
+          <span class="work-card-number">03</span>
+          <h3>Developer &amp; repository infrastructure</h3>
+          <p>Development produces more than code. Requirements, decisions, work items, constraints, and verification evidence matter to whoever continues the work. RepoPact keeps those records with the repository, where their relationships can be validated and their history retained across contributors and sessions.</p>
+          <p class="work-card-project">Related work: <a href="https://github.com/ForgeWireLabs/repopact-core">RepoPact <span aria-hidden="true">↗</span></a></p>
+        </article>
+        <article class="work-card work-glass">
+          <span class="work-card-number">04</span>
+          <h3>Local applications &amp; planning</h3>
+          <p>Not every engineering problem belongs inside an agent platform. Local planning benefits from structured records, clear ownership, and a distinction between organizing work and executing it. Anvil approaches those needs as a focused application with its own state and responsibilities.</p>
+          <p class="work-card-project">Related work: <a href="https://github.com/ForgeWireLabs/anvil">Anvil <span aria-hidden="true">↗</span></a></p>
+        </article>
+        <article class="work-card work-glass">
+          <span class="work-card-number">05</span>
+          <h3>Communication &amp; coordination</h3>
+          <p>Communication software has to account for channels, participants, continuity, and decisions that remain with people. Flink focuses on communication and coordination across connected systems while keeping those responsibilities distinct from an intelligent agent's internal workflow.</p>
+          <p class="work-card-project">Related work: <a href="https://github.com/ForgeWireLabs/Flink">Flink <span aria-hidden="true">↗</span></a></p>
+        </article>
+        <article class="work-card work-glass">
+          <span class="work-card-number">06</span>
+          <h3>Technical education</h3>
+          <p>Learning technical skills requires progression, practical exercises, useful feedback, and the ability to resume unfinished work. SkillForge Academy explores structured study, assessment, and practice in a learning environment built for continued development rather than isolated questions.</p>
+          <p class="work-card-project">Related work: <a href="https://github.com/ForgeWireLabs/skillforge-academy">SkillForge Academy <span aria-hidden="true">↗</span></a></p>
+        </article>
+      </div>
+    </section>
 
-<section class="work-directions page-shell" aria-labelledby="directions-heading">
-  <div class="section-heading section-heading--stacked">
-    <p class="eyebrow">Where we're working</p>
-    <h2 id="directions-heading">Problems worth solving, systems worth understanding.</h2>
-    <p class="section-lede">Five areas of work, each with its own requirements and engineering decisions.</p>
+    <nav class="work-explore work-glass" aria-label="Explore more about ForgeWire Labs">
+      <div>
+        <h2>Explore the engineering.</h2>
+        <p>See the technical decisions behind the work, or browse individual projects and their current availability.</p>
+      </div>
+      <div class="work-explore-links">
+        <a href="{{ site.basePath }}/engineering/">Research &amp; Engineering <span aria-hidden="true">→</span></a>
+        <a href="{{ site.basePath }}/projects/">Software <span aria-hidden="true">→</span></a>
+      </div>
+    </nav>
   </div>
-  <div class="discipline-list">
-    <article class="discipline-item">
-      <span class="discipline-number">01</span>
-      <div><h3>Intelligent systems</h3><p>A capable model still needs context, tools, permissions, and an honest account of what it has done. ForgeWire brings configurable models and capabilities into a workspace a person can follow and direct, without tying the whole application to a single provider or conversation.</p><p class="discipline-evidence"><strong>Our work:</strong> ForgeWire is in private development; its design and selected interfaces are documented in the <a href="https://github.com/ForgeWireLabs/ForgeWire-Overview">public overview</a>.</p></div>
-    </article>
-    <article class="discipline-item">
-      <span class="discipline-number">02</span>
-      <div><h3>Distributed computing and execution infrastructure</h3><p>Moving work to another machine raises questions a model cannot answer for itself. Which runner is trusted? What can it do? What happens when it disconnects? Fabric is our separate control-plane effort for authenticated, policy-gated remote execution.</p><p class="discipline-evidence"><strong>Our work:</strong> Fabric remains in private development, with configuration-dependent integration for selected ForgeWire workflows.</p></div>
-    </article>
-    <article class="discipline-item">
-      <span class="discipline-number">03</span>
-      <div><h3>Developer and repository infrastructure</h3><p>Code survives a handoff more reliably than the decisions behind it. RepoPact keeps intent, authority, work items, constraints, and evidence with the source, so the next person or agent can continue without inventing missing history.</p><p class="discipline-evidence"><strong>Available software:</strong> <a href="https://github.com/ForgeWireLabs/repopact-core">RepoPact Core</a> is a released CLI package backed by a Rust semantic engine. Workbench remains a separate source-build preview.</p></div>
-    </article>
-    <article class="discipline-item">
-      <span class="discipline-number">04</span>
-      <div><h3>Systems integration and local software</h3><p>A useful application should own its responsibilities instead of outsourcing its identity to a provider or another product. Anvil handles local planning state. Flink handles communication, coordination, and human decision boundaries.</p><p class="discipline-evidence"><strong>Available software:</strong> Anvil is a developer preview. Flink has a published installer under its former ForgeLink name.</p></div>
-    </article>
-    <article class="discipline-item">
-      <span class="discipline-number">05</span>
-      <div><h3>Applied technical education</h3><p>Learning takes a sequence, practice, feedback, and a way to return to unfinished work. SkillForge Academy brings certification study and practical training into a local desktop application.</p><p class="discipline-evidence"><strong>Available software:</strong> SkillForge Academy has a published Windows application. Our newer course-platform work is in development and is not part of that release.</p></div>
-    </article>
-  </div>
-</section>
-
-<section class="work-principles" aria-labelledby="principles-heading">
-  <div class="page-shell">
-    <p class="eyebrow">Working principles</p>
-    <h2 id="principles-heading">How we make decisions.</h2>
-    <div class="principle-grid">
-      <article><span>01</span><h3>Use what fits</h3><p>We use existing tools and libraries when they solve the problem well. We build our own when ownership, cost, constraints, or integration debt justify it.</p></article>
-      <article><span>02</span><h3>Keep authority visible</h3><p>A tool requesting an action is not the same as being authorized to take it. We design around that distinction.</p></article>
-      <article><span>03</span><h3>Leave a record</h3><p>If work is worth relying on, someone should be able to inspect the source, decisions, tests, or observed results behind it.</p></article>
-    </div>
-    <p class="principle-note">Different software, same responsibility to understand what it does and where its limits are.</p>
-    <a class="button button-light" href="{{ site.basePath }}/engineering/">Explore Research &amp; Engineering <span aria-hidden="true">→</span></a>
-  </div>
-</section>
+</div>

@@ -327,13 +327,17 @@ if (engineeringPage.includes("This page separates questions") || engineeringPage
     engineeringPage.includes("not claims of completed research")) fail("Research & Engineering should not read as an external audit.");
 
 const workPage = await readFile(path.join(outputRoot, "work", "index.html"), "utf8");
-for (const phrase of ["Different problems.", "Intelligent systems", "Distributed computing and execution infrastructure",
-                      "Developer and repository infrastructure", "Systems integration and local software",
-                      "Applied technical education", "How we make decisions."]) {
-  if (!workPage.includes(phrase)) fail("Our Work page is missing its current editorial structure: " + phrase);
+for (const phrase of ["Engineering across systems,", "Where we work.", "Intelligent systems",
+  "Distributed computing &amp; execution", "Developer &amp; repository infrastructure",
+  "Local applications &amp; planning", "Communication &amp; coordination",
+  "Technical education", "Explore the engineering."]) {
+  if (!workPage.includes(phrase)) fail("Our Work page must include the six-discipline editorial structure: " + phrase);
 }
-if (!workPage.includes("/assets/labs-connected-network.webp") ||
-    !workPage.includes("Separate systems. Common engineering principles.")) fail("Our Work image or approved caption is missing.");
+if ((workPage.match(/class="work-card work-glass"/g) ?? []).length !== 6) fail("Our Work requires exactly six discipline panels.");
+if (!workPage.includes('/engineering/') || !workPage.includes('/projects/')) fail("Our Work must direct visitors to Engineering and Software.");
+if (workPage.includes("How we make decisions.") || workPage.includes('class="work-art')) fail("Our Work must not repeat the About philosophy or standalone image section.");
+const rotatedNetwork = await readFile(path.join(outputRoot, "assets", "labs-connected-network-rotated.svg"), "utf8");
+if (!rotatedNetwork.includes('rotate(90)') || !rotatedNetwork.includes('data:image/webp;base64,')) fail("Our Work rotated network background is missing or incorrect.");
 const aboutPage = await readFile(path.join(outputRoot, "about", "index.html"), "utf8");
 if (!aboutPage.includes("ForgeWire Labs is independent engineering and research") || !aboutPage.includes("We began with agent-driven software") || !aboutPage.includes("Use what works.")) fail("About page must speak in an in-house organizational voice.");
 if (/Jeremy Shows|founder|race-car builder|small-business owner|substantial help from AI systems|id="founder-title"/i.test(aboutPage)) fail("About page must not contain a founder biography or founder-led organization language.");
@@ -382,6 +386,7 @@ if (!/\.home-narrative\.is-enhanced \.narrative-track\s*\{[^}]*grid-template-are
     !/\.home-narrative\.is-enhanced \.narrative-slide\s*\{[^}]*grid-area:\s*slide;/s.test(css)) {
   fail("Enhanced slides must share one stable frame size to prevent layout shifts during transitions.");
 }
+if (!css.includes("background-image: url(\"/assets/labs-connected-network-rotated.svg\");") || !css.includes("background: rgb(4 22 33 / 80%);")) fail("Our Work must retain the rotated network and translucent panels.");
 if (!css.includes(".narrative-frame img { width: 100%; height: 100%; object-fit: contain; }")) fail("Narrative slides must show the complete image within their frame.");
 if (/\.narrative-frame img\s*\{[^}]*left:\s*-100%|\.narrative-frame img\s*\{[^}]*width:\s*200%|\.narrative-frame img\s*\{[^}]*object-fit:\s*cover/s.test(css)) fail("Narrative images must never be cropped by mobile-specific positioning.");
 if (/\.slide-copy\.visually-hidden\s*\{/.test(css)) fail("Slide HTML copy must remain visually hidden so the supplied image artwork is not duplicated on mobile.");
@@ -401,7 +406,7 @@ const responsiveRules = [
   "h1 { font-size: var(--type-page);",
   "h3 { font-size: var(--type-card);",
   ".spread-heading h2, .planning-entry h2, .communication-copy h2, .learning-copy h2 { font-size: var(--type-product); }",
-  ".work-visual figcaption { position: static;",
+  ".work-card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));" ,
   ".evidence-cards article:last-child { grid-column: 1 / -1; width: calc((100% - 16px) / 2); justify-self: center; }",
   ".evidence-cards article:last-child { grid-column: auto; width: auto; justify-self: stretch; }",
 ];

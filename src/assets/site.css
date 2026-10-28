@@ -319,44 +319,50 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
 .evidence-layout .eyebrow { color: var(--signal-light); }
 .evidence-copy p { max-width: 760px; color: #d0dcda; }
 
-/* Work page */
-.work-art { padding-block: 0 27px; }
-.work-visual {
-  position: relative;
-  aspect-ratio: 2.35 / 1;
-  margin: 0;
-  overflow: hidden;
-  background: var(--dark);
-}
-.work-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center 47%; }
-.work-visual figcaption {
-  position: absolute;
-  inset: auto auto 20px 20px;
-  width: min(470px, calc(100% - 40px));
-  padding: 17px 20px 18px;
+/* Our Work: the approved abstract network, rotated clockwise as a single backdrop. */
+.work-page {
+  isolation: isolate;
+  padding-block: clamp(34px, 4.2vw, 66px) clamp(62px, 6vw, 94px);
   color: var(--paper);
-  background: var(--dark);
+  background-color: #061724;
+  background-image: url("/assets/labs-connected-network-rotated.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
-.work-visual figcaption h2 { margin: 0; font-size: clamp(1.45rem, 2.8vw, 2.05rem); letter-spacing: -.035em; }
-.work-directions { padding-block: 18px 84px; }
-.discipline-list { border-top: 1px solid var(--line); }
-.discipline-item { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 18px; padding: 24px 0 25px; border-bottom: 1px solid var(--line); }
-.discipline-number { padding-top: 3px; color: var(--signal); font: 700 .88rem/1.5 "Cascadia Code", Consolas, monospace; }
-.discipline-item h3 { margin-bottom: 7px; font-size: clamp(1.25rem, 2vw, 1.55rem); }
-.discipline-item p { max-width: 870px; color: var(--ink-soft); }
-.discipline-item p:last-child { margin-bottom: 0; }
-.discipline-evidence { font-size: .91rem; }
-.discipline-evidence strong { color: var(--ink); }
-.work-principles { padding-block: 67px 76px; color: var(--paper); background: var(--dark); }
-.work-principles .eyebrow { color: var(--signal-light); }
-.work-principles h2 { max-width: 750px; margin-bottom: 31px; }
-.principle-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--dark-line); }
-.principle-grid article { padding: 20px 25px 6px 0; }
-.principle-grid article + article { padding-left: 25px; border-left: 1px solid var(--dark-line); }
-.principle-grid article > span { color: var(--signal-light); font: 700 .8rem/1.5 "Cascadia Code", Consolas, monospace; }
-.principle-grid h3 { margin: 11px 0 9px; color: var(--paper); }
-.principle-grid p { margin-bottom: 0; color: #cbd8d6; font-size: .92rem; }
-.principle-note { max-width: 910px; margin: 24px 0 22px; color: #bfcfcd; font-size: .86rem; }
+.work-page-inner { display: grid; gap: clamp(35px, 4.5vw, 60px); }
+.work-glass {
+  color: var(--paper);
+  background: rgb(4 22 33 / 80%);
+  border: 1px solid rgb(129 210 206 / 46%);
+  box-shadow: 0 14px 36px rgb(1 12 24 / 15%);
+}
+.work-intro { padding: clamp(24px, 4vw, 48px); }
+.work-page .eyebrow { color: #92e0d7; }
+.work-intro h1 { max-width: 920px; margin-bottom: 18px; }
+.work-intro h1 em { color: #79d9d1; }
+.work-intro > p:last-child { max-width: 810px; margin: 0; color: #e0eeed; font-size: clamp(1.02rem, 1.3vw, 1.17rem); line-height: 1.65; }
+.work-section-heading { margin-bottom: 22px; }
+.work-section-heading h2 { margin: 0; font-size: var(--type-section); }
+.work-card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: clamp(16px, 2.2vw, 28px); }
+.work-card { min-width: 0; display: flex; flex-direction: column; padding: clamp(23px, 2.5vw, 33px); }
+.work-card-number { margin-bottom: 19px; color: #83ddd5; font: 700 .86rem/1.4 "Cascadia Code", Consolas, monospace; }
+.work-card h3 { max-width: 430px; margin: 0 0 16px; color: var(--paper); font-size: clamp(1.4rem, 2vw, 1.77rem); }
+.work-card > p:not(.work-card-project) { margin: 0 0 24px; color: #e0eeed; line-height: 1.62; }
+.work-card-project { margin: auto 0 0; padding-top: 16px; border-top: 1px solid rgb(144 203 200 / 25%); color: #bbd0cd; font-size: .92rem; }
+.work-card-project a, .work-explore-links a { color: #91e2d9; font-weight: 750; text-underline-offset: 4px; }
+.work-card-project a:hover, .work-explore-links a:hover { color: white; }
+.work-explore { display: flex; align-items: center; justify-content: space-between; gap: 22px 35px; padding: clamp(22px, 3vw, 34px); }
+.work-explore h2 { margin-bottom: 9px; font-size: var(--type-section); }
+.work-explore p { max-width: 680px; margin: 0; color: #e0eeed; }
+.work-explore-links { display: flex; flex-wrap: wrap; gap: 12px 25px; flex-shrink: 0; }
+@media (max-width: 800px) {
+  .work-card-grid { grid-template-columns: 1fr; }
+  .work-explore { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 720px) {
+  .work-page { background-position: 65% center; }
+}
 
 /* Research and engineering */
 .evidence-band { padding-block: 73px 84px; background: var(--surface-alt); border-block: 1px solid var(--line); }
@@ -449,11 +455,6 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
   .nav-list { gap: clamp(3px, 1vw, 8px); }
   .nav-list a { padding: 8px clamp(1px, .45vw, 5px); font-size: clamp(.6rem, 2.2vw, .88rem); }
   .section-heading { align-items: flex-start; flex-direction: column; gap: 14px; }
-  .work-art { padding-bottom: 18px; }
-  .work-visual { aspect-ratio: 1.5 / 1; }
-  .work-visual img { object-position: 18% center; }
-  .work-visual figcaption { inset: auto 11px 11px; width: auto; padding: 14px 15px; }
-  .work-visual figcaption h2 { font-size: clamp(1.35rem, 6vw, 1.8rem); }
   .repository-spread { padding-block: 24px 65px; }
   .spread-heading { grid-template-columns: 1fr; gap: 13px; }
   .spread-heading .eyebrow { grid-column: auto; }
@@ -477,10 +478,6 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
   .evidence-layout { grid-template-columns: 1fr; gap: 24px; padding-block: 54px; }
   .about-principle .page-shell { padding-block: 46px 51px; }
   .organization-section { padding-block: 61px 70px; }
-  .discipline-item { grid-template-columns: 35px minmax(0, 1fr); gap: 12px; padding-block: 20px; }
-  .work-principles { padding-block: 54px 61px; }
-  .principle-grid { grid-template-columns: 1fr; }
-  .principle-grid article, .principle-grid article + article { padding: 18px 0; border: 0; border-bottom: 1px solid var(--dark-line); }
   .evidence-band { padding-block: 56px 63px; }
   .evidence-cards { grid-template-columns: 1fr; }
   .evidence-cards article:last-child { grid-column: auto; width: auto; justify-self: stretch; }
@@ -502,10 +499,6 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
   .ownership-table { min-width: 780px; }
   .availability-foot li { grid-template-columns: 1fr; gap: 6px; }
   .contact-block { padding: 19px; }
-  .work-visual { aspect-ratio: auto; }
-  .work-visual img { height: auto; aspect-ratio: 1.5 / 1; }
-  .work-visual figcaption { position: static; width: auto; padding: 12px 14px; }
-  .work-visual figcaption h2 { font-size: clamp(1.125rem, calc(1.4vw + .95rem), 1.45rem); }
 }
 
 @media (prefers-reduced-motion: reduce) {
