@@ -1,6 +1,6 @@
 # Home cinematic artwork: feasibility and approval gate
 
-**Status: FAIL / awaiting source material and owner visual approval.** PR #8 keeps the four current WebPs byte-identical. This review does not replace, upscale, or regenerate them.
+**Status: deferred from this release by the owner's 2026-10-28 direction.** Merge and publish the interaction refinements while leaving all four current approved WebPs byte-identical. Do not replace, upscale, or regenerate them in this release. The resolution and embedded-text limitations below remain known follow-up work; this deferral does not claim that the limitations were fixed.
 
 ## Available source material
 
@@ -23,6 +23,6 @@ The text-free exports need enough native detail for the 2560 CSS-pixel review ta
 
 Use the approved text-free scenes as responsive images. Render the existing headlines and paragraphs as semantic HTML, with responsive type sizes and spacing. Preserve the current story, scene subjects, colors, composition, and atmosphere. Do not duplicate baked-in text, add generic replacement imagery, rely on upscaling as native detail, or add intrusive gradient panels.
 
-## Acceptance after source delivery
+## Acceptance for a future artwork update
 
 Review every slide at 320, 390, 768, 1440, 1920, and preferably 2560 CSS px. Include 200% text resizing and 400% reflow, keyboard and screen-reader behavior, text/background contrast, overlap, image loading, subject/text-safe placement, readability, and cropping. Obtain owner visual approval of the responsive browser evidence before changing the production WebP files.

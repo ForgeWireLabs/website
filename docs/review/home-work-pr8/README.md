@@ -29,7 +29,7 @@ The screenshot captures show the responsive layout; they were recorded before th
 
 These are automated desktop-browser tests. They do not include physical-device or independent screen-reader testing, and the hidden-document case was exercised by browser scripting rather than operating-system tab switching.
 
-See [artwork feasibility](../../homepage-artwork-feasibility.md) for the separate visual approval gate. The available source is too small and has baked-in typography; replacement artwork has not been created or substituted.
+See [artwork feasibility](../../homepage-artwork-feasibility.md) for the deferred follow-up. The available source is too small and has baked-in typography; replacement artwork has not been created or substituted, as directed for this release.
 
 ## Review limitations
 

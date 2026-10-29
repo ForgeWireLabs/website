@@ -25,8 +25,8 @@ These are automated checks in headless Edge. They do not include physical-device
 
 The requested center interaction pauses automatic rotation for 60 seconds without a permanent visible pause control. Pointer/touch users cannot stop rotation indefinitely through the carousel. Keyboard focus suspends rotation while it remains in the carousel, and reduced-motion preference disables it. These mitigations do not establish WCAG 2.2.2 conformance. No conformance claim is made; keep PR #8 draft pending owner review and accessibility assessment.
 
-## Artwork approval gate
+## Artwork follow-up
 
-The existing artwork is a visual-direction proof, not an acceptable final resolution for a full-bleed slideshow. [Artwork feasibility findings and requested source material](homepage-artwork-feasibility.md) are recorded separately. The current images remain unchanged while the replacement direction is prepared for explicit owner approval.
+The owner directed that this release proceed without artwork updates. The four existing approved WebPs remain byte-identical. Their softness at desktop sizes and small baked-in mobile lettering remain known limitations; no image replacement, upscaling, or text reconstruction is included. [Artwork feasibility findings and requested source material](homepage-artwork-feasibility.md) are documented for a future separately approved update.
 
 **No merge or production release is authorized by this source change.**
