@@ -112,6 +112,10 @@ h3 { font-size: var(--type-card); font-weight: 720; letter-spacing: -.02em; }
   background: var(--surface-alt);
 }
 .neural-masthead img { display: block; width: 100%; height: auto; }
+@media (min-width: 801px) {
+  .neural-masthead { height: 16.65vw; overflow: hidden; }
+  .neural-masthead img { height: 100%; object-fit: cover; object-position: center; }
+}
 
 /* Homepage: one full-bleed cinematic narrative, followed by static destinations. */
 .home-narrative { position: relative; width: 100%; margin: 0; }
