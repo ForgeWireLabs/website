@@ -10,6 +10,7 @@
     "build:preview": "node scripts/clean-output.mjs preview && eleventy --config=eleventy.preview.config.js",
     "serve": "node scripts/preview.mjs",
     "serve:preview": "node scripts/preview.mjs --preview",
+    "test:carousel": "node --test scripts/homepage-carousel.test.mjs",
     "verify": "node scripts/verify-site.mjs",
     "verify:preview": "node scripts/verify-site.mjs --preview"
   },

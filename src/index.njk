@@ -6,7 +6,7 @@ permalink: /index.html
 ---
 <section class="home-narrative" data-home-carousel role="region" aria-labelledby="homepage-title" aria-roledescription="carousel">
   <h1 class="visually-hidden" id="homepage-title">ForgeWire Labs</h1>
-  <div class="narrative-track">
+  <div class="narrative-track" data-carousel-surface role="group" aria-label="Narrative slides">
     {% for slide in homeSlides %}
     <article class="narrative-slide{% if loop.first %} is-active{% endif %}" data-slide role="group" aria-roledescription="slide" aria-label="{{ loop.index }} of 4">
       <figure class="narrative-frame">
@@ -20,12 +20,9 @@ permalink: /index.html
     {% endfor %}
   </div>
   <div class="narrative-controls" data-carousel-controls hidden>
-    <button class="narrative-control narrative-control--previous" type="button" data-carousel-previous aria-label="Previous slide"><span aria-hidden="true">←</span></button>
     <div class="narrative-indicators" role="group" aria-label="Choose a slide">
       {% for slide in homeSlides %}<button class="narrative-indicator" type="button" data-carousel-slide-to="{{ loop.index0 }}" aria-label="Show slide {{ loop.index }}: {{ slide.title }}" aria-pressed="{% if loop.first %}true{% else %}false{% endif %}"><span aria-hidden="true"></span></button>{% endfor %}
     </div>
-    <button class="narrative-control narrative-control--toggle" type="button" data-carousel-toggle aria-label="Pause automatic slide changes" aria-pressed="false">Pause</button>
-    <button class="narrative-control narrative-control--next" type="button" data-carousel-next aria-label="Next slide"><span aria-hidden="true">→</span></button>
   </div>
 </section>
 
@@ -34,19 +31,16 @@ permalink: /index.html
     <h2 id="explore-title">Explore ForgeWire Labs</h2>
     <div class="exploration-grid">
       <a class="exploration-card" href="{{ site.basePath }}/projects/">
-        <span class="exploration-number" aria-hidden="true">01</span>
         <h3>Software</h3>
         <p>Discover the applications, infrastructure, and developer tools we're building, including their current availability.</p>
         <span class="exploration-action" aria-hidden="true">Explore software <span>→</span></span>
       </a>
       <a class="exploration-card" href="{{ site.basePath }}/engineering/">
-        <span class="exploration-number" aria-hidden="true">02</span>
         <h3>Research &amp; Engineering</h3>
         <p>Explore the architectural problems, engineering investigations, and implementation evidence behind the work.</p>
         <span class="exploration-action" aria-hidden="true">Explore research &amp; engineering <span>→</span></span>
       </a>
       <a class="exploration-card" href="{{ site.basePath }}/work/">
-        <span class="exploration-number" aria-hidden="true">03</span>
         <h3>Our Work</h3>
         <p>Understand the disciplines, design decisions, and engineering principles connecting the projects.</p>
         <span class="exploration-action" aria-hidden="true">Explore our work <span>→</span></span>

@@ -269,6 +269,9 @@ if ([...homePage.matchAll(/data-home-carousel/g)].length !== 1 || [...homePage.m
 if (!homePage.includes('<h1 class="visually-hidden" id="homepage-title">ForgeWire Labs</h1>')) fail("Homepage must provide one semantic organization heading without adding visible desktop copy.");
 if (!homePage.includes('aria-roledescription="carousel"') || !homePage.includes('data-carousel-controls hidden')) fail("Homepage carousel must be named and keep controls hidden in its no-JavaScript fallback.");
 if ([...homePage.matchAll(/data-carousel-slide-to=/g)].length !== 4) fail("Homepage must provide four visible slide indicators.");
+if (homePage.includes("data-carousel-previous") || homePage.includes("data-carousel-next") || homePage.includes("data-carousel-toggle")) fail("Homepage must not render separate arrow or pause buttons.");
+if (!homePage.includes("data-carousel-surface") || !homePage.includes('class="narrative-controls" data-carousel-controls hidden')) fail("Homepage must provide an interactive slide surface and overlay dots.");
+if (homePage.includes('class="exploration-number"')) fail("Homepage exploration cards must not have decorative numbers.");
 for (const phrase of [
   "Systems first. Models second.",
   "Models can write code, solve problems, and help direct complex work.",
@@ -308,7 +311,7 @@ const carouselScript = await readFile(path.join(outputRoot, "assets", "homepage-
 if (/\b(?:fetch|XMLHttpRequest|sendBeacon|WebSocket|EventSource|eval)\b|document\.write|https?:\/\//i.test(carouselScript)) {
   fail("Homepage carousel script must not make network requests, evaluate code, or load remote assets.");
 }
-for (const behavior of ["20_000", "prefers-reduced-motion", "pointerenter", "pointerleave", "focusin", "focusout", "visibilitychange", "data-carousel-previous", "data-carousel-next", "data-carousel-toggle"]) {
+for (const behavior of ["20_000", "60_000", "prefers-reduced-motion", "pointerdown", "pointerup", "pointercancel", "pointerenter", "pointerleave", "focusin", "focusout", "visibilitychange", "ArrowLeft", "ArrowRight", "relativeX", "navigateSlide", "holdSlide"]) {
   if (!carouselScript.includes(behavior)) fail(`Homepage carousel behavior is missing: ${behavior}.`);
 }
 if (carouselScript.includes("aria-live") || carouselScript.includes("focus()")) fail("Carousel must not force announcements or move keyboard focus.");
@@ -335,6 +338,7 @@ for (const phrase of ["Engineering across systems,", "Where we work.", "Intellig
   if (!workPage.includes(phrase)) fail("Our Work page must include the six-discipline editorial structure: " + phrase);
 }
 if ((workPage.match(/class="work-card work-glass"/g) ?? []).length !== 6) fail("Our Work requires exactly six discipline panels.");
+if (workPage.includes('class="work-card-number"')) fail("Our Work discipline cards must not have decorative numbers.");
 if (!workPage.includes('/engineering/') || !workPage.includes('/projects/')) fail("Our Work must direct visitors to Engineering and Software.");
 if (workPage.includes("How we make decisions.") || workPage.includes('class="work-art')) fail("Our Work must not repeat the About philosophy or standalone image section.");
 const rotatedNetwork = await readFile(path.join(outputRoot, "assets", "labs-connected-network-rotated.svg"), "utf8");
@@ -388,7 +392,9 @@ if (!/\.home-narrative\.is-enhanced \.narrative-track\s*\{[^}]*grid-template-are
   fail("Enhanced slides must share one stable frame size to prevent layout shifts during transitions.");
 }
 if (!css.includes("background-image: url(\"labs-connected-network-rotated.svg\");") || !css.includes("background: rgb(4 22 33 / 80%);")) fail("Our Work must retain the rotated network and translucent panels.");
-if (!css.includes(".narrative-frame img { width: 100%; height: 100%; object-fit: contain; }")) fail("Narrative slides must show the complete image within their frame.");
+if (!css.includes(".home-narrative { position: relative; width: 100%; margin: 0; }") || !css.includes("position: absolute;") || !css.includes("transform: translateX(-50%);")) fail("Homepage must use a full-width carousel and overlay navigation dots.");
+if (/\.exploration-number\b|\.work-card-number\b|\.narrative-control--previous\b|\.narrative-control--toggle\b|\.narrative-control--next\b/.test(css)) fail("Retired numbering and controls styling must not remain.");
+if (!css.includes(".narrative-frame img { display: block; width: 100%; height: 100%; object-fit: contain; }")) fail("Narrative slides must show the complete image within their frame.");
 if (/\.narrative-frame img\s*\{[^}]*left:\s*-100%|\.narrative-frame img\s*\{[^}]*width:\s*200%|\.narrative-frame img\s*\{[^}]*object-fit:\s*cover/s.test(css)) fail("Narrative images must never be cropped by mobile-specific positioning.");
 if (/\.slide-copy\.visually-hidden\s*\{/.test(css)) fail("Slide HTML copy must remain visually hidden so the supplied image artwork is not duplicated on mobile.");
 if (!/\.narrative-controls\[hidden\]\s*\{\s*display:\s*none;\s*\}/.test(css)) fail("Carousel controls must remain hidden when the no-JavaScript fallback is used.");
