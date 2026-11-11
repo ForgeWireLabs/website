@@ -51,6 +51,32 @@ permalink: /work/index.html
       </div>
     </section>
 
+    <section class="work-directions" aria-labelledby="work-notes-title">
+      <div class="work-section-heading">
+        <p class="eyebrow">Implementation notes</p>
+        <h2 id="work-notes-title">Where design decisions become constraints.</h2>
+        <p>Two examples from the work itself. One is inspectable in public source; the other documents a private system's publicly described boundary, not a released deployment.</p>
+      </div>
+      <div class="work-card-grid">
+        <article class="work-note work-glass">
+          <p class="eyebrow">RepoPact · Legacy-plan migration</p>
+          <h3>Don't turn every old record into a new one.</h3>
+          <p>A legacy <code>tracking/</code> folder may contain decisions, risks, milestones, status snapshots, and work logs. RepoPact maps the first three into different governed record types, preserving their source identifiers. It deliberately leaves snapshots and work logs outside the typed ledger rather than inventing decisions or work items from them.</p>
+          <p>Retiring an old plan is a separate operation. <code>takeover</code> validates the repository and checks that its supported plan items have source-linked counterparts. Archiving is the default. Deletion requires a clean, tracked, Git-recoverable directory; otherwise the command falls back to archival. The repository is validated again afterward.</p>
+          <p>The boundary is important: consistent records do not prove that every nuance of the original plan was preserved. Mixed or unrepresented material still requires review.</p>
+          <p class="work-card-project">Inspect: <a href="https://github.com/ForgeWireLabs/repopact-core/blob/0ac343a2bf25f56a47e8f42798eca938844199fa/decisions/0012-tracking-import-and-takeover.md">decision 0012 ↗</a> · <a href="https://github.com/ForgeWireLabs/repopact-core/blob/0ac343a2bf25f56a47e8f42798eca938844199fa/repopact/track_import.py">importer ↗</a> · <a href="https://github.com/ForgeWireLabs/repopact-core/blob/0ac343a2bf25f56a47e8f42798eca938844199fa/repopact/takeover.py">takeover implementation ↗</a></p>
+        </article>
+        <article class="work-note work-glass">
+          <p class="eyebrow">Fabric · Execution ownership</p>
+          <h3>Moving a task shouldn't move its authority.</h3>
+          <p>ForgeWire owns the request, project context, and decision about what work to initiate. Fabric is a separate execution control plane: its job is to evaluate authorized dispatch and place work on a suitable machine, not to become the owner of the conversation or the task's meaning.</p>
+          <p>This separation matters when work crosses a machine boundary. A remote runner may perform an assigned operation and report its outcome, but that does not grant it control over the initiating application's state or the next decision. A proposed agent action is also distinct from an operator's authorization.</p>
+          <p>Fabric is still private development. Integration depends on configuration, and the public architecture is not evidence of a supported deployment, a security guarantee, or a measured performance advantage.</p>
+          <p class="work-card-project">Inspect: <a href="https://github.com/ForgeWireLabs/ForgeWire-Overview/blob/85d1905b0bd8db420882f00065daff34833dab27/README.md#forgewire-and-fabric">public system boundary ↗</a> · <a href="https://github.com/ForgeWireLabs/ForgeWire-Overview/blob/85d1905b0bd8db420882f00065daff34833dab27/assets/diagrams/fabric-dispatch.png">dispatch diagram ↗</a></p>
+        </article>
+      </div>
+    </section>
+
     <nav class="work-explore work-glass" aria-label="Explore more about ForgeWire Labs">
       <div>
         <h2>Explore the engineering.</h2>
